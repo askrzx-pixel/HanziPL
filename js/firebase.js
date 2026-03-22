@@ -67,28 +67,40 @@ function signOutUser() {
   });
 }
 
-// ── Zapis do Firestore ────────────────────────────
-// Zapisuje cały stan aplikacji jako jeden dokument
-// w kolekcji "users/{uid}/data/progress"
+// ── Zapis do Firestore (debounced) ───────────────
+// Nie zapisuje po każdej odpowiedzi — czeka 3 sekundy
+// od ostatniego wywołania, żeby nie przeciążać Firestore.
+var _fbSaveTimer = null;
+
 function fbSaveAll() {
-  if (!firestoreDB || !currentUser) return; // tryb offline — nic nie rób
+  if (!firestoreDB || !currentUser) return;
 
-  var uid = currentUser.uid;
-  var payload = {
-    srsData:    srsData,
-    appConfig:  appConfig,
-    dailyLog:   dailyLog,
-    streakData: streakData,
-    updatedAt:  new Date().toISOString()
-  };
+  // Anuluj poprzedni timer jeśli istnieje
+  if (_fbSaveTimer) clearTimeout(_fbSaveTimer);
 
-  firestoreDB
-    .collection('users')
-    .doc(uid)
-    .set(payload)
-    .catch(function(err) {
-      console.warn('Błąd zapisu Firestore:', err.message);
-    });
+  // Zapisz po 3 sekundach bezczynności
+  _fbSaveTimer = setTimeout(function() {
+    _fbSaveTimer = null;
+    var uid = currentUser.uid;
+    var payload = {
+      srsData:    srsData,
+      appConfig:  appConfig,
+      dailyLog:   dailyLog,
+      streakData: streakData,
+      updatedAt:  new Date().toISOString()
+    };
+
+    firestoreDB
+      .collection('users')
+      .doc(uid)
+      .set(payload)
+      .then(function() {
+        console.log('Zapisano do Firestore');
+      })
+      .catch(function(err) {
+        console.warn('Błąd zapisu Firestore:', err.message);
+      });
+  }, 3000);
 }
 
 // ── Odczyt z Firestore ────────────────────────────
