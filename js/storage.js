@@ -32,7 +32,12 @@ function saveAll() {
   if (typeof fbSaveAll === 'function') fbSaveAll();
 
   // Odśwież licznik opanowanych w navbarze
-  if (typeof updateNavMastered === 'function') updateNavMastered();
+  // Odśwież UI tylko jeśli DOM jest gotowy
+  try {
+    if (typeof updateNavMastered === 'function') updateNavMastered();
+  } catch(e) {
+    console.warn('updateNavMastered error:', e);
+  }
 }
 
 // ── Upewnij się że daily log dotyczy dzisiejszego dnia ──
