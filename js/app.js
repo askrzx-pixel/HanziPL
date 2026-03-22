@@ -249,11 +249,42 @@ function updateSessionCount() {
 }
 
 function startCustomSession() {
-  const pool = shuffle([...getPool()]);
-  if (!pool.length) { showToast('Brak słówek!', true); return; }
+  const basePool = getPool();
+  const pool = shuffle([...basePool]);
+
+  if (!pool.length) {
+    showToast('Brak słówek!', true);
+    updateSessionCount();
+    return;
+  }
+
   isDailySession = false;
-  beginSession(pool, curMode);
-}
+function beginSession(pool, mode) {
+  sWords = Array.isArray(pool) ? [...pool] : [];
+  sIdx = 0;
+  sOk = 0;
+  sTotal = sWords.length;
+  sessionReviews = 0;
+  sessionCorrect = 0;
+  fcFlipped = false;
+  curMode = mode;
+
+  if (!sWords.length) {
+    showToast('Brak słówek!', true);
+    backHome();
+    return;
+  }
+
+  hideAll();
+
+  if (mode === 'fc') {
+    startFC();
+  } else if (mode === 'qz') {
+    startQZ();
+  } else {
+    startTP();
+  }
+}}
 
 // ── SESSION ENGINE ────────────────────────────────
 function beginSession(pool, mode) {
@@ -302,11 +333,52 @@ function startFC() {
 }
 
 function loadFC() {
-  if (sIdx >= sWords.length) { showResults(); return; }
+  if (!Array.isArray(sWords) || !sWords.length) {
+    showResults();
+    return;
+  }
+
+  if (sIdx >= sWords.length) {
+    showResults();
+    return;
+  }
+
   const w = sWords[sIdx];
+  if (!w) {
+    showResults();
+    return;
+  }
+
   fcFlipped = false;
-  document.getElementById('srs-btns').style.display = 'none';
+
+  const srsBtns = document.getElementById('srs-btns');
+  if (srsBtns) srsBtns.style.display = 'none';
+
   const fcEl = document.getElementById('fc');
+  if (!fcEl) return;
+
+  const hzEl = document.getElementById('fc-hz');
+  const pyEl = document.getElementById('fc-py');
+  const trEl = document.getElementById('fc-tr');
+  const bhEl = document.getElementById('fc-bh');
+
+  function applyContent() {
+    if (hzEl) hzEl.textContent = w.hanzi || '—';
+    if (pyEl) pyEl.textContent = w.pinyin || '—';
+    if (trEl) trEl.textContent = w.pl || '—';
+    if (bhEl) bhEl.textContent = w.hanzi || '—';
+
+    sp('fc', sIdx + 1, sWords.length);
+  }
+
+  if (fcEl.classList.contains('flip')) {
+    fcEl.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
+    fcEl.classList.remove('flip');
+    setTimeout(applyContent, 220);
+  } else {
+    applyContent();
+  }
+}
 
   function applyContent() {
     document.getElementById('fc-hz').textContent = w.hanzi;
@@ -351,7 +423,10 @@ function srsAns(rating) {
 
 function sessionIdx_inc() {
   sIdx++;
-  document.getElementById('srs-btns').style.display = 'none';
+
+  const srsBtns = document.getElementById('srs-btns');
+  if (srsBtns) srsBtns.style.display = 'none';
+
   loadFC();
 }
 
@@ -399,7 +474,54 @@ function ansQZ(btn, ch, cor) {
   document.getElementById('qz-nx').classList.add('on');
 }
 
-function qzNext() { sIdx++; loadQZ(); }
+function loadQZ() {
+  if (!Array.isArray(sWords) || !sWords.length) {
+    showResults();
+    return;
+  }
+
+  if (sIdx >= sWords.length) {
+    showResults();
+    return;
+  }
+
+  const w = sWords[sIdx];
+  if (!w) {
+    showResults();
+    return;
+  }
+
+  const hzEl = document.getElementById('qz-hz');
+  const pyEl = document.getElementById('qz-py');
+  const nextBtn = document.getElementById('qz-nx');
+  const optsBox = document.getElementById('qz-opts');
+
+  if (hzEl) hzEl.textContent = w.hanzi || '—';
+  if (pyEl) pyEl.textContent = w.pinyin || '—';
+  if (nextBtn) nextBtn.classList.remove('on');
+
+  sp('qz', sIdx + 1, sWords.length);
+
+  const sameLsn = WORDS.filter(x => x.pl !== w.pl && x.lesson === w.lesson);
+  const other = WORDS.filter(x => x.pl !== w.pl && x.lesson !== w.lesson);
+  const pool = shuffle(sameLsn).concat(shuffle(other));
+
+  let opts = [w.pl];
+  pool.slice(0, 3).forEach(x => opts.push(x.pl));
+  while (opts.length < 4) opts.push('—');
+  opts = shuffle(opts);
+
+  if (optsBox) {
+    optsBox.innerHTML = opts.map(opt => `
+      <button class="qopt" onclick="checkQZ(this, ${JSON.stringify(w.pl)})">${opt}</button>
+    `).join('');
+  }
+}
+
+function qzNext() {
+  sIdx++;
+  loadQZ();
+}
 
 // ── TYPING ────────────────────────────────────────
 function startTP() { document.getElementById('stp').style.display = 'block'; loadTP(); }
@@ -414,7 +536,7 @@ function loadTP() {
   document.getElementById('tfb').textContent = '';
   document.getElementById('tfb').className   = 'tfb';
   document.getElementById('tp-nx').classList.remove('on');
-  sp('tp', sIdx, sWords.length);
+  sp('tp', sIdx + 1, sWords.length);
   setTimeout(() => inp.focus(), 50);
 }
 
@@ -443,7 +565,10 @@ function chkType() {
   document.getElementById('tp-nx').classList.add('on');
 }
 
-function tpNext() { sIdx++; loadTP(); }
+function tpNext() {
+  sIdx++;
+  loadTP();
+}
 
 // ── RESULTS ───────────────────────────────────────
 function showResults() {
@@ -532,7 +657,11 @@ function handleAuthChange(user) {
 
 // ── INIT ──────────────────────────────────────────
 function init() {
-  // Upewnij się że wszystkie słówka mają karty SRS
+  if (!Array.isArray(WORDS)) {
+    console.error('WORDS is missing or not an array');
+    return;
+  }
+
   WORDS.forEach(w => {
     if (!srsData[w.hanzi]) srsData[w.hanzi] = SRS.defaultCard();
   });
@@ -544,8 +673,15 @@ function init() {
   renderAuthUI();
 
   if (!appConfig.onboarded) {
-    document.getElementById('onboard').style.display = 'flex';
+    const onboard = document.getElementById('onboard');
+    if (onboard) onboard.style.display = 'flex';
   }
+
+  console.log('init ok', {
+    words: WORDS.length,
+    pool: getPool().length,
+    mode: curMode
+  });
 }
 
 init();
