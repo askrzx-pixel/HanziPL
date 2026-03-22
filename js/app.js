@@ -508,27 +508,26 @@ function finishOnboard() {
 }
 
 // ── AUTH STATE HANDLER ───────────────────────────
-// Nadpisujemy placeholder z firebase.js
-// Wywoływane automatycznie gdy użytkownik loguje się / wylogowuje
-function onAuthStateChanged(user) {
+// Wywoływany przez firebase.js gdy zmienia się stan logowania.
+// Nazwa handleAuthChange (nie onAuthStateChanged) żeby uniknąć
+// konfliktu z Firebase SDK które ma własne onAuthStateChanged.
+function handleAuthChange(user) {
   if (user) {
-    // Zalogowany — załaduj dane z Firestore
-    showToast('Ładowanie danych z chmury...', false);
+    showToast('Synchronizacja z chmurą...', false);
     fbLoadAll(function(loaded) {
-      // Po załadowaniu danych z chmury — odśwież UI
+      // Upewnij się że nowe słówka mają karty SRS
       WORDS.forEach(w => {
         if (!srsData[w.hanzi]) srsData[w.hanzi] = SRS.defaultCard();
       });
       renderStreakBadge();
       updateNavMastered();
       renderHomeScreen();
-      if (loaded) showToast('Zsynchronizowano z chmurą ☁️', false, 'good');
+      if (loaded) showToast('Zsynchronizowano ☁️', false, 'good');
     });
   } else {
-    // Wylogowany — używaj danych lokalnych
     renderHomeScreen();
   }
-  renderAuthUI();
+  // renderAuthUI() jest już wywołane w firebase.js po handleAuthChange
 }
 
 // ── INIT ──────────────────────────────────────────
