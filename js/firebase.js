@@ -1,10 +1,18 @@
 // ── FIREBASE.JS ───────────────────────────────────
-// Handles Google login and Firestore synchronization.
-// Loaded BEFORE storage.js and app.js.
-// Exposes: currentUser, fbSaveAll(), fbLoadAll(), signInWithGoogle(), signOut()
+// Opcjonalna warstwa synchronizacji z chmurą.
+// Jeśli Firebase nie załaduje się lub rzuci błąd —
+// aplikacja działa normalnie w trybie offline (localStorage).
+//
+// WAŻNE: Ten plik NIE blokuje startowania aplikacji.
+// Wszystkie operacje Firebase są asynchroniczne i
+// owinięte w try/catch.
 
-// ── Firebase config (Twój projekt HanziPL) ───────
-const FIREBASE_CONFIG = {
+var currentUser  = null;
+var _fbReady     = false;  // czy Firebase załadował się poprawnie
+var _fbSaveTimer = null;   // timer do debouncingu zapisu
+
+// ── Konfiguracja projektu HanziPL ─────────────────
+var FIREBASE_CONFIG = {
   apiKey:            "AIzaSyAALuZ3Sdh-Lvp38n3nw6TpzKNolZ4rU_0",
   authDomain:        "hanzipl-42ef0.firebaseapp.com",
   projectId:         "hanzipl-42ef0",
@@ -13,157 +21,142 @@ const FIREBASE_CONFIG = {
   appId:             "1:876038817557:web:67d572632b25589f554b1c"
 };
 
-// ── Firebase SDK (ładowane przez CDN z index.html) ─
-// Zmienne firebase, firestore i auth są dostępne globalnie
-// po załadowaniu skryptów CDN w index.html
-
-var firebaseApp  = null;
-var firestoreDB  = null;
-var firebaseAuth = null;
-var currentUser  = null;   // null = niezalogowany
-
-// ── Inicjalizacja ─────────────────────────────────
+// ── Inicjalizacja — wywoływana po załadowaniu strony ─
 function initFirebase() {
   try {
-    firebaseApp  = firebase.initializeApp(FIREBASE_CONFIG);
-    firestoreDB  = firebase.firestore();
-    firebaseAuth = firebase.auth();
+    if (typeof firebase === 'undefined') {
+      console.warn('Firebase SDK nie załadowany — tryb offline');
+      return;
+    }
+    firebase.initializeApp(FIREBASE_CONFIG);
+    _fbReady = true;
 
     // Nasłuchuj na zmiany stanu logowania
-    firebaseAuth.onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function(user) {
       currentUser = user;
-      onAuthStateChanged(user);
+      // Wywołaj handler w app.js (jest tam zdefiniowany)
+      if (typeof handleAuthChange === 'function') {
+        handleAuthChange(user);
+      }
+      renderAuthUI();
     });
 
-    console.log('Firebase zainicjalizowany');
-  } catch (e) {
-    console.warn('Firebase niedostępny, tryb offline:', e.message);
+    console.log('Firebase OK');
+  } catch(e) {
+    console.warn('Firebase init failed:', e.message);
+    _fbReady = false;
   }
-}
-
-// ── Wywoływane gdy zmienia się stan logowania ─────
-// (nadpisywane w app.js)
-function onAuthStateChanged(user) {
-  // placeholder — app.js nadpisze tę funkcję
 }
 
 // ── Logowanie przez Google ────────────────────────
 function signInWithGoogle() {
-  if (!firebaseAuth) { showToast('Firebase niedostępny', true); return; }
-  var provider = new firebase.auth.GoogleAuthProvider();
-  firebaseAuth.signInWithPopup(provider).catch(function(err) {
-    console.error('Błąd logowania:', err);
-    showToast('Błąd logowania: ' + err.message, true);
-  });
+  if (!_fbReady) { showToast('Firebase niedostępny', true); return; }
+  try {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).catch(function(err) {
+      showToast('Błąd logowania: ' + err.message, true);
+    });
+  } catch(e) {
+    showToast('Błąd logowania', true);
+  }
 }
 
 // ── Wylogowanie ───────────────────────────────────
 function signOutUser() {
-  if (!firebaseAuth) return;
-  firebaseAuth.signOut().then(function() {
+  if (!_fbReady) return;
+  firebase.auth().signOut().then(function() {
     currentUser = null;
     renderAuthUI();
     showToast('Wylogowano');
   });
 }
 
-// ── Zapis do Firestore (debounced) ───────────────
-// Nie zapisuje po każdej odpowiedzi — czeka 3 sekundy
-// od ostatniego wywołania, żeby nie przeciążać Firestore.
-var _fbSaveTimer = null;
-
+// ── Zapis do Firestore (debounced — max raz na 4s) ─
 function fbSaveAll() {
-  if (!firestoreDB || !currentUser) return;
+  if (!_fbReady || !currentUser) return;
 
-  // Anuluj poprzedni timer jeśli istnieje
+  // Anuluj poprzedni timer
   if (_fbSaveTimer) clearTimeout(_fbSaveTimer);
 
-  // Zapisz po 3 sekundach bezczynności
   _fbSaveTimer = setTimeout(function() {
     _fbSaveTimer = null;
-    var uid = currentUser.uid;
-    var payload = {
-      srsData:    srsData,
-      appConfig:  appConfig,
-      dailyLog:   dailyLog,
-      streakData: streakData,
-      updatedAt:  new Date().toISOString()
-    };
-
-    firestoreDB
-      .collection('users')
-      .doc(uid)
-      .set(payload)
-      .then(function() {
-        console.log('Zapisano do Firestore');
-      })
-      .catch(function(err) {
-        console.warn('Błąd zapisu Firestore:', err.message);
-      });
-  }, 3000);
+    try {
+      var payload = {
+        srsData:    srsData,
+        appConfig:  appConfig,
+        dailyLog:   dailyLog,
+        streakData: streakData,
+        updatedAt:  new Date().toISOString()
+      };
+      firebase.firestore()
+        .collection('users')
+        .doc(currentUser.uid)
+        .set(payload)
+        .catch(function(e) { console.warn('Firestore save error:', e.message); });
+    } catch(e) {
+      console.warn('fbSaveAll error:', e.message);
+    }
+  }, 4000);
 }
 
 // ── Odczyt z Firestore ────────────────────────────
-// Ładuje dane użytkownika z chmury i nadpisuje lokalne
 function fbLoadAll(callback) {
-  if (!firestoreDB || !currentUser) {
+  if (!_fbReady || !currentUser) {
     if (callback) callback(false);
     return;
   }
-
-  var uid = currentUser.uid;
-  firestoreDB
-    .collection('users')
-    .doc(uid)
-    .get()
-    .then(function(doc) {
-      if (doc.exists) {
-        var data = doc.data();
-
-        // Nadpisz lokalne zmienne danymi z chmury
-        if (data.srsData)    srsData    = data.srsData;
-        if (data.appConfig)  appConfig  = data.appConfig;
-        if (data.dailyLog)   dailyLog   = data.dailyLog;
-        if (data.streakData) streakData = data.streakData;
-
-        // Zapisz też lokalnie jako backup
-        DB.save('cn_srs',    srsData);
-        DB.save('cn_cfg',    appConfig);
-        DB.save('cn_daily',  dailyLog);
-        DB.save('cn_streak', streakData);
-
-        console.log('Dane załadowane z Firestore');
-        if (callback) callback(true);
-      } else {
-        // Nowy użytkownik — brak danych w chmurze
-        console.log('Brak danych w Firestore — nowy użytkownik');
+  try {
+    firebase.firestore()
+      .collection('users')
+      .doc(currentUser.uid)
+      .get()
+      .then(function(doc) {
+        if (doc.exists) {
+          var data = doc.data();
+          if (data.srsData)    srsData    = data.srsData;
+          if (data.appConfig)  appConfig  = data.appConfig;
+          if (data.dailyLog)   dailyLog   = data.dailyLog;
+          if (data.streakData) streakData = data.streakData;
+          // Backup lokalny
+          DB.save('cn_srs',    srsData);
+          DB.save('cn_cfg',    appConfig);
+          DB.save('cn_daily',  dailyLog);
+          DB.save('cn_streak', streakData);
+          if (callback) callback(true);
+        } else {
+          if (callback) callback(false);
+        }
+      })
+      .catch(function(e) {
+        console.warn('Firestore load error:', e.message);
         if (callback) callback(false);
-      }
-    })
-    .catch(function(err) {
-      console.warn('Błąd odczytu Firestore:', err.message);
-      if (callback) callback(false);
-    });
+      });
+  } catch(e) {
+    console.warn('fbLoadAll error:', e.message);
+    if (callback) callback(false);
+  }
 }
 
-// ── Renderowanie UI logowania ─────────────────────
+// ── UI przycisku logowania ────────────────────────
 function renderAuthUI() {
-  var btn = document.getElementById('auth-btn');
+  var btn  = document.getElementById('auth-btn');
   var info = document.getElementById('auth-info');
   if (!btn) return;
 
   if (currentUser) {
-    // Zalogowany — pokaż imię i przycisk wylogowania
     btn.textContent = 'Wyloguj';
     btn.onclick = signOutUser;
-    if (info) info.textContent = currentUser.displayName || currentUser.email;
+    if (info) info.textContent = currentUser.displayName || currentUser.email || '';
   } else {
-    // Niezalogowany — przycisk logowania
-    btn.textContent = '🔑 Zaloguj przez Google';
+    btn.textContent = '🔑 Zaloguj';
     btn.onclick = signInWithGoogle;
-    if (info) info.textContent = 'Niezalogowany — postępy tylko lokalnie';
+    if (info) info.textContent = '';
   }
 }
 
-// Inicjuj Firebase od razu po załadowaniu skryptu
-initFirebase();
+// ── Inicjuj Firebase po załadowaniu DOM ───────────
+// Używamy window.addEventListener zamiast inicjować od razu,
+// żeby mieć pewność że wszystkie inne skrypty już się załadowały.
+window.addEventListener('load', function() {
+  initFirebase();
+});
