@@ -463,3 +463,27 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   transition:all .18s;box-shadow:var(--shadow);
 }
 .goal-opt.on{border-color:var(--red);color:var(--red);background:rgba(139,26,26,.06);}
+
+/* ── AUTH BUTTON ─────────────────────────────────── */
+.auth-btn{
+  padding:5px 12px;
+  border:1px solid var(--border2);
+  border-radius:20px;
+  background:var(--paper3);
+  cursor:pointer;
+  font-family:'Space Mono',monospace;
+  font-size:.6rem;
+  color:var(--ink);
+  transition:all .18s;
+  white-space:nowrap;
+}
+.auth-btn:active{background:var(--ink);color:var(--paper);}
+.auth-info{
+  font-family:'Space Mono',monospace;
+  font-size:.58rem;
+  color:var(--muted);
+  max-width:100px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
