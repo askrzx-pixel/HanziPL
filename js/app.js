@@ -45,7 +45,7 @@ function go(name, btn) {
   if (name === 'home')  renderHomeScreen();
   if (name === 'stats') renderStats();
   if (name === 'words') renderWords();
-  if (name === 'study') { updateSessionCount(); if (isDailySession) isDailySession = false; }
+  if (name === 'study') { updateSessionCount(); }
   window.scrollTo(0, 0);
 }
 
@@ -108,9 +108,18 @@ function startDailySession() {
   const { due, newWords } = getDailyWords();
   const pool = shuffle([...due, ...newWords]);
   if (!pool.length) { showToast('Brak słówek na dziś! 🎉', false, 'good'); return; }
+
+  // Przełącz widok na zakładkę Nauka (tylko nawigacja, bez resetowania sesji)
+  document.querySelectorAll('.scr').forEach(s => s.classList.remove('on'));
+  document.querySelectorAll('.botnav-btn').forEach(b => b.classList.remove('on'));
+  document.getElementById('scr-study').classList.add('on');
+  var navBtn = document.getElementById('bn-study');
+  if (navBtn) navBtn.classList.add('on');
+  window.scrollTo(0, 0);
+
+  // Teraz uruchom sesję — po przełączeniu zakładki
   isDailySession = true;
   beginSession(pool, 'fc');
-  go('study', document.getElementById('bn-study'));
 }
 
 // ── STATS ─────────────────────────────────────────
@@ -386,8 +395,7 @@ function ansQZ(btn, ch, cor) {
     document.querySelectorAll('.qopt').forEach(b => { if (b.textContent === cor) b.classList.add('ok'); });
     SRS.schedule(srsData[sWords[sIdx].hanzi], 0);
   }
-  recordAnswer(sWords[sIdx].hanzi, correct);
-  saveAll();
+  recordAnswer(sWords[sIdx].hanzi, correct); // saveAll() jest już wewnątrz recordAnswer
   document.getElementById('qz-nx').classList.add('on');
 }
 
@@ -431,7 +439,7 @@ function chkType() {
     SRS.schedule(srsData[w.hanzi], 0);
     recordAnswer(w.hanzi, false);
   }
-  saveAll();
+  // saveAll() jest już wywołane wewnątrz recordAnswer powyżej
   document.getElementById('tp-nx').classList.add('on');
 }
 
