@@ -2,11 +2,6 @@
 // UI rendering, screen switching, session flow.
 // Depends on: words.js, storage.js, srs.js
 
-// Ensure all words have SRS cards on startup
-WORDS.forEach(w => {
-  if (!srsData[w.hanzi]) srsData[w.hanzi] = SRS.defaultCard();
-});
-
 // ── Runtime state ─────────────────────────────────
 var curFilter  = 'all';
 var curMode    = 'fc';
@@ -504,12 +499,43 @@ function finishOnboard() {
   document.getElementById('onboard').style.display = 'none';
 }
 
+// ── AUTH STATE HANDLER ───────────────────────────
+// Nadpisujemy placeholder z firebase.js
+// Wywoływane automatycznie gdy użytkownik loguje się / wylogowuje
+function onAuthStateChanged(user) {
+  if (user) {
+    // Zalogowany — załaduj dane z Firestore
+    showToast('Ładowanie danych z chmury...', false);
+    fbLoadAll(function(loaded) {
+      // Po załadowaniu danych z chmury — odśwież UI
+      WORDS.forEach(w => {
+        if (!srsData[w.hanzi]) srsData[w.hanzi] = SRS.defaultCard();
+      });
+      renderStreakBadge();
+      updateNavMastered();
+      renderHomeScreen();
+      if (loaded) showToast('Zsynchronizowano z chmurą ☁️', false, 'good');
+    });
+  } else {
+    // Wylogowany — używaj danych lokalnych
+    renderHomeScreen();
+  }
+  renderAuthUI();
+}
+
 // ── INIT ──────────────────────────────────────────
 function init() {
+  // Upewnij się że wszystkie słówka mają karty SRS
+  WORDS.forEach(w => {
+    if (!srsData[w.hanzi]) srsData[w.hanzi] = SRS.defaultCard();
+  });
+
   renderStreakBadge();
   updateNavMastered();
   renderHomeScreen();
   updateSessionCount();
+  renderAuthUI();
+
   if (!appConfig.onboarded) {
     document.getElementById('onboard').style.display = 'flex';
   }
