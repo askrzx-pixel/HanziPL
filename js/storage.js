@@ -1,6 +1,8 @@
-// ── STORAGE ──────────────────────────────────────
-// All localStorage read/write logic lives here.
-// Structured so data can be synced to a backend later.
+// ── STORAGE.JS ────────────────────────────────────
+// Warstwa persystencji — localStorage jako primary,
+// Firestore jako sync (obsługiwany w firebase.js).
+// Eksportuje: DB, srsData, appConfig, dailyLog, streakData,
+//             saveAll(), ensureDailyLog()
 
 const DB = {
   load(key, def) {
@@ -11,23 +13,31 @@ const DB = {
   },
 };
 
-// ── App-level state loaded from storage ──────────
+// ── Stan aplikacji ładowany z localStorage ────────
 var srsData    = DB.load('cn_srs',    {});
 var appConfig  = DB.load('cn_cfg',    { dailyGoal: 10, onboarded: false });
 var dailyLog   = DB.load('cn_daily',  { date: '', done: 0, newDone: 0 });
 var streakData = DB.load('cn_streak', { current: 0, lastDate: '' });
 
-// ── Persist everything ────────────────────────────
+// ── Zapis — lokalnie ZAWSZE, do chmury jeśli zalogowany ──
 function saveAll() {
+  // Zawsze zapisz lokalnie (działa offline)
   DB.save('cn_srs',    srsData);
   DB.save('cn_cfg',    appConfig);
   DB.save('cn_daily',  dailyLog);
   DB.save('cn_streak', streakData);
-  updateNavMastered();
+
+  // Jeśli zalogowany — zapisz też w Firestore
+  // fbSaveAll() jest zdefiniowane w firebase.js
+  if (typeof fbSaveAll === 'function') fbSaveAll();
+
+  // Odśwież licznik opanowanych w navbarze
+  if (typeof updateNavMastered === 'function') updateNavMastered();
 }
 
-// ── Daily log helpers ─────────────────────────────
+// ── Upewnij się że daily log dotyczy dzisiejszego dnia ──
 function ensureDailyLog() {
+  if (typeof today !== 'function') return;
   if (dailyLog.date !== today()) {
     dailyLog = { date: today(), done: 0, newDone: 0 };
     DB.save('cn_daily', dailyLog);
