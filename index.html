@@ -38,6 +38,8 @@
   <div class="topbar-right">
     <div class="streak-badge"><span class="fire">🔥</span><span id="streak-num">0</span> dni</div>
     <div class="nav-st">Opanowane: <b id="nm">0</b></div>
+    <div id="auth-info" class="auth-info"></div>
+    <button id="auth-btn" class="auth-btn" onclick="signInWithGoogle()">🔑 Zaloguj</button>
   </div>
 </div>
 
@@ -248,9 +250,15 @@
 <div class="toast" id="toast"></div>
 
 
-<!-- JS: load order matters — words → storage → srs → app -->
+<!-- Firebase CDN — musi być przed naszymi skryptami -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<!-- JS: load order matters — words → storage → firebase → srs → app -->
 <script src="js/words.js"></script>
 <script src="js/storage.js"></script>
+<script src="js/firebase.js"></script>
 <script src="js/srs.js"></script>
 <script src="js/app.js"></script>
 </body>
