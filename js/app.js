@@ -633,6 +633,8 @@ function init() {
 window.qzNext = qzNext;
 window.startCustomSession = startCustomSession;
 window.startDailySession = startDailySession;
+window.restartSession = restartSession;
+window.backHome = backHome;
 window.confirmBack = confirmBack;
 window.go = go;
 window.flipCard = flipCard;
@@ -642,6 +644,7 @@ window.tpNext = tpNext;
 window.toggleLesson = toggleLesson;
 window.selMode = selMode;
 window.filterWords = filterWords;
+window.renderWords = renderWords;
 window.setGoal = setGoal;
 window.finishOnboard = finishOnboard;
 window.dialogCancel = dialogCancel;

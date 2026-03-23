@@ -43,21 +43,25 @@ const SRS = {
   },
 
   previewIntervals(card) {
+    const base = card || SRS.defaultCard();
     return [0, 1, 2, 3].map(r => {
-      const c = SRS.schedule({ ...card }, r);
+      const c = SRS.schedule({ ...base }, r);
       return fmtInterval(c.interval);
     });
   },
 
   isDue(card) {
+    if (!card) return true;
     return !card.due || card.due <= today();
   },
 
   isNew(card) {
+    if (!card) return true;
     return card.reps === 0;
   },
 
   isMastered(card) {
+    if (!card) return false;
     return card.interval >= 21;
   },
 };

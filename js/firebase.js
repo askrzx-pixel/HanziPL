@@ -169,6 +169,11 @@ function renderAuthUI() {
   }
 }
 
+// ── Eksport globalny — wymagany dla inline onclick= w HTML ──
+window.signInWithGoogle = signInWithGoogle;
+window.signOutUser      = signOutUser;
+window.renderAuthUI     = renderAuthUI;
+
 // ── Inicjuj Firebase po załadowaniu DOM ───────────
 // Używamy window.addEventListener zamiast inicjować od razu,
 // żeby mieć pewność że wszystkie inne skrypty już się załadowały.
