@@ -245,39 +245,26 @@ function getPool() {
 }
 
 function updateSessionCount() {
-  document.getElementById('scnt').textContent = getPool().length + ' słówek w puli';
+  const scntEl = document.getElementById('scnt');
+  if (!scntEl) return;
+
+  const pool = getPool();
+  scntEl.textContent = `${pool.length} słówek w puli`;
 }
 
 function startCustomSession() {
-  try {
-    alert('weszło do startCustomSession');
+  const basePool = getPool();
+  const pool = shuffle([...basePool]);
 
-    console.log('startCustomSession: start');
-    console.log('curMode =', curMode);
-    console.log('typeof shuffle =', typeof shuffle);
-    console.log('typeof beginSession =', typeof beginSession);
-
-    const basePool = getPool();
-    console.log('basePool length =', basePool ? basePool.length : 'brak');
-
-    const pool = shuffle([...basePool]);
-    console.log('pool length after shuffle =', pool.length);
-
-    if (!pool.length) {
-      alert('Brak słówek w puli');
-      showToast('Brak słówek!', true);
-      updateSessionCount();
-      return;
-    }
-
-    isDailySession = false;
-    alert('zaraz beginSession');
-    beginSession(pool, curMode);
-    alert('beginSession wykonane');
-  } catch (e) {
-    console.error('Błąd w startCustomSession:', e);
-    alert('Błąd: ' + e.message);
+  if (!pool.length) {
+    showToast('Brak słówek!', true);
+    updateSessionCount();
+    return;
   }
+
+  isDailySession = false;
+  beginSession(pool, curMode);
+}
   
 function beginSession(pool, mode) {
   sWords = Array.isArray(pool) ? [...pool] : [];
