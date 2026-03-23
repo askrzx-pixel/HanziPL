@@ -281,6 +281,10 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   transition:all .2s ease;
   margin-top:8px;min-height:50px;
   box-shadow:0 3px 10px rgba(28,18,8,.2);
+
+  position: relative;
+  z-index: 10;
+}
 }
 .btn:active{background:var(--red);transform:scale(.98);}
 .btn-out{
