@@ -271,7 +271,6 @@ function startCustomSession() {
     }
 
     isDailySession = false;
-
     alert('zaraz beginSession');
     beginSession(pool, curMode);
     alert('beginSession wykonane');
@@ -280,6 +279,7 @@ function startCustomSession() {
     alert('Błąd: ' + e.message);
   }
 }
+
 function beginSession(pool, mode) {
   sWords = Array.isArray(pool) ? [...pool] : [];
   sIdx = 0;
