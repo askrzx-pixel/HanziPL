@@ -7,7 +7,7 @@ var curFilter  = 'all';
 var curMode    = 'fc';
 var selLessons = new Set(['all']);
 var sWords = [], sIdx = 0, sOk = 0, sTotal = 0, fcFlipped = false;
-var isDailySession  = false;
+var isDailySession  = false
 var sessionReviews  = 0;
 var sessionCorrect  = 0;
 
@@ -416,7 +416,7 @@ function loadQZ() {
   const hzEl = document.getElementById('qz-hz');
   const pyEl = document.getElementById('qz-py');
   const nextBtn = document.getElementById('qz-nx');
-  const optsBox = document.getElementById('qopts'); // ważne: zgodnie z Twoim HTML
+  const optsBox = document.getElementById('qz-opts'); // ważne: zgodnie z Twoim HTML
 
   if (!hzEl || !pyEl || !nextBtn || !optsBox) {
     console.error('Quiz DOM missing');
