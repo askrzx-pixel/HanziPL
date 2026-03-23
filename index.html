@@ -186,16 +186,32 @@
     </div>
   </div>
 
-  <!-- Quiz -->
-  <div id="sqz" style="display:none">
-    <div class="sess-header">
-      <button class="btn-back-sess" onclick="confirmBack()">← Wróć</button>
-      <div class="prog"><div class="progh"><span id="qz-t">0/0</span><span>QUIZ</span></div><div class="progt"><div class="progf" id="qz-f" style="width:0%"></div></div></div>
+<!-- Quiz -->
+<div id="sqz" style="display:none">
+  <div class="sess-header">
+    <button class="btn-back-sess" onclick="confirmBack()">← Wróć</button>
+    <div class="prog">
+      <div class="progh">
+        <span id="qz-t">0/0</span>
+        <span>QUIZ</span>
+      </div>
+      <div class="progt">
+        <div class="progf" id="qz-f" style="width:0%"></div>
+      </div>
     </div>
-    <div class="qqwrap"><span class="qqhz" id="qz-hz">—</span><div class="qqpy" id="qz-py"></div></div>
-    <div class="qopts" id="qopts"></div>
-    <div class="nxtwrap"><button class="nxt" id="qz-nx" onclick="qzNext()">Dalej →</button></div>
   </div>
+
+  <div class="qqwrap">
+    <span class="qqhz" id="qz-hz">—</span>
+    <div class="qqpy" id="qz-py"></div>
+  </div>
+
+  <div class="qopts" id="qz-opts"></div>
+
+  <div class="nxtwrap">
+    <button class="nxt" id="qz-nx" onclick="qzNext()">Dalej →</button>
+  </div>
+</div>
 
   <!-- Type -->
   <div id="stp" style="display:none">
