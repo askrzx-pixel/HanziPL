@@ -675,3 +675,4 @@ function init() {
 }
 window.startCustomSession = startCustomSession;
 window.startCustomSession = startCustomSession;iwindow.startCustomSession = startCustomSession;nit();
+window.checkQZ = checkQZ;
