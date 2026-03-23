@@ -28,7 +28,9 @@ function initFirebase() {
       console.warn('Firebase SDK nie załadowany — tryb offline');
       return;
     }
-    firebase.initializeApp(FIREBASE_CONFIG);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(FIREBASE_CONFIG);
+    }
     _fbReady = true;
 
     // Nasłuchuj na zmiany stanu logowania
@@ -39,6 +41,14 @@ function initFirebase() {
         handleAuthChange(user);
       }
       renderAuthUI();
+    });
+
+    // Zapis przy zamykaniu zakładki
+    window.addEventListener('beforeunload', function() {
+      if (_fbSaveTimer) {
+        clearTimeout(_fbSaveTimer);
+        _flushSave();
+      }
     });
 
     console.log('Firebase OK');
@@ -68,34 +78,39 @@ function signOutUser() {
     currentUser = null;
     renderAuthUI();
     showToast('Wylogowano');
+  }).catch(function(e) {
+    showToast('Błąd wylogowania: ' + e.message, true);
   });
+}
+
+// ── Wspólna logika zapisu ─────────────────────────
+function _flushSave() {
+  if (!_fbReady || !currentUser) return;
+  try {
+    var payload = {
+      srsData:    srsData,
+      appConfig:  appConfig,
+      dailyLog:   dailyLog,
+      streakData: streakData,
+      updatedAt:  new Date().toISOString()
+    };
+    firebase.firestore()
+      .collection('users')
+      .doc(currentUser.uid)
+      .set(payload)
+      .catch(function(e) { console.warn('Firestore save error:', e.message); });
+  } catch(e) {
+    console.warn('fbSaveAll error:', e.message);
+  }
 }
 
 // ── Zapis do Firestore (debounced — max raz na 4s) ─
 function fbSaveAll() {
   if (!_fbReady || !currentUser) return;
-
-  // Anuluj poprzedni timer
   if (_fbSaveTimer) clearTimeout(_fbSaveTimer);
-
   _fbSaveTimer = setTimeout(function() {
     _fbSaveTimer = null;
-    try {
-      var payload = {
-        srsData:    srsData,
-        appConfig:  appConfig,
-        dailyLog:   dailyLog,
-        streakData: streakData,
-        updatedAt:  new Date().toISOString()
-      };
-      firebase.firestore()
-        .collection('users')
-        .doc(currentUser.uid)
-        .set(payload)
-        .catch(function(e) { console.warn('Firestore save error:', e.message); });
-    } catch(e) {
-      console.warn('fbSaveAll error:', e.message);
-    }
+    _flushSave();
   }, 4000);
 }
 
