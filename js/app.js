@@ -304,7 +304,7 @@ function beginSession(pool, mode) {
   } else {
     startTP();
   }
-}}
+}
 
 // ── SESSION ENGINE ────────────────────────────────
 function beginSession(pool, mode) {
