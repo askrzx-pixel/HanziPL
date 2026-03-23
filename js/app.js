@@ -295,12 +295,13 @@ function sp(p, i, t) {
   document.getElementById(p + '-f').style.width   = pc + '%';
 }
 
-function recordAnswer(hanzi, correct) {
+// wasNew: czy karta była new PRZED wywołaniem SRS.schedule() — przekazywane przez wywołującego
+function recordAnswer(hanzi, correct, wasNew) {
   sessionReviews++;
   if (correct) sessionCorrect++;
   ensureDailyLog();
   dailyLog.done++;
-  if (SRS.isNew(srsData[hanzi])) dailyLog.newDone++;
+  if (wasNew) dailyLog.newDone++;
   saveAll();
 }
 
@@ -373,14 +374,15 @@ function flipCard() {
 }
 
 function srsAns(rating) {
-  const w    = sWords[sIdx];
-  const card = srsData[w.hanzi];
+  const w      = sWords[sIdx];
+  const card   = srsData[w.hanzi];
+  const wasNew = SRS.isNew(card);           // zapamiętaj PRZED schedule
   const correct = (rating >= 2);
   SRS.schedule(card, rating);
   srsData[w.hanzi] = card;
-  recordAnswer(w.hanzi, correct);
+  recordAnswer(w.hanzi, correct, wasNew);
   if (correct) sOk++;
-  if (rating === 0) sWords.push(w); // Again → re-queue
+  if (rating === 0) sWords.push(w);          // Again → re-queue
   sessionIdx_inc();
 }
 
@@ -453,15 +455,17 @@ function loadQZ() {
 function ansQZ(btn, ch, cor) {
   document.querySelectorAll('.qopt').forEach(b => b.disabled = true);
   const correct = (ch === cor);
+  const hanzi   = sWords[sIdx].hanzi;
+  const wasNew  = SRS.isNew(srsData[hanzi]);  // zapamiętaj PRZED schedule
   if (correct) {
     btn.classList.add('ok'); sOk++;
-    SRS.schedule(srsData[sWords[sIdx].hanzi], 2);
+    SRS.schedule(srsData[hanzi], 2);
   } else {
     btn.classList.add('err');
     document.querySelectorAll('.qopt').forEach(b => { if (b.textContent === cor) b.classList.add('ok'); });
-    SRS.schedule(srsData[sWords[sIdx].hanzi], 0);
+    SRS.schedule(srsData[hanzi], 0);
   }
-  recordAnswer(sWords[sIdx].hanzi, correct); // saveAll() jest już wewnątrz recordAnswer
+  recordAnswer(hanzi, correct, wasNew);
   document.getElementById('qz-nx').classList.add('on');
 }
 
@@ -497,16 +501,17 @@ function chkType() {
   const variants = w.pl.toLowerCase().split(/[;,]/).map(s => s.trim());
   const correct  = variants.some(v => v === val || levenshtein(v, val) <= 2 || (val.length > 3 && v.includes(val)));
 
+  const wasNew = SRS.isNew(srsData[w.hanzi]);  // zapamiętaj PRZED schedule
   if (correct) {
     inp.classList.add('ok');
     fb.textContent = '✓ Dobrze!'; fb.className = 'tfb ok'; sOk++;
     SRS.schedule(srsData[w.hanzi], 2);
-    recordAnswer(w.hanzi, true);
+    recordAnswer(w.hanzi, true, wasNew);
   } else {
     inp.classList.add('err');
     fb.innerHTML = '✕ Poprawna: <b>' + w.pl + '</b>'; fb.className = 'tfb err';
     SRS.schedule(srsData[w.hanzi], 0);
-    recordAnswer(w.hanzi, false);
+    recordAnswer(w.hanzi, false, wasNew);
   }
   // saveAll() jest już wywołane wewnątrz recordAnswer powyżej
   document.getElementById('tp-nx').classList.add('on');

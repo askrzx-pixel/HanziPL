@@ -43,12 +43,9 @@ function initFirebase() {
       renderAuthUI();
     });
 
-    // Zapis przy zamykaniu zakładki
+    // Zapis przy zamykaniu zakładki — flush anuluje timer i zapisuje natychmiast
     window.addEventListener('beforeunload', function() {
-      if (_fbSaveTimer) {
-        clearTimeout(_fbSaveTimer);
-        _flushSave();
-      }
+      _flushSave();
     });
 
     console.log('Firebase OK');
@@ -71,10 +68,12 @@ function signInWithGoogle() {
   }
 }
 
-// ── Wylogowanie ───────────────────────────────────
+// ── Wylogowanie — flush pending save, potem signOut ──
 function signOutUser() {
   if (!_fbReady) return;
-  firebase.auth().signOut().then(function() {
+  _flushSave().then(function() {
+    return firebase.auth().signOut();
+  }).then(function() {
     currentUser = null;
     renderAuthUI();
     showToast('Wylogowano');
@@ -83,24 +82,31 @@ function signOutUser() {
   });
 }
 
-// ── Wspólna logika zapisu ─────────────────────────
+// ── Wspólna logika zapisu — zwraca Promise ────────
+// Anuluje pending debounce timer i zapisuje natychmiast.
 function _flushSave() {
-  if (!_fbReady || !currentUser) return;
+  if (_fbSaveTimer) {
+    clearTimeout(_fbSaveTimer);
+    _fbSaveTimer = null;
+  }
+  if (!_fbReady || !currentUser) return Promise.resolve();
   try {
+    var now = new Date().toISOString();
     var payload = {
       srsData:    srsData,
       appConfig:  appConfig,
       dailyLog:   dailyLog,
       streakData: streakData,
-      updatedAt:  new Date().toISOString()
+      updatedAt:  now
     };
-    firebase.firestore()
+    return firebase.firestore()
       .collection('users')
       .doc(currentUser.uid)
       .set(payload)
       .catch(function(e) { console.warn('Firestore save error:', e.message); });
   } catch(e) {
     console.warn('fbSaveAll error:', e.message);
+    return Promise.resolve();
   }
 }
 
@@ -115,6 +121,8 @@ function fbSaveAll() {
 }
 
 // ── Odczyt z Firestore ────────────────────────────
+// Ładuje dane z chmury tylko jeśli są nowsze niż lokalne.
+// Jeśli lokalne są nowsze — wysyła je do chmury zamiast nadpisywać.
 function fbLoadAll(callback) {
   if (!_fbReady || !currentUser) {
     if (callback) callback(false);
@@ -128,17 +136,37 @@ function fbLoadAll(callback) {
       .then(function(doc) {
         if (doc.exists) {
           var data = doc.data();
-          if (data.srsData)    srsData    = data.srsData;
-          if (data.appConfig)  appConfig  = data.appConfig;
-          if (data.dailyLog)   dailyLog   = data.dailyLog;
-          if (data.streakData) streakData = data.streakData;
-          // Backup lokalny
-          DB.save('cn_srs',    srsData);
-          DB.save('cn_cfg',    appConfig);
-          DB.save('cn_daily',  dailyLog);
-          DB.save('cn_streak', streakData);
-          if (callback) callback(true);
+
+          // Porównanie świeżości: cloud.updatedAt vs cn_updatedAt z localStorage
+          var cloudTs = 0;
+          var localTs = 0;
+          try {
+            if (data.updatedAt) cloudTs = new Date(data.updatedAt).getTime();
+            var rawLocal = localStorage.getItem('cn_updatedAt');
+            if (rawLocal)       localTs = new Date(rawLocal).getTime();
+          } catch(e) {}
+
+          if (cloudTs > localTs) {
+            // Chmura jest nowsza — załaduj i nadpisz lokalne
+            if (data.srsData)    srsData    = data.srsData;
+            if (data.appConfig)  appConfig  = data.appConfig;
+            if (data.dailyLog)   dailyLog   = data.dailyLog;
+            if (data.streakData) streakData = data.streakData;
+            DB.save('cn_srs',    srsData);
+            DB.save('cn_cfg',    appConfig);
+            DB.save('cn_daily',  dailyLog);
+            DB.save('cn_streak', streakData);
+            try { localStorage.setItem('cn_updatedAt', data.updatedAt); } catch(e) {}
+            if (callback) callback(true);
+          } else {
+            // Lokalne są nowsze lub równe — nie nadpisuj, wyślij lokalne do chmury
+            console.log('fbLoadAll: dane lokalne są nowsze — pomijam nadpisanie, sync → cloud');
+            fbSaveAll();
+            if (callback) callback(false);
+          }
         } else {
+          // Brak danych w chmurze — wyślij lokalne
+          fbSaveAll();
           if (callback) callback(false);
         }
       })

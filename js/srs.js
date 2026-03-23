@@ -67,14 +67,25 @@ const SRS = {
 };
 
 // ── Date helpers ──────────────────────────────────
-function today() {
-  return new Date().toISOString().slice(0, 10);
+// Formatuje datę jako YYYY-MM-DD w lokalnej strefie czasu
+function _fmtDate(dt) {
+  const y = dt.getFullYear();
+  const m = String(dt.getMonth() + 1).padStart(2, '0');
+  const d = String(dt.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + d;
 }
 
+// Zwraca dzisiejszą datę w lokalnej strefie czasu (nie UTC)
+function today() {
+  return _fmtDate(new Date());
+}
+
+// Dodaje/odejmuje n dni od daty YYYY-MM-DD; parsuje jako czas lokalny
 function addDays(d, n) {
-  const dt = new Date(d);
+  const parts = d.split('-');
+  const dt = new Date(+parts[0], +parts[1] - 1, +parts[2]);
   dt.setDate(dt.getDate() + n);
-  return dt.toISOString().slice(0, 10);
+  return _fmtDate(dt);
 }
 
 function fmtInterval(n) {

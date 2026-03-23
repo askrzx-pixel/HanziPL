@@ -26,6 +26,8 @@ function saveAll() {
   DB.save('cn_cfg',    appConfig);
   DB.save('cn_daily',  dailyLog);
   DB.save('cn_streak', streakData);
+  // Znacznik świeżości — używany przez fbLoadAll() do porównania z chmurą
+  try { localStorage.setItem('cn_updatedAt', new Date().toISOString()); } catch(e) {}
 
   // Jeśli zalogowany — zapisz też w Firestore
   // fbSaveAll() jest zdefiniowane w firebase.js
