@@ -673,6 +673,9 @@ function init() {
     mode: curMode
   });
 }
-window.startCustomSession = startCustomSession;
-window.startCustomSession = startCustomSession;iwindow.startCustomSession = startCustomSession;nit();
 window.checkQZ = checkQZ;
+window.qzNext = qzNext;
+window.startCustomSession = startCustomSession;
+window.startDailySession = startDailySession;
+window.confirmBack = confirmBack;
+window.go = go;
