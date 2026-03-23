@@ -265,33 +265,6 @@ function startCustomSession() {
   isDailySession = false;
   beginSession(pool, curMode);
 }
-  
-function beginSession(pool, mode) {
-  sWords = Array.isArray(pool) ? [...pool] : [];
-  sIdx = 0;
-  sOk = 0;
-  sTotal = sWords.length;
-  sessionReviews = 0;
-  sessionCorrect = 0;
-  fcFlipped = false;
-  curMode = mode;
-
-  if (!sWords.length) {
-    showToast('Brak słówek!', true);
-    backHome();
-    return;
-  }
-
-  hideAll();
-
-  if (mode === 'fc') {
-    startFC();
-  } else if (mode === 'qz') {
-    startQZ();
-  } else {
-    startTP();
-  }
-}
 
 // ── SESSION ENGINE ────────────────────────────────
 function beginSession(pool, mode) {
@@ -424,47 +397,6 @@ function sessionIdx_inc() {
 function startQZ() { document.getElementById('sqz').style.display = 'block'; loadQZ(); }
 
 function loadQZ() {
-  if (sIdx >= sWords.length) { showResults(); return; }
-  const w = sWords[sIdx];
-  document.getElementById('qz-hz').textContent = w.hanzi;
-  document.getElementById('qz-py').textContent = w.pinyin;
-
-  const sameLsn = WORDS.filter(x => x.pl !== w.pl && x.lesson === w.lesson);
-  const other   = WORDS.filter(x => x.pl !== w.pl && x.lesson !== w.lesson);
-  const pool    = shuffle(sameLsn).concat(shuffle(other));
-  let opts      = [w.pl];
-  pool.slice(0, 3).forEach(x => opts.push(x.pl));
-  while (opts.length < 4) opts.push('—');
-  shuffle(opts);
-
-  const c = document.getElementById('qopts');
-  c.innerHTML = '';
-  opts.forEach(o => {
-    const b = document.createElement('button');
-    b.className = 'qopt'; b.textContent = o;
-    b.onclick = () => ansQZ(b, o, w.pl);
-    c.appendChild(b);
-  });
-  document.getElementById('qz-nx').classList.remove('on');
-  sp('qz', sIdx, sWords.length);
-}
-
-function ansQZ(btn, ch, cor) {
-  document.querySelectorAll('.qopt').forEach(b => b.disabled = true);
-  const correct = (ch === cor);
-  if (correct) {
-    btn.classList.add('ok'); sOk++;
-    SRS.schedule(srsData[sWords[sIdx].hanzi], 2);
-  } else {
-    btn.classList.add('err');
-    document.querySelectorAll('.qopt').forEach(b => { if (b.textContent === cor) b.classList.add('ok'); });
-    SRS.schedule(srsData[sWords[sIdx].hanzi], 0);
-  }
-  recordAnswer(sWords[sIdx].hanzi, correct); // saveAll() jest już wewnątrz recordAnswer
-  document.getElementById('qz-nx').classList.add('on');
-}
-
-function loadQZ() {
   if (!Array.isArray(sWords) || !sWords.length) {
     showResults();
     return;
@@ -484,11 +416,16 @@ function loadQZ() {
   const hzEl = document.getElementById('qz-hz');
   const pyEl = document.getElementById('qz-py');
   const nextBtn = document.getElementById('qz-nx');
-  const optsBox = document.getElementById('qz-opts');
+  const optsBox = document.getElementById('qopts'); // ważne: zgodnie z Twoim HTML
 
-  if (hzEl) hzEl.textContent = w.hanzi || '—';
-  if (pyEl) pyEl.textContent = w.pinyin || '—';
-  if (nextBtn) nextBtn.classList.remove('on');
+  if (!hzEl || !pyEl || !nextBtn || !optsBox) {
+    console.error('Quiz DOM missing');
+    return;
+  }
+
+  hzEl.textContent = w.hanzi || '—';
+  pyEl.textContent = w.pinyin || '—';
+  nextBtn.classList.remove('on');
 
   sp('qz', sIdx + 1, sWords.length);
 
@@ -501,11 +438,31 @@ function loadQZ() {
   while (opts.length < 4) opts.push('—');
   opts = shuffle(opts);
 
-  if (optsBox) {
-    optsBox.innerHTML = opts.map(opt => `
-      <button class="qopt" onclick="checkQZ(this, ${JSON.stringify(w.pl)})">${opt}</button>
-    `).join('');
+  optsBox.innerHTML = '';
+  opts.forEach(opt => {
+    const b = document.createElement('button');
+    b.className = 'qopt';
+    b.textContent = opt;
+    b.onclick = function () {
+      ansQZ(b, opt, w.pl);
+    };
+    optsBox.appendChild(b);
+  });
+}
+
+function ansQZ(btn, ch, cor) {
+  document.querySelectorAll('.qopt').forEach(b => b.disabled = true);
+  const correct = (ch === cor);
+  if (correct) {
+    btn.classList.add('ok'); sOk++;
+    SRS.schedule(srsData[sWords[sIdx].hanzi], 2);
+  } else {
+    btn.classList.add('err');
+    document.querySelectorAll('.qopt').forEach(b => { if (b.textContent === cor) b.classList.add('ok'); });
+    SRS.schedule(srsData[sWords[sIdx].hanzi], 0);
   }
+  recordAnswer(sWords[sIdx].hanzi, correct); // saveAll() jest już wewnątrz recordAnswer
+  document.getElementById('qz-nx').classList.add('on');
 }
 
 function qzNext() {
@@ -673,9 +630,20 @@ function init() {
     mode: curMode
   });
 }
-window.checkQZ = checkQZ;
 window.qzNext = qzNext;
 window.startCustomSession = startCustomSession;
 window.startDailySession = startDailySession;
 window.confirmBack = confirmBack;
 window.go = go;
+window.flipCard = flipCard;
+window.srsAns = srsAns;
+window.chkType = chkType;
+window.tpNext = tpNext;
+window.toggleLesson = toggleLesson;
+window.selMode = selMode;
+window.filterWords = filterWords;
+window.setGoal = setGoal;
+window.finishOnboard = finishOnboard;
+window.dialogCancel = dialogCancel;
+window.dialogConfirm = dialogConfirm;
+init();
