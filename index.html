@@ -270,10 +270,11 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 
-<!-- JS: load order matters — words → storage → firebase → srs → app -->
+<!-- JS: kolejność ładowania: words → srs → storage → firebase → app -->
+<!-- WAŻNE: srs.js musi być przed storage.js bo storage.js używa today() z srs.js -->
 <script src="js/words.js"></script>
+<script src="js/srs.js"></script>
 <script src="js/storage.js"></script>
-<script src="js/srs.js"></script>     <!-- PRZED firebase -->
 <script src="js/firebase.js"></script>
 <script src="js/app.js"></script>
 </body>
