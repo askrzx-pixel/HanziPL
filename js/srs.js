@@ -110,7 +110,7 @@ function getDailyWords() {
   });
 
   const newWords = WORDS.filter(w => SRS.isNew(srsData[w.hanzi]));
-  const newLimit = Math.max(0, goal - due.length);
+  const newLimit = Math.max(0, goal - due.length - dailyLog.newDone);
   const newSlice = newWords.slice(0, newLimit);
 
   return {
