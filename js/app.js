@@ -278,8 +278,7 @@ function startCustomSession() {
     console.error('Błąd w startCustomSession:', e);
     alert('Błąd: ' + e.message);
   }
-}
-
+  
 function beginSession(pool, mode) {
   sWords = Array.isArray(pool) ? [...pool] : [];
   sIdx = 0;
