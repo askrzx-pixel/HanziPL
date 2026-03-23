@@ -380,23 +380,6 @@ function loadFC() {
   }
 }
 
-  function applyContent() {
-    document.getElementById('fc-hz').textContent = w.hanzi;
-    document.getElementById('fc-py').textContent = w.pinyin;
-    document.getElementById('fc-tr').textContent = w.pl;
-    document.getElementById('fc-bh').textContent = w.hanzi;
-    sp('fc', sIdx, sWords.length);
-  }
-
-  if (fcEl.classList.contains('flip')) {
-    fcEl.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
-    fcEl.classList.remove('flip');
-    setTimeout(applyContent, 220);
-  } else {
-    applyContent();
-  }
-}
-
 function flipCard() {
   if (fcFlipped) return;
   fcFlipped = true;
