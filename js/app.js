@@ -237,7 +237,7 @@ function filterLevel(lv, btn) {
 function renderWords() {
   const q = (document.getElementById('srch').value || '').toLowerCase();
   let f = WORDS;
-  if (curFilter2 !== 'all') f = f.filter(w => w.sourceLesson === curFilter2);
+  if (curFilter2 !== 'all') f = f.filter(w => (w.sourceLesson || w.lesson) === curFilter2);
   if (curTopic2  !== 'all') f = f.filter(w => w.topic === curTopic2);
   if (curLevel2  !== 'all') f = f.filter(w => w.levelApprox === curLevel2);
   if (q) f = f.filter(w =>
@@ -332,7 +332,7 @@ function toggleLevel(lv, btn) {
 }
 
 function getPool() {
-  let pool = selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(w.sourceLesson));
+  let pool = selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(w.sourceLesson || w.lesson));
   if (!selTopics.has('all')) pool = pool.filter(w => selTopics.has(w.topic));
   if (!selLevels.has('all')) pool = pool.filter(w => selLevels.has(w.levelApprox));
   return pool;
