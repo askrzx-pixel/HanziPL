@@ -98,58 +98,17 @@
 
 <!-- ══ WORDS ══ -->
 <div class="scr" id="scr-words">
-  <div class="frow" id="frow-lesson">
+  <div class="wfilter">
     <span class="flbl">Lekcja:</span>
-    <button class="chip on" onclick="filterWords('all',this)">Wszystkie</button>
-    <button class="chip" onclick="filterWords('第一课',this)">第一课</button>
-    <button class="chip" onclick="filterWords('第二课',this)">第二课</button>
-    <button class="chip" onclick="filterWords('第三课',this)">第三课</button>
-    <button class="chip" onclick="filterWords('第四课',this)">第四课</button>
-    <button class="chip" onclick="filterWords('第五课',this)">第五课</button>
-    <button class="chip" onclick="filterWords('第六课',this)">第六课</button>
-    <button class="chip" onclick="filterWords('第七课',this)">第七课</button>
-    <button class="chip" onclick="filterWords('第八课',this)">第八课</button>
-    <button class="chip" onclick="filterWords('第九课',this)">第九课</button>
-    <button class="chip" onclick="filterWords('第十课',this)">第十课</button>
-    <button class="chip" onclick="filterWords('第十一课',this)">第十一课</button>
-    <button class="chip" onclick="filterWords('第十二课',this)">第十二课</button>
-    <button class="chip" onclick="filterWords('第十三课',this)">第十三课</button>
-    <button class="chip" onclick="filterWords('第十四课',this)">第十四课</button>
-    <button class="chip" onclick="filterWords('第十五课',this)">第十五课</button>
-    <button class="chip" onclick="filterWords('Lesson 1',this)">Lesson 1</button>
-    <button class="chip" onclick="filterWords('Lesson 2',this)">Lesson 2</button>
-    <button class="chip" onclick="filterWords('Lesson 3',this)">Lesson 3</button>
+    <div class="frow" id="frow-lesson"></div>
   </div>
-  <div class="frow" id="frow-topic">
+  <div class="wfilter">
     <span class="flbl">Temat:</span>
-    <button class="chip on" onclick="filterTopic('all',this)">Wszystkie</button>
-    <button class="chip" onclick="filterTopic('tozsamosc_i_ludzie',this)">Tożsamość</button>
-    <button class="chip" onclick="filterTopic('rodzina_i_relacje',this)">Rodzina</button>
-    <button class="chip" onclick="filterTopic('cialo_i_zdrowie',this)">Ciało i zdrowie</button>
-    <button class="chip" onclick="filterTopic('jedzenie_i_picie',this)">Jedzenie</button>
-    <button class="chip" onclick="filterTopic('dom_i_miejsce',this)">Dom</button>
-    <button class="chip" onclick="filterTopic('miasto_i_transport',this)">Miasto</button>
-    <button class="chip" onclick="filterTopic('czas_i_kalendarz',this)">Czas</button>
-    <button class="chip" onclick="filterTopic('przyroda_i_pogoda',this)">Przyroda</button>
-    <button class="chip" onclick="filterTopic('szkola_i_nauka',this)">Szkoła</button>
-    <button class="chip" onclick="filterTopic('praca_i_biznes',this)">Praca</button>
-    <button class="chip" onclick="filterTopic('zakupy_i_pieniadze',this)">Zakupy</button>
-    <button class="chip" onclick="filterTopic('rozrywka_i_hobby',this)">Rozrywka</button>
-    <button class="chip" onclick="filterTopic('uczucia_i_emocje',this)">Uczucia</button>
-    <button class="chip" onclick="filterTopic('gramatyka_i_jezyk',this)">Gramatyka</button>
-    <button class="chip" onclick="filterTopic('liczby_i_miary',this)">Liczby</button>
-    <button class="chip" onclick="filterTopic('inne',this)">Inne</button>
+    <div class="frow" id="frow-topic"></div>
   </div>
-  <div class="frow" id="frow-level">
+  <div class="wfilter">
     <span class="flbl">Poziom:</span>
-    <button class="chip on" onclick="filterLevel('all',this)">Wszystkie</button>
-    <button class="chip" onclick="filterLevel('starter',this)">Wstępny</button>
-    <button class="chip" onclick="filterLevel('HSK1',this)">HSK 1</button>
-    <button class="chip" onclick="filterLevel('HSK2',this)">HSK 2</button>
-    <button class="chip" onclick="filterLevel('HSK3',this)">HSK 3</button>
-    <button class="chip" onclick="filterLevel('HSK3plus',this)">HSK 3+</button>
-    <button class="chip" onclick="filterLevel('mixed',this)">Mieszany</button>
-    <button class="chip" onclick="filterLevel('proper_noun',this)">Nazwa własna</button>
+    <div class="frow" id="frow-level"></div>
   </div>
   <div class="srch"><span class="si">🔍</span><input id="srch" placeholder="Szukaj…" oninput="renderWords()"></div>
   <div class="clbl" id="clbl"></div>
@@ -168,61 +127,17 @@
     <div class="stfilter">
       <span class="lbl">Lekcje:</span>
       <div class="frow" id="slf">
-        <button class="chip on" onclick="toggleLesson('all',this)">Wszystkie</button>
-        <button class="chip" onclick="toggleLesson('第一课',this)">第一课</button>
-        <button class="chip" onclick="toggleLesson('第二课',this)">第二课</button>
-        <button class="chip" onclick="toggleLesson('第三课',this)">第三课</button>
-        <button class="chip" onclick="toggleLesson('第四课',this)">第四课</button>
-        <button class="chip" onclick="toggleLesson('第五课',this)">第五课</button>
-        <button class="chip" onclick="toggleLesson('第六课',this)">第六课</button>
-        <button class="chip" onclick="toggleLesson('第七课',this)">第七课</button>
-        <button class="chip" onclick="toggleLesson('第八课',this)">第八课</button>
-        <button class="chip" onclick="toggleLesson('第九课',this)">第九课</button>
-        <button class="chip" onclick="toggleLesson('第十课',this)">第十课</button>
-        <button class="chip" onclick="toggleLesson('第十一课',this)">第十一课</button>
-        <button class="chip" onclick="toggleLesson('第十二课',this)">第十二课</button>
-        <button class="chip" onclick="toggleLesson('第十三课',this)">第十三课</button>
-        <button class="chip" onclick="toggleLesson('第十四课',this)">第十四课</button>
-        <button class="chip" onclick="toggleLesson('第十五课',this)">第十五课</button>
-        <button class="chip" onclick="toggleLesson('Lesson 1',this)">Lesson 1</button>
-        <button class="chip" onclick="toggleLesson('Lesson 2',this)">Lesson 2</button>
-        <button class="chip" onclick="toggleLesson('Lesson 3',this)">Lesson 3</button>
-      </div>
+    </div>
     </div>
     <div class="stfilter">
       <span class="lbl">Temat:</span>
       <div class="frow" id="stf">
-        <button class="chip on" onclick="toggleTopic('all',this)">Wszystkie</button>
-        <button class="chip" onclick="toggleTopic('tozsamosc_i_ludzie',this)">Tożsamość</button>
-        <button class="chip" onclick="toggleTopic('rodzina_i_relacje',this)">Rodzina</button>
-        <button class="chip" onclick="toggleTopic('cialo_i_zdrowie',this)">Ciało i zdrowie</button>
-        <button class="chip" onclick="toggleTopic('jedzenie_i_picie',this)">Jedzenie</button>
-        <button class="chip" onclick="toggleTopic('dom_i_miejsce',this)">Dom</button>
-        <button class="chip" onclick="toggleTopic('miasto_i_transport',this)">Miasto</button>
-        <button class="chip" onclick="toggleTopic('czas_i_kalendarz',this)">Czas</button>
-        <button class="chip" onclick="toggleTopic('przyroda_i_pogoda',this)">Przyroda</button>
-        <button class="chip" onclick="toggleTopic('szkola_i_nauka',this)">Szkoła</button>
-        <button class="chip" onclick="toggleTopic('praca_i_biznes',this)">Praca</button>
-        <button class="chip" onclick="toggleTopic('zakupy_i_pieniadze',this)">Zakupy</button>
-        <button class="chip" onclick="toggleTopic('rozrywka_i_hobby',this)">Rozrywka</button>
-        <button class="chip" onclick="toggleTopic('uczucia_i_emocje',this)">Uczucia</button>
-        <button class="chip" onclick="toggleTopic('gramatyka_i_jezyk',this)">Gramatyka</button>
-        <button class="chip" onclick="toggleTopic('liczby_i_miary',this)">Liczby</button>
-        <button class="chip" onclick="toggleTopic('inne',this)">Inne</button>
-      </div>
+    </div>
     </div>
     <div class="stfilter">
       <span class="lbl">Poziom:</span>
       <div class="frow" id="slvl">
-        <button class="chip on" onclick="toggleLevel('all',this)">Wszystkie</button>
-        <button class="chip" onclick="toggleLevel('starter',this)">Wstępny</button>
-        <button class="chip" onclick="toggleLevel('HSK1',this)">HSK 1</button>
-        <button class="chip" onclick="toggleLevel('HSK2',this)">HSK 2</button>
-        <button class="chip" onclick="toggleLevel('HSK3',this)">HSK 3</button>
-        <button class="chip" onclick="toggleLevel('HSK3plus',this)">HSK 3+</button>
-        <button class="chip" onclick="toggleLevel('mixed',this)">Mieszany</button>
-        <button class="chip" onclick="toggleLevel('proper_noun',this)">Nazwa własna</button>
-      </div>
+    </div>
     </div>
     <button class="btn" onclick="startCustomSession()">Rozpocznij sesję →</button>
   <div class="scnt" id="scnt"></div>

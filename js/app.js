@@ -692,6 +692,85 @@ function handleAuthChange(user) {
   }
 }
 
+// ── CHIP RENDERING HELPERS ────────────────────────
+
+/**
+ * Render a list of {value, label} items as chip buttons into a container.
+ * isActiveFn(value) → bool   determines which chip gets class "on"
+ * onClickFn(value, btn)      called when a chip is clicked
+ */
+function renderChipList(containerId, items, isActiveFn, onClickFn) {
+  var el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = '';
+  items.forEach(function(item) {
+    var btn = document.createElement('button');
+    btn.className = 'chip' + (isActiveFn(item.value) ? ' on' : '');
+    btn.textContent = item.label;
+    btn.onclick = function() { onClickFn(item.value, btn); };
+    el.appendChild(btn);
+  });
+}
+
+/** [{value, label}] for all lessons — 'all' first, then LESSONS order */
+function getLessonItems() {
+  var items = [{ value: 'all', label: 'Wszystkie' }];
+  LESSONS.forEach(function(l) {
+    if (l) items.push({ value: l, label: l });
+  });
+  return items;
+}
+
+/** [{value, label}] for all topics from TOPIC_LABELS */
+function getTopicItems() {
+  var items = [{ value: 'all', label: 'Wszystkie' }];
+  Object.keys(TOPIC_LABELS).forEach(function(k) {
+    items.push({ value: k, label: TOPIC_LABELS[k] });
+  });
+  return items;
+}
+
+/** [{value, label}] for all levels from LEVEL_LABELS */
+function getLevelItems() {
+  var items = [{ value: 'all', label: 'Wszystkie' }];
+  Object.keys(LEVEL_LABELS).forEach(function(k) {
+    items.push({ value: k, label: LEVEL_LABELS[k] });
+  });
+  return items;
+}
+
+/**
+ * Populate all 6 chip containers from data.
+ * Called once on init — and re-callable if data changes.
+ */
+function initChips() {
+  var lessonItems = getLessonItems();
+  var topicItems  = getTopicItems();
+  var levelItems  = getLevelItems();
+
+  // Words browser — single-select filters
+  renderChipList('frow-lesson', lessonItems,
+    function(v) { return curFilter2 === v; },
+    filterWords);
+  renderChipList('frow-topic', topicItems,
+    function(v) { return curTopic2 === v; },
+    filterTopic);
+  renderChipList('frow-level', levelItems,
+    function(v) { return curLevel2 === v; },
+    filterLevel);
+
+  // Study screen — multi-select toggles
+  renderChipList('slf', lessonItems,
+    function(v) { return selLessons.has(v); },
+    toggleLesson);
+  renderChipList('stf', topicItems,
+    function(v) { return selTopics.has(v); },
+    toggleTopic);
+  renderChipList('slvl', levelItems,
+    function(v) { return selLevels.has(v); },
+    toggleLevel);
+}
+
 // ── INIT ──────────────────────────────────────────
 function init() {
   if (!Array.isArray(WORDS)) {
@@ -703,6 +782,7 @@ function init() {
     if (!srsData[w.hanzi]) srsData[w.hanzi] = SRS.defaultCard();
   });
 
+  initChips();
   renderStreakBadge();
   updateNavMastered();
   renderHomeScreen();
@@ -735,6 +815,7 @@ window.tpNext = tpNext;
 window.toggleLesson = toggleLesson;
 window.toggleTopic = toggleTopic;
 window.toggleLevel = toggleLevel;
+window.initChips = initChips;
 window.selMode = selMode;
 window.filterWords = filterWords;
 window.filterTopic = filterTopic;
