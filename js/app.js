@@ -130,8 +130,8 @@ function renderHomeScreen() {
   let totalR = 0, totalC = 0;
   WORDS.forEach(w => {
     const c = srsData[w.hanzi];
-    totalR += c.reviews || 0;
-    totalC += c.correct || 0;
+    totalR += (c && c.reviews) || 0;
+    totalC += (c && c.correct) || 0;
   });
   const acc = totalR > 0 ? Math.round(totalC / totalR * 100) : null;
   document.getElementById('hs-acc').textContent = acc !== null ? acc + '%' : '—';
@@ -199,7 +199,7 @@ function renderStats() {
 
   var chartLessons = getLessonItemsFromWords().slice(1).map(function(i) { return i.value; });
   document.getElementById('bchart').innerHTML = chartLessons.map(ls => {
-    const lw = WORDS.filter(w => w.sourceLesson === ls);
+    const lw = WORDS.filter(w => getWordLesson(w) === ls);
     const lm = lw.filter(w => SRS.isMastered(srsData[w.hanzi])).length;
     const p  = lw.length ? Math.round(lm / lw.length * 100) : 0;
     return '<div class="brow"><div class="blbl">' + ls + '</div>' +
@@ -260,7 +260,7 @@ function renderWords() {
     const topicLbl = TOPIC_LABELS[w.topic] || w.topic || '';
     const levelLbl = LEVEL_LABELS[w.levelApprox] || w.levelApprox || '';
     const metaHtml = '<div class="wcard-meta">' +
-      '<span class="ls">' + w.sourceLesson + '</span>' +
+      '<span class="ls">' + getWordLesson(w) + '</span>' +
       (topicLbl ? '<span class="wtopic">' + topicLbl + '</span>' : '') +
       (levelLbl ? '<span class="wlevel">' + levelLbl + '</span>' : '') +
       '</div>';
@@ -524,8 +524,8 @@ function loadQZ() {
 
   sp('qz', sIdx + 1, sWords.length);
 
-  const sameLsn = WORDS.filter(x => x.pl !== w.pl && x.sourceLesson === w.sourceLesson);
-  const other = WORDS.filter(x => x.pl !== w.pl && x.sourceLesson !== w.sourceLesson);
+  const sameLsn = WORDS.filter(x => x.pl !== w.pl && getWordLesson(x) === getWordLesson(w));
+  const other = WORDS.filter(x => x.pl !== w.pl && getWordLesson(x) !== getWordLesson(w));
   const pool = shuffle(sameLsn).concat(shuffle(other));
 
   let opts = [w.pl];
@@ -740,6 +740,11 @@ function lessonSortKey(lesson) {
   return [9, 99];
 }
 
+/** Returns the lesson name for a word, using sourceLesson with lesson as fallback. */
+function getWordLesson(w) {
+  return (w.sourceLesson || w.lesson || '').trim();
+}
+
 /**
  * Returns sorted array of unique lesson names derived from WORDS.
  * Uses sourceLesson (preferred) or lesson as fallback.
@@ -748,7 +753,7 @@ function getAvailableLessons() {
   var seen = Object.create(null);
   var lessons = [];
   WORDS.forEach(function(w) {
-    var raw = (w.sourceLesson || w.lesson || '').trim();
+    var raw = getWordLesson(w);
     if (!raw || seen[raw]) return;
     seen[raw] = true;
     lessons.push(raw);
