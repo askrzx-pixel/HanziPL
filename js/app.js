@@ -167,7 +167,7 @@ function renderStats() {
   }
 
   document.getElementById('bchart').innerHTML = LESSONS.map(ls => {
-    const lw = WORDS.filter(w => w.lesson === ls);
+    const lw = WORDS.filter(w => w.sourceLesson === ls);
     const lm = lw.filter(w => SRS.isMastered(srsData[w.hanzi])).length;
     const p  = lw.length ? Math.round(lm / lw.length * 100) : 0;
     return '<div class="brow"><div class="blbl">' + ls + '</div>' +
@@ -189,7 +189,7 @@ function filterWords(l, btn) {
 function renderWords() {
   const q = (document.getElementById('srch').value || '').toLowerCase();
   let f = WORDS;
-  if (curFilter2 !== 'all') f = f.filter(w => w.lesson === curFilter2);
+  if (curFilter2 !== 'all') f = f.filter(w => w.sourceLesson === curFilter2);
   if (q) f = f.filter(w =>
     w.hanzi.includes(q) ||
     w.pinyin.toLowerCase().includes(q) ||
@@ -211,7 +211,7 @@ function renderWords() {
       '<span class="hz">' + w.hanzi + '</span>' +
       '<div class="py">' + w.pinyin + '</div>' +
       '<div class="tr">' + w.pl + '</div>' +
-      '<div class="ls">' + w.lesson + '</div>' +
+      '<div class="ls">' + w.sourceLesson + '</div>' +
       tag +
       '<div class="mb"><div class="mbf" style="width:' + mPct + '%"></div></div>' +
       '</div>';
@@ -241,7 +241,7 @@ function toggleLesson(l, btn) {
 }
 
 function getPool() {
-  return selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(w.lesson));
+  return selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(w.sourceLesson));
 }
 
 function updateSessionCount() {
@@ -431,8 +431,8 @@ function loadQZ() {
 
   sp('qz', sIdx + 1, sWords.length);
 
-  const sameLsn = WORDS.filter(x => x.pl !== w.pl && x.lesson === w.lesson);
-  const other = WORDS.filter(x => x.pl !== w.pl && x.lesson !== w.lesson);
+  const sameLsn = WORDS.filter(x => x.pl !== w.pl && x.sourceLesson === w.sourceLesson);
+  const other = WORDS.filter(x => x.pl !== w.pl && x.sourceLesson !== w.sourceLesson);
   const pool = shuffle(sameLsn).concat(shuffle(other));
 
   let opts = [w.pl];
