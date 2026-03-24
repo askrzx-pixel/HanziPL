@@ -14,32 +14,33 @@ var sessionReviews  = 0;
 var sessionCorrect  = 0;
 
 // ── Display label maps ─────────────────────────────
+// Keys match topic values actually used in WORDS entries.
 var TOPIC_LABELS = {
-  'tozsamosc_i_ludzie':   'Tożsamość',
-  'rodzina_i_relacje':    'Rodzina',
+  'tozsamosc_i_ludzie':   'Tożsamość i ludzie',
+  'rodzina_i_relacje':    'Rodzina i relacje',
   'cialo_i_zdrowie':      'Ciało i zdrowie',
-  'jedzenie_i_picie':     'Jedzenie',
-  'dom_i_miejsce':        'Dom',
-  'miasto_i_transport':   'Miasto',
-  'czas_i_kalendarz':     'Czas',
-  'przyroda_i_pogoda':    'Przyroda',
-  'szkola_i_nauka':       'Szkoła',
-  'praca_i_biznes':       'Praca',
-  'zakupy_i_pieniadze':   'Zakupy',
-  'rozrywka_i_hobby':     'Rozrywka',
-  'uczucia_i_emocje':     'Uczucia',
-  'gramatyka_i_jezyk':    'Gramatyka',
-  'liczby_i_miary':       'Liczby',
-  'inne':                 'Inne'
+  'jedzenie_i_picie':     'Jedzenie i picie',
+  'dom_i_przestrzen':     'Dom i przestrzeń',
+  'miasto_i_transport':   'Miasto i transport',
+  'czas_i_kalendarz':     'Czas i kalendarz',
+  'szkola_i_nauka':       'Szkoła i nauka',
+  'praca_i_biuro':        'Praca i biuro',
+  'liczby_i_ilosci':      'Liczby i ilości',
+  'wyglad_i_opisy':       'Wygląd i opisy',
+  'emocje_i_oceny':       'Emocje i oceny',
+  'codzienne_czynnosci':  'Codzienne czynności',
+  'rozmowa_i_frazy':      'Rozmowa i frazy',
+  'kraje_i_jezyki':       'Kraje i języki',
+  'nazwy_wlasne':         'Nazwy własne'
 };
 
+// Keys match levelApprox values actually used in WORDS entries.
 var LEVEL_LABELS = {
   'starter':      'Wstępny',
   'HSK1':         'HSK 1',
   'HSK2':         'HSK 2',
   'HSK3':         'HSK 3',
   'HSK3plus':     'HSK 3+',
-  'mixed':        'Mieszany',
   'proper_noun':  'Nazwa własna'
 };
 
@@ -196,7 +197,8 @@ function renderStats() {
     }).join('');
   }
 
-  document.getElementById('bchart').innerHTML = LESSONS.map(ls => {
+  var chartLessons = getLessonItemsFromWords().slice(1).map(function(i) { return i.value; });
+  document.getElementById('bchart').innerHTML = chartLessons.map(ls => {
     const lw = WORDS.filter(w => w.sourceLesson === ls);
     const lm = lw.filter(w => SRS.isMastered(srsData[w.hanzi])).length;
     const p  = lw.length ? Math.round(lm / lw.length * 100) : 0;
@@ -712,13 +714,58 @@ function renderChipList(containerId, items, isActiveFn, onClickFn) {
   });
 }
 
-/** [{value, label}] for all lessons — 'all' first, then LESSONS order */
-function getLessonItems() {
-  var items = [{ value: 'all', label: 'Wszystkie' }];
-  LESSONS.forEach(function(l) {
-    if (l) items.push({ value: l, label: l });
+// ── LESSON SORT HELPERS ───────────────────────────
+
+/** Convert Chinese ordinal string to integer, e.g. "十二" → 12 */
+function chineseNumToInt(s) {
+  var map = {
+    '一':1,'二':2,'三':3,'四':4,'五':5,
+    '六':6,'七':7,'八':8,'九':9,'十':10,
+    '十一':11,'十二':12,'十三':13,'十四':14,'十五':15,
+    '十六':16,'十七':17,'十八':18,'十九':19,'二十':20
+  };
+  return map[s] || (parseInt(s, 10) || 99);
+}
+
+/**
+ * Returns a [group, number] sort key for a lesson label.
+ * Chinese lessons (第N课) sort first, then Latin (Lesson N), then unknowns.
+ */
+function lessonSortKey(lesson) {
+  if (!lesson) return [9, 99];
+  var ch = lesson.match(/第(.+?)课/);
+  if (ch) return [0, chineseNumToInt(ch[1])];
+  var en = lesson.match(/[Ll]esson\s*(\d+)/);
+  if (en) return [1, parseInt(en[1], 10)];
+  return [9, 99];
+}
+
+/**
+ * Derive unique lesson labels from WORDS.sourceLesson,
+ * remove nulls/duplicates, sort logically by number.
+ * Returns [{value, label}] with 'all' prepended.
+ */
+function getLessonItemsFromWords() {
+  var seen = Object.create(null);
+  var lessons = [];
+  WORDS.forEach(function(w) {
+    var raw = (w.sourceLesson || w.lesson || '').trim();
+    if (!raw || seen[raw]) return;
+    seen[raw] = true;
+    lessons.push(raw);
   });
-  return items;
+  lessons.sort(function(a, b) {
+    var ka = lessonSortKey(a), kb = lessonSortKey(b);
+    return (ka[0] - kb[0]) || (ka[1] - kb[1]);
+  });
+  return [{ value: 'all', label: 'Wszystkie' }].concat(
+    lessons.map(function(l) { return { value: l, label: l }; })
+  );
+}
+
+/** Alias kept for backwards compatibility. */
+function getLessonItems() {
+  return getLessonItemsFromWords();
 }
 
 /** [{value, label}] for all topics from TOPIC_LABELS */
