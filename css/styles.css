@@ -490,3 +490,39 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   text-overflow:ellipsis;
   white-space:nowrap;
 }
+
+/* ── WORD CARD META (topic / level / lesson) ── */
+.wcard-meta{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-top:4px;}
+.wlevel{
+  font-family:'Space Mono',monospace;
+  font-size:.52rem;
+  padding:2px 6px;
+  border-radius:10px;
+  background:rgba(138,106,32,.15);
+  color:var(--gold);
+  border:1px solid rgba(201,168,76,.4);
+  white-space:nowrap;
+}
+.wtopic{
+  font-family:'Space Mono',monospace;
+  font-size:.52rem;
+  padding:2px 6px;
+  border-radius:10px;
+  background:rgba(45,90,39,.12);
+  color:var(--green2);
+  border:1px solid rgba(74,138,64,.35);
+  white-space:nowrap;
+}
+
+/* ── WORD CARD TAGS ── */
+.wtags{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px;}
+.wtag{
+  font-family:'Space Mono',monospace;
+  font-size:.48rem;
+  padding:1px 5px;
+  border-radius:8px;
+  background:rgba(201,168,76,.12);
+  color:var(--gold);
+  border:1px solid rgba(201,168,76,.3);
+  white-space:nowrap;
+}

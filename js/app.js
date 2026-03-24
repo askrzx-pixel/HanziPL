@@ -6,10 +6,42 @@
 var curFilter  = 'all';
 var curMode    = 'fc';
 var selLessons = new Set(['all']);
+var selTopics  = new Set(['all']);
+var selLevels  = new Set(['all']);
 var sWords = [], sIdx = 0, sOk = 0, sTotal = 0, fcFlipped = false;
-var isDailySession  = false
+var isDailySession  = false;
 var sessionReviews  = 0;
 var sessionCorrect  = 0;
+
+// ── Display label maps ─────────────────────────────
+var TOPIC_LABELS = {
+  'tozsamosc_i_ludzie':   'Tożsamość',
+  'rodzina_i_relacje':    'Rodzina',
+  'cialo_i_zdrowie':      'Ciało i zdrowie',
+  'jedzenie_i_picie':     'Jedzenie',
+  'dom_i_miejsce':        'Dom',
+  'miasto_i_transport':   'Miasto',
+  'czas_i_kalendarz':     'Czas',
+  'przyroda_i_pogoda':    'Przyroda',
+  'szkola_i_nauka':       'Szkoła',
+  'praca_i_biznes':       'Praca',
+  'zakupy_i_pieniadze':   'Zakupy',
+  'rozrywka_i_hobby':     'Rozrywka',
+  'uczucia_i_emocje':     'Uczucia',
+  'gramatyka_i_jezyk':    'Gramatyka',
+  'liczby_i_miary':       'Liczby',
+  'inne':                 'Inne'
+};
+
+var LEVEL_LABELS = {
+  'starter':      'Wstępny',
+  'HSK1':         'HSK 1',
+  'HSK2':         'HSK 2',
+  'HSK3':         'HSK 3',
+  'HSK3plus':     'HSK 3+',
+  'mixed':        'Mieszany',
+  'proper_noun':  'Nazwa własna'
+};
 
 // ── STREAK ────────────────────────────────────────
 function checkAndUpdateStreak() {
@@ -109,7 +141,6 @@ function startDailySession() {
   const pool = shuffle([...due, ...newWords]);
   if (!pool.length) { showToast('Brak słówek na dziś! 🎉', false, 'good'); return; }
 
-  // Przełącz widok na zakładkę Nauka (tylko nawigacja, bez resetowania sesji)
   document.querySelectorAll('.scr').forEach(s => s.classList.remove('on'));
   document.querySelectorAll('.botnav-btn').forEach(b => b.classList.remove('on'));
   document.getElementById('scr-study').classList.add('on');
@@ -117,7 +148,6 @@ function startDailySession() {
   if (navBtn) navBtn.classList.add('on');
   window.scrollTo(0, 0);
 
-  // Teraz uruchom sesję — po przełączeniu zakładki
   isDailySession = true;
   beginSession(pool, 'fc');
 }
@@ -178,10 +208,26 @@ function renderStats() {
 
 // ── WORDS BROWSER ─────────────────────────────────
 var curFilter2 = 'all';
+var curTopic2  = 'all';
+var curLevel2  = 'all';
 
 function filterWords(l, btn) {
   curFilter2 = l;
-  document.querySelectorAll('#scr-words .chip').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('#frow-lesson .chip').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderWords();
+}
+
+function filterTopic(t, btn) {
+  curTopic2 = t;
+  document.querySelectorAll('#frow-topic .chip').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderWords();
+}
+
+function filterLevel(lv, btn) {
+  curLevel2 = lv;
+  document.querySelectorAll('#frow-level .chip').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   renderWords();
 }
@@ -190,6 +236,8 @@ function renderWords() {
   const q = (document.getElementById('srch').value || '').toLowerCase();
   let f = WORDS;
   if (curFilter2 !== 'all') f = f.filter(w => w.sourceLesson === curFilter2);
+  if (curTopic2  !== 'all') f = f.filter(w => w.topic === curTopic2);
+  if (curLevel2  !== 'all') f = f.filter(w => w.levelApprox === curLevel2);
   if (q) f = f.filter(w =>
     w.hanzi.includes(q) ||
     w.pinyin.toLowerCase().includes(q) ||
@@ -207,12 +255,23 @@ function renderWords() {
                  SRS.isDue(c)      ? '<span class="srs-tag due">DO POWTÓRKI</span>'   :
                  SRS.isMastered(c) ? '<span class="srs-tag ok">✓ OPANOWANE</span>'   : '';
     const mPct = Math.min(100, Math.round((c.interval || 0) / 21 * 100));
+    const topicLbl = TOPIC_LABELS[w.topic] || w.topic || '';
+    const levelLbl = LEVEL_LABELS[w.levelApprox] || w.levelApprox || '';
+    const metaHtml = '<div class="wcard-meta">' +
+      '<span class="ls">' + w.sourceLesson + '</span>' +
+      (topicLbl ? '<span class="wtopic">' + topicLbl + '</span>' : '') +
+      (levelLbl ? '<span class="wlevel">' + levelLbl + '</span>' : '') +
+      '</div>';
+    const tagsHtml = (w.tags && w.tags.length)
+      ? '<div class="wtags">' + w.tags.map(t => '<span class="wtag">' + t + '</span>').join('') + '</div>'
+      : '';
     return '<div class="wcard">' +
       '<span class="hz">' + w.hanzi + '</span>' +
       '<div class="py">' + w.pinyin + '</div>' +
       '<div class="tr">' + w.pl + '</div>' +
-      '<div class="ls">' + w.sourceLesson + '</div>' +
+      metaHtml +
       tag +
+      tagsHtml +
       '<div class="mb"><div class="mbf" style="width:' + mPct + '%"></div></div>' +
       '</div>';
   }).join('');
@@ -240,16 +299,48 @@ function toggleLesson(l, btn) {
   updateSessionCount();
 }
 
+function toggleTopic(t, btn) {
+  if (t === 'all') {
+    selTopics = new Set(['all']);
+    document.querySelectorAll('#stf .chip').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+  } else {
+    selTopics.delete('all');
+    document.querySelector('#stf .chip').classList.remove('on');
+    if (selTopics.has(t)) { selTopics.delete(t); btn.classList.remove('on'); }
+    else                  { selTopics.add(t);    btn.classList.add('on');    }
+    if (!selTopics.size) { selTopics.add('all'); document.querySelector('#stf .chip').classList.add('on'); }
+  }
+  updateSessionCount();
+}
+
+function toggleLevel(lv, btn) {
+  if (lv === 'all') {
+    selLevels = new Set(['all']);
+    document.querySelectorAll('#slvl .chip').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+  } else {
+    selLevels.delete('all');
+    document.querySelector('#slvl .chip').classList.remove('on');
+    if (selLevels.has(lv)) { selLevels.delete(lv); btn.classList.remove('on'); }
+    else                   { selLevels.add(lv);    btn.classList.add('on');    }
+    if (!selLevels.size) { selLevels.add('all'); document.querySelector('#slvl .chip').classList.add('on'); }
+  }
+  updateSessionCount();
+}
+
 function getPool() {
-  return selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(w.sourceLesson));
+  let pool = selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(w.sourceLesson));
+  if (!selTopics.has('all')) pool = pool.filter(w => selTopics.has(w.topic));
+  if (!selLevels.has('all')) pool = pool.filter(w => selLevels.has(w.levelApprox));
+  return pool;
 }
 
 function updateSessionCount() {
   const scntEl = document.getElementById('scnt');
   if (!scntEl) return;
-
   const pool = getPool();
-  scntEl.textContent = `${pool.length} słówek w puli`;
+  scntEl.textContent = pool.length + ' słówek w puli';
 }
 
 function startCustomSession() {
@@ -376,13 +467,13 @@ function flipCard() {
 function srsAns(rating) {
   const w      = sWords[sIdx];
   const card   = srsData[w.hanzi];
-  const wasNew = SRS.isNew(card);           // zapamiętaj PRZED schedule
+  const wasNew = SRS.isNew(card);
   const correct = (rating >= 2);
   SRS.schedule(card, rating);
   srsData[w.hanzi] = card;
   recordAnswer(w.hanzi, correct, wasNew);
   if (correct) sOk++;
-  if (rating === 0) sWords.push(w);          // Again → re-queue
+  if (rating === 0) sWords.push(w);
   sessionIdx_inc();
 }
 
@@ -418,7 +509,7 @@ function loadQZ() {
   const hzEl = document.getElementById('qz-hz');
   const pyEl = document.getElementById('qz-py');
   const nextBtn = document.getElementById('qz-nx');
-  const optsBox = document.getElementById('qz-opts'); // ważne: zgodnie z Twoim HTML
+  const optsBox = document.getElementById('qz-opts');
 
   if (!hzEl || !pyEl || !nextBtn || !optsBox) {
     console.error('Quiz DOM missing');
@@ -456,7 +547,7 @@ function ansQZ(btn, ch, cor) {
   document.querySelectorAll('.qopt').forEach(b => b.disabled = true);
   const correct = (ch === cor);
   const hanzi   = sWords[sIdx].hanzi;
-  const wasNew  = SRS.isNew(srsData[hanzi]);  // zapamiętaj PRZED schedule
+  const wasNew  = SRS.isNew(srsData[hanzi]);
   if (correct) {
     btn.classList.add('ok'); sOk++;
     SRS.schedule(srsData[hanzi], 2);
@@ -501,7 +592,7 @@ function chkType() {
   const variants = w.pl.toLowerCase().split(/[;,]/).map(s => s.trim());
   const correct  = variants.some(v => v === val || levenshtein(v, val) <= 2 || (val.length > 3 && v.includes(val)));
 
-  const wasNew = SRS.isNew(srsData[w.hanzi]);  // zapamiętaj PRZED schedule
+  const wasNew = SRS.isNew(srsData[w.hanzi]);
   if (correct) {
     inp.classList.add('ok');
     fb.textContent = '✓ Dobrze!'; fb.className = 'tfb ok'; sOk++;
@@ -513,7 +604,6 @@ function chkType() {
     SRS.schedule(srsData[w.hanzi], 0);
     recordAnswer(w.hanzi, false, wasNew);
   }
-  // saveAll() jest już wywołane wewnątrz recordAnswer powyżej
   document.getElementById('tp-nx').classList.add('on');
 }
 
@@ -585,14 +675,10 @@ function finishOnboard() {
 }
 
 // ── AUTH STATE HANDLER ───────────────────────────
-// Wywoływany przez firebase.js gdy zmienia się stan logowania.
-// Nazwa handleAuthChange (nie onAuthStateChanged) żeby uniknąć
-// konfliktu z Firebase SDK które ma własne onAuthStateChanged.
 function handleAuthChange(user) {
   if (user) {
     showToast('Synchronizacja z chmurą...', false);
     fbLoadAll(function(loaded) {
-      // Upewnij się że nowe słówka mają karty SRS
       WORDS.forEach(w => {
         if (!srsData[w.hanzi]) srsData[w.hanzi] = SRS.defaultCard();
       });
@@ -604,7 +690,6 @@ function handleAuthChange(user) {
   } else {
     renderHomeScreen();
   }
-  // renderAuthUI() jest już wywołane w firebase.js po handleAuthChange
 }
 
 // ── INIT ──────────────────────────────────────────
@@ -635,6 +720,7 @@ function init() {
     mode: curMode
   });
 }
+
 window.qzNext = qzNext;
 window.startCustomSession = startCustomSession;
 window.startDailySession = startDailySession;
@@ -647,8 +733,12 @@ window.srsAns = srsAns;
 window.chkType = chkType;
 window.tpNext = tpNext;
 window.toggleLesson = toggleLesson;
+window.toggleTopic = toggleTopic;
+window.toggleLevel = toggleLevel;
 window.selMode = selMode;
 window.filterWords = filterWords;
+window.filterTopic = filterTopic;
+window.filterLevel = filterLevel;
 window.renderWords = renderWords;
 window.setGoal = setGoal;
 window.finishOnboard = finishOnboard;
