@@ -199,7 +199,7 @@ function renderStats() {
 
   var chartLessons = getLessonItemsFromWords().slice(1).map(function(i) { return i.value; });
   document.getElementById('bchart').innerHTML = chartLessons.map(ls => {
-    const lw = WORDS.filter(w => getWordLesson(w) === ls);
+    const lw = WORDS.filter(w => getNormalizedLessonKey(w) === ls);
     const lm = lw.filter(w => SRS.isMastered(srsData[w.hanzi])).length;
     const p  = lw.length ? Math.round(lm / lw.length * 100) : 0;
     return '<div class="brow"><div class="blbl">' + ls + '</div>' +
@@ -237,7 +237,7 @@ function filterLevel(lv, btn) {
 function renderWords() {
   const q = (document.getElementById('srch').value || '').toLowerCase();
   let f = WORDS;
-  if (curFilter2 !== 'all') f = f.filter(w => (w.sourceLesson || w.lesson) === curFilter2);
+  if (curFilter2 !== 'all') f = f.filter(w => getNormalizedLessonKey(w) === curFilter2);
   if (curTopic2  !== 'all') f = f.filter(w => w.topic === curTopic2);
   if (curLevel2  !== 'all') f = f.filter(w => w.levelApprox === curLevel2);
   if (q) f = f.filter(w =>
@@ -260,7 +260,7 @@ function renderWords() {
     const topicLbl = TOPIC_LABELS[w.topic] || w.topic || '';
     const levelLbl = LEVEL_LABELS[w.levelApprox] || w.levelApprox || '';
     const metaHtml = '<div class="wcard-meta">' +
-      '<span class="ls">' + getWordLesson(w) + '</span>' +
+      '<span class="ls">' + getNormalizedLessonKey(w) + '</span>' +
       (topicLbl ? '<span class="wtopic">' + topicLbl + '</span>' : '') +
       (levelLbl ? '<span class="wlevel">' + levelLbl + '</span>' : '') +
       '</div>';
@@ -332,7 +332,7 @@ function toggleLevel(lv, btn) {
 }
 
 function getPool() {
-  let pool = selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(w.sourceLesson || w.lesson));
+  let pool = selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(getNormalizedLessonKey(w)));
   if (!selTopics.has('all')) pool = pool.filter(w => selTopics.has(w.topic));
   if (!selLevels.has('all')) pool = pool.filter(w => selLevels.has(w.levelApprox));
   return pool;
@@ -524,8 +524,8 @@ function loadQZ() {
 
   sp('qz', sIdx + 1, sWords.length);
 
-  const sameLsn = WORDS.filter(x => x.pl !== w.pl && getWordLesson(x) === getWordLesson(w));
-  const other = WORDS.filter(x => x.pl !== w.pl && getWordLesson(x) !== getWordLesson(w));
+  const sameLsn = WORDS.filter(x => x.pl !== w.pl && getNormalizedLessonKey(x) === getNormalizedLessonKey(w));
+  const other = WORDS.filter(x => x.pl !== w.pl && getNormalizedLessonKey(x) !== getNormalizedLessonKey(w));
   const pool = shuffle(sameLsn).concat(shuffle(other));
 
   let opts = [w.pl];
@@ -714,7 +714,7 @@ function renderChipList(containerId, items, isActiveFn, onClickFn) {
   });
 }
 
-// ── LESSON SORT HELPERS ───────────────────────────
+// ── LESSON NORMALIZATION HELPERS ──────────────────
 
 /** Convert Chinese ordinal string to integer, e.g. "十二" → 12 */
 function chineseNumToInt(s) {
@@ -727,42 +727,57 @@ function chineseNumToInt(s) {
   return map[s] || (parseInt(s, 10) || 99);
 }
 
-/**
- * Returns a [group, number] sort key for a lesson label.
- * Chinese lessons (第N课) sort first, then Latin (Lesson N), then unknowns.
- */
-function lessonSortKey(lesson) {
-  if (!lesson) return [9, 99];
-  var ch = lesson.match(/第(.+?)课/);
-  if (ch) return [0, chineseNumToInt(ch[1])];
-  var en = lesson.match(/[Ll]esson\s*(\d+)/);
-  if (en) return [1, parseInt(en[1], 10)];
-  return [9, 99];
-}
-
-/** Returns the lesson name for a word, using sourceLesson with lesson as fallback. */
-function getWordLesson(w) {
+/** Returns the raw lesson string from a word entry. */
+function getRawWordLesson(w) {
   return (w.sourceLesson || w.lesson || '').trim();
 }
 
 /**
- * Returns sorted array of unique lesson names derived from WORDS.
- * Uses sourceLesson (preferred) or lesson as fallback.
+ * Extracts lesson number from various raw formats.
+ * "第一课" → 1, "第十五课" → 15, "Lesson 16" → 16, "Lesson 99" → 99.
+ * Returns null if format is unrecognized.
+ */
+function parseLessonNumber(raw) {
+  if (!raw) return null;
+  var ch = raw.match(/第(.+?)课/);
+  if (ch) return chineseNumToInt(ch[1]);
+  var en = raw.match(/[Ll]esson\s*(\d+)/);
+  if (en) return parseInt(en[1], 10);
+  return null;
+}
+
+/** Returns Polish UI label for a lesson number, e.g. formatLessonLabel(16) → "Lekcja 16". */
+function formatLessonLabel(n) {
+  return 'Lekcja ' + n;
+}
+
+/**
+ * Returns the normalized lesson key for a word, e.g. "Lekcja 1", "Lekcja 16".
+ * Falls back to the raw value if the number cannot be parsed (no crash).
+ */
+function getNormalizedLessonKey(w) {
+  var raw = getRawWordLesson(w);
+  var n = parseLessonNumber(raw);
+  if (n === null) return raw || '?';
+  return formatLessonLabel(n);
+}
+
+/**
+ * Returns sorted array of unique normalized lesson keys derived from WORDS.
+ * Sorting is purely numeric.
  */
 function getAvailableLessons() {
   var seen = Object.create(null);
-  var lessons = [];
+  var items = [];
   WORDS.forEach(function(w) {
-    var raw = getWordLesson(w);
-    if (!raw || seen[raw]) return;
-    seen[raw] = true;
-    lessons.push(raw);
+    var key = getNormalizedLessonKey(w);
+    if (!key || seen[key]) return;
+    seen[key] = true;
+    var m = key.match(/^Lekcja\s+(\d+)$/);
+    items.push({ key: key, n: m ? parseInt(m[1], 10) : 9999 });
   });
-  lessons.sort(function(a, b) {
-    var ka = lessonSortKey(a), kb = lessonSortKey(b);
-    return (ka[0] - kb[0]) || (ka[1] - kb[1]);
-  });
-  return lessons;
+  items.sort(function(a, b) { return a.n - b.n; });
+  return items.map(function(i) { return i.key; });
 }
 
 /** Returns [{value, label}] with 'all' prepended — for chip rendering. */
