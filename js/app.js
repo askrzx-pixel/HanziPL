@@ -237,7 +237,7 @@ function filterLevel(lv, btn) {
 function renderWords() {
   const q = (document.getElementById('srch').value || '').toLowerCase();
   let f = WORDS;
-  if (curFilter2 !== 'all') f = f.filter(w => w.sourceLesson === curFilter2);
+  if (curFilter2 !== 'all') f = f.filter(w => (w.sourceLesson || w.lesson) === curFilter2);
   if (curTopic2  !== 'all') f = f.filter(w => w.topic === curTopic2);
   if (curLevel2  !== 'all') f = f.filter(w => w.levelApprox === curLevel2);
   if (q) f = f.filter(w =>
@@ -332,7 +332,7 @@ function toggleLevel(lv, btn) {
 }
 
 function getPool() {
-  let pool = selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(w.sourceLesson));
+  let pool = selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(w.sourceLesson || w.lesson));
   if (!selTopics.has('all')) pool = pool.filter(w => selTopics.has(w.topic));
   if (!selLevels.has('all')) pool = pool.filter(w => selLevels.has(w.levelApprox));
   return pool;
@@ -741,11 +741,10 @@ function lessonSortKey(lesson) {
 }
 
 /**
- * Derive unique lesson labels from WORDS.sourceLesson,
- * remove nulls/duplicates, sort logically by number.
- * Returns [{value, label}] with 'all' prepended.
+ * Returns sorted array of unique lesson names derived from WORDS.
+ * Uses sourceLesson (preferred) or lesson as fallback.
  */
-function getLessonItemsFromWords() {
+function getAvailableLessons() {
   var seen = Object.create(null);
   var lessons = [];
   WORDS.forEach(function(w) {
@@ -758,14 +757,14 @@ function getLessonItemsFromWords() {
     var ka = lessonSortKey(a), kb = lessonSortKey(b);
     return (ka[0] - kb[0]) || (ka[1] - kb[1]);
   });
-  return [{ value: 'all', label: 'Wszystkie' }].concat(
-    lessons.map(function(l) { return { value: l, label: l }; })
-  );
+  return lessons;
 }
 
-/** Alias kept for backwards compatibility. */
-function getLessonItems() {
-  return getLessonItemsFromWords();
+/** Returns [{value, label}] with 'all' prepended — for chip rendering. */
+function getLessonItemsFromWords() {
+  return [{ value: 'all', label: 'Wszystkie' }].concat(
+    getAvailableLessons().map(function(l) { return { value: l, label: l }; })
+  );
 }
 
 /** [{value, label}] for all topics from TOPIC_LABELS */
@@ -791,7 +790,7 @@ function getLevelItems() {
  * Called once on init — and re-callable if data changes.
  */
 function initChips() {
-  var lessonItems = getLessonItems();
+  var lessonItems = getLessonItemsFromWords();
   var topicItems  = getTopicItems();
   var levelItems  = getLevelItems();
 
