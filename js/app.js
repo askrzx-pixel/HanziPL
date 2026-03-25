@@ -66,7 +66,7 @@ function renderStreakBadge() {
 
 // ── NAV ───────────────────────────────────────────
 function updateNavMastered() {
-  const m = WORDS.filter(w => SRS.isMastered(srsData[w.hanzi])).length;
+  const m = WORDS.filter(w => SRS.isMastered(srsData[w.id])).length;
   document.getElementById('nm').textContent = m;
 }
 
@@ -122,14 +122,14 @@ function renderHomeScreen() {
   }
   btn.disabled = false;
 
-  const mastered = WORDS.filter(w => SRS.isMastered(srsData[w.hanzi])).length;
+  const mastered = WORDS.filter(w => SRS.isMastered(srsData[w.id])).length;
   document.getElementById('hs-total').textContent    = WORDS.length;
   document.getElementById('hs-mastered').textContent = mastered;
   updateNavMastered();
 
   let totalR = 0, totalC = 0;
   WORDS.forEach(w => {
-    const c = srsData[w.hanzi];
+    const c = srsData[w.id];
     totalR += (c && c.reviews) || 0;
     totalC += (c && c.correct) || 0;
   });
@@ -156,9 +156,9 @@ function startDailySession() {
 // ── STATS ─────────────────────────────────────────
 function renderStats() {
   const total    = WORDS.length;
-  const mastered = WORDS.filter(w =>  SRS.isMastered(srsData[w.hanzi])).length;
-  const learning = WORDS.filter(w => { const c = srsData[w.hanzi]; return !SRS.isNew(c) && !SRS.isMastered(c); }).length;
-  const newW     = WORDS.filter(w =>  SRS.isNew(srsData[w.hanzi])).length;
+  const mastered = WORDS.filter(w =>  SRS.isMastered(srsData[w.id])).length;
+  const learning = WORDS.filter(w => { const c = srsData[w.id]; return !SRS.isNew(c) && !SRS.isMastered(c); }).length;
+  const newW     = WORDS.filter(w =>  SRS.isNew(srsData[w.id])).length;
 
   document.getElementById('st-t').textContent = total;
   document.getElementById('st-m').textContent = mastered;
@@ -178,7 +178,7 @@ function renderStats() {
 
   const weakEl     = document.getElementById('weak-list');
   const candidates = WORDS
-    .map(w => ({ ...w, c: srsData[w.hanzi] }))
+    .map(w => ({ ...w, c: srsData[w.id] }))
     .filter(w => (w.c.reviews || 0) >= 2)
     .map(w => ({ ...w, acc: (w.c.correct || 0) / (w.c.reviews || 1) }))
     .sort((a, b) => a.acc - b.acc)
@@ -200,7 +200,7 @@ function renderStats() {
   var chartLessons = getLessonItemsFromWords().slice(1).map(function(i) { return i.value; });
   document.getElementById('bchart').innerHTML = chartLessons.map(ls => {
     const lw = WORDS.filter(w => getNormalizedLessonKey(w) === ls);
-    const lm = lw.filter(w => SRS.isMastered(srsData[w.hanzi])).length;
+    const lm = lw.filter(w => SRS.isMastered(srsData[w.id])).length;
     const p  = lw.length ? Math.round(lm / lw.length * 100) : 0;
     return '<div class="brow"><div class="blbl">' + ls + '</div>' +
       '<div class="btrack"><div class="bfill" style="width:' + p + '%"></div></div>' +
@@ -252,7 +252,7 @@ function renderWords() {
   if (!f.length) { g.innerHTML = '<div class="empty">Brak wyników…</div>'; return; }
 
   g.innerHTML = f.map(w => {
-    const c    = srsData[w.hanzi];
+    const c    = srsData[w.id];
     const tag  = SRS.isNew(c)      ? '<span class="srs-tag new">NOWE</span>'         :
                  SRS.isDue(c)      ? '<span class="srs-tag due">DO POWTÓRKI</span>'   :
                  SRS.isMastered(c) ? '<span class="srs-tag ok">✓ OPANOWANE</span>'   : '';
@@ -459,7 +459,7 @@ function flipCard() {
   fcFlipped = true;
   document.getElementById('fc').classList.add('flip');
   const w         = sWords[sIdx];
-  const intervals = SRS.previewIntervals(srsData[w.hanzi]);
+  const intervals = SRS.previewIntervals(srsData[w.id]);
   ['srs-i0','srs-i1','srs-i2','srs-i3'].forEach((id, i) => {
     document.getElementById(id).textContent = intervals[i];
   });
@@ -468,12 +468,12 @@ function flipCard() {
 
 function srsAns(rating) {
   const w      = sWords[sIdx];
-  const card   = srsData[w.hanzi];
+  const card   = srsData[w.id];
   const wasNew = SRS.isNew(card);
   const correct = (rating >= 2);
   SRS.schedule(card, rating);
-  srsData[w.hanzi] = card;
-  recordAnswer(w.hanzi, correct, wasNew);
+  srsData[w.id] = card;
+  recordAnswer(w.id, correct, wasNew);
   if (correct) sOk++;
   if (rating === 0) sWords.push(w);
   sessionIdx_inc();
@@ -548,17 +548,18 @@ function loadQZ() {
 function ansQZ(btn, ch, cor) {
   document.querySelectorAll('.qopt').forEach(b => b.disabled = true);
   const correct = (ch === cor);
-  const hanzi   = sWords[sIdx].hanzi;
-  const wasNew  = SRS.isNew(srsData[hanzi]);
+  const w       = sWords[sIdx];
+  const key     = w.id;
+  const wasNew  = SRS.isNew(srsData[key]);
   if (correct) {
     btn.classList.add('ok'); sOk++;
-    SRS.schedule(srsData[hanzi], 2);
+    SRS.schedule(srsData[key], 2);
   } else {
     btn.classList.add('err');
     document.querySelectorAll('.qopt').forEach(b => { if (b.textContent === cor) b.classList.add('ok'); });
-    SRS.schedule(srsData[hanzi], 0);
+    SRS.schedule(srsData[key], 0);
   }
-  recordAnswer(hanzi, correct, wasNew);
+  recordAnswer(key, correct, wasNew);
   document.getElementById('qz-nx').classList.add('on');
 }
 
@@ -594,17 +595,17 @@ function chkType() {
   const variants = w.pl.toLowerCase().split(/[;,]/).map(s => s.trim());
   const correct  = variants.some(v => v === val || levenshtein(v, val) <= 2 || (val.length > 3 && v.includes(val)));
 
-  const wasNew = SRS.isNew(srsData[w.hanzi]);
+  const wasNew = SRS.isNew(srsData[w.id]);
   if (correct) {
     inp.classList.add('ok');
     fb.textContent = '✓ Dobrze!'; fb.className = 'tfb ok'; sOk++;
-    SRS.schedule(srsData[w.hanzi], 2);
-    recordAnswer(w.hanzi, true, wasNew);
+    SRS.schedule(srsData[w.id], 2);
+    recordAnswer(w.id, true, wasNew);
   } else {
     inp.classList.add('err');
     fb.innerHTML = '✕ Poprawna: <b>' + w.pl + '</b>'; fb.className = 'tfb err';
-    SRS.schedule(srsData[w.hanzi], 0);
-    recordAnswer(w.hanzi, false, wasNew);
+    SRS.schedule(srsData[w.id], 0);
+    recordAnswer(w.id, false, wasNew);
   }
   document.getElementById('tp-nx').classList.add('on');
 }
@@ -682,7 +683,7 @@ function handleAuthChange(user) {
     showToast('Synchronizacja z chmurą...', false);
     fbLoadAll(function(loaded) {
       WORDS.forEach(w => {
-        if (!srsData[w.hanzi]) srsData[w.hanzi] = SRS.defaultCard();
+        if (!srsData[w.id]) srsData[w.id] = SRS.defaultCard();
       });
       renderStreakBadge();
       updateNavMastered();
@@ -858,6 +859,39 @@ function initChips() {
     toggleLevel);
 }
 
+// ── SRS MIGRATION — hanzi keys → id keys ──────────
+function migrateSrsKeysToIds() {
+  // Build set of known new-format ids
+  var knownIds = Object.create(null);
+  WORDS.forEach(function(w) { if (w.id) knownIds[w.id] = true; });
+
+  // Find old hanzi-based keys (anything that's not a known id)
+  var oldKeys = Object.keys(srsData).filter(function(k) { return !knownIds[k]; });
+  if (!oldKeys.length) return;
+
+  // Build hanzi → [id, …] map (first id = first word with that hanzi)
+  var hanziToIds = Object.create(null);
+  WORDS.forEach(function(w) {
+    if (!w.id || !w.hanzi) return;
+    if (!hanziToIds[w.hanzi]) hanziToIds[w.hanzi] = [];
+    hanziToIds[w.hanzi].push(w.id);
+  });
+
+  var migrated = 0;
+  oldKeys.forEach(function(key) {
+    var oldCard = srsData[key];
+    delete srsData[key];
+    var ids = hanziToIds[key];
+    if (!ids || !ids.length) return; // hanzi not in WORDS — drop stale entry
+    // Assign progress to first word with this hanzi; don't overwrite if already migrated
+    if (!srsData[ids[0]]) { srsData[ids[0]] = oldCard; migrated++; }
+    // Duplicate words (ids[1]…) get a fresh defaultCard — old data can't be split
+  });
+
+  DB.save('cn_srs', srsData);
+  console.log('[HanziPL] SRS migration: ' + migrated + ' entries → id keys (' + oldKeys.length + ' old keys removed)');
+}
+
 // ── INIT ──────────────────────────────────────────
 function init() {
   if (!Array.isArray(WORDS)) {
@@ -865,8 +899,10 @@ function init() {
     return;
   }
 
+  migrateSrsKeysToIds();
+
   WORDS.forEach(w => {
-    if (!srsData[w.hanzi]) srsData[w.hanzi] = SRS.defaultCard();
+    if (!srsData[w.id]) srsData[w.id] = SRS.defaultCard();
   });
 
   initChips();

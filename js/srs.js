@@ -120,11 +120,11 @@ function getDailyWords() {
   const goal = appConfig.dailyGoal;
 
   const due = WORDS.filter(w => {
-    const c = srsData[w.hanzi];
+    const c = srsData[w.id];
     return !SRS.isNew(c) && SRS.isDue(c);
   });
 
-  const newWords = WORDS.filter(w => SRS.isNew(srsData[w.hanzi]));
+  const newWords = WORDS.filter(w => SRS.isNew(srsData[w.id]));
   const newLimit = Math.max(0, goal - due.length - dailyLog.newDone);
   const newSlice = newWords.slice(0, newLimit);
 
