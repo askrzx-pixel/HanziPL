@@ -14,7 +14,7 @@ var sessionReviews  = 0;
 var sessionCorrect  = 0;
 
 // ── Display label maps ─────────────────────────────
-// Keys match topic values actually used in WORDS entries.
+// Display labels for topic keys found in WORDS. Formatter only — not a source of truth.
 var TOPIC_LABELS = {
   'tozsamosc_i_ludzie':   'Tożsamość i ludzie',
   'rodzina_i_relacje':    'Rodzina i relacje',
@@ -34,7 +34,7 @@ var TOPIC_LABELS = {
   'nazwy_wlasne':         'Nazwy własne'
 };
 
-// Keys match levelApprox values actually used in WORDS entries.
+// Display labels for levelApprox keys found in WORDS. Formatter only — not a source of truth.
 var LEVEL_LABELS = {
   'starter':      'Wstępny',
   'HSK1':         'HSK 1',
@@ -787,22 +787,43 @@ function getLessonItemsFromWords() {
   );
 }
 
-/** [{value, label}] for all topics from TOPIC_LABELS */
+/** [{value, label}] for topics actually present in WORDS, sorted alphabetically by key. */
 function getTopicItems() {
-  var items = [{ value: 'all', label: 'Wszystkie' }];
-  Object.keys(TOPIC_LABELS).forEach(function(k) {
-    items.push({ value: k, label: TOPIC_LABELS[k] });
+  var seen = Object.create(null);
+  var topics = [];
+  WORDS.forEach(function(w) {
+    var t = w.topic;
+    if (!t || seen[t]) return;
+    seen[t] = true;
+    topics.push(t);
   });
-  return items;
+  topics.sort();
+  return [{ value: 'all', label: 'Wszystkie' }].concat(
+    topics.map(function(t) { return { value: t, label: TOPIC_LABELS[t] || t }; })
+  );
 }
 
-/** [{value, label}] for all levels from LEVEL_LABELS */
+/** [{value, label}] for levelApprox values actually present in WORDS, sorted by HSK order. */
 function getLevelItems() {
-  var items = [{ value: 'all', label: 'Wszystkie' }];
-  Object.keys(LEVEL_LABELS).forEach(function(k) {
-    items.push({ value: k, label: LEVEL_LABELS[k] });
+  var ORDER = ['starter', 'HSK1', 'HSK2', 'HSK3', 'HSK3plus', 'proper_noun'];
+  var seen = Object.create(null);
+  var levels = [];
+  WORDS.forEach(function(w) {
+    var lv = w.levelApprox;
+    if (!lv || seen[lv]) return;
+    seen[lv] = true;
+    levels.push(lv);
   });
-  return items;
+  levels.sort(function(a, b) {
+    var ai = ORDER.indexOf(a), bi = ORDER.indexOf(b);
+    if (ai === -1 && bi === -1) return a.localeCompare(b);
+    if (ai === -1) return 1;
+    if (bi === -1) return -1;
+    return ai - bi;
+  });
+  return [{ value: 'all', label: 'Wszystkie' }].concat(
+    levels.map(function(lv) { return { value: lv, label: LEVEL_LABELS[lv] || lv }; })
+  );
 }
 
 /**
