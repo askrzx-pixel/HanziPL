@@ -50,3 +50,42 @@ function ensureDailyLog() {
     DB.save('cn_daily', dailyLog);
   }
 }
+
+// ── Migracja SRS: stare klucze hanzi → nowe klucze id ─
+// Uruchamiana raz przy ładowaniu storage.js, zanim app.js użyje danych.
+// Idempotentna: jeśli nie ma starych kluczy, kończy się natychmiast.
+// words.js jest ładowany przed storage.js, więc WORDS jest dostępne.
+(function migrateSrsHanziToId() {
+  if (typeof WORDS === 'undefined' || !Array.isArray(WORDS)) return;
+
+  // Zbiór znanych kluczy id (w0001…w1188)
+  var knownIds = Object.create(null);
+  WORDS.forEach(function(w) { if (w.id) knownIds[w.id] = true; });
+
+  // Stare klucze = wszystko poza kluczami id
+  var oldKeys = Object.keys(srsData).filter(function(k) { return !knownIds[k]; });
+  if (!oldKeys.length) return; // nic do migracji
+
+  // Mapa hanzi → [id, …] (kolejność z WORDS; pierwszy = pierwszy rekord)
+  var hanziToIds = Object.create(null);
+  WORDS.forEach(function(w) {
+    if (!w.id || !w.hanzi) return;
+    if (!hanziToIds[w.hanzi]) hanziToIds[w.hanzi] = [];
+    hanziToIds[w.hanzi].push(w.id);
+  });
+
+  var migrated = 0;
+  oldKeys.forEach(function(key) {
+    var oldCard = srsData[key];
+    delete srsData[key];
+    var ids = hanziToIds[key];
+    if (!ids || !ids.length) return; // hanzi nieznany w WORDS — odrzuć
+    // Progres trafia do pierwszego rekordu z tym hanzi.
+    // Jeśli slot jest już zajęty (nowy format), nie nadpisuj.
+    // Duplikaty hanzi (ids[1]…) dostaną świeżą kartę przy init().
+    if (!srsData[ids[0]]) { srsData[ids[0]] = oldCard; migrated++; }
+  });
+
+  DB.save('cn_srs', srsData);
+  console.log('[HanziPL] SRS migration: ' + migrated + ' wpisów → klucze id (' + oldKeys.length + ' starych kluczy usunięto)');
+}());
