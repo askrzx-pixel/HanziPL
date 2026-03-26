@@ -75,10 +75,11 @@ function go(name, btn) {
   document.querySelectorAll('.botnav-btn').forEach(b => b.classList.remove('on'));
   document.getElementById('scr-' + name).classList.add('on');
   if (btn) btn.classList.add('on');
-  if (name === 'home')  renderHomeScreen();
-  if (name === 'stats') renderStats();
-  if (name === 'words') renderWords();
-  if (name === 'study') { updateSessionCount(); }
+  if (name === 'home')   renderHomeScreen();
+  if (name === 'stats')  renderStats();
+  if (name === 'stages') renderStages();
+  if (name === 'words')  renderWords();
+  if (name === 'study')  { updateSessionCount(); }
   window.scrollTo(0, 0);
 }
 
@@ -859,6 +860,89 @@ function initChips() {
     toggleLevel);
 }
 
+// ── STAGES SCREEN ─────────────────────────────────
+
+function renderStages() {
+  document.getElementById('stages-list').style.display = 'block';
+  document.getElementById('stage-detail').style.display = 'none';
+
+  var html = COURSE_STAGES.map(function(stage) {
+    var words   = getStageWords(stage.id);
+    var total   = words.length;
+    var mastered= words.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
+    var learning= words.filter(function(w) { var c = srsData[w.id]; return !SRS.isNew(c) && !SRS.isMastered(c); }).length;
+    var pct     = total ? Math.round(mastered / total * 100) : 0;
+
+    return '<div class="stage-card" onclick="renderStageDetail(\'' + stage.id + '\')">' +
+      '<div class="stage-card-head">' +
+        '<span class="stage-icon">' + stage.icon + '</span>' +
+        '<div class="stage-card-title">' +
+          '<div class="stage-name">' + stage.name + '</div>' +
+          '<div class="stage-desc">' + stage.description + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="stage-prog-wrap">' +
+        '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + pct + '%"></div></div>' +
+        '<span class="stage-prog-txt">' + mastered + ' / ' + total + ' opanowanych</span>' +
+      '</div>' +
+      '<div class="stage-counts">' +
+        '<span class="sc-badge sc-ok">✓ ' + mastered + '</span>' +
+        '<span class="sc-badge sc-mid">' + learning + ' w nauce</span>' +
+        '<span class="sc-badge sc-new">' + (total - mastered - learning) + ' nowych</span>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  document.getElementById('stages-list').innerHTML = html;
+}
+
+function renderStageDetail(stageId) {
+  var stage = getStageById(stageId);
+  if (!stage) return;
+
+  var words    = getStageWords(stageId);
+  var total    = words.length;
+  var mastered = words.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
+  var pct      = total ? Math.round(mastered / total * 100) : 0;
+
+  var lessonsHtml = stage.lessons.map(function(lesson) {
+    var lw    = getStageLessonWords(stageId, lesson.id);
+    var lm    = lw.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
+    var lpct  = lw.length ? Math.round(lm / lw.length * 100) : 0;
+    return '<div class="sl-row">' +
+      '<div class="sl-name">' + lesson.name + '</div>' +
+      '<div class="sl-meta">' + lw.length + ' słów · ' + lm + ' opanowanych (' + lpct + '%)</div>' +
+      '<div class="sl-bar"><div class="sl-fill" style="width:' + lpct + '%"></div></div>' +
+    '</div>';
+  }).join('');
+
+  var candoHtml = stage.canDo.map(function(item) {
+    return '<li>' + item + '</li>';
+  }).join('');
+
+  document.getElementById('stage-detail').innerHTML =
+    '<button class="btn-back-stage" onclick="renderStages()">← Wszystkie etapy</button>' +
+    '<div class="stage-detail-head">' +
+      '<span class="stage-icon">' + stage.icon + '</span>' +
+      '<h2 class="stage-detail-name">' + stage.name + '</h2>' +
+    '</div>' +
+    '<p class="stage-detail-desc">' + stage.description + '</p>' +
+    '<div class="stage-prog-wrap">' +
+      '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + pct + '%"></div></div>' +
+      '<span class="stage-prog-txt">' + mastered + ' / ' + total + ' opanowanych (' + pct + '%)</span>' +
+    '</div>' +
+    '<div class="divider"><span>Co umiesz po tym etapie</span></div>' +
+    '<ul class="cando-list">' + candoHtml + '</ul>' +
+    '<p class="stage-summary">' + stage.uiSummary + '</p>' +
+    '<div class="divider"><span>Lekcje</span></div>' +
+    '<div class="stage-lessons">' + lessonsHtml + '</div>' +
+    '<div class="stage-next-hint">' + stage.nextStageText + '</div>';
+
+  document.getElementById('stages-list').style.display = 'none';
+  document.getElementById('stage-detail').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
 // ── SRS MIGRATION — hanzi keys → id keys ──────────
 function migrateSrsKeysToIds() {
   // Build set of known new-format ids
@@ -924,6 +1008,8 @@ function init() {
   });
 }
 
+window.renderStages = renderStages;
+window.renderStageDetail = renderStageDetail;
 window.qzNext = qzNext;
 window.startCustomSession = startCustomSession;
 window.startDailySession = startDailySession;
