@@ -582,3 +582,41 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   margin-top:20px;font-size:.78rem;color:var(--muted);font-style:italic;
   text-align:center;padding:12px;border:1px dashed var(--border);border-radius:var(--radius);
 }
+/* ── STAGE LESSON SUMMARY (card list) ── */
+.stage-lesson-summary{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.sls-count{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--muted);}
+.sls-done{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--green2);font-weight:700;}
+/* ── STAGE DETAIL ── */
+.stage-lesson-count{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--muted);margin-bottom:6px;}
+.btn-stage-cta{
+  display:block;width:100%;padding:14px;margin:10px 0 16px;
+  background:var(--green2);color:#fff;border:none;border-radius:var(--radius);
+  font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:.01em;
+  transition:background .2s,transform .1s;
+}
+.btn-stage-cta:active{transform:scale(.97);}
+.btn-stage-cta:hover{background:var(--green);}
+/* ── LESSON CARDS ── */
+.lesson-card{
+  background:var(--paper2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:14px;margin-bottom:10px;
+}
+.lesson-card.lc-done{opacity:.72;}
+.lc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;}
+.lc-name{font-size:.9rem;font-weight:700;color:var(--ink);}
+.lesson-status{font-family:'Space Mono',monospace;font-size:.57rem;padding:2px 7px;border-radius:8px;white-space:nowrap;flex-shrink:0;margin-left:8px;}
+.ls-new{background:rgba(138,106,32,.12);color:var(--gold);}
+.ls-progress{background:rgba(74,138,64,.14);color:var(--green2);}
+.ls-done{background:rgba(74,138,64,.18);color:var(--green2);}
+.lc-summary{font-size:.75rem;color:var(--muted);line-height:1.4;margin-bottom:10px;}
+.lc-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.lc-meta{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);}
+.btn-lesson{
+  padding:6px 16px;border-radius:20px;border:none;flex-shrink:0;
+  background:var(--green2);color:#fff;font-size:.75rem;font-weight:700;
+  cursor:pointer;transition:background .2s,transform .1s;
+}
+.btn-lesson:active{transform:scale(.95);}
+.btn-lesson:hover{background:var(--green);}
+.lc-bar{height:3px;background:var(--paper3);border-radius:2px;overflow:hidden;margin-top:10px;}
+.lc-fill{height:100%;background:var(--green2);border-radius:2px;transition:width .5s ease;}
