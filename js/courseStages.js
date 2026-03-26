@@ -10,24 +10,27 @@ var COURSE_STAGES = [
     name: 'Start',
     shortLabel: 'Start',
     icon: '🌱',
-    description: 'To Twój pierwszy krok w chińskim. Tutaj poznajesz podstawowe słowa i zwroty, dzięki którym zaczynasz rozumieć najprostsze komunikaty.',
+    description: 'To Twój pierwszy krok w chińskim. Tutaj poznajesz podstawowe zwroty i słówka, które pozwalają się przywitać, przedstawić i zacząć rozumieć najprostsze komunikaty.',
     canDo: [
-      'Przywitać się i pożegnać',
-      'Rozpoznać podstawowe zaimki: ja, ty, on/ona',
-      'Rozumieć proste pytania i odpowiedzi',
+      'Przywitać się i pożegnać po chińsku',
+      'Podziękować, przeprosić i użyć podstawowych zwrotów grzecznościowych',
+      'Powiedzieć, jak masz na imię i zapytać o imię drugiej osoby',
+      'Rozpoznać podstawowe zaimki: ja, ty, on, ona, my, oni',
       'Nazwać kilka krajów i języków',
-      'Rozpoznać podstawowe liczby 0–10'
+      'Liczyć i rozumieć podstawowe liczby'
     ],
-    valueText: 'Zaczynasz kojarzyć najczęstsze podstawowe słowa i budujesz fundament pod pierwsze proste zdania.',
+    valueText: 'Budujesz fundament pod pierwsze proste zdania — od powitania przez przedstawienie się po liczby.',
     hskNote: 'Materiał zbliżony do pierwszych zakresów HSK.',
     nextStageText: 'W kolejnym etapie wejdziesz w słownictwo związane z ludźmi, rodziną i prostą codzienną komunikacją.',
-    uiSummary: 'Po etapie Start potrafisz już przywitać się, rozpoznać podstawowe pytania, liczby i kilka najważniejszych słów codziennych.',
+    uiSummary: 'Po etapie Start potrafisz się przywitać, przedstawić, podziękować, policzyć i nazwać kraje.',
     lessons: [
-      { id: 'start_greetings',          order: 1, name: 'Powitania',         summary: 'Podstawowe zwroty na start.' },
-      { id: 'start_pronouns',           order: 2, name: 'Ja i inni',         summary: 'Podstawowe zaimki i osoby.' },
-      { id: 'start_basic_questions',    order: 3, name: 'Tak, nie i pytania',summary: 'Najprostsze pytania i odpowiedzi.' },
-      { id: 'start_countries_languages',order: 4, name: 'Kraje i języki',    summary: 'Pierwsze słowa o krajach i językach.' },
-      { id: 'start_numbers',            order: 5, name: 'Liczby podstawowe', summary: 'Liczby potrzebne na samym początku.' }
+      { id: 'start_greetings',          order: 1, name: 'Powitania i pożegnania',       summary: 'Przywitaj się i pożegnaj po chińsku.' },
+      { id: 'start_courtesy',           order: 2, name: 'Uprzejmość',                   summary: 'Dziękuję, przepraszam i inne zwroty grzecznościowe.' },
+      { id: 'start_intro',              order: 3, name: 'Przedstawianie się',            summary: 'Jak masz na imię? Powiedz coś o sobie.' },
+      { id: 'start_pronouns',           order: 4, name: 'Ja i inni',                    summary: 'Podstawowe zaimki osobowe.' },
+      { id: 'start_countries_languages',order: 5, name: 'Kraje i języki',               summary: 'Pierwsze słowa o krajach i językach.' },
+      { id: 'start_numbers',            order: 6, name: 'Liczby podstawowe',            summary: 'Liczby potrzebne na samym początku.' },
+      { id: 'start_basic_questions',    order: 7, name: 'Pytania i wskazywanie',        summary: 'To, tamto, który? Pierwsze pytania.' }
     ]
   },
   {
@@ -112,6 +115,12 @@ var COURSE_STAGES = [
 
 // ── Mapowanie sourceLesson → { stageId, lessonId } ────
 var LESSON_STAGE_MAP = {
+  // Nowe mikro-moduły etapu Start
+  'lekcja_powitania':      { stageId: 'start', lessonId: 'start_greetings' },
+  'lekcja_uprzejmosc':     { stageId: 'start', lessonId: 'start_courtesy' },
+  'lekcja_przedstawianie': { stageId: 'start', lessonId: 'start_intro' },
+  'lekcja_ja_i_inni':      { stageId: 'start', lessonId: 'start_pronouns' },
+  // Stare numery lekcji — zachowane jako fallback lub dla reszty słówek
   '第一课':   { stageId: 'start',                 lessonId: 'start_greetings' },
   '第二课':   { stageId: 'start',                 lessonId: 'start_pronouns' },
   '第三课':   { stageId: 'start',                 lessonId: 'start_countries_languages' },
