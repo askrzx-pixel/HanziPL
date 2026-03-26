@@ -254,9 +254,10 @@ function renderWords() {
 
   g.innerHTML = f.map(w => {
     const c    = srsData[w.id];
-    const tag  = SRS.isNew(c)      ? '<span class="srs-tag new">NOWE</span>'         :
-                 SRS.isDue(c)      ? '<span class="srs-tag due">DO POWTÓRKI</span>'   :
-                 SRS.isMastered(c) ? '<span class="srs-tag ok">✓ OPANOWANE</span>'   : '';
+    const tag  = SRS.isNew(c)      ? '<span class="srs-tag new">Nowe</span>'
+               : SRS.isMastered(c) ? '<span class="srs-tag ok">✓ Opanowane</span>'
+               : SRS.isDue(c)      ? '<span class="srs-tag due">Do powtórki</span>'
+               :                     '<span class="srs-tag learning">W nauce</span>';
     const mPct = Math.min(100, Math.round((c.interval || 0) / 21 * 100));
     const topicLbl = TOPIC_LABELS[w.topic] || w.topic || '';
     const levelLbl = LEVEL_LABELS[w.levelApprox] || w.levelApprox || '';
@@ -862,14 +863,18 @@ function initChips() {
 
 // ── STAGES SCREEN ─────────────────────────────────
 
+// Statusy lekcji:
+//   'new'         — wszystkie słówka nierozpoczęte (reps = 0)
+//   'in-progress' — część słówek zaczęta, część nowa
+//   'done'        — wszystkie słówka przynajmniej raz przerobione (reps > 0)
+//                   ≠ opanowane: opanowanie to interval >= 21 (SRS.isMastered)
 function getLessonStatus(stageId, lessonId) {
   var lw       = getStageLessonWords(stageId, lessonId);
   if (!lw.length) return 'empty';
-  var mastered = lw.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
   var newCount = lw.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
   if (newCount === lw.length) return 'new';
-  if (mastered >= Math.ceil(lw.length * 0.8)) return 'done';
-  return 'in-progress';
+  if (newCount > 0)           return 'in-progress';
+  return 'done'; // wszystkie słówka widziane przynajmniej raz
 }
 
 function startLessonSession(stageId, lessonId) {
@@ -893,7 +898,9 @@ function renderStages() {
     var lessons   = stage.lessons;
     var doneCount = lessons.filter(function(l) { return getLessonStatus(stage.id, l.id) === 'done'; }).length;
     var words     = getStageWords(stage.id);
+    var newCount  = words.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
     var mastered  = words.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
+    var learning  = words.length - newCount - mastered;
     var pct       = lessons.length ? Math.round(doneCount / lessons.length * 100) : 0;
 
     return '<div class="stage-card" onclick="renderStageDetail(\'' + stage.id + '\')">' +
@@ -906,14 +913,15 @@ function renderStages() {
       '</div>' +
       '<div class="stage-lesson-summary">' +
         '<span class="sls-count">' + lessons.length + ' lekcji</span>' +
-        '<span class="sls-done">' + doneCount + '/' + lessons.length + ' ukończonych</span>' +
+        '<span class="sls-done">' + doneCount + '/' + lessons.length + ' przerobionych</span>' +
       '</div>' +
       '<div class="stage-prog-wrap">' +
         '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + pct + '%"></div></div>' +
       '</div>' +
       '<div class="stage-counts">' +
-        '<span class="sc-badge sc-ok">✓ ' + mastered + ' opanowanych</span>' +
-        '<span class="sc-badge sc-new" style="opacity:.6">' + words.length + ' słów</span>' +
+        (newCount  ? '<span class="sc-badge sc-new">' + newCount + ' nowych</span>' : '') +
+        (learning  ? '<span class="sc-badge sc-mid">' + learning + ' w nauce</span>' : '') +
+        (mastered  ? '<span class="sc-badge sc-ok">✓ ' + mastered + ' opanowanych</span>' : '') +
       '</div>' +
     '</div>';
   }).join('');
@@ -947,18 +955,41 @@ function renderStageDetail(stageId) {
   else if (allNew) ctaLabel = '▶ Zacznij etap';
   else             ctaLabel = '▶ Kontynuuj: ' + ctaLesson.name;
 
+  // Word-level breakdown for stage header
+  var stageWords   = getStageWords(stageId);
+  var stageNew     = stageWords.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
+  var stageMastered= stageWords.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
+  var stageLearning= stageWords.length - stageNew - stageMastered;
+
   // Lesson cards
   var lessonsHtml = lessonStatuses.map(function(ls) {
     var lesson = ls.lesson;
     var status = ls.status;
     var lw     = getStageLessonWords(stageId, lesson.id);
-    var lm     = lw.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
-    var lpct   = lw.length ? Math.round(lm / lw.length * 100) : 0;
+    var lNew   = lw.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
+    var lMast  = lw.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
+    var lLearn = lw.length - lNew - lMast;
+    var lpct   = lw.length ? Math.round(lMast / lw.length * 100) : 0;
 
     var badge, btnLabel;
-    if (status === 'done')        { badge = '<span class="lesson-status ls-done">✓ Ukończona</span>'; btnLabel = 'Powtórz'; }
-    else if (status === 'in-progress') { badge = '<span class="lesson-status ls-progress">W trakcie</span>'; btnLabel = 'Kontynuuj'; }
-    else                          { badge = '<span class="lesson-status ls-new">Nowa</span>'; btnLabel = 'Zacznij'; }
+    if (status === 'done') {
+      // Przerobiona = wszystkie słówka widziane ≥1 raz; opanowanie to osobna metryka
+      badge = '<span class="lesson-status ls-done">✓ Przerobiona</span>';
+      btnLabel = 'Powtórz';
+    } else if (status === 'in-progress') {
+      badge = '<span class="lesson-status ls-progress">W trakcie</span>';
+      btnLabel = 'Kontynuuj';
+    } else {
+      badge = '<span class="lesson-status ls-new">Nowa</span>';
+      btnLabel = 'Zacznij';
+    }
+
+    // Word breakdown line — show only non-zero counts
+    var parts = [];
+    if (lNew   > 0) parts.push(lNew   + ' nowych');
+    if (lLearn > 0) parts.push(lLearn + ' w nauce');
+    if (lMast  > 0) parts.push(lMast  + ' opanowanych');
+    var metaStr = lw.length + ' słów' + (parts.length ? ' · ' + parts.join(' · ') : '');
 
     return '<div class="lesson-card' + (status === 'done' ? ' lc-done' : '') + '">' +
       '<div class="lc-header">' +
@@ -967,9 +998,7 @@ function renderStageDetail(stageId) {
       '</div>' +
       '<div class="lc-summary">' + lesson.summary + '</div>' +
       '<div class="lc-footer">' +
-        '<span class="lc-meta">' + lw.length + ' słów' +
-          (status !== 'new' ? ' · ' + lm + '/' + lw.length + ' opanowanych' : '') +
-        '</span>' +
+        '<span class="lc-meta">' + metaStr + '</span>' +
         '<button class="btn-lesson" onclick="startLessonSession(\'' + stageId + '\',\'' + lesson.id + '\')">' + btnLabel + '</button>' +
       '</div>' +
       (status !== 'new' ? '<div class="lc-bar"><div class="lc-fill" style="width:' + lpct + '%"></div></div>' : '') +
@@ -985,9 +1014,15 @@ function renderStageDetail(stageId) {
       '<h2 class="stage-detail-name">' + stage.name + '</h2>' +
     '</div>' +
     '<p class="stage-detail-desc">' + stage.description + '</p>' +
-    '<div class="stage-lesson-count">' + totalLessons + ' lekcji · ukończono ' + doneCount + '/' + totalLessons + '</div>' +
+    '<div class="stage-stats-row">' +
+      '<div class="sstat"><span class="sstat-val">' + doneCount + '/' + totalLessons + '</span><span class="sstat-lbl">Przerobione lekcje</span></div>' +
+      '<div class="sstat"><span class="sstat-val">' + stageMastered + '</span><span class="sstat-lbl">Opanowane słówka</span></div>' +
+      '<div class="sstat"><span class="sstat-val">' + stageLearning + '</span><span class="sstat-lbl">W nauce</span></div>' +
+      '<div class="sstat"><span class="sstat-val">' + stageNew + '</span><span class="sstat-lbl">Nowe</span></div>' +
+    '</div>' +
     '<div class="stage-prog-wrap">' +
       '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + Math.round(doneCount / totalLessons * 100) + '%"></div></div>' +
+      '<span class="stage-prog-txt">postęp lekcji: ' + doneCount + '/' + totalLessons + ' przerobionych</span>' +
     '</div>' +
     '<button class="btn-stage-cta" onclick="startLessonSession(\'' + stageId + '\',\'' + ctaLesson.id + '\')">' + ctaLabel + '</button>' +
     '<div class="divider"><span>Lekcje</span></div>' +
