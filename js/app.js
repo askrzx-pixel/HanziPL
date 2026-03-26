@@ -896,12 +896,22 @@ function renderStages() {
 
   var html = COURSE_STAGES.map(function(stage) {
     var lessons   = stage.lessons;
-    var doneCount = lessons.filter(function(l) { return getLessonStatus(stage.id, l.id) === 'done'; }).length;
-    var words     = getStageWords(stage.id);
-    var newCount  = words.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
-    var mastered  = words.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
-    var learning  = words.length - newCount - mastered;
+    var statuses  = lessons.map(function(l) { return { lesson: l, status: getLessonStatus(stage.id, l.id) }; });
+    var doneCount = statuses.filter(function(s) { return s.status === 'done'; }).length;
     var pct       = lessons.length ? Math.round(doneCount / lessons.length * 100) : 0;
+    var allDone   = doneCount === lessons.length;
+
+    // Następna lekcja = pierwsza nieprzerobiona
+    var nextLesson = null;
+    for (var i = 0; i < statuses.length; i++) {
+      if (statuses[i].status !== 'done') { nextLesson = statuses[i].lesson; break; }
+    }
+
+    var nextHint = allDone
+      ? '<div class="sc-next sc-next-done">✓ Wszystkie lekcje przerobione</div>'
+      : nextLesson
+        ? '<div class="sc-next">Następna: <strong>' + nextLesson.name + '</strong></div>'
+        : '';
 
     return '<div class="stage-card" onclick="renderStageDetail(\'' + stage.id + '\')">' +
       '<div class="stage-card-head">' +
@@ -918,11 +928,7 @@ function renderStages() {
       '<div class="stage-prog-wrap">' +
         '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + pct + '%"></div></div>' +
       '</div>' +
-      '<div class="stage-counts">' +
-        (newCount  ? '<span class="sc-badge sc-new">' + newCount + ' nowych</span>' : '') +
-        (learning  ? '<span class="sc-badge sc-mid">' + learning + ' w nauce</span>' : '') +
-        (mastered  ? '<span class="sc-badge sc-ok">✓ ' + mastered + ' opanowanych</span>' : '') +
-      '</div>' +
+      nextHint +
     '</div>';
   }).join('');
 
@@ -1007,6 +1013,23 @@ function renderStageDetail(stageId) {
 
   var candoHtml = stage.canDo.map(function(item) { return '<li>' + item + '</li>'; }).join('');
 
+  // "Następna lekcja" callout for detail view
+  var nextCallout = allDone
+    ? '<div class="next-lesson-callout nlc-done">✓ Wszystkie lekcje przerobione — możesz powtórzyć dowolną</div>'
+    : '<div class="next-lesson-callout">' +
+        '<span class="nlc-label">Następna lekcja</span>' +
+        '<span class="nlc-name">' + ctaLesson.name + '</span>' +
+        '<span class="nlc-summary">' + ctaLesson.summary + '</span>' +
+      '</div>';
+
+  // Compact secondary word stats (small, not dominant)
+  var wordStatsHtml =
+    '<div class="stage-word-stats">' +
+      (stageNew     ? '<span class="sws-item sws-new">' + stageNew     + ' nowych</span>' : '') +
+      (stageLearning? '<span class="sws-item sws-learning">' + stageLearning + ' w nauce</span>' : '') +
+      (stageMastered? '<span class="sws-item sws-ok">✓ ' + stageMastered + ' opanowanych</span>' : '') +
+    '</div>';
+
   document.getElementById('stage-detail').innerHTML =
     '<button class="btn-back-stage" onclick="renderStages()">← Wszystkie etapy</button>' +
     '<div class="stage-detail-head">' +
@@ -1014,17 +1037,16 @@ function renderStageDetail(stageId) {
       '<h2 class="stage-detail-name">' + stage.name + '</h2>' +
     '</div>' +
     '<p class="stage-detail-desc">' + stage.description + '</p>' +
-    '<div class="stage-stats-row">' +
-      '<div class="sstat"><span class="sstat-val">' + doneCount + '/' + totalLessons + '</span><span class="sstat-lbl">Przerobione lekcje</span></div>' +
-      '<div class="sstat"><span class="sstat-val">' + stageMastered + '</span><span class="sstat-lbl">Opanowane słówka</span></div>' +
-      '<div class="sstat"><span class="sstat-val">' + stageLearning + '</span><span class="sstat-lbl">W nauce</span></div>' +
-      '<div class="sstat"><span class="sstat-val">' + stageNew + '</span><span class="sstat-lbl">Nowe</span></div>' +
+    '<div class="stage-lesson-summary">' +
+      '<span class="sls-count">' + totalLessons + ' lekcji</span>' +
+      '<span class="sls-done">' + doneCount + '/' + totalLessons + ' przerobionych</span>' +
     '</div>' +
     '<div class="stage-prog-wrap">' +
       '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + Math.round(doneCount / totalLessons * 100) + '%"></div></div>' +
-      '<span class="stage-prog-txt">postęp lekcji: ' + doneCount + '/' + totalLessons + ' przerobionych</span>' +
     '</div>' +
+    nextCallout +
     '<button class="btn-stage-cta" onclick="startLessonSession(\'' + stageId + '\',\'' + ctaLesson.id + '\')">' + ctaLabel + '</button>' +
+    wordStatsHtml +
     '<div class="divider"><span>Lekcje</span></div>' +
     '<div class="stage-lessons">' + lessonsHtml + '</div>' +
     '<div class="divider"><span>Co umiesz po tym etapie</span></div>' +
