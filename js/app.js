@@ -269,8 +269,12 @@ function renderWords() {
     const tagsHtml = (w.tags && w.tags.length)
       ? '<div class="wtags">' + w.tags.map(t => '<span class="wtag">' + t + '</span>').join('') + '</div>'
       : '';
+    const mwBadge = w.measureWord
+      ? '<span class="mw-badge" title="Klasyfikator: ' + w.measureWord.hanzi + ' (' + w.measureWord.pinyin + ')">' + w.measureWord.hanzi + '</span>'
+      : '';
     return '<div class="wcard">' +
       '<span class="hz">' + w.hanzi + '</span>' +
+      mwBadge +
       '<div class="py">' + w.pinyin + '</div>' +
       '<div class="tr">' + w.pl + '</div>' +
       metaHtml +
@@ -437,12 +441,26 @@ function loadFC() {
   const pyEl = document.getElementById('fc-py');
   const trEl = document.getElementById('fc-tr');
   const bhEl = document.getElementById('fc-bh');
+  const mwEl = document.getElementById('fc-mw');
 
   function applyContent() {
     if (hzEl) hzEl.textContent = w.hanzi || '—';
     if (pyEl) pyEl.textContent = w.pinyin || '—';
     if (trEl) trEl.textContent = w.pl || '—';
     if (bhEl) bhEl.textContent = w.hanzi || '—';
+
+    if (mwEl) {
+      var mw = w.measureWord;
+      if (mw) {
+        mwEl.innerHTML = '<span class="fc-mw-label">Klasyfikator:</span> ' +
+          '<span class="fc-mw-hz">' + mw.hanzi + '</span> ' +
+          '<span class="fc-mw-py">' + mw.pinyin + '</span>' +
+          (mw.exampleHanzi ? '<div class="fc-mw-ex">' + mw.exampleHanzi + ' <span class="fc-mw-ex-py">' + mw.examplePinyin + '</span> — ' + mw.examplePolish + '</div>' : '');
+        mwEl.style.display = '';
+      } else {
+        mwEl.style.display = 'none';
+      }
+    }
 
     sp('fc', sIdx + 1, sWords.length);
   }
