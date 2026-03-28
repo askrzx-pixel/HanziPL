@@ -377,7 +377,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .front .fhint{font-family:Inter,sans-serif;font-size:.62rem;font-weight:500;color:var(--border2);margin-top:14px;letter-spacing:.7px;text-transform:uppercase;}
 .back .bhz{font-family:'Noto Sans SC',sans-serif;font-size:4rem;font-weight:700;color:var(--paper);line-height:1.05;margin-bottom:6px;}
 .back .bpy{font-family:Inter,sans-serif;font-style:italic;font-size:1.05rem;font-weight:500;color:var(--gold2);margin-bottom:10px;}
-.back .btr{font-family:Inter,sans-serif;font-size:1.15rem;font-weight:500;color:rgba(242,232,213,.86);text-align:center;line-height:1.4;max-width:90%;}
+.back .btr{font-family:Inter,sans-serif;font-size:1.15rem;font-weight:600;color:#f0e6d0;opacity:1;text-align:center;line-height:1.4;max-width:90%;}
 
 /* SRS answer buttons */
 .srs-btns{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:7px;max-width:480px;margin:0 auto;}
@@ -754,3 +754,4 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .fc-mw-ex{margin-top:5px;font-size:.78rem;color:var(--muted);}
 .fc-mw-ex-py{font-size:.74rem;}
 @media(prefers-color-scheme:dark){.fc-mw{background:rgba(160,120,240,.1);}.fc-mw-hz{color:#b490f0;}}
+@media(prefers-color-scheme:dark){.back .btr{color:#4E3B2A;}}
