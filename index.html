@@ -55,15 +55,20 @@
       <div class="home-hero-greeting" id="home-greeting">Dzień dobry!</div>
     </div>
     <div class="home-hero-sub" id="home-sub">Ładowanie...</div>
+    <div class="home-session-inline">
+      <div class="home-session-main">
+        <div class="home-session-line" id="home-plan-head">Ładowanie…</div>
+        <div class="home-session-counts" id="home-session-counts">0 nowych słów · 0 powtórek</div>
+      </div>
+    </div>
+    <button class="btn-start-day" id="btn-start-day" onclick="handleTodayPrimaryAction()">Rozpocznij dzisiejszą sesję →</button>
     <div class="home-focus-row">
-      <div class="home-focus-card">
+      <div class="home-focus-card compact">
         <div class="home-focus-label">Zostało dziś</div>
-        <div class="home-focus-value" id="home-remaining-v">0</div>
-        <div class="home-focus-note" id="home-remaining-note">słówek do zrobienia</div>
+        <div class="home-focus-inline"><span class="home-focus-value" id="home-remaining-v">0</span><span class="home-focus-note" id="home-remaining-note">słówek</span></div>
       </div>
       <div class="home-focus-card next plan">
         <div class="home-focus-label">Plan na dziś</div>
-        <div class="home-next-step" id="home-plan-head">Ładowanie…</div>
         <div class="home-plan-list">
           <div class="home-plan-item" id="home-plan-reviews">Sprawdzamy powtórki…</div>
           <div class="home-plan-item" id="home-plan-new">Sprawdzamy nową lekcję…</div>
@@ -80,7 +85,6 @@
       <div class="daily-prog-label"><span>Dzienny cel</span><span id="daily-prog-txt">0 / 0</span></div>
       <div class="daily-prog-track"><div class="daily-prog-fill" id="daily-prog-fill" style="width:0%"></div></div>
     </div>
-    <button class="btn-start-day" id="btn-start-day" onclick="handleTodayPrimaryAction()">Rozpocznij dzisiejszą sesję →</button>
   </div>
   <div class="home-section-label">Twoje postępy</div>
   <div class="home-stats-row">

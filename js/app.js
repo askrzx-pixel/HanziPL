@@ -141,8 +141,11 @@ function renderHomeScreen() {
   document.getElementById('hc-done-v').textContent = done;
   document.getElementById('home-remaining-v').textContent = remaining;
   document.getElementById('home-remaining-note').textContent =
-    remaining === 1 ? 'słówko do zrobienia' : 'słówek do zrobienia';
+    remaining === 1 ? 'słówko' : 'słówek';
   document.getElementById('home-plan-head').textContent    = plan.headline;
+  document.getElementById('home-session-counts').textContent =
+    newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów') +
+    ' · ' + due.length + ' ' + pluralizeWords(due.length, 'powtórka', 'powtórki', 'powtórek');
   document.getElementById('home-plan-reviews').textContent = plan.reviewsLine;
   document.getElementById('home-plan-new').textContent     = plan.newLine;
   document.getElementById('home-plan-next').textContent    = plan.nextLine;
