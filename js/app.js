@@ -1663,7 +1663,7 @@ function renderStages() {
 
     var preview = lessons.slice(0, 2).map(function(l) { return l.name; }).join(' · ') + (lessons.length > 2 ? ' …' : '');
 
-    return '<div class="stage-card" onclick="renderSegmentDetail(' + seg.segNum + ')">' +
+    return '<div class="stage-card" data-action="open-segment" data-seg="' + seg.segNum + '">' +
       '<div class="stage-card-head">' +
         '<span class="stage-icon">' + seg.icon + '</span>' +
         '<div class="stage-card-title">' +
@@ -1758,7 +1758,7 @@ function renderSegmentDetail(segNum) {
       '</div>' +
       '<div class="lc-footer">' +
         '<span class="lc-meta">' + metaStr + '</span>' +
-        '<button class="btn-lesson" onclick="startLessonSessionByKey(' + JSON.stringify(lesson.key) + ')">' + btnLabel + '</button>' +
+        '<button class="btn-lesson" data-action="start-lesson" data-lesson-key="' + lesson.key.replace(/"/g, '&quot;') + '">' + btnLabel + '</button>' +
       '</div>' +
       (status !== 'new' ? '<div class="lc-bar"><div class="lc-fill" style="width:' + lpct + '%"></div></div>' : '') +
     '</div>';
@@ -1779,7 +1779,7 @@ function renderSegmentDetail(segNum) {
       '</div>';
 
   document.getElementById('stage-detail').innerHTML =
-    '<button class="btn-back-stage" onclick="renderStages()">← Wszystkie segmenty</button>' +
+    '<button class="btn-back-stage" data-action="back-to-segments">← Wszystkie segmenty</button>' +
     '<div class="stage-detail-head">' +
       '<span class="stage-icon">' + seg.icon + '</span>' +
       '<h2 class="stage-detail-name">' + seg.name + '</h2>' +
@@ -1793,7 +1793,7 @@ function renderSegmentDetail(segNum) {
         Math.round(doneCount / Math.max(totalLessons, 1) * 100) + '%"></div></div>' +
     '</div>' +
     nextCallout +
-    '<button class="btn-stage-cta" onclick="startLessonSessionByKey(' + JSON.stringify(ctaLesson.key) + ')">' + ctaLabel + '</button>' +
+    '<button class="btn-stage-cta" data-action="start-lesson" data-lesson-key="' + ctaLesson.key.replace(/"/g, '&quot;') + '">' + ctaLabel + '</button>' +
     wordStatsHtml +
     '<div class="divider"><span>Lekcje</span></div>' +
     '<div class="stage-lessons">' + lessonsHtml + '</div>';
@@ -1867,6 +1867,44 @@ function init() {
     mode: curMode
   });
 }
+
+// ── STAGES SCREEN EVENT DELEGATION ───────────────
+// Replaces inline onclick handlers to fix broken attributes caused by
+// JSON.stringify producing double-quotes inside double-quoted HTML attributes
+// (was breaking mobile Safari btn clicks).
+document.addEventListener('DOMContentLoaded', function() {
+  var scrStages = document.getElementById('scr-stages');
+  if (!scrStages) return;
+
+  scrStages.addEventListener('click', function(e) {
+    // Walk up from clicked target to find the element with data-action
+    var el = e.target;
+    while (el && el !== scrStages) {
+      var action = el.getAttribute('data-action');
+      if (action) {
+        if (action === 'open-segment') {
+          e.stopPropagation();
+          renderSegmentDetail(parseInt(el.getAttribute('data-seg'), 10));
+          return;
+        }
+        if (action === 'start-lesson') {
+          e.stopPropagation();
+          startLessonSessionByKey(el.getAttribute('data-lesson-key'));
+          return;
+        }
+        if (action === 'back-to-segments') {
+          e.stopPropagation();
+          renderStages();
+          return;
+        }
+      }
+      // If we hit a button with data-action inside a stage-card, stop bubbling
+      // before the card's own open-segment action fires
+      if (el.tagName === 'BUTTON') break;
+      el = el.parentElement;
+    }
+  });
+});
 
 window.renderStages = renderStages;
 window.renderSegmentDetail = renderSegmentDetail;
