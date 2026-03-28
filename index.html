@@ -61,10 +61,14 @@
         <div class="home-focus-value" id="home-remaining-v">0</div>
         <div class="home-focus-note" id="home-remaining-note">słówek do zrobienia</div>
       </div>
-      <div class="home-focus-card next">
-        <div class="home-focus-label">Co dalej</div>
-        <div class="home-next-step" id="home-next-step">Ładowanie…</div>
-        <div class="home-focus-note" id="home-next-note">Zaraz przygotujemy plan sesji.</div>
+      <div class="home-focus-card next plan">
+        <div class="home-focus-label">Plan na dziś</div>
+        <div class="home-next-step" id="home-plan-head">Ładowanie…</div>
+        <div class="home-plan-list">
+          <div class="home-plan-item" id="home-plan-reviews">Sprawdzamy powtórki…</div>
+          <div class="home-plan-item" id="home-plan-new">Sprawdzamy nową lekcję…</div>
+          <div class="home-plan-item" id="home-plan-next">Ustalamy kolejny krok…</div>
+        </div>
       </div>
     </div>
     <div class="home-counts">
@@ -76,7 +80,7 @@
       <div class="daily-prog-label"><span>Dzienny cel</span><span id="daily-prog-txt">0 / 0</span></div>
       <div class="daily-prog-track"><div class="daily-prog-fill" id="daily-prog-fill" style="width:0%"></div></div>
     </div>
-    <button class="btn-start-day" id="btn-start-day" onclick="startDailySession()">Rozpocznij dzisiejszą sesję →</button>
+    <button class="btn-start-day" id="btn-start-day" onclick="handleTodayPrimaryAction()">Rozpocznij dzisiejszą sesję →</button>
   </div>
   <div class="home-section-label">Twoje postępy</div>
   <div class="home-stats-row">
@@ -172,10 +176,16 @@
         <div class="progt"><div class="progf" id="fc-f" style="width:0%"></div></div>
       </div>
     </div>
+    <div class="session-stage-card" id="session-stage-card" style="display:none">
+      <div class="session-stage-kicker" id="session-stage-kicker">Teraz</div>
+      <div class="session-stage-title" id="session-stage-title">Powtórki</div>
+      <div class="session-stage-sub" id="session-stage-sub"></div>
+      <div class="session-stage-next" id="session-stage-next"></div>
+    </div>
     <div class="fcwrap" onclick="flipCard()">
       <div class="fc" id="fc">
         <div class="face front"><span class="fhz" id="fc-hz">—</span><span class="fhint">dotknij, aby obrócić</span></div>
-        <div class="face back"><div class="bpy" id="fc-py"></div><div class="btr" id="fc-tr"></div><div class="bhz" id="fc-bh"></div><div class="fc-mw" id="fc-mw" style="display:none"></div></div>
+        <div class="face back"><div class="bpy" id="fc-py"></div><div class="btr" id="fc-tr"></div><div class="bhz" id="fc-bh"></div><div class="fc-source" id="fc-source" style="display:none"></div><div class="fc-mw" id="fc-mw" style="display:none"></div></div>
       </div>
     </div>
     <div id="srs-btns" style="display:none">
@@ -237,9 +247,10 @@
       <div class="resc" id="rsc">0/0</div>
       <div class="resl" id="rsl"></div>
       <div class="res-detail" id="res-detail"></div>
+      <div class="res-next" id="res-next" style="display:none"></div>
       <div class="resbtns">
-        <button class="btn" style="width:auto;display:inline-block" onclick="restartSession()">🔄 Jeszcze raz</button>
-        <button class="btn-out" id="res-menu-btn" onclick="backHome()">🏠 Wróć do domu</button>
+        <button class="btn" style="width:auto;display:inline-block" id="res-primary-btn" onclick="handleResultsPrimaryAction()">🔄 Jeszcze raz</button>
+        <button class="btn-out" id="res-secondary-btn" onclick="handleResultsSecondaryAction()">🏠 Wróć do domu</button>
       </div>
     </div>
   </div>

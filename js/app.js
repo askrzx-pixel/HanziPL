@@ -12,6 +12,12 @@ var sWords = [], sIdx = 0, sOk = 0, sTotal = 0, fcFlipped = false;
 var isDailySession  = false;
 var sessionReviews  = 0;
 var sessionCorrect  = 0;
+var sessionMeta     = null;
+var dailySessionFlow = null;
+var dailySessionState = 'no_content_available';
+var todayPrimaryAction = { type: 'none' };
+var resultsPrimaryAction = { type: 'restart_session' };
+var resultsSecondaryAction = { type: 'back_home' };
 
 // ── Display label maps ─────────────────────────────
 // Display labels for topic keys found in WORDS. Formatter only — not a source of truth.
@@ -113,24 +119,22 @@ function go(name, btn) {
 // ── HOME SCREEN ───────────────────────────────────
 function renderHomeScreen() {
   ensureDailyLog();
-  const { due, newWords, total } = getDailyWords();
+  const flow      = createDailySessionFlow();
+  const due       = flow.dueWords;
+  const newWords  = flow.lessonWords;
+  const total     = flow.remainingCount;
   const goal      = appConfig.dailyGoal;
   const done      = dailyLog.done;
-  const remaining = Math.max(0, total - done);
+  const remaining = flow.remainingCount;
+  const plan      = buildDailyPlan(flow, done, remaining);
+  dailySessionState = flow.state;
+  todayPrimaryAction = plan.action;
 
   const h     = new Date().getHours();
   const greet = h < 6 ? 'Dobranoc! 🌙' : h < 12 ? 'Dzień dobry! ☀️' : h < 18 ? 'Dzień dobry! 🌤️' : 'Dobry wieczór! 🌙';
   document.getElementById('home-greeting').textContent = greet;
 
-  let sub = '';
-  if (remaining === 0 && done > 0) {
-    sub = 'Dzisiejszy plan masz już zamknięty. Możesz zrobić dodatkową powtórkę albo po prostu wrócić jutro.';
-  } else {
-    sub = remaining > 0
-      ? 'Najpierw domknij dzisiejszy plan, a potem przejdź dalej bez zgadywania co jest najważniejsze.'
-      : 'Brak zaplanowanych powtórek — świetnie!';
-  }
-  document.getElementById('home-sub').textContent = sub;
+  document.getElementById('home-sub').textContent = plan.summary;
 
   document.getElementById('hc-due-v').textContent  = due.length;
   document.getElementById('hc-new-v').textContent  = newWords.length;
@@ -138,37 +142,25 @@ function renderHomeScreen() {
   document.getElementById('home-remaining-v').textContent = remaining;
   document.getElementById('home-remaining-note').textContent =
     remaining === 1 ? 'słówko do zrobienia' : 'słówek do zrobienia';
-
-  let nextStep = 'Dziś nie ma już nic pilnego.';
-  let nextNote = 'Jeśli chcesz, możesz zrobić dodatkową sesję albo przejrzeć słówka.';
-  if (due.length > 0 && newWords.length > 0) {
-    nextStep = 'Najpierw powtórki, potem nowe słówka.';
-    nextNote = 'Zacznij teraz, żeby zamknąć zaległości i dopiero potem dodawać nowy materiał.';
-  } else if (due.length > 0) {
-    nextStep = 'Skup się na powtórkach.';
-    nextNote = 'To najszybsza droga, żeby utrzymać serię i nie gubić materiału.';
-  } else if (newWords.length > 0) {
-    nextStep = 'Czeka nowa porcja słówek.';
-    nextNote = 'Masz czystą kolejkę, więc możesz spokojnie wejść w nowy materiał.';
-  } else if (done === 0) {
-    nextNote = 'Na dziś system nie wyznaczył sesji.';
-  }
-  document.getElementById('home-next-step').textContent = nextStep;
-  document.getElementById('home-next-note').textContent = nextNote;
+  document.getElementById('home-plan-head').textContent    = plan.headline;
+  document.getElementById('home-plan-reviews').textContent = plan.reviewsLine;
+  document.getElementById('home-plan-new').textContent     = plan.newLine;
+  document.getElementById('home-plan-next').textContent    = plan.nextLine;
 
   const pct = goal > 0 ? Math.min(100, Math.round(done / goal * 100)) : 0;
   document.getElementById('daily-prog-fill').style.width = pct + '%';
   document.getElementById('daily-prog-txt').textContent  = done + ' / ' + goal;
 
   const btn = document.getElementById('btn-start-day');
-  if (remaining === 0 && done > 0) {
-    btn.textContent = '✓ Cel osiągnięty — ćwicz więcej';
+  if (todayPrimaryAction.type === 'none') {
+    btn.textContent = plan.cta;
     btn.classList.add('done');
+    btn.disabled = true;
   } else {
-    btn.textContent = remaining > 0 ? 'Rozpocznij dzisiejszą sesję →' : 'Powtórz słówka →';
-    btn.classList.remove('done');
+    btn.textContent = plan.cta;
+    btn.classList.toggle('done', dailySessionState === 'session_complete');
+    btn.disabled = false;
   }
-  btn.disabled = false;
 
   const mastered = WORDS.filter(w => SRS.isMastered(srsData[w.id])).length;
   document.getElementById('hs-total').textContent    = WORDS.length;
@@ -185,10 +177,36 @@ function renderHomeScreen() {
   document.getElementById('hs-acc').textContent = acc !== null ? acc + '%' : '—';
 }
 
+function handleTodayPrimaryAction() {
+  if (todayPrimaryAction.type === 'daily_session') {
+    startDailySession();
+    return;
+  }
+  if (todayPrimaryAction.type === 'course_lesson' && todayPrimaryAction.lessonKey) {
+    startLessonSessionByKey(todayPrimaryAction.lessonKey);
+    return;
+  }
+  if (todayPrimaryAction.type === 'back_home') {
+    go('home', document.getElementById('bn-home'));
+  }
+}
+
 function startDailySession() {
-  const { due, newWords } = getDailyWords();
-  const pool = shuffle([...due, ...newWords]);
-  if (!pool.length) { showToast('Brak słówek na dziś! 🎉', false, 'good'); return; }
+  var flow = createDailySessionFlow();
+  if (!flow.phases.length) {
+    dailySessionState = flow.state;
+    todayPrimaryAction = flow.nextLesson ? { type: 'course_lesson', lessonKey: flow.nextLesson.key } : { type: 'none' };
+    renderHomeScreen();
+    showToast(flow.state === 'session_complete' ? 'Dzisiejsza sesja jest już gotowa.' : 'Brak materiału na dziś.', false, 'good');
+    return;
+  }
+
+  dailySessionFlow = flow;
+  dailySessionFlow.currentPhaseIndex = 0;
+  dailySessionFlow.countedIds = Object.create(null);
+  dailySessionFlow.totalReviews = 0;
+  dailySessionFlow.totalCorrect = 0;
+  dailySessionState = flow.state;
 
   document.querySelectorAll('.scr').forEach(s => s.classList.remove('on'));
   document.querySelectorAll('.botnav-btn').forEach(b => b.classList.remove('on'));
@@ -198,7 +216,7 @@ function startDailySession() {
   window.scrollTo(0, 0);
 
   isDailySession = true;
-  beginSession(pool, 'fc');
+  startDailyPhase(0);
 }
 
 // ── STATS ─────────────────────────────────────────
@@ -413,17 +431,18 @@ function startCustomSession() {
 }
 
 // ── SESSION ENGINE ────────────────────────────────
-function beginSession(pool, mode) {
+function beginSession(pool, mode, meta) {
   sWords = [...pool]; sIdx = 0; sOk = 0; sTotal = pool.length;
   sessionReviews = 0; sessionCorrect = 0; fcFlipped = false;
   curMode = mode;
+  sessionMeta = meta || null;
   hideAll();
   if (mode === 'fc')      startFC();
   else if (mode === 'qz') startQZ();
   else                    startTP();
 }
 
-function restartSession() { beginSession(sWords.slice(0, sTotal), curMode); }
+function restartSession() { beginSession(sWords.slice(0, sTotal), curMode, sessionMeta); }
 
 function hideAll() {
   ['sh','sfc','sqz','stp','sres'].forEach(id => document.getElementById(id).style.display = 'none');
@@ -432,6 +451,9 @@ function hideAll() {
 function backHome() {
   hideAll();
   isDailySession = false;
+  dailySessionFlow = null;
+  dailySessionState = 'no_content_available';
+  sessionMeta = null;
   go('home', document.getElementById('bn-home'));
 }
 
@@ -445,34 +467,43 @@ function sp(p, i, t) {
 function recordAnswer(hanzi, correct, wasNew) {
   sessionReviews++;
   if (correct) sessionCorrect++;
-  ensureDailyLog();
-  dailyLog.done++;
-  if (wasNew) dailyLog.newDone++;
-  saveAll();
+
+  if (isDailySession && dailySessionFlow && sessionMeta && sessionMeta.countsToGoal) {
+    ensureDailyLog();
+    if (!dailySessionFlow.countedIds[hanzi]) {
+      dailySessionFlow.countedIds[hanzi] = true;
+      dailyLog.done++;
+      if (wasNew) dailyLog.newDone++;
+      saveAll();
+    }
+  }
 }
 
 // ── FLASHCARD ─────────────────────────────────────
 function startFC() {
   document.getElementById('sfc').style.display = 'block';
-  document.getElementById('fc-mode-lbl').textContent = isDailySession ? 'DZIENNA SESJA' : 'FISZKI';
+  document.getElementById('fc-mode-lbl').textContent = sessionMeta && sessionMeta.modeLabel
+    ? sessionMeta.modeLabel
+    : isDailySession ? 'DZIENNA SESJA' : 'FISZKI';
+  renderSessionStageCard();
   fcFlipped = false;
   loadFC();
 }
 
 function loadFC() {
   if (!Array.isArray(sWords) || !sWords.length) {
-    showResults();
+    handleSessionEnd();
     return;
   }
 
   if (sIdx >= sWords.length) {
-    showResults();
+    handleSessionEnd();
     return;
   }
 
   const w = sWords[sIdx];
   if (!w) {
-    showResults();
+    handleSessionEnd();
     return;
   }
 
@@ -488,6 +519,7 @@ function loadFC() {
   const pyEl = document.getElementById('fc-py');
   const trEl = document.getElementById('fc-tr');
   const bhEl = document.getElementById('fc-bh');
+  const srcEl = document.getElementById('fc-source');
   const mwEl = document.getElementById('fc-mw');
 
   function applyContent() {
@@ -495,6 +527,15 @@ function loadFC() {
     if (pyEl) pyEl.textContent = w.pinyin || '—';
     if (trEl) trEl.textContent = w.pl || '—';
     if (bhEl) bhEl.textContent = w.hanzi || '—';
+    if (srcEl) {
+      var sourceLabel = getWordSourceLabel(w);
+      if (sourceLabel) {
+        srcEl.textContent = sourceLabel;
+        srcEl.style.display = '';
+      } else {
+        srcEl.style.display = 'none';
+      }
+    }
 
     if (mwEl) {
       var mw = w.measureWord;
@@ -531,6 +572,268 @@ function flipCard() {
     document.getElementById(id).textContent = intervals[i];
   });
   setTimeout(() => document.getElementById('srs-btns').style.display = 'block', 340);
+}
+
+function renderSessionStageCard() {
+  var cardEl = document.getElementById('session-stage-card');
+  if (!cardEl) return;
+
+  if (!isDailySession || !sessionMeta) {
+    cardEl.style.display = 'none';
+    return;
+  }
+
+  document.getElementById('session-stage-kicker').textContent = sessionMeta.kicker || 'Teraz';
+  document.getElementById('session-stage-title').textContent  = sessionMeta.title || 'Sesja';
+  document.getElementById('session-stage-sub').textContent    = sessionMeta.sub || '';
+  document.getElementById('session-stage-next').textContent   = sessionMeta.next || '';
+  cardEl.style.display = 'block';
+}
+
+function handleSessionEnd() {
+  if (isDailySession && dailySessionFlow) {
+    handleDailySessionPhaseEnd();
+    return;
+  }
+  showResults();
+}
+
+function handleDailySessionPhaseEnd() {
+  if (!dailySessionFlow) {
+    showResults();
+    return;
+  }
+
+  dailySessionFlow.totalReviews += sessionReviews;
+  dailySessionFlow.totalCorrect += sessionCorrect;
+
+  var nextIndex = dailySessionFlow.currentPhaseIndex + 1;
+  if (nextIndex < dailySessionFlow.phases.length) {
+    dailySessionFlow.currentPhaseIndex = nextIndex;
+    dailySessionState = dailySessionFlow.phases[nextIndex].state;
+    showDailyTransitionScreen(dailySessionFlow.phases[nextIndex]);
+    return;
+  }
+
+  dailySessionState = dailySessionFlow.reinforcementAction ? 'reinforcement_ready' : 'session_complete';
+  showDailyCompletionScreen();
+}
+
+function startDailyPhase(index) {
+  if (!dailySessionFlow || !dailySessionFlow.phases[index]) {
+    showDailyCompletionScreen();
+    return;
+  }
+
+  var phase = dailySessionFlow.phases[index];
+  dailySessionFlow.currentPhaseIndex = index;
+  dailySessionState = phase.state;
+  beginSession(phase.words, 'fc', {
+    kind: 'daily',
+    modeLabel: phase.modeLabel,
+    kicker: phase.kicker,
+    title: phase.title,
+    sub: phase.sub,
+    next: phase.next,
+    countsToGoal: phase.countsToGoal
+  });
+}
+
+function showDailyTransitionScreen(nextPhase) {
+  hideAll();
+  document.getElementById('sres').style.display = 'block';
+
+  var banner = document.getElementById('res-daily-banner');
+  if (banner) {
+    banner.style.display = 'block';
+    banner.textContent = '✓ Etap ukończony';
+  }
+
+  document.getElementById('rsc').textContent = nextPhase.words.length;
+  document.getElementById('rsl').textContent = nextPhase.transitionTitle;
+  document.getElementById('res-detail').textContent = nextPhase.transitionDetail;
+
+  var nextEl = document.getElementById('res-next');
+  if (nextEl) {
+    nextEl.style.display = 'block';
+    nextEl.textContent = nextPhase.transitionNext;
+  }
+
+  resultsPrimaryAction = { type: 'daily_next_phase', phaseIndex: dailySessionFlow.currentPhaseIndex };
+  resultsSecondaryAction = { type: 'back_home' };
+  updateResultsButtons(nextPhase.transitionCta, '🏠 Wróć do domu');
+}
+
+function showDailyCompletionScreen() {
+  hideAll();
+  document.getElementById('sres').style.display = 'block';
+
+  var summary = getDailyCompletionSummary();
+  var banner = document.getElementById('res-daily-banner');
+  if (banner) {
+    banner.style.display = 'block';
+    banner.textContent = summary.banner;
+  }
+
+  document.getElementById('rsc').textContent = summary.score;
+  document.getElementById('rsl').textContent = summary.title;
+  document.getElementById('res-detail').textContent = summary.detail;
+
+  var nextEl = document.getElementById('res-next');
+  if (nextEl) {
+    if (summary.next) {
+      nextEl.style.display = 'block';
+      nextEl.textContent = summary.next;
+    } else {
+      nextEl.style.display = 'none';
+      nextEl.textContent = '';
+    }
+  }
+
+  resultsPrimaryAction = summary.primaryAction;
+  resultsSecondaryAction = { type: 'back_home' };
+  updateResultsButtons(summary.primaryLabel, '🏠 Wróć do domu');
+
+  checkAndUpdateStreak();
+  renderStreakBadge();
+  updateNavMastered();
+}
+
+function updateResultsButtons(primaryLabel, secondaryLabel) {
+  var primaryBtn = document.getElementById('res-primary-btn');
+  var secondaryBtn = document.getElementById('res-secondary-btn');
+  if (primaryBtn) {
+    if (primaryLabel) {
+      primaryBtn.style.display = 'inline-block';
+      primaryBtn.textContent = primaryLabel;
+    } else {
+      primaryBtn.style.display = 'none';
+    }
+  }
+  if (secondaryBtn) secondaryBtn.textContent = secondaryLabel || '🏠 Wróć do domu';
+}
+
+function handleResultsPrimaryAction() {
+  if (resultsPrimaryAction.type === 'daily_next_phase') {
+    startDailyPhase(resultsPrimaryAction.phaseIndex);
+    return;
+  }
+  if (resultsPrimaryAction.type === 'course_lesson' && resultsPrimaryAction.lessonKey) {
+    isDailySession = false;
+    dailySessionFlow = null;
+    startLessonSessionByKey(resultsPrimaryAction.lessonKey);
+    return;
+  }
+  if (resultsPrimaryAction.type === 'restart_session') {
+    restartSession();
+    return;
+  }
+  if (resultsPrimaryAction.type === 'back_home') {
+    backHome();
+  }
+}
+
+function handleResultsSecondaryAction() {
+  if (resultsSecondaryAction.type === 'back_home') {
+    backHome();
+    return;
+  }
+  if (resultsSecondaryAction.type === 'restart_session') {
+    restartSession();
+  }
+}
+
+function buildDailyPlan(flow, done, remaining) {
+  var due = flow.dueWords;
+  var newWords = flow.lessonWords;
+  var newLesson = flow.lessonMeta;
+  var newLessonCount = getDistinctLessonCount(newWords);
+  var nextLesson = flow.nextLesson;
+  var summary = '';
+  var headline = 'Dziś nie ma już nic pilnego.';
+  var action = { type: 'none' };
+
+  if (flow.state === 'session_complete') {
+    headline = 'Dzisiejsza sesja jest już skończona.';
+    summary = nextLesson
+      ? 'Plan na dziś jest gotowy. Możesz teraz przejść dalej w kursie.'
+      : 'Plan na dziś jest gotowy. Nie ma już nowego materiału do uruchomienia w tej chwili.';
+    action = nextLesson ? { type: 'course_lesson', lessonKey: nextLesson.key } : { type: 'none' };
+  } else if (flow.state === 'reviews_due') {
+    headline = newWords.length > 0
+      ? 'Najpierw powtórki, potem nowa lekcja.'
+      : 'Dziś skupiasz się na powtórkach.';
+    summary = newWords.length > 0
+      ? 'Zaczniesz od zaległych SRS, a potem przejdziesz do nowego materiału z kursu.'
+      : 'Na dziś liczą się tylko powtórki z wcześniejszych lekcji.';
+    action = { type: 'daily_session' };
+  } else if (flow.state === 'lesson_ready' && newWords.length > 0) {
+    headline = 'Dziś wchodzisz w nową lekcję.';
+    summary = 'Kolejka powtórek jest czysta, więc możesz przejść prosto do nowego materiału.';
+    action = { type: 'daily_session' };
+  } else if (flow.state === 'no_content_available') {
+    summary = nextLesson
+      ? 'Dzisiejsza sesja nie ma już kart, ale możesz przejść do kolejnej lekcji w kursie.'
+      : 'Na dziś system nie wyznaczył nowych kart ani powtórek.';
+    action = nextLesson ? { type: 'course_lesson', lessonKey: nextLesson.key } : { type: 'none' };
+  } else {
+    summary = 'Na dziś system nie wyznaczył nowych kart ani powtórek.';
+  }
+
+  var reviewsLine = due.length > 0
+    ? due.length + ' ' + pluralizeWords(due.length, 'powtórka', 'powtórki', 'powtórek') + ' z wcześniejszych lekcji'
+    : 'Brak zaległych powtórek na dziś';
+
+  var newLine = 'Dziś bez nowej lekcji';
+  if (newWords.length > 0) {
+    if (newLesson) {
+      newLine = newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów') +
+        ' z lekcji ' + newLesson.shortLabel;
+      if (newLessonCount > 1) {
+        newLine += ' i ' + (newLessonCount - 1) + ' ' +
+          pluralizeWords(newLessonCount - 1, 'kolejnej lekcji', 'kolejnych lekcji', 'kolejnych lekcji');
+      }
+    } else {
+      newLine = newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów') +
+        ' z bieżącego kursu';
+    }
+  }
+
+  var nextLine = 'Po tej sesji zamkniesz dzisiejszy plan.';
+  if (due.length > 0 && newWords.length > 0 && newLesson) {
+    nextLine = 'Po powtórkach wejdziesz w lekcję ' + newLesson.shortLabel;
+  } else if (newWords.length > 0 && newLesson) {
+    nextLine = 'Następny krok: lekcja ' + newLesson.shortLabel;
+  } else if (nextLesson) {
+    nextLine = 'Następna lekcja: ' + nextLesson.shortLabel;
+  }
+
+  var cta = 'Powtórz słówka →';
+  if (flow.state === 'session_complete') {
+    cta = nextLesson ? 'Zobacz następną lekcję →' : '✓ Na dziś wszystko gotowe';
+  } else if (done > 0 && remaining > 0 && flow.state !== 'reviews_due') {
+    cta = 'Kontynuuj dzisiejszą sesję →';
+  } else if (flow.state === 'reviews_due') {
+    cta = due.length <= 12
+      ? 'Powtórz ' + due.length + ' ' + pluralizeWords(due.length, 'słówko', 'słówka', 'słówek') + ' →'
+      : 'Zacznij od powtórek →';
+  } else if (flow.state === 'lesson_ready' && newWords.length > 0 && newLesson) {
+    cta = 'Przejdź do lekcji ' + newLesson.lessonCode + ' →';
+  } else if (flow.state === 'lesson_ready' && newWords.length > 0) {
+    cta = 'Zacznij nową lekcję →';
+  } else if (flow.state === 'no_content_available') {
+    cta = nextLesson ? 'Zobacz następną lekcję →' : 'Brak sesji na dziś';
+  }
+
+  return {
+    summary: summary,
+    headline: headline,
+    reviewsLine: reviewsLine,
+    newLine: newLine,
+    nextLine: nextLine,
+    cta: cta,
+    action: action
+  };
 }
 
 function srsAns(rating) {
@@ -694,14 +997,19 @@ function showResults() {
   document.getElementById('res-detail').textContent =
     'Sesja: ' + sessionReviews + ' powtórek · Skuteczność: ' +
     (sessionReviews > 0 ? Math.round(sessionCorrect / sessionReviews * 100) : 0) + '%';
+  var nextEl = document.getElementById('res-next');
+  if (nextEl) {
+    nextEl.style.display = 'none';
+    nextEl.textContent = '';
+  }
 
   // Daily session completion banner
   const banner = document.getElementById('res-daily-banner');
   if (banner) banner.style.display = isDailySession ? 'block' : 'none';
 
-  // Update home button label based on context
-  const menuBtn = document.getElementById('res-menu-btn');
-  if (menuBtn) menuBtn.textContent = isDailySession ? '🏠 Wróć do domu' : '🏠 Menu główne';
+  resultsPrimaryAction = { type: 'restart_session' };
+  resultsSecondaryAction = { type: 'back_home' };
+  updateResultsButtons('🔄 Jeszcze raz', isDailySession ? '🏠 Wróć do domu' : '🏠 Menu główne');
 
   checkAndUpdateStreak();
   renderStreakBadge();
@@ -808,6 +1116,275 @@ function chineseNumToInt(s) {
 /** Returns the raw lesson string from a word entry. */
 function getRawWordLesson(w) {
   return (w.sourceLesson || w.lesson || '').trim();
+}
+
+function getDailyReviewWords() {
+  return WORDS.filter(function(w) {
+    var c = srsData[w.id];
+    return !SRS.isNew(c) && SRS.isDue(c);
+  });
+}
+
+function getOrderedCourseLessons() {
+  if (typeof getV3Segments !== 'function') return [];
+  var lessons = [];
+  getV3Segments().forEach(function(seg) {
+    seg.lessons.forEach(function(lesson) {
+      lessons.push(lesson);
+    });
+  });
+  return lessons;
+}
+
+function getLessonWordsByKey(lessonKey) {
+  return WORDS.filter(function(w) { return getRawWordLesson(w) === lessonKey; });
+}
+
+function getDailyLessonCandidate() {
+  var lessons = getOrderedCourseLessons();
+  for (var i = 0; i < lessons.length; i++) {
+    var lessonWords = getLessonWordsByKey(lessons[i].key);
+    var newWords = lessonWords.filter(function(w) { return SRS.isNew(srsData[w.id]); });
+    if (newWords.length) return lessons[i];
+  }
+  return null;
+}
+
+function createDailySessionFlow() {
+  ensureDailyLog();
+
+  var dueWords = getDailyReviewWords();
+  var goal = appConfig.dailyGoal || 0;
+  var lessonCandidate = getDailyLessonCandidate();
+  var lessonMeta = lessonCandidate ? parseSourceLessonMeta(lessonCandidate.key) : null;
+  var lessonPool = lessonCandidate ? getLessonWordsByKey(lessonCandidate.key).filter(function(w) {
+    return SRS.isNew(srsData[w.id]);
+  }) : [];
+  var lessonSlots = Math.max(0, goal - dueWords.length);
+  var lessonWords = lessonSlots > 0 ? lessonPool.slice(0, lessonSlots) : [];
+  var lessonOverflow = lessonPool.length > lessonWords.length;
+  var nextLesson = getNextCourseLesson(lessonMeta ? lessonMeta.key : '');
+  var goalTotal = dueWords.length + lessonWords.length;
+  var phases = [];
+
+  if (dueWords.length) {
+    phases.push({
+      key: 'reviews',
+      state: 'reviews_due',
+      words: shuffle([].concat(dueWords)),
+      countsToGoal: true,
+      modeLabel: 'ETAP 1 · POWTÓRKI',
+      kicker: 'Teraz',
+      title: dueWords.length + ' ' + pluralizeWords(dueWords.length, 'powtórka SRS', 'powtórki SRS', 'powtórek SRS'),
+      sub: 'Powtarzasz słowa z wcześniejszych lekcji. To ten etap, który podtrzymuje materiał w pamięci.',
+      next: lessonWords.length
+        ? 'Potem: nowe słowa z lekcji ' + lessonMeta.shortLabel
+        : 'Potem: krótkie podsumowanie sesji.',
+      transitionTitle: lessonWords.length ? 'Powtórki zamknięte' : 'Powtórki gotowe',
+      transitionDetail: lessonWords.length
+        ? 'Kolejny etap to nowy materiał z kursu. Teraz przejdziesz do konkretnej lekcji zamiast losowej puli słówek.'
+        : 'Nie ma dziś nowej lekcji do uruchomienia, więc po tym etapie domkniesz sesję.',
+      transitionNext: lessonWords.length
+        ? 'Za chwilę: lekcja ' + lessonMeta.shortLabel
+        : 'Za chwilę: ekran zakończenia sesji.',
+      transitionCta: lessonWords.length ? 'Przejdź do nowej lekcji →' : 'Zobacz podsumowanie →'
+    });
+  }
+
+  if (lessonWords.length) {
+    phases.push({
+      key: 'lesson',
+      state: 'lesson_ready',
+      words: shuffle([].concat(lessonWords)),
+      countsToGoal: true,
+      modeLabel: 'ETAP 2 · NOWA LEKCJA',
+      kicker: 'Teraz',
+      title: 'Nowe słowa z lekcji ' + lessonMeta.shortLabel,
+      sub: 'Poznajesz nowy materiał w ramach kursu. Wszystkie te słowa pochodzą z jednej lekcji.',
+      next: lessonOverflow
+        ? 'Po sesji możesz dokończyć resztę tej lekcji.'
+        : nextLesson
+          ? 'Po sesji: następna lekcja ' + nextLesson.shortLabel
+          : 'Po sesji: zakończenie dziennego planu.',
+      transitionTitle: 'Nowa lekcja gotowa',
+      transitionDetail: 'Główna część dziennego planu jest skończona. Teraz zobaczysz krótkie domknięcie i następny sensowny krok.',
+      transitionNext: lessonOverflow
+        ? 'Możesz wrócić do tej samej lekcji lub iść dalej w kursie.'
+        : nextLesson
+          ? 'Następny krok w kursie: ' + nextLesson.shortLabel
+          : 'Dzisiejszy plan jest kompletny.',
+      transitionCta: 'Zobacz podsumowanie →'
+    });
+  }
+
+  var reinforcementAction = null;
+  if (lessonOverflow && lessonMeta) {
+    reinforcementAction = {
+      type: 'course_lesson',
+      lessonKey: lessonMeta.key,
+      label: 'Dokończ lekcję ' + lessonMeta.lessonCode + ' →',
+      summary: 'W tej lekcji czeka jeszcze materiał poza dzisiejszym limitem.'
+    };
+  } else if (nextLesson) {
+    reinforcementAction = {
+      type: 'course_lesson',
+      lessonKey: nextLesson.key,
+      label: 'Zobacz następną lekcję →',
+      summary: 'Następna lekcja w kursie: ' + nextLesson.shortLabel
+    };
+  }
+
+  var state = 'no_content_available';
+  if (phases.length) state = phases[0].state;
+  else if (reinforcementAction) state = 'session_complete';
+
+  return {
+    state: state,
+    dueWords: dueWords,
+    lessonWords: lessonWords,
+    remainingCount: dueWords.length + lessonWords.length,
+    lessonMeta: lessonMeta,
+    nextLesson: nextLesson,
+    goalTotal: goalTotal,
+    phases: phases,
+    reinforcementAction: reinforcementAction
+  };
+}
+
+function getDailyCompletionSummary() {
+  var goalDone = dailyLog.done;
+  var totalReviews = dailySessionFlow ? dailySessionFlow.totalReviews : sessionReviews;
+  var totalCorrect = dailySessionFlow ? dailySessionFlow.totalCorrect : sessionCorrect;
+  var pct = totalReviews ? Math.round(totalCorrect / totalReviews * 100) : 0;
+  var reinforcement = dailySessionFlow && dailySessionFlow.reinforcementAction
+    ? dailySessionFlow.reinforcementAction
+    : null;
+
+  return {
+    banner: '✓ Dzisiejsza sesja ukończona',
+    score: goalDone + '/' + (dailySessionFlow ? dailySessionFlow.goalTotal : goalDone),
+    title: reinforcement ? 'Plan na dziś zamknięty' : 'Dzisiejszy plan gotowy',
+    detail: 'Do dziennego celu liczą się tylko karty z planu: powtórki i nowe słowa. Dzisiejsza skuteczność: ' + pct + '%.',
+    next: reinforcement ? reinforcement.summary : 'Możesz wrócić do domu albo zakończyć na dziś.',
+    primaryAction: reinforcement || { type: 'back_home' },
+    primaryLabel: reinforcement ? reinforcement.label : ''
+  };
+}
+
+function pluralizeWords(n, one, few, many) {
+  var mod10 = n % 10;
+  var mod100 = n % 100;
+  if (n === 1) return one;
+  if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return few;
+  return many;
+}
+
+function parseSourceLessonMeta(raw) {
+  var src = (raw || '').trim();
+  if (!src) return null;
+
+  var detailed = src.match(/^(\d+)\.(\d+)\s+(.+)$/);
+  if (detailed) {
+    return {
+      key: src,
+      segNum: parseInt(detailed[1], 10),
+      subNum: parseInt(detailed[2], 10),
+      lessonCode: detailed[1] + '.' + detailed[2],
+      title: detailed[3],
+      shortLabel: detailed[1] + '.' + detailed[2] + ' ' + detailed[3],
+      fullLabel: 'Lekcja ' + detailed[1] + '.' + detailed[2] + ' · ' + detailed[3]
+    };
+  }
+
+  var parsedNum = parseLessonNumber(src);
+  if (parsedNum !== null) {
+    return {
+      key: src,
+      segNum: parsedNum,
+      subNum: null,
+      lessonCode: String(parsedNum),
+      title: '',
+      shortLabel: String(parsedNum),
+      fullLabel: 'Lekcja ' + parsedNum
+    };
+  }
+
+  return {
+    key: src,
+    segNum: null,
+    subNum: null,
+    lessonCode: src,
+    title: '',
+    shortLabel: src,
+    fullLabel: 'Źródło: ' + src
+  };
+}
+
+function getWordSourceLabel(w) {
+  var meta = parseSourceLessonMeta(getRawWordLesson(w));
+  if (!meta) return 'Źródło: kurs HanziPL';
+  return meta.fullLabel || ('Źródło: ' + meta.shortLabel);
+}
+
+function getPrimaryLessonFromWords(words) {
+  if (!Array.isArray(words) || !words.length) return null;
+  var counts = Object.create(null);
+  var firstSeen = [];
+  var order = Object.create(null);
+  words.forEach(function(w) {
+    var raw = getRawWordLesson(w) || 'kurs HanziPL';
+    if (!counts[raw]) {
+      order[raw] = firstSeen.length;
+      firstSeen.push(raw);
+    }
+    counts[raw] = (counts[raw] || 0) + 1;
+  });
+  firstSeen.sort(function(a, b) {
+    if (counts[b] !== counts[a]) return counts[b] - counts[a];
+    return order[a] - order[b];
+  });
+  return parseSourceLessonMeta(firstSeen[0]);
+}
+
+function getDistinctLessonCount(words) {
+  if (!Array.isArray(words) || !words.length) return 0;
+  var seen = Object.create(null);
+  words.forEach(function(w) {
+    var raw = getRawWordLesson(w) || 'kurs HanziPL';
+    seen[raw] = true;
+  });
+  return Object.keys(seen).length;
+}
+
+function getNextCourseLesson(currentKey) {
+  if (typeof getV3Segments !== 'function' || typeof getLessonStatusByKey !== 'function') return null;
+
+  var lessons = [];
+  getV3Segments().forEach(function(seg) {
+    seg.lessons.forEach(function(lesson) {
+      lessons.push(lesson);
+    });
+  });
+
+  if (!lessons.length) return null;
+
+  var next = null;
+  for (var i = 0; i < lessons.length; i++) {
+    if (getLessonStatusByKey(lessons[i].key) !== 'done') {
+      next = lessons[i];
+      break;
+    }
+  }
+
+  if (!next) return null;
+  if (!currentKey || next.key !== currentKey) return parseSourceLessonMeta(next.key);
+
+  for (var j = 0; j < lessons.length; j++) {
+    if (lessons[j].key === currentKey) {
+      return lessons[j + 1] ? parseSourceLessonMeta(lessons[j + 1].key) : null;
+    }
+  }
+  return null;
 }
 
 /**
@@ -1181,8 +1758,11 @@ window.renderSegmentDetail = renderSegmentDetail;
 window.startLessonSessionByKey = startLessonSessionByKey;
 window.qzNext = qzNext;
 window.startCustomSession = startCustomSession;
+window.handleTodayPrimaryAction = handleTodayPrimaryAction;
 window.startDailySession = startDailySession;
 window.restartSession = restartSession;
+window.handleResultsPrimaryAction = handleResultsPrimaryAction;
+window.handleResultsSecondaryAction = handleResultsSecondaryAction;
 window.backHome = backHome;
 window.confirmBack = confirmBack;
 window.go = go;
