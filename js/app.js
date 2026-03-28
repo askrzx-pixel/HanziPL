@@ -916,49 +916,30 @@ function initChips() {
 }
 
 // ── STAGES SCREEN ─────────────────────────────────
-
-// Statusy lekcji:
-//   'new'         — wszystkie słówka nierozpoczęte (reps = 0)
-//   'in-progress' — część słówek zaczęta, część nowa
-//   'done'        — wszystkie słówka przynajmniej raz przerobione (reps > 0)
-//                   ≠ opanowane: opanowanie to interval >= 21 (SRS.isMastered)
-function getLessonStatus(stageId, lessonId) {
-  var lw       = getStageLessonWords(stageId, lessonId);
-  if (!lw.length) return 'empty';
-  var newCount = lw.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
-  if (newCount === lw.length) return 'new';
-  if (newCount > 0)           return 'in-progress';
-  return 'done'; // wszystkie słówka widziane przynajmniej raz
-}
-
-function startLessonSession(stageId, lessonId) {
-  var words = getStageLessonWords(stageId, lessonId);
-  if (!words.length) { showToast('Brak słówek w tej lekcji!', true); return; }
-  document.querySelectorAll('.scr').forEach(function(s) { s.classList.remove('on'); });
-  document.querySelectorAll('.botnav-btn').forEach(function(b) { b.classList.remove('on'); });
-  document.getElementById('scr-study').classList.add('on');
-  var navBtn = document.getElementById('bn-study');
-  if (navBtn) navBtn.classList.add('on');
-  window.scrollTo(0, 0);
-  isDailySession = false;
-  beginSession(shuffle([].concat(words)), curMode);
-}
+// Rendering driven by getV3Segments() from courseStages.js.
+// Status + session helpers live in courseStages.js (getLessonStatusByKey, startLessonSessionByKey).
 
 function renderStages() {
   document.getElementById('stages-list').style.display = 'block';
   document.getElementById('stage-detail').style.display = 'none';
 
-  var html = COURSE_STAGES.map(function(stage) {
-    var lessons   = stage.lessons;
-    var statuses  = lessons.map(function(l) { return { lesson: l, status: getLessonStatus(stage.id, l.id) }; });
-    var doneCount = statuses.filter(function(s) { return s.status === 'done'; }).length;
+  var segments = getV3Segments();
+
+  if (!segments.length) {
+    document.getElementById('stages-list').innerHTML =
+      '<div style="text-align:center;padding:40px;color:var(--muted);font-family:\'Space Mono\',monospace;font-size:.75rem;">Brak danych kursu.</div>';
+    return;
+  }
+
+  var html = segments.map(function(seg) {
+    var lessons   = seg.lessons;
+    var doneCount = lessons.filter(function(l) { return getLessonStatusByKey(l.key) === 'done'; }).length;
     var pct       = lessons.length ? Math.round(doneCount / lessons.length * 100) : 0;
     var allDone   = doneCount === lessons.length;
 
-    // Następna lekcja = pierwsza nieprzerobiona
     var nextLesson = null;
-    for (var i = 0; i < statuses.length; i++) {
-      if (statuses[i].status !== 'done') { nextLesson = statuses[i].lesson; break; }
+    for (var i = 0; i < lessons.length; i++) {
+      if (getLessonStatusByKey(lessons[i].key) !== 'done') { nextLesson = lessons[i]; break; }
     }
 
     var nextHint = allDone
@@ -967,12 +948,14 @@ function renderStages() {
         ? '<div class="sc-next">Następna: <strong>' + nextLesson.name + '</strong></div>'
         : '';
 
-    return '<div class="stage-card" onclick="renderStageDetail(\'' + stage.id + '\')">' +
+    var preview = lessons.slice(0, 2).map(function(l) { return l.name; }).join(' · ') + (lessons.length > 2 ? ' …' : '');
+
+    return '<div class="stage-card" onclick="renderSegmentDetail(' + seg.segNum + ')">' +
       '<div class="stage-card-head">' +
-        '<span class="stage-icon">' + stage.icon + '</span>' +
+        '<span class="stage-icon">' + seg.icon + '</span>' +
         '<div class="stage-card-title">' +
-          '<div class="stage-name">' + stage.name + '</div>' +
-          '<div class="stage-desc">' + stage.description + '</div>' +
+          '<div class="stage-name">' + seg.name + '</div>' +
+          '<div class="stage-desc">' + preview + '</div>' +
         '</div>' +
       '</div>' +
       '<div class="stage-lesson-summary">' +
@@ -989,43 +972,49 @@ function renderStages() {
   document.getElementById('stages-list').innerHTML = html;
 }
 
-function renderStageDetail(stageId) {
-  var stage = getStageById(stageId);
-  if (!stage) return;
+function renderSegmentDetail(segNum) {
+  var segments = getV3Segments();
+  var seg = null;
+  for (var i = 0; i < segments.length; i++) {
+    if (segments[i].segNum === segNum) { seg = segments[i]; break; }
+  }
+  if (!seg) return;
 
-  // Lesson statuses
-  var lessonStatuses = stage.lessons.map(function(lesson) {
-    return { lesson: lesson, status: getLessonStatus(stageId, lesson.id) };
+  var lessons = seg.lessons;
+  var lessonStatuses = lessons.map(function(lesson) {
+    return { lesson: lesson, status: getLessonStatusByKey(lesson.key) };
   });
   var doneCount    = lessonStatuses.filter(function(ls) { return ls.status === 'done'; }).length;
-  var totalLessons = stage.lessons.length;
+  var totalLessons = lessons.length;
 
-  // Stage CTA: find first non-done lesson
+  // CTA: first non-done lesson
   var firstActive = null;
   for (var i = 0; i < lessonStatuses.length; i++) {
     if (lessonStatuses[i].status !== 'done' && lessonStatuses[i].status !== 'empty') {
       firstActive = lessonStatuses[i]; break;
     }
   }
-  var allNew  = lessonStatuses.every(function(ls) { return ls.status === 'new' || ls.status === 'empty'; });
+  var allNew  = lessonStatuses.every(function(ls) { return ls.status === 'new'  || ls.status === 'empty'; });
   var allDone = lessonStatuses.every(function(ls) { return ls.status === 'done' || ls.status === 'empty'; });
-  var ctaLesson = firstActive ? firstActive.lesson : stage.lessons[0];
+  var ctaLesson = firstActive ? firstActive.lesson : lessons[0];
   var ctaLabel;
-  if (allDone)     ctaLabel = '↺ Powtórz etap';
-  else if (allNew) ctaLabel = '▶ Zacznij etap';
+  if (allDone)     ctaLabel = '↺ Powtórz segment';
+  else if (allNew) ctaLabel = '▶ Zacznij segment';
   else             ctaLabel = '▶ Kontynuuj: ' + ctaLesson.name;
 
-  // Word-level breakdown for stage header
-  var stageWords   = getStageWords(stageId);
-  var stageNew     = stageWords.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
-  var stageMastered= stageWords.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
-  var stageLearning= stageWords.length - stageNew - stageMastered;
+  // Segment word stats
+  var segWords    = WORDS.filter(function(w) {
+    return lessons.some(function(l) { return l.key === w.sourceLesson; });
+  });
+  var segNew      = segWords.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
+  var segMastered = segWords.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
+  var segLearning = segWords.length - segNew - segMastered;
 
   // Lesson cards
   var lessonsHtml = lessonStatuses.map(function(ls) {
     var lesson = ls.lesson;
     var status = ls.status;
-    var lw     = getStageLessonWords(stageId, lesson.id);
+    var lw     = WORDS.filter(function(w) { return w.sourceLesson === lesson.key; });
     var lNew   = lw.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
     var lMast  = lw.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
     var lLearn = lw.length - lNew - lMast;
@@ -1033,18 +1022,16 @@ function renderStageDetail(stageId) {
 
     var badge, btnLabel;
     if (status === 'done') {
-      // Przerobiona = wszystkie słówka widziane ≥1 raz; opanowanie to osobna metryka
-      badge = '<span class="lesson-status ls-done">✓ Przerobiona</span>';
+      badge    = '<span class="lesson-status ls-done">✓ Przerobiona</span>';
       btnLabel = 'Powtórz';
     } else if (status === 'in-progress') {
-      badge = '<span class="lesson-status ls-progress">W trakcie</span>';
+      badge    = '<span class="lesson-status ls-progress">W trakcie</span>';
       btnLabel = 'Kontynuuj';
     } else {
-      badge = '<span class="lesson-status ls-new">Nowa</span>';
+      badge    = '<span class="lesson-status ls-new">Nowa</span>';
       btnLabel = 'Zacznij';
     }
 
-    // Word breakdown line — show only non-zero counts
     var parts = [];
     if (lNew   > 0) parts.push(lNew   + ' nowych');
     if (lLearn > 0) parts.push(lLearn + ' w nauce');
@@ -1056,56 +1043,47 @@ function renderStageDetail(stageId) {
         '<span class="lc-name">' + lesson.name + '</span>' +
         badge +
       '</div>' +
-      '<div class="lc-summary">' + lesson.summary + '</div>' +
       '<div class="lc-footer">' +
         '<span class="lc-meta">' + metaStr + '</span>' +
-        '<button class="btn-lesson" onclick="startLessonSession(\'' + stageId + '\',\'' + lesson.id + '\')">' + btnLabel + '</button>' +
+        '<button class="btn-lesson" onclick="startLessonSessionByKey(' + JSON.stringify(lesson.key) + ')">' + btnLabel + '</button>' +
       '</div>' +
       (status !== 'new' ? '<div class="lc-bar"><div class="lc-fill" style="width:' + lpct + '%"></div></div>' : '') +
     '</div>';
   }).join('');
 
-  var candoHtml = stage.canDo.map(function(item) { return '<li>' + item + '</li>'; }).join('');
+  var wordStatsHtml =
+    '<div class="stage-word-stats">' +
+      (segNew      ? '<span class="sws-item sws-new">'      + segNew      + ' nowych</span>'    : '') +
+      (segLearning ? '<span class="sws-item sws-learning">' + segLearning + ' w nauce</span>'   : '') +
+      (segMastered ? '<span class="sws-item sws-ok">✓ '    + segMastered + ' opanowanych</span>': '') +
+    '</div>';
 
-  // "Następna lekcja" callout for detail view
   var nextCallout = allDone
     ? '<div class="next-lesson-callout nlc-done">✓ Wszystkie lekcje przerobione — możesz powtórzyć dowolną</div>'
     : '<div class="next-lesson-callout">' +
         '<span class="nlc-label">Następna lekcja</span>' +
         '<span class="nlc-name">' + ctaLesson.name + '</span>' +
-        '<span class="nlc-summary">' + ctaLesson.summary + '</span>' +
       '</div>';
 
-  // Compact secondary word stats (small, not dominant)
-  var wordStatsHtml =
-    '<div class="stage-word-stats">' +
-      (stageNew     ? '<span class="sws-item sws-new">' + stageNew     + ' nowych</span>' : '') +
-      (stageLearning? '<span class="sws-item sws-learning">' + stageLearning + ' w nauce</span>' : '') +
-      (stageMastered? '<span class="sws-item sws-ok">✓ ' + stageMastered + ' opanowanych</span>' : '') +
-    '</div>';
-
   document.getElementById('stage-detail').innerHTML =
-    '<button class="btn-back-stage" onclick="renderStages()">← Wszystkie etapy</button>' +
+    '<button class="btn-back-stage" onclick="renderStages()">← Wszystkie segmenty</button>' +
     '<div class="stage-detail-head">' +
-      '<span class="stage-icon">' + stage.icon + '</span>' +
-      '<h2 class="stage-detail-name">' + stage.name + '</h2>' +
+      '<span class="stage-icon">' + seg.icon + '</span>' +
+      '<h2 class="stage-detail-name">' + seg.name + '</h2>' +
     '</div>' +
-    '<p class="stage-detail-desc">' + stage.description + '</p>' +
     '<div class="stage-lesson-summary">' +
       '<span class="sls-count">' + totalLessons + ' lekcji</span>' +
       '<span class="sls-done">' + doneCount + '/' + totalLessons + ' przerobionych</span>' +
     '</div>' +
     '<div class="stage-prog-wrap">' +
-      '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + Math.round(doneCount / totalLessons * 100) + '%"></div></div>' +
+      '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' +
+        Math.round(doneCount / Math.max(totalLessons, 1) * 100) + '%"></div></div>' +
     '</div>' +
     nextCallout +
-    '<button class="btn-stage-cta" onclick="startLessonSession(\'' + stageId + '\',\'' + ctaLesson.id + '\')">' + ctaLabel + '</button>' +
+    '<button class="btn-stage-cta" onclick="startLessonSessionByKey(' + JSON.stringify(ctaLesson.key) + ')">' + ctaLabel + '</button>' +
     wordStatsHtml +
     '<div class="divider"><span>Lekcje</span></div>' +
-    '<div class="stage-lessons">' + lessonsHtml + '</div>' +
-    '<div class="divider"><span>Co umiesz po tym etapie</span></div>' +
-    '<ul class="cando-list">' + candoHtml + '</ul>' +
-    '<div class="stage-next-hint">' + stage.nextStageText + '</div>';
+    '<div class="stage-lessons">' + lessonsHtml + '</div>';
 
   document.getElementById('stages-list').style.display = 'none';
   document.getElementById('stage-detail').style.display = 'block';
@@ -1178,8 +1156,8 @@ function init() {
 }
 
 window.renderStages = renderStages;
-window.renderStageDetail = renderStageDetail;
-window.startLessonSession = startLessonSession;
+window.renderSegmentDetail = renderSegmentDetail;
+window.startLessonSessionByKey = startLessonSessionByKey;
 window.qzNext = qzNext;
 window.startCustomSession = startCustomSession;
 window.startDailySession = startDailySession;
