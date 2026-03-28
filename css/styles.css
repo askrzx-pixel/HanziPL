@@ -24,6 +24,8 @@
   html,body{background:#1e1a14;}
   .scr.on{background:#1e1a14;}
   .front{background:var(--paper2);}
+  /* Keep card back dark — --ink flips to cream in dark mode, breaking contrast */
+  .back{background:#2a2218;border-color:#3d3528;}
 }
 
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -366,10 +368,10 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .session-stage-card.compact .session-stage-next{display:none;}
 
 /* ── FLASHCARD ── */
-.fcwrap{perspective:1200px;margin:0 auto 20px;max-width:480px;height:260px;cursor:pointer;}
-.fc{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .58s cubic-bezier(.4,0,.2,1);}
+.fcwrap{-webkit-perspective:1200px;perspective:1200px;margin:0 auto 20px;max-width:480px;height:260px;cursor:pointer;}
+.fc{width:100%;height:100%;position:relative;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;transition:transform .58s cubic-bezier(.4,0,.2,1);}
 .fc.flip{transform:rotateY(180deg);}
-.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
+.face{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
 .front{background:var(--paper2);border:2px solid var(--border2);box-shadow:var(--shadow-lg);}
 .front::before{content:'';position:absolute;inset:7px;border:1px solid var(--border);border-radius:12px;pointer-events:none;}
 .back{background:var(--ink);border:2px solid var(--ink2);transform:rotateY(180deg);box-shadow:var(--shadow-lg);}
@@ -377,8 +379,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .front .fhint{font-family:Inter,sans-serif;font-size:.62rem;font-weight:500;color:var(--border2);margin-top:14px;letter-spacing:.7px;text-transform:uppercase;}
 .back .bhz{font-family:'Noto Sans SC',sans-serif;font-size:4rem;font-weight:700;color:var(--paper);line-height:1.05;margin-bottom:6px;}
 .back .bpy{font-family:Inter,sans-serif;font-style:italic;font-size:1.05rem;font-weight:500;color:var(--gold2);margin-bottom:10px;}
-.back .btr{font-family:Inter,sans-serif;font-size:1.15rem;font-weight:600;color:rgba(242,232,213,.92);opacity:1;text-align:center;line-height:1.4;max-width:90%;}
-@media(prefers-color-scheme:dark){.back .btr{color:#4E3B2A;opacity:1;}}
+.back .btr{font-family:Inter,sans-serif;font-size:1.15rem;font-weight:600;color:rgba(242,232,213,1);opacity:1;text-align:center;line-height:1.4;max-width:90%;}
 
 /* SRS answer buttons */
 .srs-btns{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:7px;max-width:480px;margin:0 auto;}
