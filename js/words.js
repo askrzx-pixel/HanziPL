@@ -1,2 +1,14638 @@
 // vocabulary dataset — do not add logic here
-const WORDS = [{"id":"w0001","hanzi":"我","pinyin":"wǒ","pl":"ja","sourceLesson":"lekcja_przedstawianie","levelApprox":"starter","topic":"tozsamosc_i_ludzie","subtopic":"zaimki osobowe","type":"word","tags":["zaimek","osoba"]},{"id":"w0002","hanzi":"叫","pinyin":"jiào","pl":"nazywać się, wołać","sourceLesson":"lekcja_przedstawianie","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"przedstawianie się","type":"word","tags":["czasownik","imię"]},{"id":"w0003","hanzi":"李月","pinyin":"Lǐ Yuè","pl":"Li Yue (imię)","sourceLesson":"第二课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"imię chińskie","type":"proper_noun","tags":["imię","chińskie"]},{"id":"w0004","hanzi":"你","pinyin":"nǐ","pl":"ty","sourceLesson":"lekcja_przedstawianie","levelApprox":"starter","topic":"tozsamosc_i_ludzie","subtopic":"zaimki osobowe","type":"word","tags":["zaimek","osoba"]},{"id":"w0005","hanzi":"什么","pinyin":"shénme","pl":"co, jaki","sourceLesson":"lekcja_przedstawianie","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"pytania ogólne","type":"word","tags":["pytanie","zaimek pytający"]},{"id":"w0006","hanzi":"名字","pinyin":"míngzi","pl":"imię, nazwa","sourceLesson":"lekcja_przedstawianie","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"dane osobowe","type":"word","tags":["imię","tożsamość"]},{"id":"w0007","hanzi":"是","pinyin":"shì","pl":"być, to jest","sourceLesson":"lekcja_przedstawianie","levelApprox":"starter","topic":"rozmowa_i_frazy","subtopic":"łącznik","type":"word","tags":["czasownik","kopula"]},{"id":"w0008","hanzi":"老师","pinyin":"lǎoshī","pl":"nauczyciel","sourceLesson":"第二课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"role w szkole","type":"word","tags":["zawód","edukacja"]},{"id":"w0009","hanzi":"学生","pinyin":"xuésheng","pl":"uczeń, student","sourceLesson":"第二课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"role w szkole","type":"word","tags":["edukacja","osoba"]},{"id":"w0010","hanzi":"哪国人","pinyin":"nǎ guó rén","pl":"jakiej narodowości","sourceLesson":"第三课","levelApprox":"HSK2","topic":"kraje_i_jezyki","subtopic":"narodowość","type":"phrase","tags":["pytanie","narodowość"]},{"id":"w0011","hanzi":"波兰人","pinyin":"Bōlán rén","pl":"Polak/Polka","sourceLesson":"第三课","levelApprox":"proper_noun","topic":"kraje_i_jezyki","subtopic":"narodowość","type":"proper_noun","tags":["narodowość","Polska"]},{"id":"w0012","hanzi":"美国人","pinyin":"Měiguó rén","pl":"Amerykanin/Amerykanka","sourceLesson":"第三课","levelApprox":"proper_noun","topic":"kraje_i_jezyki","subtopic":"narodowość","type":"proper_noun","tags":["narodowość","USA"]},{"id":"w0013","hanzi":"他","pinyin":"tā","pl":"on","sourceLesson":"lekcja_ja_i_inni","levelApprox":"starter","topic":"tozsamosc_i_ludzie","subtopic":"zaimki osobowe","type":"word","tags":["zaimek","osoba"]},{"id":"w0014","hanzi":"中国人","pinyin":"Zhōngguó rén","pl":"Chińczyk/Chinka","sourceLesson":"第三课","levelApprox":"proper_noun","topic":"kraje_i_jezyki","subtopic":"narodowość","type":"proper_noun","tags":["narodowość","Chiny"]},{"id":"w0015","hanzi":"谁","pinyin":"shéi","pl":"kto","sourceLesson":"第二课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"pytania o osoby","type":"word","tags":["pytanie","zaimek pytający"]},{"id":"w0016","hanzi":"同学","pinyin":"tóngxué","pl":"kolega/koleżanka z klasy","sourceLesson":"第二课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"relacje szkolne","type":"word","tags":["edukacja","relacje"]},{"id":"w0017","hanzi":"朋友","pinyin":"péngyou","pl":"przyjaciel","sourceLesson":"第二课","levelApprox":"HSK1","topic":"rodzina_i_relacje","subtopic":"znajomi i przyjaciele","type":"word","tags":["relacje","przyjaciel"]},{"id":"w0018","hanzi":"美国","pinyin":"Měiguó","pl":"USA, Ameryka","sourceLesson":"第三课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"kraje","type":"proper_noun","tags":["kraj","USA"]},{"id":"w0019","hanzi":"波兰","pinyin":"Bōlán","pl":"Polska","sourceLesson":"第三课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"kraje","type":"proper_noun","tags":["kraj","Polska"]},{"id":"w0020","hanzi":"中国","pinyin":"Zhōngguó","pl":"Chiny","sourceLesson":"第三课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"kraje","type":"proper_noun","tags":["kraj","Chiny"]},{"id":"w0021","hanzi":"英国","pinyin":"Yīngguó","pl":"Wielka Brytania","sourceLesson":"第三课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"kraje","type":"proper_noun","tags":["kraj","Wielka Brytania"]},{"id":"w0022","hanzi":"的","pinyin":"de","pl":"partykuła przynależności","sourceLesson":"第四课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"partykuły gramatyczne","type":"word","tags":["partykuła","gramatyka"]},{"id":"w0023","hanzi":"她","pinyin":"tā","pl":"ona","sourceLesson":"lekcja_ja_i_inni","levelApprox":"starter","topic":"tozsamosc_i_ludzie","subtopic":"zaimki osobowe","type":"word","tags":["zaimek","osoba"]},{"id":"w0024","hanzi":"狗","pinyin":"gǒu","pl":"pies","sourceLesson":"第四课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"zwierzęta","type":"word","tags":["zwierzę","pies"]},{"id":"w0025","hanzi":"猫","pinyin":"māo","pl":"kot","sourceLesson":"第四课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"zwierzęta","type":"word","tags":["zwierzę","kot"],"measureWord":{"hanzi":"只","pinyin":"zhī","exampleHanzi":"一只猫","examplePinyin":"yī zhī māo","examplePolish":"jeden kot"}},{"id":"w0026","hanzi":"它","pinyin":"tā","pl":"ono (rzecz/zwierzę)","sourceLesson":"第四课","levelApprox":"HSK2","topic":"tozsamosc_i_ludzie","subtopic":"zaimki osobowe","type":"word","tags":["zaimek","rzecz","zwierzę"]},{"id":"w0027","hanzi":"这","pinyin":"zhè","pl":"to, ten, ta","sourceLesson":"第四课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"zaimki wskazujące","type":"word","tags":["zaimek wskazujący","blisko"]},{"id":"w0028","hanzi":"那","pinyin":"nà","pl":"tamto, tamten, tamta","sourceLesson":"第四课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"zaimki wskazujące","type":"word","tags":["zaimek wskazujący","daleko"]},{"id":"w0029","hanzi":"也","pinyin":"yě","pl":"też, także","sourceLesson":"第六课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"przysłówki","type":"word","tags":["przysłówek","też"]},{"id":"w0030","hanzi":"不","pinyin":"bù","pl":"nie, nie jest","sourceLesson":"第六课","levelApprox":"starter","topic":"rozmowa_i_frazy","subtopic":"negacja","type":"word","tags":["negacja","przysłówek"]},{"id":"w0031","hanzi":"对","pinyin":"duì","pl":"poprawny, tak (potwierdzenie)","sourceLesson":"第四课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"potwierdzenie i zaprzeczenie","type":"word","tags":["potwierdzenie","przymiotnik"]},{"id":"w0032","hanzi":"可爱","pinyin":"kě'ài","pl":"uroczy, słodki","sourceLesson":"第四课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"cechy wyglądu","type":"word","tags":["przymiotnik","opis"]},{"id":"w0033","hanzi":"吗","pinyin":"ma","pl":"partykuła pytająca","sourceLesson":"第六课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"partykuły gramatyczne","type":"word","tags":["partykuła","pytanie"]},{"id":"w0034","hanzi":"呢","pinyin":"ne","pl":"a co z...? partykuła pytająca","sourceLesson":"第四课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"partykuły gramatyczne","type":"word","tags":["partykuła","pytanie"]},{"id":"w0035","hanzi":"日本","pinyin":"Rìběn","pl":"Japonia","sourceLesson":"第四课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"kraje","type":"proper_noun","tags":["kraj","Japonia"]},{"id":"w0036","hanzi":"日本人","pinyin":"Rìběn rén","pl":"Japończyk/Japonka","sourceLesson":"第四课","levelApprox":"proper_noun","topic":"kraje_i_jezyki","subtopic":"narodowość","type":"proper_noun","tags":["narodowość","Japonia"]},{"id":"w0037","hanzi":"法国","pinyin":"Fǎguó","pl":"Francja","sourceLesson":"第四课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"kraje","type":"proper_noun","tags":["kraj","Francja"]},{"id":"w0038","hanzi":"法国人","pinyin":"Fǎguó rén","pl":"Francuz/Francuzka","sourceLesson":"第四课","levelApprox":"proper_noun","topic":"kraje_i_jezyki","subtopic":"narodowość","type":"proper_noun","tags":["narodowość","Francja"]},{"id":"w0039","hanzi":"德国","pinyin":"Déguó","pl":"Niemcy","sourceLesson":"第四课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"kraje","type":"proper_noun","tags":["kraj","Niemcy"]},{"id":"w0040","hanzi":"德国人","pinyin":"Déguó rén","pl":"Niemiec/Niemka","sourceLesson":"第四课","levelApprox":"proper_noun","topic":"kraje_i_jezyki","subtopic":"narodowość","type":"proper_noun","tags":["narodowość","Niemcy"]},{"id":"w0041","hanzi":"俄罗斯","pinyin":"Éluósī","pl":"Rosja","sourceLesson":"第四课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"kraje","type":"proper_noun","tags":["kraj","Rosja"]},{"id":"w0042","hanzi":"俄罗斯人","pinyin":"Éluósī rén","pl":"Rosjanin/Rosjanka","sourceLesson":"第四课","levelApprox":"proper_noun","topic":"kraje_i_jezyki","subtopic":"narodowość","type":"proper_noun","tags":["narodowość","Rosja"]},{"id":"w0043","hanzi":"韩国","pinyin":"Hánguó","pl":"Korea Południowa","sourceLesson":"第四课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"kraje","type":"proper_noun","tags":["kraj","Korea"]},{"id":"w0044","hanzi":"韩国人","pinyin":"Hánguó rén","pl":"Koreańczyk/Koreanka","sourceLesson":"第四课","levelApprox":"proper_noun","topic":"kraje_i_jezyki","subtopic":"narodowość","type":"proper_noun","tags":["narodowość","Korea"]},{"id":"w0045","hanzi":"哪","pinyin":"nǎ","pl":"który, które (pytanie)","sourceLesson":"第四课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"pytania ogólne","type":"word","tags":["pytanie","zaimek pytający"]},{"id":"w0046","hanzi":"现在","pinyin":"xiànzài","pl":"teraz, obecnie","sourceLesson":"第五课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"czas teraźniejszy","type":"word","tags":["czas","przysłówek"]},{"id":"w0047","hanzi":"几","pinyin":"jǐ","pl":"ile (małe liczby), kilka","sourceLesson":"第五课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"pytania o liczby","type":"word","tags":["liczba","pytanie"]},{"id":"w0048","hanzi":"点","pinyin":"diǎn","pl":"godzina (liczebnik)","sourceLesson":"第五课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"godziny","type":"word","tags":["czas","godzina"]},{"id":"w0049","hanzi":"分","pinyin":"fēn","pl":"minuta; fen (moneta)","sourceLesson":"第五课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"minuty","type":"word","tags":["czas","minuta"]},{"id":"w0050","hanzi":"半","pinyin":"bàn","pl":"pół, połowa","sourceLesson":"第五课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"godziny","type":"word","tags":["czas","liczba"]},{"id":"w0051","hanzi":"上午","pinyin":"shàngwǔ","pl":"rano, przed południem","sourceLesson":"第五课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"word","tags":["pora dnia","rano"]},{"id":"w0052","hanzi":"下午","pinyin":"xiàwǔ","pl":"popołudnie","sourceLesson":"第五课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"word","tags":["pora dnia","popołudnie"]},{"id":"w0053","hanzi":"晚上","pinyin":"wǎnshang","pl":"wieczór","sourceLesson":"第五课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"word","tags":["pora dnia","wieczór"]},{"id":"w0054","hanzi":"中午","pinyin":"zhōngwǔ","pl":"południe","sourceLesson":"第五课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"word","tags":["pora dnia","południe"]},{"id":"w0055","hanzi":"早上","pinyin":"zǎoshang","pl":"wczesny ranek","sourceLesson":"第五课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"word","tags":["pora dnia","ranek"]},{"id":"w0056","hanzi":"吃","pinyin":"chī","pl":"jeść","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"czynności związane z jedzeniem","type":"word","tags":["czasownik","jedzenie"]},{"id":"w0057","hanzi":"饭","pinyin":"fàn","pl":"ryż, posiłek","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"posiłki","type":"word","tags":["jedzenie","ryż"]},{"id":"w0058","hanzi":"早饭","pinyin":"zǎofàn","pl":"śniadanie","sourceLesson":"第五课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"posiłki","type":"word","tags":["posiłek","śniadanie"]},{"id":"w0059","hanzi":"午饭","pinyin":"wǔfàn","pl":"obiad","sourceLesson":"第五课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"posiłki","type":"word","tags":["posiłek","obiad"]},{"id":"w0060","hanzi":"晚饭","pinyin":"wǎnfàn","pl":"kolacja","sourceLesson":"第五课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"posiłki","type":"word","tags":["posiłek","kolacja"]},{"id":"w0061","hanzi":"睡觉","pinyin":"shuìjiào","pl":"spać","sourceLesson":"第五课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"czynności dnia codziennego","type":"word","tags":["czasownik","sen"]},{"id":"w0062","hanzi":"起床","pinyin":"qǐchuáng","pl":"wstawać z łóżka","sourceLesson":"第五课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"czynności dnia codziennego","type":"word","tags":["czasownik","poranek"]},{"id":"w0063","hanzi":"上课","pinyin":"shàng kè","pl":"mieć lekcję, iść na zajęcia","sourceLesson":"第五课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"zajęcia szkolne","type":"phrase","tags":["edukacja","lekcja"]},{"id":"w0064","hanzi":"下课","pinyin":"xià kè","pl":"skończyć lekcję","sourceLesson":"第五课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"zajęcia szkolne","type":"phrase","tags":["edukacja","lekcja"]},{"id":"w0065","hanzi":"工作","pinyin":"gōngzuò","pl":"praca; pracować","sourceLesson":"第五课","levelApprox":"HSK1","topic":"praca_i_biuro","subtopic":"praca ogólnie","type":"word","tags":["praca","czasownik"]},{"id":"w0066","hanzi":"每天","pinyin":"měitiān","pl":"każdego dnia, codziennie","sourceLesson":"第五课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"częstotliwość","type":"word","tags":["czas","codziennie"]},{"id":"w0067","hanzi":"从","pinyin":"cóng","pl":"od, z (punkt wyjścia)","sourceLesson":"第五课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"przyimki","type":"word","tags":["przyimek","gramatyka"]},{"id":"w0068","hanzi":"到","pinyin":"dào","pl":"do, docierać","sourceLesson":"第五课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"przyimki","type":"word","tags":["przyimek","czasownik"]},{"id":"w0069","hanzi":"一","pinyin":"yī","pl":"jeden","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczby podstawowe","type":"word","tags":["liczba","1"]},{"id":"w0070","hanzi":"两","pinyin":"liǎng","pl":"dwa (przy rzeczowniku)","sourceLesson":"第七课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczby podstawowe","type":"word","tags":["liczba","2"]},{"id":"w0071","hanzi":"三","pinyin":"sān","pl":"trzy","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczby podstawowe","type":"word","tags":["liczba","3"]},{"id":"w0072","hanzi":"四","pinyin":"sì","pl":"cztery","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczby podstawowe","type":"word","tags":["liczba","4"]},{"id":"w0073","hanzi":"五","pinyin":"wǔ","pl":"pięć","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczby podstawowe","type":"word","tags":["liczba","5"]},{"id":"w0074","hanzi":"六","pinyin":"liù","pl":"sześć","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczby podstawowe","type":"word","tags":["liczba","6"]},{"id":"w0075","hanzi":"七","pinyin":"qī","pl":"siedem","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczby podstawowe","type":"word","tags":["liczba","7"]},{"id":"w0076","hanzi":"八","pinyin":"bā","pl":"osiem","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczby podstawowe","type":"word","tags":["liczba","8"]},{"id":"w0077","hanzi":"九","pinyin":"jiǔ","pl":"dziewięć","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczby podstawowe","type":"word","tags":["liczba","9"]},{"id":"w0078","hanzi":"十","pinyin":"shí","pl":"dziesięć","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczby podstawowe","type":"word","tags":["liczba","10"]},{"id":"w0079","hanzi":"零","pinyin":"líng","pl":"zero","sourceLesson":"第七课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczby podstawowe","type":"word","tags":["liczba","0"]},{"id":"w0080","hanzi":"多少","pinyin":"duōshao","pl":"ile (duże liczby)","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"pytania o ilość","type":"word","tags":["pytanie","ilość"]},{"id":"w0081","hanzi":"钱","pinyin":"qián","pl":"pieniądze","sourceLesson":"第六课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"pieniądze","type":"word","tags":["pieniądze","finanse"]},{"id":"w0082","hanzi":"块","pinyin":"kuài","pl":"yuan (potoczne)","sourceLesson":"第六课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"waluta","type":"word","tags":["pieniądze","yuan"]},{"id":"w0083","hanzi":"毛","pinyin":"máo","pl":"mao (10 fenów, potoczne)","sourceLesson":"第六课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"waluta","type":"word","tags":["pieniądze","moneta"]},{"id":"w0084","hanzi":"买","pinyin":"mǎi","pl":"kupować","sourceLesson":"第六课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"zakupy","type":"word","tags":["czasownik","zakupy"]},{"id":"w0085","hanzi":"卖","pinyin":"mài","pl":"sprzedawać","sourceLesson":"第六课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"zakupy","type":"word","tags":["czasownik","sprzedaż"]},{"id":"w0086","hanzi":"便宜","pinyin":"piányí","pl":"tani","sourceLesson":"第六课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"ceny","type":"word","tags":["przymiotnik","cena"]},{"id":"w0087","hanzi":"贵","pinyin":"guì","pl":"drogi (cena)","sourceLesson":"第六课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"ceny","type":"word","tags":["przymiotnik","cena"]},{"id":"w0088","hanzi":"好","pinyin":"hǎo","pl":"dobry, dobrze","sourceLesson":"第六课","levelApprox":"starter","topic":"emocje_i_oceny","subtopic":"oceny ogólne","type":"word","tags":["przymiotnik","ocena"]},{"id":"w0089","hanzi":"大","pinyin":"dà","pl":"duży","sourceLesson":"第六课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"rozmiar","type":"word","tags":["przymiotnik","rozmiar"]},{"id":"w0090","hanzi":"小","pinyin":"xiǎo","pl":"mały","sourceLesson":"第六课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"rozmiar","type":"word","tags":["przymiotnik","rozmiar"]},{"id":"w0091","hanzi":"新","pinyin":"xīn","pl":"nowy","sourceLesson":"第六课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"stan rzeczy","type":"word","tags":["przymiotnik","nowy"]},{"id":"w0092","hanzi":"旧","pinyin":"jiù","pl":"stary (używany)","sourceLesson":"第六课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"stan rzeczy","type":"word","tags":["przymiotnik","używany"]},{"id":"w0093","hanzi":"颜色","pinyin":"yánsè","pl":"kolor","sourceLesson":"第六课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"kolory","type":"word","tags":["kolor","opis"]},{"id":"w0094","hanzi":"红","pinyin":"hóng","pl":"czerwony","sourceLesson":"第六课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"kolory","type":"word","tags":["kolor","czerwony"]},{"id":"w0095","hanzi":"白","pinyin":"bái","pl":"biały","sourceLesson":"第六课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"kolory","type":"word","tags":["kolor","biały"]},{"id":"w0096","hanzi":"黑","pinyin":"hēi","pl":"czarny","sourceLesson":"第六课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"kolory","type":"word","tags":["kolor","czarny"]},{"id":"w0097","hanzi":"蓝","pinyin":"lán","pl":"niebieski","sourceLesson":"第六课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"kolory","type":"word","tags":["kolor","niebieski"]},{"id":"w0098","hanzi":"黄","pinyin":"huáng","pl":"żółty","sourceLesson":"第六课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"kolory","type":"word","tags":["kolor","żółty"]},{"id":"w0099","hanzi":"这个","pinyin":"zhège","pl":"ten, to (ten tutaj)","sourceLesson":"第四课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"zaimki wskazujące","type":"word","tags":["zaimek wskazujący","blisko"]},{"id":"w0100","hanzi":"那个","pinyin":"nàge","pl":"tamten, tamto","sourceLesson":"第四课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"zaimki wskazujące","type":"word","tags":["zaimek wskazujący","daleko"]},{"id":"w0101","hanzi":"件","pinyin":"jiàn","pl":"sztuka (ubranie)","sourceLesson":"第六课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["miernik","ubranie"]},{"id":"w0102","hanzi":"衣服","pinyin":"yīfu","pl":"ubranie, ciuchy","sourceLesson":"第六课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["ubranie","moda"]},{"id":"w0103","hanzi":"太","pinyin":"tài","pl":"zbyt, za bardzo","sourceLesson":"第六课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"stopniowanie","type":"word","tags":["przysłówek","stopień"]},{"id":"w0104","hanzi":"一点儿","pinyin":"yīdiǎnr","pl":"trochę, odrobinę","sourceLesson":"第六课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"ilość","type":"phrase","tags":["ilość","trochę"]},{"id":"w0105","hanzi":"还是","pinyin":"háishì","pl":"czy… czy…; nadal","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"spójniki","type":"word","tags":["spójnik","pytanie alternatywne"]},{"id":"w0106","hanzi":"或者","pinyin":"huòzhě","pl":"lub, albo","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"spójniki","type":"word","tags":["spójnik","alternatywa"]},{"id":"w0107","hanzi":"想","pinyin":"xiǎng","pl":"chcieć, myśleć","sourceLesson":"第九课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"pragnienia i myśli","type":"word","tags":["czasownik","chcieć"]},{"id":"w0108","hanzi":"喝","pinyin":"hē","pl":"pić","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"picie","type":"word","tags":["czasownik","picie"]},{"id":"w0109","hanzi":"茶","pinyin":"chá","pl":"herbata","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["napój","herbata"]},{"id":"w0110","hanzi":"咖啡","pinyin":"kāfēi","pl":"kawa","sourceLesson":"第十课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["napój","kawa"]},{"id":"w0111","hanzi":"水","pinyin":"shuǐ","pl":"woda","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["napój","woda"]},{"id":"w0112","hanzi":"果汁","pinyin":"guǒzhī","pl":"sok owocowy","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["napój","sok"]},{"id":"w0113","hanzi":"牛奶","pinyin":"niúnǎi","pl":"mleko","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["napój","mleko"]},{"id":"w0114","hanzi":"啤酒","pinyin":"píjiǔ","pl":"piwo","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["napój","alkohol"]},{"id":"w0115","hanzi":"可乐","pinyin":"kělè","pl":"cola","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["napój","cola"]},{"id":"w0116","hanzi":"一起","pinyin":"yīqǐ","pl":"razem","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"przysłówki","type":"word","tags":["przysłówek","razem"]},{"id":"w0117","hanzi":"去","pinyin":"qù","pl":"iść, jechać","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"przemieszczanie się","type":"word","tags":["czasownik","ruch"]},{"id":"w0118","hanzi":"来","pinyin":"lái","pl":"przychodzić, przyjeżdżać","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"przemieszczanie się","type":"word","tags":["czasownik","ruch"]},{"id":"w0119","hanzi":"吧","pinyin":"ba","pl":"partykuła sugestii/pewności","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"partykuły gramatyczne","type":"word","tags":["partykuła","sugestia"]},{"id":"w0120","hanzi":"好的","pinyin":"hǎo de","pl":"dobrze, okej","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"wyrażenia zgody","type":"phrase","tags":["zgoda","odpowiedź"]},{"id":"w0121","hanzi":"没关系","pinyin":"méi guānxi","pl":"nic nie szkodzi, nie ma problemu","sourceLesson":"lekcja_uprzejmosc","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"grzeczności","type":"phrase","tags":["grzeczność","odpowiedź"]},{"id":"w0122","hanzi":"对不起","pinyin":"duìbuqǐ","pl":"przepraszam","sourceLesson":"lekcja_uprzejmosc","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"grzeczności","type":"phrase","tags":["grzeczność","przepraszam"]},{"id":"w0123","hanzi":"没有","pinyin":"méiyǒu","pl":"nie mieć, nie ma","sourceLesson":"第六课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"negacja","type":"word","tags":["negacja","posiadanie"]},{"id":"w0124","hanzi":"有","pinyin":"yǒu","pl":"mieć, jest","sourceLesson":"第六课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"posiadanie","type":"word","tags":["czasownik","posiadanie"]},{"id":"w0125","hanzi":"点菜","pinyin":"diǎncài","pl":"zamawiać danie","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"restauracja","type":"phrase","tags":["restauracja","zamawianie"]},{"id":"w0126","hanzi":"服务员","pinyin":"fúwùyuán","pl":"kelner/kelnerka","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"praca_i_biuro","subtopic":"zawody","type":"word","tags":["zawód","restauracja"]},{"id":"w0127","hanzi":"菜单","pinyin":"càidān","pl":"menu","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"restauracja","type":"word","tags":["restauracja","menu"]},{"id":"w0128","hanzi":"好吃","pinyin":"hǎochī","pl":"smaczny","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"smak","type":"word","tags":["przymiotnik","smak"]},{"id":"w0129","hanzi":"不客气","pinyin":"bù kèqi","pl":"nie ma za co","sourceLesson":"lekcja_uprzejmosc","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"grzeczności","type":"phrase","tags":["grzeczność","odpowiedź"]},{"id":"w0130","hanzi":"谢谢","pinyin":"xièxie","pl":"dziękuję","sourceLesson":"lekcja_uprzejmosc","levelApprox":"starter","topic":"rozmowa_i_frazy","subtopic":"grzeczności","type":"phrase","tags":["grzeczność","dziękuję"]},{"id":"w0131","hanzi":"再见","pinyin":"zàijiàn","pl":"do widzenia","sourceLesson":"lekcja_powitania","levelApprox":"starter","topic":"rozmowa_i_frazy","subtopic":"pozdrowienia","type":"phrase","tags":["pożegnanie","grzeczność"]},{"id":"w0132","hanzi":"你好","pinyin":"nǐ hǎo","pl":"cześć, dzień dobry","sourceLesson":"lekcja_powitania","levelApprox":"starter","topic":"rozmowa_i_frazy","subtopic":"pozdrowienia","type":"phrase","tags":["powitanie","grzeczność"]},{"id":"w0133","hanzi":"请","pinyin":"qǐng","pl":"proszę, zapraszać","sourceLesson":"lekcja_uprzejmosc","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"grzeczności","type":"word","tags":["grzeczność","proszę"]},{"id":"w0134","hanzi":"坐","pinyin":"zuò","pl":"siedzieć, siadać","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"czynności dnia codziennego","type":"word","tags":["czasownik","siedzieć"]},{"id":"w0135","hanzi":"等","pinyin":"děng","pl":"czekać","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"czynności dnia codziennego","type":"word","tags":["czasownik","czekać"]},{"id":"w0136","hanzi":"多","pinyin":"duō","pl":"dużo, wiele","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"ilość","type":"word","tags":["ilość","dużo"]},{"id":"w0137","hanzi":"少","pinyin":"shǎo","pl":"mało, niewiele","sourceLesson":"第八课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"ilość","type":"word","tags":["ilość","mało"]},{"id":"w0138","hanzi":"辣","pinyin":"là","pl":"ostry (smak)","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"smak","type":"word","tags":["przymiotnik","smak","ostry"]},{"id":"w0139","hanzi":"甜","pinyin":"tián","pl":"słodki","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"smak","type":"word","tags":["przymiotnik","smak","słodki"]},{"id":"w0140","hanzi":"咸","pinyin":"xián","pl":"słony","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"jedzenie_i_picie","subtopic":"smak","type":"word","tags":["przymiotnik","smak","słony"]},{"id":"w0141","hanzi":"酸","pinyin":"suān","pl":"kwaśny","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"jedzenie_i_picie","subtopic":"smak","type":"word","tags":["przymiotnik","smak","kwaśny"]},{"id":"w0142","hanzi":"苦","pinyin":"kǔ","pl":"gorzki","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"jedzenie_i_picie","subtopic":"smak","type":"word","tags":["przymiotnik","smak","gorzki"]},{"id":"w0143","hanzi":"面条","pinyin":"miàntiáo","pl":"makaron","sourceLesson":"第十课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"potrawy","type":"word","tags":["jedzenie","makaron"]},{"id":"w0144","hanzi":"米饭","pinyin":"mǐfàn","pl":"gotowany ryż","sourceLesson":"第十课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"potrawy","type":"word","tags":["jedzenie","ryż"]},{"id":"w0145","hanzi":"饺子","pinyin":"jiǎozi","pl":"pierogi chińskie","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"potrawy","type":"word","tags":["jedzenie","pierogi"]},{"id":"w0146","hanzi":"包子","pinyin":"bāozi","pl":"bułeczka z nadzieniem","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"potrawy","type":"word","tags":["jedzenie","bułeczka"]},{"id":"w0147","hanzi":"鱼","pinyin":"yú","pl":"ryba","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"składniki","type":"word","tags":["jedzenie","ryba"]},{"id":"w0148","hanzi":"肉","pinyin":"ròu","pl":"mięso","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"składniki","type":"word","tags":["jedzenie","mięso"]},{"id":"w0149","hanzi":"鸡肉","pinyin":"jīròu","pl":"kurczak","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"składniki","type":"word","tags":["jedzenie","drób"]},{"id":"w0150","hanzi":"猪肉","pinyin":"zhūròu","pl":"wieprzowina","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"składniki","type":"word","tags":["jedzenie","wieprzowina"]},{"id":"w0151","hanzi":"牛肉","pinyin":"niúròu","pl":"wołowina","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"składniki","type":"word","tags":["jedzenie","wołowina"]},{"id":"w0152","hanzi":"蔬菜","pinyin":"shūcài","pl":"warzywa","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"składniki","type":"word","tags":["jedzenie","warzywa"]},{"id":"w0153","hanzi":"水果","pinyin":"shuǐguǒ","pl":"owoce","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["jedzenie","owoce"]},{"id":"w0154","hanzi":"苹果","pinyin":"píngguǒ","pl":"jabłko","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["jedzenie","jabłko"]},{"id":"w0155","hanzi":"香蕉","pinyin":"xiāngjiāo","pl":"banan","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["jedzenie","banan"]},{"id":"w0156","hanzi":"橙子","pinyin":"chéngzi","pl":"pomarańcza","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["jedzenie","pomarańcza"]},{"id":"w0157","hanzi":"西瓜","pinyin":"xīguā","pl":"arbuz","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["jedzenie","arbuz"]},{"id":"w0158","hanzi":"葡萄","pinyin":"pútao","pl":"winogrona","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["jedzenie","winogrona"]},{"id":"w0159","hanzi":"草莓","pinyin":"cǎoméi","pl":"truskawka","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["jedzenie","truskawka"]},{"id":"w0160","hanzi":"桃子","pinyin":"táozi","pl":"brzoskwinia","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["jedzenie","brzoskwinia"]},{"id":"w0161","hanzi":"梨","pinyin":"lí","pl":"gruszka","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["jedzenie","gruszka"]},{"id":"w0162","hanzi":"厨房","pinyin":"chúfáng","pl":"kuchnia","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"dom_i_przestrzen","subtopic":"pomieszczenia","type":"word","tags":["dom","kuchnia"]},{"id":"w0163","hanzi":"冰箱","pinyin":"bīngxiāng","pl":"lodówka","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"dom_i_przestrzen","subtopic":"sprzęt domowy","type":"word","tags":["dom","lodówka"]},{"id":"w0164","hanzi":"锅","pinyin":"guō","pl":"garnek, wok","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"jedzenie_i_picie","subtopic":"naczynia kuchenne","type":"word","tags":["kuchnia","garnek"]},{"id":"w0165","hanzi":"碗","pinyin":"wǎn","pl":"miska, miseczka","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"naczynia","type":"word","tags":["naczynie","miska"]},{"id":"w0166","hanzi":"筷子","pinyin":"kuàizi","pl":"pałeczki","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"naczynia","type":"word","tags":["sztućce","pałeczki"]},{"id":"w0167","hanzi":"盘子","pinyin":"pánzi","pl":"talerz","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"naczynia","type":"word","tags":["naczynie","talerz"]},{"id":"w0168","hanzi":"杯子","pinyin":"bēizi","pl":"kubek, szklanka","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"naczynia","type":"word","tags":["naczynie","kubek"]},{"id":"w0169","hanzi":"勺子","pinyin":"sháozi","pl":"łyżka","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"jedzenie_i_picie","subtopic":"naczynia","type":"word","tags":["sztućce","łyżka"]},{"id":"w0170","hanzi":"叉子","pinyin":"chāzi","pl":"widelec","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"jedzenie_i_picie","subtopic":"naczynia","type":"word","tags":["sztućce","widelec"]},{"id":"w0171","hanzi":"刀","pinyin":"dāo","pl":"nóż","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"naczynia","type":"word","tags":["sztućce","nóż"]},{"id":"w0172","hanzi":"超市","pinyin":"chāoshì","pl":"supermarket","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"sklepy i usługi","type":"word","tags":["sklep","supermarket"]},{"id":"w0173","hanzi":"市场","pinyin":"shìchǎng","pl":"rynek, targ","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"sklepy i usługi","type":"word","tags":["sklep","targ"]},{"id":"w0174","hanzi":"商店","pinyin":"shāngdiàn","pl":"sklep","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"sklepy i usługi","type":"word","tags":["sklep","handel"]},{"id":"w0175","hanzi":"来","pinyin":"lái","pl":"przychodzić","sourceLesson":"第七课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"ruch i przemieszczanie","type":"word","tags":["czasownik","ruch","podstawowe"]},{"id":"w0176","hanzi":"学校","pinyin":"xuéxiào","pl":"szkoła","sourceLesson":"第七课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"miejsca nauki","type":"word","tags":["szkoła","miejsce","nauka"]},{"id":"w0177","hanzi":"北京","pinyin":"Běijīng","pl":"Pekin","sourceLesson":"第七课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"miasta i stolice","type":"proper_noun","tags":["miasto","chiny","geografia"]},{"id":"w0178","hanzi":"华沙","pinyin":"Huáshā","pl":"Warszawa","sourceLesson":"第七课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"miasta i stolice","type":"proper_noun","tags":["miasto","polska","geografia"]},{"id":"w0179","hanzi":"回家","pinyin":"huí jiā","pl":"wracać do domu","sourceLesson":"第七课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"powrót do domu","type":"phrase","tags":["ruch","dom","codzienność"]},{"id":"w0180","hanzi":"看","pinyin":"kàn","pl":"patrzeć, czytać (oglądać)","sourceLesson":"第七课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"percepcja i czytanie","type":"word","tags":["czasownik","wzrok","czytanie"]},{"id":"w0181","hanzi":"想","pinyin":"xiǎng","pl":"chcieć, myśleć, tęsknić","sourceLesson":"第九课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"pragnienia i myśli","type":"word","tags":["czasownik","emocje","pragnienie"]},{"id":"w0182","hanzi":"要","pinyin":"yào","pl":"chcieć, potrzebować","sourceLesson":"第九课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"czasowniki modalne","type":"word","tags":["modalny","pragnienie","podstawowe"]},{"id":"w0183","hanzi":"不想","pinyin":"bù xiǎng","pl":"nie chcieć","sourceLesson":"第九课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"czasowniki modalne","type":"phrase","tags":["przeczenie","modalny","pragnienie"]},{"id":"w0184","hanzi":"喝咖啡","pinyin":"hē kāfēi","pl":"pić kawę","sourceLesson":"第八课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"napoje i picie","type":"phrase","tags":["napój","kawa","czynność"]},{"id":"w0185","hanzi":"吃","pinyin":"chī","pl":"jeść","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"spożywanie posiłków","type":"word","tags":["jedzenie","czasownik","podstawowe"]},{"id":"w0186","hanzi":"我要","pinyin":"wǒ yào","pl":"ja chcę","sourceLesson":"第八课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"wyrażanie pragnień","type":"phrase","tags":["pragnienie","rozmowa","podstawowe"]},{"id":"w0187","hanzi":"看书","pinyin":"kàn shū","pl":"czytać książkę","sourceLesson":"第八课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"nauka i czytanie","type":"phrase","tags":["czytanie","książka","nauka"]},{"id":"w0188","hanzi":"朋友家","pinyin":"péngyou jiā","pl":"dom przyjaciela","sourceLesson":"第八课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"miejsca zamieszkania","type":"phrase","tags":["dom","przyjaciel","miejsce"]},{"id":"w0189","hanzi":"爸爸妈妈","pinyin":"bàba māma","pl":"rodzice","sourceLesson":"第八课","levelApprox":"HSK1","topic":"rodzina_i_relacje","subtopic":"rodzice i opiekunowie","type":"word","tags":["rodzina","rodzice","podstawowe"]},{"id":"w0190","hanzi":"不要","pinyin":"bú yào","pl":"nie chcieć; nie rób!","sourceLesson":"第九课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"zakazy i przeczenia","type":"phrase","tags":["przeczenie","rozkaz","modalny"]},{"id":"w0191","hanzi":"带书去","pinyin":"dài shū qù","pl":"zabrać książkę","sourceLesson":"第八课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"noszenie i przynoszenie","type":"phrase","tags":["książka","ruch","czynność"]},{"id":"w0192","hanzi":"不用","pinyin":"bú yòng","pl":"nie trzeba","sourceLesson":"第八课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"czasowniki modalne","type":"phrase","tags":["przeczenie","modalny","gramatyka"]},{"id":"w0193","hanzi":"带","pinyin":"dài","pl":"zabrać, przynieść","sourceLesson":"第八课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"noszenie i przynoszenie","type":"word","tags":["czasownik","ruch","czynność"]},{"id":"w0194","hanzi":"他家","pinyin":"tā jiā","pl":"jego dom/rodzina","sourceLesson":"第八课","levelApprox":"HSK1","topic":"rodzina_i_relacje","subtopic":"dom i rodzina","type":"phrase","tags":["dom","rodzina","zaimek"]},{"id":"w0195","hanzi":"吃饭","pinyin":"chī fàn","pl":"jeść posiłek","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"spożywanie posiłków","type":"phrase","tags":["jedzenie","posiłek","codzienność"]},{"id":"w0196","hanzi":"米饭","pinyin":"mǐfàn","pl":"gotowany ryż","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"produkty zbożowe","type":"word","tags":["jedzenie","ryż","azjatyckie"]},{"id":"w0197","hanzi":"土","pinyin":"tǔ","pl":"ziemia (skrót od ziemniaki)","sourceLesson":"第八课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"warzywa i produkty","type":"word","tags":["warzywo","skrót","jedzenie"]},{"id":"w0198","hanzi":"面包","pinyin":"miànbāo","pl":"chleb","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"pieczywo i produkty zbożowe","type":"word","tags":["jedzenie","chleb","pieczywo"]},{"id":"w0199","hanzi":"面条","pinyin":"miàntiáo","pl":"makaron","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"produkty zbożowe","type":"word","tags":["jedzenie","makaron","azjatyckie"]},{"id":"w0200","hanzi":"饺","pinyin":"jiǎo","pl":"pierogi (część słowa)","sourceLesson":"第八课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"potrawy tradycyjne","type":"word","tags":["jedzenie","pierogi","azjatyckie"]},{"id":"w0201","hanzi":"包","pinyin":"bāo","pl":"bułka, opakowanie","sourceLesson":"第八课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"pieczywo i opakowania","type":"word","tags":["jedzenie","pieczywo","opakowanie"]},{"id":"w0202","hanzi":"蔬菜","pinyin":"shūcài","pl":"warzywa","sourceLesson":"第八课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"warzywa","type":"word","tags":["jedzenie","warzywa"]},{"id":"w0203","hanzi":"上午","pinyin":"shàngwǔ","pl":"przedpołudnie","sourceLesson":"第八课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"word","tags":["czas","pora dnia","przedpołudnie"]},{"id":"w0204","hanzi":"中午","pinyin":"zhōngwǔ","pl":"południe","sourceLesson":"第八课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"word","tags":["czas","pora dnia","południe"]},{"id":"w0205","hanzi":"下午","pinyin":"xiàwǔ","pl":"popołudnie","sourceLesson":"第八课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"word","tags":["czas","pora dnia","popołudnie"]},{"id":"w0206","hanzi":"商店","pinyin":"shāngdiàn","pl":"sklep","sourceLesson":"第八课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"miejsca handlowe","type":"word","tags":["sklep","miasto","zakupy"]},{"id":"w0207","hanzi":"买","pinyin":"mǎi","pl":"kupować","sourceLesson":"第八课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"zakupy","type":"word","tags":["czasownik","zakupy","kupować"]},{"id":"w0208","hanzi":"咖啡","pinyin":"kāfēi","pl":"kawa","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["napój","kawa","jedzenie"]},{"id":"w0209","hanzi":"买土","pinyin":"mǎi tǔ","pl":"kupować ziemniaki","sourceLesson":"第八课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"zakupy spożywcze","type":"phrase","tags":["zakupy","warzywa","ziemniaki","fraza kursowa"]},{"id":"w0210","hanzi":"饭店","pinyin":"fàndiàn","pl":"restauracja, hotel","sourceLesson":"第八课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"miejsca gastronomiczne i noclegowe","type":"word","tags":["restauracja","hotel","miasto"]},{"id":"w0211","hanzi":"不去","pinyin":"bù qù","pl":"nie iść","sourceLesson":"第八课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"negacja ruchu","type":"phrase","tags":["negacja","ruch","czasownik"]},{"id":"w0212","hanzi":"喝","pinyin":"hē","pl":"pić","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"picie","type":"word","tags":["czasownik","pić","napój"]},{"id":"w0213","hanzi":"喝茶","pinyin":"hē chá","pl":"pić herbatę","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"picie herbaty","type":"phrase","tags":["herbata","pić","napój"]},{"id":"w0214","hanzi":"茶","pinyin":"chá","pl":"herbata","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["herbata","napój","jedzenie"]},{"id":"w0215","hanzi":"意大利","pinyin":"Yìdàlì","pl":"Włochy","sourceLesson":"第八课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"kraj europejski","type":"proper_noun","tags":["kraj","Europa","Włochy"]},{"id":"w0216","hanzi":"绿茶","pinyin":"lǜchá","pl":"zielona herbata","sourceLesson":"第八课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"rodzaje herbaty","type":"word","tags":["herbata","napój","zielona herbata"]},{"id":"w0217","hanzi":"红茶","pinyin":"hóngchá","pl":"czarna herbata","sourceLesson":"第八课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"rodzaje herbaty","type":"word","tags":["herbata","napój","czarna herbata"]},{"id":"w0218","hanzi":"奶茶","pinyin":"nǎichá","pl":"herbata z mlekiem","sourceLesson":"第八课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"rodzaje herbaty","type":"word","tags":["herbata","napój","mleko"]},{"id":"w0219","hanzi":"抹茶","pinyin":"mǒchá","pl":"herbata matcha","sourceLesson":"第八课","levelApprox":"HSK3plus","topic":"jedzenie_i_picie","subtopic":"rodzaje herbaty","type":"word","tags":["herbata","matcha","napój"]},{"id":"w0220","hanzi":"杯","pinyin":"bēi","pl":"filiżanka, szklanka","sourceLesson":"第八课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"naczynia i miary","type":"word","tags":["klasyfikator","naczynie","filiżanka"]},{"id":"w0221","hanzi":"钱","pinyin":"qián","pl":"pieniądze","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"pieniądze","type":"word","tags":["pieniądze","waluta","finanse"]},{"id":"w0222","hanzi":"一杯","pinyin":"yī bēi","pl":"jedna szklanka/filiżanka","sourceLesson":"第二课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"miary napojów","type":"phrase","tags":["klasyfikator","naczynie","ilość"]},{"id":"w0223","hanzi":"这杯","pinyin":"zhè bēi","pl":"ta szklanka","sourceLesson":"第八课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"wskazywanie naczyń","type":"phrase","tags":["wskazywanie","naczynie","zaimek wskazujący"]},{"id":"w0224","hanzi":"那杯","pinyin":"nà bēi","pl":"tamta szklanka","sourceLesson":"第八课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"wskazywanie naczyń","type":"phrase","tags":["wskazywanie","naczynie","zaimek wskazujący"]},{"id":"w0225","hanzi":"元","pinyin":"yuán","pl":"juan (waluta)","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"waluta chińska","type":"word","tags":["waluta","juan","pieniądze"]},{"id":"w0226","hanzi":"块","pinyin":"kuài","pl":"kawałek; juan (potocznie)","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"waluta chińska potoczna","type":"word","tags":["waluta","juan","potocznie","klasyfikator"]},{"id":"w0227","hanzi":"角","pinyin":"jiǎo","pl":"jiao (0,1 juana)","sourceLesson":"第八课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"waluta chińska","type":"word","tags":["waluta","jiao","pieniądze"]},{"id":"w0228","hanzi":"分","pinyin":"fēn","pl":"fen (0,01 juana), minuta","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"waluta i czas","type":"word","tags":["waluta","fen","minuta","czas"]},{"id":"w0229","hanzi":"九分","pinyin":"jiǔ fēn","pl":"dziewięć fenów","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"waluta chińska","type":"phrase","tags":["waluta","liczba","fen"]},{"id":"w0230","hanzi":"九","pinyin":"jiǔ","pl":"dziewięć","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczby 1-10","type":"word","tags":["liczba","cyfra","dziewięć"]},{"id":"w0231","hanzi":"九块","pinyin":"jiǔ kuài","pl":"dziewięć juanów","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"waluta chińska","type":"phrase","tags":["waluta","liczba","juan"]},{"id":"w0232","hanzi":"呢","pinyin":"ne","pl":"a ty? (partykuła)","sourceLesson":"第九课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"partykuły pytające","type":"word","tags":["partykuła","pytanie","gramatyka"]},{"id":"w0233","hanzi":"小猫","pinyin":"xiǎo māo","pl":"kotek, mały kot","sourceLesson":"第九课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"zwierzęta domowe","type":"word","tags":["zwierzę","kot","pieszczotliwe"]},{"id":"w0234","hanzi":"桌","pinyin":"zhuō","pl":"stół","sourceLesson":"第九课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"meble","type":"word","tags":["meble","dom","stół"]},{"id":"w0235","hanzi":"上","pinyin":"shàng","pl":"góra, na","sourceLesson":"第九课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"kierunki i położenie","type":"word","tags":["kierunek","położenie","przyimek"]},{"id":"w0236","hanzi":"面","pinyin":"miàn","pl":"strona, twarz, makaron","sourceLesson":"第九课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"strony i kierunki","type":"word","tags":["strona","twarz","makaron","kierunek"]},{"id":"w0237","hanzi":"在","pinyin":"zài","pl":"być (gdzieś), w, na","sourceLesson":"第九课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"lokalizacja","type":"word","tags":["lokalizacja","być","przyimek"]},{"id":"w0238","hanzi":"哪儿","pinyin":"nǎr","pl":"gdzie","sourceLesson":"第九课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"pytania o miejsce","type":"word","tags":["pytanie","gdzie","zaimek pytajny"]},{"id":"w0239","hanzi":"椅","pinyin":"yǐ","pl":"krzesło","sourceLesson":"第九课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"meble","type":"word","tags":["meble","dom","krzesło"]},{"id":"w0240","hanzi":"小狗","pinyin":"xiǎo gǒu","pl":"piesek, mały pies","sourceLesson":"第九课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"zwierzęta domowe","type":"word","tags":["zwierzę","pies","pieszczotliwe"]},{"id":"w0241","hanzi":"下","pinyin":"xià","pl":"dół, pod","sourceLesson":"第九课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"kierunki i położenie","type":"word","tags":["kierunek","położenie","pod"]},{"id":"w0242","hanzi":"只","pinyin":"zhǐ","pl":"tylko","sourceLesson":"第九课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"partykuły ograniczające","type":"word","tags":["partykuła","tylko","ograniczenie"]},{"id":"w0243","hanzi":"大猫","pinyin":"dà māo","pl":"duży kot","sourceLesson":"第九课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"zwierzęta domowe","type":"phrase","tags":["zwierzę","kot","duży"]},{"id":"w0244","hanzi":"张","pinyin":"zhāng","pl":"klasyfikator dla płaskich przedmiotów","sourceLesson":"第九课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"klasyfikatory","type":"word","tags":["klasyfikator","gramatyka","płaskie przedmioty"]},{"id":"w0245","hanzi":"大狗","pinyin":"dà gǒu","pl":"duży pies","sourceLesson":"第九课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"zwierzęta domowe","type":"phrase","tags":["zwierzę","pies","duży"]},{"id":"w0246","hanzi":"工作","pinyin":"gōngzuò","pl":"praca, pracować","sourceLesson":"第九课","levelApprox":"HSK1","topic":"praca_i_biuro","subtopic":"praca","type":"word","tags":["praca","pracować","czasownik"]},{"id":"w0247","hanzi":"医院","pinyin":"yīyuàn","pl":"szpital","sourceLesson":"第九课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"placówki medyczne","type":"word","tags":["szpital","zdrowie","miasto"]},{"id":"w0248","hanzi":"电","pinyin":"diàn","pl":"elektryczność, prąd","sourceLesson":"第十课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"elektryczność","type":"word","tags":["elektryczność","prąd","dom"]},{"id":"w0249","hanzi":"脑","pinyin":"nǎo","pl":"mózg","sourceLesson":"第十课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","mózg","głowa"]},{"id":"w0250","hanzi":"一台","pinyin":"yī tái","pl":"jeden (komputer/sprzęt)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikatory urządzeń","type":"phrase","tags":["klasyfikator","urządzenie","ilość"]},{"id":"w0251","hanzi":"电脑","pinyin":"diànnǎo","pl":"komputer","sourceLesson":"第十课","levelApprox":"HSK1","topic":"praca_i_biuro","subtopic":"sprzęt elektroniczny","type":"word","tags":["komputer","technologia","biuro"]},{"id":"w0252","hanzi":"两台","pinyin":"liǎng tái","pl":"dwa (komputery)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikatory urządzeń","type":"phrase","tags":["klasyfikator","urządzenie","dwa"]},{"id":"w0253","hanzi":"三台","pinyin":"sān tái","pl":"trzy (komputery)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikatory urządzeń","type":"phrase","tags":["klasyfikator","urządzenie","trzy"]},{"id":"w0254","hanzi":"台","pinyin":"tái","pl":"klasyfikator dla urządzeń","sourceLesson":"第十课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikatory","type":"word","tags":["klasyfikator","gramatyka","urządzenia"]},{"id":"w0255","hanzi":"有十台","pinyin":"yǒu shí tái","pl":"jest dziesięć (sztuk)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikatory urządzeń","type":"phrase","tags":["klasyfikator","ilość","posiadanie"]},{"id":"w0256","hanzi":"了","pinyin":"le","pl":"partykuła (czas przeszły/zmiana)","sourceLesson":"第十课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"partykuły aspektowe","type":"word","tags":["partykuła","gramatyka","czas przeszły"]},{"id":"w0257","hanzi":"里面","pinyin":"lǐmiàn","pl":"w środku, wewnątrz","sourceLesson":"第十课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"kierunki i położenie","type":"word","tags":["kierunek","w środku","położenie"]},{"id":"w0258","hanzi":"外面","pinyin":"wàimiàn","pl":"na zewnątrz","sourceLesson":"第十课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"kierunki i położenie","type":"word","tags":["kierunek","na zewnątrz","położenie"]},{"id":"w0259","hanzi":"前面","pinyin":"qiánmiàn","pl":"z przodu","sourceLesson":"第十课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"kierunki i położenie","type":"word","tags":["kierunek","z przodu","położenie"]},{"id":"w0260","hanzi":"后面","pinyin":"hòumiàn","pl":"z tyłu, za","sourceLesson":"第十课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"kierunki i położenie","type":"word","tags":["kierunek","z tyłu","położenie"]},{"id":"w0261","hanzi":"公司","pinyin":"gōngsī","pl":"firma, spółka","sourceLesson":"第十课","levelApprox":"HSK2","topic":"praca_i_biuro","subtopic":"miejsca pracy","type":"word","tags":["firma","biuro","praca"]},{"id":"w0262","hanzi":"可以","pinyin":"kěyǐ","pl":"móc, wolno","sourceLesson":"第十课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"czasowniki modalne","type":"word","tags":["modalny","pozwolenie","móc"]},{"id":"w0263","hanzi":"这儿","pinyin":"zhèr","pl":"tutaj","sourceLesson":"第十课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"wskazywanie miejsca","type":"word","tags":["tutaj","wskazywanie","miejsce"]},{"id":"w0264","hanzi":"抽烟","pinyin":"chōu yān","pl":"palić (papierosy)","sourceLesson":"第十课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"nawyki","type":"phrase","tags":["palenie","papierosy","czynność"]},{"id":"w0265","hanzi":"坐","pinyin":"zuò","pl":"siedzieć, jechać (środkiem transportu)","sourceLesson":"第十课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"pozycje i transport","type":"word","tags":["siedzieć","transport","czasownik"]},{"id":"w0266","hanzi":"坐下","pinyin":"zuò xia","pl":"usiąść","sourceLesson":"第十课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"polecenia","type":"phrase","tags":["usiąść","polecenie","ruch"]},{"id":"w0267","hanzi":"点","pinyin":"diǎn","pl":"punkt, godzina","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"godziny","type":"word","tags":["czas","godzina","punkt"]},{"id":"w0268","hanzi":"十一点二十分","pinyin":"shíyī diǎn èrshí fēn","pl":"jedenasta dwadzieścia","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"odczytywanie godzin","type":"phrase","tags":["czas","godzina","minuta"]},{"id":"w0269","hanzi":"十二点","pinyin":"shí'èr diǎn","pl":"dwunasta","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"odczytywanie godzin","type":"phrase","tags":["czas","godzina","południe"]},{"id":"w0270","hanzi":"三十分","pinyin":"sānshí fēn","pl":"trzydzieści minut, wpół","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"minuty","type":"phrase","tags":["czas","minuta","wpół"]},{"id":"w0271","hanzi":"时间","pinyin":"shíjiān","pl":"czas","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"czas ogólnie","type":"word","tags":["czas","ogólnie"]},{"id":"w0272","hanzi":"时候","pinyin":"shíhou","pl":"czas, kiedy","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"określenia czasu","type":"word","tags":["czas","kiedy","spójnik"]},{"id":"w0273","hanzi":"星期五","pinyin":"xīngqīwǔ","pl":"piątek","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"dni tygodnia","type":"word","tags":["dzień tygodnia","piątek","kalendarz"]},{"id":"w0274","hanzi":"我住","pinyin":"wǒ zhù","pl":"ja mieszkam","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"zamieszkanie","type":"phrase","tags":["mieszkać","dom","fraza kursowa"]},{"id":"w0275","hanzi":"两点","pinyin":"liǎng diǎn","pl":"druga (godzina)","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"odczytywanie godzin","type":"phrase","tags":["czas","godzina","dwa"]},{"id":"w0276","hanzi":"住","pinyin":"zhù","pl":"mieszkać","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"zamieszkanie","type":"word","tags":["mieszkać","dom","czasownik"]},{"id":"w0277","hanzi":"上海","pinyin":"Shànghǎi","pl":"Szanghaj","sourceLesson":"第十一课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"miasto chińskie","type":"proper_noun","tags":["miasto","Chiny","geografia"]},{"id":"w0278","hanzi":"二点","pinyin":"èr diǎn","pl":"druga (godzina)","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"odczytywanie godzin","type":"phrase","tags":["czas","godzina","dwa"]},{"id":"w0279","hanzi":"早上","pinyin":"zǎoshang","pl":"rano","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"word","tags":["rano","pora dnia","czas"]},{"id":"w0280","hanzi":"七点","pinyin":"qī diǎn","pl":"siódma","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"odczytywanie godzin","type":"phrase","tags":["czas","godzina","siódma"]},{"id":"w0281","hanzi":"九点","pinyin":"jiǔ diǎn","pl":"dziewiąta","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"odczytywanie godzin","type":"phrase","tags":["czas","godzina","dziewiąta"]},{"id":"w0282","hanzi":"晚上","pinyin":"wǎnshang","pl":"wieczór","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"word","tags":["wieczór","pora dnia","czas"]},{"id":"w0283","hanzi":"后","pinyin":"hòu","pl":"po, za (miejscem/czasem)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"określenia czasu i miejsca","type":"word","tags":["po","za","przyimek","czas"]},{"id":"w0284","hanzi":"三天","pinyin":"sān tiān","pl":"trzy dni","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"okresy czasu","type":"phrase","tags":["dzień","czas","trzy"]},{"id":"w0285","hanzi":"二月","pinyin":"èr yuè","pl":"luty","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"miesiące","type":"word","tags":["miesiąc","luty","kalendarz"]},{"id":"w0286","hanzi":"早饭","pinyin":"zǎofàn","pl":"śniadanie","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"posiłki","type":"word","tags":["śniadanie","posiłek","rano"]},{"id":"w0287","hanzi":"十点","pinyin":"shí diǎn","pl":"dziesiąta","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"odczytywanie godzin","type":"phrase","tags":["czas","godzina","dziesiąta"]},{"id":"w0288","hanzi":"睡觉","pinyin":"shuì jiào","pl":"spać","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"sen","type":"phrase","tags":["spać","sen","czynność"]},{"id":"w0289","hanzi":"去家","pinyin":"qù jiā","pl":"iść do domu","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"ruch i przemieszczanie","type":"phrase","tags":["dom","iść","fraza kursowa"]},{"id":"w0290","hanzi":"前","pinyin":"qián","pl":"przed, przód","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"określenia czasu i miejsca","type":"word","tags":["przed","przód","przyimek","czas"]},{"id":"w0291","hanzi":"年前","pinyin":"nián qián","pl":"lat temu","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"przeszłość","type":"phrase","tags":["rok","temu","przeszłość"]},{"id":"w0292","hanzi":"热","pinyin":"rè","pl":"gorący, gorąco","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"temperatura","type":"word","tags":["gorąco","temperatura","przymiotnik"]},{"id":"w0293","hanzi":"冷","pinyin":"lěng","pl":"zimny, zimno","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"temperatura","type":"word","tags":["zimno","temperatura","przymiotnik"]},{"id":"w0294","hanzi":"怎么样","pinyin":"zěnmeyàng","pl":"jak? co myślisz?","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"pytania ogólne","type":"phrase","tags":["pytanie","opinia","jak"]},{"id":"w0295","hanzi":"天","pinyin":"tiān","pl":"niebo, dzień","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"dzień i niebo","type":"word","tags":["dzień","niebo","czas"]},{"id":"w0296","hanzi":"你好","pinyin":"nǐ hǎo","pl":"cześć, dzień dobry","sourceLesson":"lekcja_powitania","levelApprox":"starter","topic":"rozmowa_i_frazy","subtopic":"powitania","type":"phrase","tags":["powitanie","cześć","starter"]},{"id":"w0297","hanzi":"太","pinyin":"tài","pl":"zbyt","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"stopniowanie","type":"word","tags":["zbyt","stopniowanie","przysłówek"]},{"id":"w0298","hanzi":"太热","pinyin":"tài rè","pl":"za gorąco","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"temperatura","type":"phrase","tags":["zbyt","gorąco","temperatura"]},{"id":"w0299","hanzi":"太冷","pinyin":"tài lěng","pl":"za zimno","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"temperatura","type":"phrase","tags":["zbyt","zimno","temperatura"]},{"id":"w0300","hanzi":"女","pinyin":"nǚ","pl":"kobieta, żeński","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"płeć","type":"word","tags":["kobieta","płeć","rodzina"]},{"id":"w0301","hanzi":"先生","pinyin":"xiānsheng","pl":"Pan, mąż","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"tytuły grzecznościowe","type":"word","tags":["pan","mąż","tytuł"]},{"id":"w0302","hanzi":"下雨","pinyin":"xià yǔ","pl":"padać deszcz","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"pogoda","type":"phrase","tags":["pogoda","deszcz","padać"]},{"id":"w0303","hanzi":"下雪","pinyin":"xià xuě","pl":"padać śnieg","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"pogoda","type":"phrase","tags":["pogoda","śnieg","padać"]},{"id":"w0304","hanzi":"身体","pinyin":"shēntǐ","pl":"ciało, zdrowie","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"ciało ogólnie","type":"word","tags":["ciało","zdrowie","ciało ludzkie"]},{"id":"w0305","hanzi":"好","pinyin":"hǎo","pl":"dobry, dobrze","sourceLesson":"第十二课","levelApprox":"starter","topic":"emocje_i_oceny","subtopic":"oceny ogólne","type":"word","tags":["dobry","dobrze","starter"]},{"id":"w0306","hanzi":"身材","pinyin":"shēncái","pl":"sylwetka, figura","sourceLesson":"第十二课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"sylwetka","type":"word","tags":["sylwetka","figura","wygląd"]},{"id":"w0307","hanzi":"一些","pinyin":"yīxiē","pl":"kilka, trochę","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"ilości nieokreślone","type":"word","tags":["kilka","trochę","ilość"]},{"id":"w0308","hanzi":"这些","pinyin":"zhèxiē","pl":"te (l. mn.)","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"zaimki wskazujące","type":"word","tags":["zaimek wskazujący","liczba mnoga","te"]},{"id":"w0309","hanzi":"那些","pinyin":"nàxiē","pl":"tamte (l. mn.)","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"zaimki wskazujące","type":"word","tags":["zaimek wskazujący","liczba mnoga","tamte"]},{"id":"w0310","hanzi":"哪些","pinyin":"nǎxiē","pl":"które (l. mn.)","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"zaimki pytajne","type":"word","tags":["zaimek pytajny","liczba mnoga","które"]},{"id":"w0311","hanzi":"为什么","pinyin":"wèishénme","pl":"dlaczego","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"pytania o powód","type":"word","tags":["dlaczego","pytanie","powód"]},{"id":"w0312","hanzi":"没","pinyin":"méi","pl":"nie (negacja dla 有)","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"negacja","type":"word","tags":["negacja","nie","gramatyka"]},{"id":"w0313","hanzi":"你学","pinyin":"nǐ xué","pl":"ty uczysz się","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"nauka","type":"phrase","tags":["uczyć się","szkoła","fraza kursowa"]},{"id":"w0314","hanzi":"因为","pinyin":"yīnwèi","pl":"ponieważ","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"spójniki przyczynowe","type":"word","tags":["ponieważ","przyczyna","spójnik"]},{"id":"w0315","hanzi":"所以","pinyin":"suǒyǐ","pl":"więc, dlatego","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"spójniki wynikowe","type":"word","tags":["więc","dlatego","spójnik"]},{"id":"w0316","hanzi":"好喝","pinyin":"hǎo hē","pl":"smaczny (napój)","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"ocena napojów","type":"phrase","tags":["smaczny","napój","ocena"]},{"id":"w0317","hanzi":"看电视","pinyin":"kàn diànshì","pl":"oglądać telewizję","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"rozrywka","type":"phrase","tags":["telewizja","oglądać","rozrywka"]},{"id":"w0318","hanzi":"睡","pinyin":"shuì","pl":"spać","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"sen","type":"word","tags":["spać","sen","czasownik"]},{"id":"w0319","hanzi":"小时","pinyin":"xiǎoshí","pl":"godzina","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"jednostki czasu","type":"word","tags":["godzina","czas","jednostka"]},{"id":"w0320","hanzi":"一天","pinyin":"yī tiān","pl":"jeden dzień","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"okresy czasu","type":"phrase","tags":["dzień","czas","jeden"]},{"id":"w0321","hanzi":"或者","pinyin":"huòzhě","pl":"lub, albo","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"spójniki alternatywne","type":"word","tags":["lub","albo","spójnik"]},{"id":"w0322","hanzi":"都","pinyin":"dōu","pl":"wszyscy, wszystko","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"zaimki ogólne","type":"word","tags":["wszyscy","wszystko","przysłówek"]},{"id":"w0323","hanzi":"给","pinyin":"gěi","pl":"dawać, dla","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"dawanie","type":"word","tags":["dawać","dla","czasownik"]},{"id":"w0324","hanzi":"给你","pinyin":"gěi nǐ","pl":"dla ciebie, dać ci","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"dawanie","type":"phrase","tags":["dawać","tobie","fraza"]},{"id":"w0325","hanzi":"打电话","pinyin":"dǎ diànhuà","pl":"dzwonić","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"komunikacja","type":"phrase","tags":["telefon","dzwonić","komunikacja"]},{"id":"w0326","hanzi":"吧","pinyin":"ba","pl":"partykuła (sugestia/pewność)","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"partykuły modalne","type":"word","tags":["partykuła","sugestia","gramatyka"]},{"id":"w0327","hanzi":"回家吧","pinyin":"huí jiā ba","pl":"chodźmy do domu","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"ruch i przemieszczanie","type":"phrase","tags":["dom","chodźmy","sugestia"]},{"id":"w0328","hanzi":"还是","pinyin":"háishì","pl":"czy… czy…; nadal","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"pytania alternatywne","type":"word","tags":["czy","nadal","spójnik"]},{"id":"w0329","hanzi":"问题","pinyin":"wèntí","pl":"pytanie, problem","sourceLesson":"第十三课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"pytania i problemy","type":"word","tags":["pytanie","problem","komunikacja"]},{"id":"w0330","hanzi":"已经","pinyin":"yǐjīng","pl":"już","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"aspekt dokonany","type":"word","tags":["już","czas","przysłówek"]},{"id":"w0331","hanzi":"看电影","pinyin":"kàn diànyǐng","pl":"oglądać film","sourceLesson":"第十四课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"rozrywka","type":"phrase","tags":["film","oglądać","rozrywka"]},{"id":"w0332","hanzi":"三杯","pinyin":"sān bēi","pl":"trzy filiżanki","sourceLesson":"第十四课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"miary napojów","type":"phrase","tags":["klasyfikator","naczynie","trzy"]},{"id":"w0333","hanzi":"电影","pinyin":"diànyǐng","pl":"film","sourceLesson":"第十四课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"rozrywka","type":"word","tags":["film","rozrywka","kino"]},{"id":"w0334","hanzi":"太好了","pinyin":"tài hǎo le","pl":"świetnie!","sourceLesson":"第十四课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"wykrzyknienia","type":"phrase","tags":["świetnie","wykrzyknik","ocena"]},{"id":"w0335","hanzi":"太漂亮","pinyin":"tài piàoliang","pl":"zbyt piękny","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"ocena wyglądu","type":"phrase","tags":["zbyt","piękny","wygląd"]},{"id":"w0336","hanzi":"冷多","pinyin":"lěng duō","pl":"dużo zimniej","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"porównania temperatury","type":"phrase","tags":["zimno","dużo","porównanie"]},{"id":"w0337","hanzi":"热多","pinyin":"rè duō","pl":"dużo cieplej","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"porównania temperatury","type":"phrase","tags":["ciepło","dużo","porównanie"]},{"id":"w0338","hanzi":"好多","pinyin":"hǎo duō","pl":"o wiele lepiej / dużo","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"stopniowanie","type":"phrase","tags":["dużo","lepiej","porównanie"]},{"id":"w0339","hanzi":"漂亮","pinyin":"piàoliang","pl":"ładny","sourceLesson":"第十四课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"ocena wyglądu","type":"word","tags":["ładny","piękny","wygląd"]},{"id":"w0340","hanzi":"极了","pinyin":"jí le","pl":"niezwykle, ekstremalnie","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"stopniowanie ekstremalne","type":"phrase","tags":["ekstremalnie","niezwykle","wzmocnienie"]},{"id":"w0341","hanzi":"好极了","pinyin":"hǎo jí le","pl":"doskonale!","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"wykrzyknienia","type":"phrase","tags":["doskonale","wykrzyknik","wzmocnienie"]},{"id":"w0342","hanzi":"生病","pinyin":"shēng bìng","pl":"zachorować","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"choroba","type":"phrase","tags":["choroba","zachorować","zdrowie"]},{"id":"w0343","hanzi":"东西","pinyin":"dōngxi","pl":"rzeczy, przedmioty","sourceLesson":"第十四课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"przedmioty","type":"word","tags":["rzeczy","przedmioty","ogólnie"]},{"id":"w0344","hanzi":"有点儿","pinyin":"yǒudiǎnr","pl":"trochę (negatywnie)","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"stopniowanie","type":"word","tags":["trochę","negatywne","przysłówek"]},{"id":"w0345","hanzi":"小","pinyin":"xiǎo","pl":"mały","sourceLesson":"第十四课","levelApprox":"starter","topic":"wyglad_i_opisy","subtopic":"rozmiar","type":"word","tags":["mały","rozmiar","starter"]},{"id":"w0346","hanzi":"看见","pinyin":"kànjiàn","pl":"widzieć, zobaczyć","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"percepcja","type":"word","tags":["widzieć","zobaczyć","percepcja"]},{"id":"w0347","hanzi":"这是","pinyin":"zhè shì","pl":"to jest","sourceLesson":"第十四课","levelApprox":"starter","topic":"rozmowa_i_frazy","subtopic":"wskazywanie","type":"phrase","tags":["to jest","wskazywanie","starter"]},{"id":"w0348","hanzi":"李老师","pinyin":"Lǐ lǎoshī","pl":"nauczyciel Li","sourceLesson":"第十四课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"tytuł i nazwisko","type":"proper_noun","tags":["nauczyciel","nazwisko","tytuł"]},{"id":"w0349","hanzi":"这件","pinyin":"zhè jiàn","pl":"ta (sztuka ubrania)","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"phrase","tags":["klasyfikator","ubranie","wskazywanie"]},{"id":"w0350","hanzi":"衣服","pinyin":"yīfu","pl":"ubranie","sourceLesson":"第十四课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["ubranie","wygląd","odzież"]},{"id":"w0351","hanzi":"啊","pinyin":"a","pl":"partykuła (podziw/potwierdzenie)","sourceLesson":"第十四课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"partykuły modalne","type":"word","tags":["partykuła","podziw","gramatyka"]},{"id":"w0352","hanzi":"兴","pinyin":"xìng","pl":"radość, zainteresowanie","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"emocje","type":"word","tags":["radość","zainteresowanie","emocja"]},{"id":"w0353","hanzi":"快乐","pinyin":"kuàilè","pl":"szczęśliwy","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"emocje","type":"word","tags":["szczęśliwy","radość","emocja"]},{"id":"w0354","hanzi":"坐火车","pinyin":"zuò huǒchē","pl":"jechać pociągiem","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"środki transportu","type":"phrase","tags":["pociąg","transport","podróż"]},{"id":"w0355","hanzi":"坐地铁","pinyin":"zuò dìtiě","pl":"jechać metrem","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"środki transportu","type":"phrase","tags":["metro","transport","miasto"]},{"id":"w0356","hanzi":"公共汽车","pinyin":"gōnggòng qìchē","pl":"autobus","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"środki transportu","type":"word","tags":["autobus","transport","miasto"]},{"id":"w0357","hanzi":"认识","pinyin":"rènshi","pl":"znać, poznać","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"tozsamosc_i_ludzie","subtopic":"znajomości","type":"word","tags":["znać","poznać","relacje"]},{"id":"w0358","hanzi":"坐飞机","pinyin":"zuò fēijī","pl":"lecieć samolotem","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"środki transportu","type":"phrase","tags":["samolot","transport","podróż"]},{"id":"w0359","hanzi":"出租车","pinyin":"chūzūchē","pl":"taksówka","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"środki transportu","type":"word","tags":["taksówka","transport","miasto"]},{"id":"w0360","hanzi":"电车","pinyin":"diànchē","pl":"tramwaj","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"środki transportu","type":"word","tags":["tramwaj","transport","miasto"]},{"id":"w0361","hanzi":"到","pinyin":"dào","pl":"dotrzeć","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"ruch i kierunek","type":"word","tags":["dotrzeć","przybyć","ruch"]},{"id":"w0362","hanzi":"一起","pinyin":"yīqǐ","pl":"razem","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"wspólne działanie","type":"word","tags":["razem","wspólnie","przysłówek"]},{"id":"w0363","hanzi":"听","pinyin":"tīng","pl":"słuchać","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"percepcja słuchowa","type":"word","tags":["słuchać","percepcja","czasownik"]},{"id":"w0364","hanzi":"音乐","pinyin":"yīnyuè","pl":"muzyka","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"rozrywka muzyczna","type":"word","tags":["muzyka","rozrywka","sztuka"]},{"id":"w0365","hanzi":"的话","pinyin":"de huà","pl":"jeśli… (warunek)","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"zdania warunkowe","type":"phrase","tags":["jeśli","warunek","gramatyka"]},{"id":"w0366","hanzi":"吃晚饭","pinyin":"chī wǎnfàn","pl":"jeść kolację","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"posiłki","type":"phrase","tags":["kolacja","jeść","posiłek"]},{"id":"w0367","hanzi":"听话","pinyin":"tīng huà","pl":"być posłusznym","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"posłuszeństwo","type":"phrase","tags":["posłuszny","słuchać","charakter"]},{"id":"w0368","hanzi":"听说","pinyin":"tīng shuō","pl":"słyszałem, że","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"źródła informacji","type":"phrase","tags":["słyszałem","informacja","fraza"]},{"id":"w0369","hanzi":"李先生","pinyin":"Lǐ xiānsheng","pl":"Pan Li","sourceLesson":"第十五课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"tytuł i nazwisko","type":"proper_noun","tags":["pan","nazwisko","tytuł"]},{"id":"w0370","hanzi":"王小姐","pinyin":"Wáng xiǎojiě","pl":"Panna Wang","sourceLesson":"第十五课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"tytuł i nazwisko","type":"proper_noun","tags":["panna","nazwisko","tytuł"]},{"id":"w0371","hanzi":"不是","pinyin":"bú shì","pl":"nie jest","sourceLesson":"第六课","levelApprox":"starter","topic":"rozmowa_i_frazy","subtopic":"negacja","type":"phrase","tags":["negacja","nie jest","starter"]},{"id":"w0372","hanzi":"去年","pinyin":"qùnián","pl":"w zeszłym roku","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"przeszłość","type":"word","tags":["zeszły rok","przeszłość","czas"]},{"id":"w0373","hanzi":"旅游","pinyin":"lǚyóu","pl":"podróżować","sourceLesson":"第十六课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"podróże","type":"word","tags":["podróżować","turystyka","wypoczynek"]},{"id":"w0374","hanzi":"旅","pinyin":"lǚ","pl":"podróż","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"podróże","type":"word","tags":["podróż","turystyka"]},{"id":"w0375","hanzi":"三十一","pinyin":"sānshíyī","pl":"trzydzieści jeden","sourceLesson":"第七课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczby powyżej 10","type":"word","tags":["liczba","trzydzieści jeden","cyfra"]},{"id":"w0376","hanzi":"但是","pinyin":"dànshì","pl":"ale","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"spójniki przeciwstawne","type":"word","tags":["ale","spójnik","przeciwstawność"]},{"id":"w0377","hanzi":"太太","pinyin":"tàitai","pl":"żona, Pani","sourceLesson":"第五课","levelApprox":"HSK2","topic":"rodzina_i_relacje","subtopic":"małżeństwo","type":"word","tags":["żona","pani","tytuł"]},{"id":"w0378","hanzi":"明年","pinyin":"míngnián","pl":"w przyszłym roku","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"przyszłość","type":"word","tags":["przyszły rok","przyszłość","czas"]},{"id":"w0379","hanzi":"觉得","pinyin":"juéde","pl":"uważać, czuć","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"opinie i odczucia","type":"word","tags":["uważać","czuć","opinia"]},{"id":"w0380","hanzi":"很漂亮","pinyin":"hěn piàoliang","pl":"bardzo ładny","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"ocena wyglądu","type":"phrase","tags":["ładny","bardzo","wygląd"]},{"id":"w0381","hanzi":"苹果","pinyin":"píngguǒ","pl":"jabłko","sourceLesson":"第十课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["owoc","jabłko","jedzenie"],"measureWord":{"hanzi":"个","pinyin":"gè","exampleHanzi":"一个苹果","examplePinyin":"yī gè píngguǒ","examplePolish":"jedno jabłko"}},{"id":"w0382","hanzi":"饭馆","pinyin":"fànguǎn","pl":"restauracja","sourceLesson":"第十课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"miejsca gastronomiczne","type":"word","tags":["restauracja","jedzenie","miasto"]},{"id":"w0383","hanzi":"也","pinyin":"yě","pl":"też, także","sourceLesson":"第六课","levelApprox":"starter","topic":"rozmowa_i_frazy","subtopic":"przysłówki łączące","type":"word","tags":["też","także","starter"]},{"id":"w0384","hanzi":"最","pinyin":"zuì","pl":"najbardziej, naj-","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"stopniowanie superlatywne","type":"word","tags":["najbardziej","stopień najwyższy","przysłówek"]},{"id":"w0385","hanzi":"更","pinyin":"gèng","pl":"jeszcze bardziej","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"stopniowanie komparatywne","type":"word","tags":["bardziej","porównanie","przysłówek"]},{"id":"w0386","hanzi":"最好","pinyin":"zuì hǎo","pl":"najlepszy","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"stopniowanie superlatywne","type":"phrase","tags":["najlepszy","stopień najwyższy","ocena"]},{"id":"w0387","hanzi":"更好","pinyin":"gèng hǎo","pl":"lepszy, jeszcze lepiej","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"stopniowanie komparatywne","type":"phrase","tags":["lepszy","porównanie","ocena"]},{"id":"w0388","hanzi":"更热","pinyin":"gèng rè","pl":"jeszcze cieplej","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"temperatura w porównaniu","type":"phrase","tags":["cieplej","porównanie","temperatura"]},{"id":"w0389","hanzi":"最大","pinyin":"zuì dà","pl":"największy","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"rozmiar superlatywny","type":"phrase","tags":["największy","rozmiar","stopień najwyższy"]},{"id":"w0390","hanzi":"更大","pinyin":"gèng dà","pl":"większy","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"rozmiar komparatywny","type":"phrase","tags":["większy","rozmiar","porównanie"]},{"id":"w0391","hanzi":"最小","pinyin":"zuì xiǎo","pl":"najmniejszy","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"rozmiar superlatywny","type":"phrase","tags":["najmniejszy","rozmiar","stopień najwyższy"]},{"id":"w0392","hanzi":"新","pinyin":"xīn","pl":"nowy","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"cechy przedmiotów","type":"word","tags":["nowy","przymiotnik","opis"]},{"id":"w0393","hanzi":"新年","pinyin":"xīnnián","pl":"Nowy Rok","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"święta","type":"word","tags":["Nowy Rok","święto","kalendarz"]},{"id":"w0394","hanzi":"新桌","pinyin":"xīn zhuō","pl":"nowy stół","sourceLesson":"第十七课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"meble","type":"phrase","tags":["nowy","stół","meble"]},{"id":"w0395","hanzi":"新椅","pinyin":"xīn yǐ","pl":"nowe krzesło","sourceLesson":"第十七课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"meble","type":"phrase","tags":["nowy","krzesło","meble"]},{"id":"w0396","hanzi":"运动","pinyin":"yùndòng","pl":"sport, ćwiczenie","sourceLesson":"第六课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"sport i aktywność","type":"word","tags":["sport","ćwiczenie","aktywność"]},{"id":"w0397","hanzi":"每天","pinyin":"měi tiān","pl":"każdego dnia, codziennie","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"częstotliwość","type":"phrase","tags":["codziennie","każdy dzień","częstotliwość"]},{"id":"w0398","hanzi":"不好","pinyin":"bù hǎo","pl":"niedobry, źle","sourceLesson":"第十七课","levelApprox":"starter","topic":"emocje_i_oceny","subtopic":"oceny ogólne","type":"phrase","tags":["niedobry","źle","negacja"]},{"id":"w0399","hanzi":"足球","pinyin":"zúqiú","pl":"piłka nożna","sourceLesson":"第六课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"sport","type":"word","tags":["piłka nożna","sport","aktywność"]},{"id":"w0400","hanzi":"足球比赛","pinyin":"zúqiú bǐsài","pl":"mecz piłkarski","sourceLesson":"第六课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"sport","type":"phrase","tags":["mecz","piłka nożna","zawody"]},{"id":"w0401","hanzi":"昨天晚上","pinyin":"zuótiān wǎnshang","pl":"wczorajszy wieczór","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"pora dnia / wczoraj","type":"phrase","tags":["czas","wczoraj","wieczór"]},{"id":"w0402","hanzi":"男朋友","pinyin":"nánpéngyou","pl":"chłopak, partner","sourceLesson":"第五课","levelApprox":"HSK2","topic":"rodzina_i_relacje","subtopic":"partner romantyczny","type":"word","tags":["związek","chłopak","relacje"]},{"id":"w0403","hanzi":"花","pinyin":"huā","pl":"kwiat; wydawać (pieniądze)","sourceLesson":"第六课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"rośliny / finanse","type":"word","tags":["kwiat","pieniądze","wydawać"],"measureWord":{"hanzi":"朵","pinyin":"duǒ","exampleHanzi":"一朵花","examplePinyin":"yī duǒ huā","examplePolish":"jeden kwiat"}},{"id":"w0404","hanzi":"一束花","pinyin":"yī shù huā","pl":"bukiet kwiatów","sourceLesson":"第六课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"bukiet kwiatów","type":"phrase","tags":["kwiat","bukiet","liczebnik"]},{"id":"w0405","hanzi":"一朵花","pinyin":"yī duǒ huā","pl":"jeden kwiat","sourceLesson":"第六课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"klasyfikator dla kwiatów","type":"phrase","tags":["kwiat","klasyfikator","liczebnik"]},{"id":"w0406","hanzi":"花钱","pinyin":"huā qián","pl":"wydawać pieniądze","sourceLesson":"第六课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"wydatki","type":"phrase","tags":["pieniądze","wydawać","finanse"]},{"id":"w0407","hanzi":"我花","pinyin":"wǒ huā","pl":"ja wydaję","sourceLesson":"第六课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"wydatki – forma osobowa","type":"phrase","tags":["pieniądze","wydawać","ja"]},{"id":"w0408","hanzi":"踢足球","pinyin":"tī zúqiú","pl":"grać w piłkę nożną","sourceLesson":"第六课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"sport","type":"phrase","tags":["sport","piłka nożna","aktywność"]},{"id":"w0409","hanzi":"老","pinyin":"lǎo","pl":"stary","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"wiek / cechy","type":"word","tags":["stary","wiek","przymiotnik"]},{"id":"w0410","hanzi":"旧","pinyin":"jiù","pl":"stary (przedmiot)","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"stan przedmiotu","type":"word","tags":["stary","przedmiot","przymiotnik"]},{"id":"w0411","hanzi":"房","pinyin":"fáng","pl":"pokój, dom","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"dom_i_przestrzen","subtopic":"pomieszczenie","type":"word","tags":["dom","pokój","budynek"]},{"id":"w0412","hanzi":"老城","pinyin":"lǎo chéng","pl":"stare miasto","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"dzielnica miasta","type":"phrase","tags":["miasto","stare miasto","miejsce"]},{"id":"w0413","hanzi":"老朋友","pinyin":"lǎo péngyou","pl":"stary przyjaciel","sourceLesson":"第五课","levelApprox":"HSK2","topic":"rodzina_i_relacje","subtopic":"przyjaciel","type":"phrase","tags":["przyjaciel","relacje","stary"]},{"id":"w0414","hanzi":"老同学","pinyin":"lǎo tóngxué","pl":"dawny kolega z klasy","sourceLesson":"第九课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"kolega szkolny","type":"phrase","tags":["szkoła","kolega","dawny"]},{"id":"w0415","hanzi":"旧书","pinyin":"jiù shū","pl":"stara książka","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"materiały szkolne","type":"phrase","tags":["książka","stary","przedmiot"]},{"id":"w0416","hanzi":"旧衣服","pinyin":"jiù yīfu","pl":"stare ubranie","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"odzież","type":"phrase","tags":["ubranie","stary","odzież"]},{"id":"w0417","hanzi":"旧电脑","pinyin":"jiù diànnǎo","pl":"stary komputer","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"elektronika","type":"phrase","tags":["komputer","stary","elektronika"]},{"id":"w0418","hanzi":"旧桌","pinyin":"jiù zhuō","pl":"stary stół","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"meble","type":"phrase","tags":["stół","stary","meble"]},{"id":"w0419","hanzi":"旧椅","pinyin":"jiù yǐ","pl":"stare krzesło","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"meble","type":"phrase","tags":["krzesło","stary","meble"]},{"id":"w0420","hanzi":"这里","pinyin":"zhèlǐ","pl":"tutaj","sourceLesson":"第八课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"lokalizacja","type":"word","tags":["miejsce","tutaj","wskazywanie"]},{"id":"w0421","hanzi":"个人","pinyin":"gè rén","pl":"osoba","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"osoba","type":"phrase","tags":["osoba","klasyfikator","ludzie"]},{"id":"w0422","hanzi":"十个","pinyin":"shí gè","pl":"dziesięć (sztuk)","sourceLesson":"第七课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczebnik z klasyfikatorem","type":"phrase","tags":["dziesięć","klasyfikator","liczba"]},{"id":"w0423","hanzi":"十","pinyin":"shí","pl":"dziesięć","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczba 10","type":"word","tags":["dziesięć","liczba","cyfra"]},{"id":"w0424","hanzi":"十个月","pinyin":"shí gè yuè","pl":"dziesięć miesięcy","sourceLesson":"第七课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"okresy czasu","type":"phrase","tags":["miesiąc","czas","dziesięć"]},{"id":"w0425","hanzi":"十年","pinyin":"shí nián","pl":"dziesięć lat","sourceLesson":"第七课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"okresy czasu","type":"phrase","tags":["rok","czas","dziesięć"]},{"id":"w0426","hanzi":"十多个","pinyin":"shí duō gè","pl":"ponad dziesięć","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"liczba przybliżona","type":"phrase","tags":["ponad","dziesięć","ilość"]},{"id":"w0427","hanzi":"多月","pinyin":"duō yuè","pl":"kilka miesięcy","sourceLesson":"第七课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"czas przybliżony","type":"phrase","tags":["miesiąc","kilka","czas"]},{"id":"w0428","hanzi":"三年","pinyin":"sān nián","pl":"trzy lata","sourceLesson":"第七课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"okresy czasu","type":"phrase","tags":["rok","trzy","czas"]},{"id":"w0429","hanzi":"多星期","pinyin":"duō xīngqī","pl":"kilka tygodni","sourceLesson":"第七课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"czas przybliżony","type":"phrase","tags":["tydzień","kilka","czas"]},{"id":"w0430","hanzi":"多个","pinyin":"duō gè","pl":"kilka (sztuk)","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"ilość nieokreślona","type":"phrase","tags":["kilka","klasyfikator","ilość"]},{"id":"w0431","hanzi":"病","pinyin":"bìng","pl":"choroba, chory","sourceLesson":"第二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"choroba","type":"word","tags":["choroba","zdrowie","chory"]},{"id":"w0432","hanzi":"我病","pinyin":"wǒ bìng","pl":"ja jestem chory","sourceLesson":"第二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"choroba – forma osobowa","type":"phrase","tags":["choroba","ja","zdrowie"]},{"id":"w0433","hanzi":"生","pinyin":"shēng","pl":"rodzić się, życie","sourceLesson":"第二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"narodziny / życie","type":"word","tags":["życie","rodzić","narodziny"]},{"id":"w0434","hanzi":"每","pinyin":"měi","pl":"każdy","sourceLesson":"第二课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"wyrażenia częstotliwości","type":"word","tags":["każdy","częstotliwość","zaimek"]},{"id":"w0435","hanzi":"每个","pinyin":"měi gè","pl":"każdy (sztuka)","sourceLesson":"第二课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"każdy z klasyfikatorem","type":"phrase","tags":["każdy","klasyfikator","ilość"]},{"id":"w0436","hanzi":"跑步","pinyin":"pǎo bù","pl":"biegać","sourceLesson":"第二课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"sport / aktywność fizyczna","type":"phrase","tags":["biegać","sport","aktywność"]},{"id":"w0437","hanzi":"起床","pinyin":"qǐ chuáng","pl":"wstawać z łóżka","sourceLesson":"第二课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"rutyna poranna","type":"phrase","tags":["wstawać","rano","łóżko"]},{"id":"w0438","hanzi":"还没","pinyin":"hái méi","pl":"jeszcze nie","sourceLesson":"第二课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"zaprzeczenie","type":"phrase","tags":["jeszcze nie","zaprzeczenie","gramatyka"]},{"id":"w0439","hanzi":"妹妹","pinyin":"mèimei","pl":"młodsza siostra","sourceLesson":"第五课","levelApprox":"HSK1","topic":"rodzina_i_relacje","subtopic":"rodzeństwo","type":"word","tags":["siostra","rodzina","rodzeństwo"]},{"id":"w0440","hanzi":"点要","pinyin":"diǎn yào","pl":"o (godzinie) chcę","sourceLesson":"第二课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"godzina / zamiar","type":"phrase","tags":["godzina","chcieć","czas"]},{"id":"w0441","hanzi":"星期六","pinyin":"xīngqīliù","pl":"sobota","sourceLesson":"第二课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"dni tygodnia","type":"word","tags":["sobota","tydzień","dzień"]},{"id":"w0442","hanzi":"每年","pinyin":"měi nián","pl":"każdego roku","sourceLesson":"第二课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"częstotliwość","type":"phrase","tags":["rok","każdy","częstotliwość"]},{"id":"w0443","hanzi":"每月","pinyin":"měi yuè","pl":"każdego miesiąca","sourceLesson":"第二课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"częstotliwość","type":"phrase","tags":["miesiąc","każdy","częstotliwość"]},{"id":"w0444","hanzi":"每星期","pinyin":"měi xīngqī","pl":"każdego tygodnia","sourceLesson":"第二课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"częstotliwość","type":"phrase","tags":["tydzień","każdy","częstotliwość"]},{"id":"w0445","hanzi":"药","pinyin":"yào","pl":"lekarstwo","sourceLesson":"第二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"leki","type":"word","tags":["lekarstwo","zdrowie","leki"]},{"id":"w0446","hanzi":"中药","pinyin":"zhōng yào","pl":"chińskie leki (ziołowe)","sourceLesson":"第二课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"medycyna chińska","type":"phrase","tags":["lekarstwo","chińskie","zioła"]},{"id":"w0447","hanzi":"西药","pinyin":"xī yào","pl":"zachodnie leki","sourceLesson":"第二课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"medycyna zachodnia","type":"phrase","tags":["lekarstwo","zachodnie","farmakologia"]},{"id":"w0448","hanzi":"吃药","pinyin":"chī yào","pl":"brać lekarstwo","sourceLesson":"第二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"przyjmowanie leków","type":"phrase","tags":["lekarstwo","brać","zdrowie"]},{"id":"w0449","hanzi":"喝药","pinyin":"hē yào","pl":"pić lekarstwo","sourceLesson":"第二课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"przyjmowanie leków","type":"phrase","tags":["lekarstwo","pić","zdrowie"]},{"id":"w0450","hanzi":"医生","pinyin":"yīshēng","pl":"lekarz","sourceLesson":"第二课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"zawód medyczny","type":"word","tags":["lekarz","zawód","zdrowie"]},{"id":"w0451","hanzi":"出院","pinyin":"chū yuàn","pl":"wychodzić ze szpitala","sourceLesson":"第二课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"szpital","type":"phrase","tags":["szpital","wychodzić","zdrowie"]},{"id":"w0452","hanzi":"下个星期","pinyin":"xià gè xīngqī","pl":"w przyszłym tygodniu","sourceLesson":"第二课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"przyszłość","type":"phrase","tags":["tydzień","przyszły","czas"]},{"id":"w0453","hanzi":"住院","pinyin":"zhù yuàn","pl":"leżeć w szpitalu","sourceLesson":"第二课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"szpital","type":"phrase","tags":["szpital","hospitalizacja","zdrowie"]},{"id":"w0454","hanzi":"他病","pinyin":"tā bìng","pl":"on jest chory","sourceLesson":"第二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"choroba – forma osobowa","type":"phrase","tags":["choroba","on","zdrowie"]},{"id":"w0455","hanzi":"一米","pinyin":"yī mǐ","pl":"jeden metr","sourceLesson":"第二课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"jednostki długości","type":"phrase","tags":["metr","długość","jednostka"]},{"id":"w0456","hanzi":"六","pinyin":"liù","pl":"sześć","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczba 6","type":"word","tags":["sześć","liczba","cyfra"]},{"id":"w0457","hanzi":"七五","pinyin":"qī wǔ","pl":"siedemdziesiąt pięć","sourceLesson":"第二课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczby dwucyfrowe","type":"phrase","tags":["siedemdziesiąt pięć","liczba","cyfra"]},{"id":"w0458","hanzi":"件","pinyin":"jiàn","pl":"klasyfikator dla ubrań","sourceLesson":"第二课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"klasyfikator odzieży","type":"word","tags":["klasyfikator","ubranie","gramatyka"]},{"id":"w0459","hanzi":"知道","pinyin":"zhīdào","pl":"wiedzieć","sourceLesson":"第二课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"wiedza","type":"word","tags":["wiedzieć","czasownik","komunikacja"]},{"id":"w0460","hanzi":"字","pinyin":"zì","pl":"znak, litera","sourceLesson":"第二课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"pismo","type":"word","tags":["znak","pismo","język"]},{"id":"w0461","hanzi":"意思","pinyin":"yìsi","pl":"znaczenie, sens","sourceLesson":"第二课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"znaczenie słowa","type":"word","tags":["znaczenie","sens","język"]},{"id":"w0462","hanzi":"休息","pinyin":"xiūxi","pl":"odpoczywać","sourceLesson":"第二课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"odpoczynek","type":"word","tags":["odpoczywać","czas wolny","aktywność"]},{"id":"w0463","hanzi":"一下","pinyin":"yīxià","pl":"chwilę, trochę (po czasowniku)","sourceLesson":"第二课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"modyfikator czasownika","type":"phrase","tags":["chwila","gramatyka","modyfikator"]},{"id":"w0464","hanzi":"星期天","pinyin":"xīngqītiān","pl":"niedziela","sourceLesson":"第二课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"dni tygodnia","type":"word","tags":["niedziela","tydzień","dzień"]},{"id":"w0465","hanzi":"开门","pinyin":"kāi mén","pl":"otwierać drzwi","sourceLesson":"第二课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"drzwi","type":"phrase","tags":["drzwi","otwierać","dom"]},{"id":"w0466","hanzi":"忙","pinyin":"máng","pl":"zajęty","sourceLesson":"第二课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"stan","type":"word","tags":["zajęty","stan","przymiotnik"]},{"id":"w0467","hanzi":"这么","pinyin":"zhème","pl":"tak (bardzo), w ten sposób","sourceLesson":"第二课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"stopień / sposób","type":"word","tags":["tak bardzo","sposób","przysłówek"]},{"id":"w0468","hanzi":"累","pinyin":"lèi","pl":"zmęczony","sourceLesson":"第二课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"zmęczenie","type":"word","tags":["zmęczony","stan","emocje"]},{"id":"w0469","hanzi":"太累","pinyin":"tài lèi","pl":"za bardzo zmęczony","sourceLesson":"第二课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"zmęczenie","type":"phrase","tags":["zmęczony","za bardzo","emocje"]},{"id":"w0470","hanzi":"学习","pinyin":"xuéxí","pl":"uczyć się, nauka","sourceLesson":"第二课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"nauka","type":"word","tags":["uczyć się","szkoła","nauka"]},{"id":"w0471","hanzi":"一块","pinyin":"yī kuài","pl":"jeden kawałek; jeden juan","sourceLesson":"第三课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"waluta / kawałek","type":"phrase","tags":["juan","waluta","kawałek"]},{"id":"w0472","hanzi":"蛋糕","pinyin":"dàngāo","pl":"tort, ciasto","sourceLesson":"第三课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"wypieki","type":"word","tags":["ciasto","tort","jedzenie"]},{"id":"w0473","hanzi":"一块钱","pinyin":"yī kuài qián","pl":"jeden juan","sourceLesson":"第三课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"waluta chińska","type":"phrase","tags":["juan","pieniądze","waluta"]},{"id":"w0474","hanzi":"披萨","pinyin":"pīsà","pl":"pizza","sourceLesson":"第三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"fast food","type":"word","tags":["pizza","jedzenie","kuchnia zachodnia"]},{"id":"w0475","hanzi":"送","pinyin":"sòng","pl":"dawać w prezencie, odprowadzać","sourceLesson":"第三课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"dawanie prezentu","type":"word","tags":["prezent","dawać","odprowadzać"]},{"id":"w0476","hanzi":"本书","pinyin":"běn shū","pl":"ta książka","sourceLesson":"第三课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"materiały szkolne","type":"phrase","tags":["książka","klasyfikator","szkoła"]},{"id":"w0477","hanzi":"手表","pinyin":"shǒubiǎo","pl":"zegarek","sourceLesson":"第三课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"akcesoria","type":"word","tags":["zegarek","akcesoria","czas"]},{"id":"w0478","hanzi":"机场","pinyin":"jīchǎng","pl":"lotnisko","sourceLesson":"第三课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"transport lotniczy","type":"word","tags":["lotnisko","transport","podróże"]},{"id":"w0479","hanzi":"女儿","pinyin":"nǚ'ér","pl":"córka","sourceLesson":"第三课","levelApprox":"HSK1","topic":"rodzina_i_relacje","subtopic":"dzieci","type":"word","tags":["córka","rodzina","dziecko"]},{"id":"w0480","hanzi":"外卖","pinyin":"wàimài","pl":"jedzenie na wynos","sourceLesson":"第三课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"dostawa jedzenia","type":"word","tags":["na wynos","dostawa","jedzenie"]},{"id":"w0481","hanzi":"报纸","pinyin":"bàozhǐ","pl":"gazeta","sourceLesson":"第三课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"media","type":"word","tags":["gazeta","media","czytanie"]},{"id":"w0482","hanzi":"牛奶","pinyin":"niúnǎi","pl":"mleko","sourceLesson":"第三课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["mleko","napój","jedzenie"]},{"id":"w0483","hanzi":"不好意思","pinyin":"bù hǎo yìsi","pl":"przepraszam, wstyd mi","sourceLesson":"lekcja_uprzejmosc","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"przeprosiny","type":"phrase","tags":["przepraszam","grzeczność","fraza"]},{"id":"w0484","hanzi":"问","pinyin":"wèn","pl":"pytać","sourceLesson":"第三课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"komunikacja","type":"word","tags":["pytać","komunikacja","czasownik"]},{"id":"w0485","hanzi":"厕所","pinyin":"cèsuǒ","pl":"toaleta","sourceLesson":"第三课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"pomieszczenia","type":"word","tags":["toaleta","łazienka","dom"]},{"id":"w0486","hanzi":"电视","pinyin":"diànshì","pl":"telewizja, telewizor","sourceLesson":"第三课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"media / rozrywka","type":"word","tags":["telewizja","media","elektronika"]},{"id":"w0487","hanzi":"作业","pinyin":"zuòyè","pl":"praca domowa","sourceLesson":"第三课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"zadania szkolne","type":"word","tags":["praca domowa","szkoła","zadanie"]},{"id":"w0488","hanzi":"旁边","pinyin":"pángbiān","pl":"obok, z boku","sourceLesson":"第三课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"lokalizacja","type":"word","tags":["obok","miejsce","lokalizacja"]},{"id":"w0489","hanzi":"电影院","pinyin":"diànyǐngyuàn","pl":"kino","sourceLesson":"第三课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"miejsca rozrywki","type":"word","tags":["kino","rozrywka","miejsce"]},{"id":"w0490","hanzi":"真","pinyin":"zhēn","pl":"naprawdę, prawdziwy","sourceLesson":"第三课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"intensyfikator","type":"word","tags":["naprawdę","prawdziwy","przysłówek"]},{"id":"w0491","hanzi":"真小","pinyin":"zhēn xiǎo","pl":"naprawdę mały","sourceLesson":"第三课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"rozmiar","type":"phrase","tags":["mały","naprawdę","opis"]},{"id":"w0492","hanzi":"真想","pinyin":"zhēn xiǎng","pl":"naprawdę chcę","sourceLesson":"第三课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"pragnienie","type":"phrase","tags":["chcieć","naprawdę","emocje"]},{"id":"w0493","hanzi":"真冷","pinyin":"zhēn lěng","pl":"naprawdę zimno","sourceLesson":"第三课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"temperatura","type":"phrase","tags":["zimno","naprawdę","pogoda"]},{"id":"w0494","hanzi":"讨厌","pinyin":"tǎoyàn","pl":"nie lubić, denerwować","sourceLesson":"第三课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"niechęć","type":"word","tags":["nie lubić","emocje","denerwować"]},{"id":"w0495","hanzi":"真热","pinyin":"zhēn rè","pl":"naprawdę gorąco","sourceLesson":"第三课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"temperatura","type":"phrase","tags":["gorąco","naprawdę","pogoda"]},{"id":"w0496","hanzi":"真的","pinyin":"zhēn de","pl":"naprawdę, serio","sourceLesson":"第三课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"potwierdzenie","type":"phrase","tags":["naprawdę","serio","fraza"]},{"id":"w0497","hanzi":"十月","pinyin":"shí yuè","pl":"październik","sourceLesson":"第四课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"miesiące roku","type":"word","tags":["październik","miesiąc","rok"]},{"id":"w0498","hanzi":"七号","pinyin":"qī hào","pl":"siódmego (dnia)","sourceLesson":"第四课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"data","type":"phrase","tags":["data","dzień","siódmy"]},{"id":"w0499","hanzi":"祝","pinyin":"zhù","pl":"życzyć","sourceLesson":"第四课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"życzenia","type":"word","tags":["życzyć","życzenia","fraza"]},{"id":"w0500","hanzi":"生日快乐","pinyin":"shēngrì kuàilè","pl":"wszystkiego najlepszego z okazji urodzin","sourceLesson":"lekcja_uprzejmosc","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"życzenia urodzinowe","type":"phrase","tags":["urodziny","życzenia","fraza"]},{"id":"w0501","hanzi":"帮","pinyin":"bāng","pl":"pomagać","sourceLesson":"第四课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"pomoc","type":"word","tags":["pomagać","pomoc","czasownik"]},{"id":"w0502","hanzi":"做作业","pinyin":"zuò zuòyè","pl":"odrabiać lekcje","sourceLesson":"第四课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"zadania szkolne","type":"phrase","tags":["praca domowa","odrabiać","szkoła"]},{"id":"w0503","hanzi":"一件","pinyin":"yī jiàn","pl":"jedna sztuka (ubrania)","sourceLesson":"第四课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"odzież – klasyfikator","type":"phrase","tags":["klasyfikator","ubranie","jedna"]},{"id":"w0504","hanzi":"帮助","pinyin":"bāngzhù","pl":"pomagać, pomoc","sourceLesson":"第四课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"pomoc","type":"word","tags":["pomoc","pomagać","czasownik"]},{"id":"w0505","hanzi":"乌克兰人","pinyin":"Wūkèlán rén","pl":"Ukrainiec/Ukrainka","sourceLesson":"第四课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"narodowość ukraińska","type":"proper_noun","tags":["Ukraina","narodowość","kraj"]},{"id":"w0506","hanzi":"贫穷","pinyin":"pínqióng","pl":"biedny, ubogi","sourceLesson":"第四课","levelApprox":"HSK3plus","topic":"wyglad_i_opisy","subtopic":"status społeczny","type":"word","tags":["biedny","ubogi","przymiotnik"]},{"id":"w0507","hanzi":"儿童","pinyin":"értóng","pl":"dzieci","sourceLesson":"第四课","levelApprox":"HSK3","topic":"tozsamosc_i_ludzie","subtopic":"dzieci","type":"word","tags":["dzieci","wiek","ludzie"]},{"id":"w0508","hanzi":"接电话","pinyin":"jiē diànhuà","pl":"odbierać telefon","sourceLesson":"第四课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"telefon","type":"phrase","tags":["telefon","odbierać","komunikacja"]},{"id":"w0509","hanzi":"不接","pinyin":"bù jiē","pl":"nie odbierać","sourceLesson":"第四课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"telefon","type":"phrase","tags":["telefon","nie odbierać","komunikacja"]},{"id":"w0510","hanzi":"电话","pinyin":"diànhuà","pl":"telefon","sourceLesson":"第四课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"telefon","type":"word","tags":["telefon","komunikacja","elektronika"]},{"id":"w0511","hanzi":"快点","pinyin":"kuài diǎn","pl":"szybciej","sourceLesson":"第四课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"polecenie","type":"phrase","tags":["szybciej","polecenie","fraza"]},{"id":"w0512","hanzi":"介绍","pinyin":"jièshào","pl":"przedstawiać, przedstawienie","sourceLesson":"第四课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"przedstawianie się","type":"word","tags":["przedstawiać","komunikacja","fraza"]},{"id":"w0513","hanzi":"我来","pinyin":"wǒ lái","pl":"ja przychodzę; ja to zrobię","sourceLesson":"第四课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"oferta pomocy","type":"phrase","tags":["ja","przychodzić","fraza"]},{"id":"w0514","hanzi":"接","pinyin":"jiē","pl":"odbierać, odbierać (kogoś)","sourceLesson":"第四课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"odbiór","type":"word","tags":["odbierać","czasownik","transport"]},{"id":"w0515","hanzi":"接儿","pinyin":"jiēr","pl":"odbiór (dziecka)","sourceLesson":"第四课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"odbiór dziecka","type":"phrase","tags":["dziecko","odbiór","codzienność"]},{"id":"w0516","hanzi":"车站","pinyin":"chēzhàn","pl":"przystanek, dworzec","sourceLesson":"第四课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"komunikacja miejska","type":"word","tags":["przystanek","dworzec","transport"]},{"id":"w0517","hanzi":"开始","pinyin":"kāishǐ","pl":"zaczynać","sourceLesson":"第四课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"rozpoczęcie","type":"word","tags":["zaczynać","czasownik","czynność"]},{"id":"w0518","hanzi":"上课","pinyin":"shàng kè","pl":"mieć lekcję","sourceLesson":"第四课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"zajęcia","type":"phrase","tags":["lekcja","szkoła","zajęcia"]},{"id":"w0519","hanzi":"上班","pinyin":"shàng bān","pl":"iść do pracy","sourceLesson":"第四课","levelApprox":"HSK2","topic":"praca_i_biuro","subtopic":"codzienna praca","type":"phrase","tags":["praca","iść do pracy","codzienność"]},{"id":"w0520","hanzi":"七杯","pinyin":"qī bēi","pl":"siedem filiżanek","sourceLesson":"第四课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"naczynia / ilość","type":"phrase","tags":["filiżanka","siedem","napój"]},{"id":"w0521","hanzi":"一千","pinyin":"yī qiān","pl":"tysiąc","sourceLesson":"第四课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"liczby większe","type":"phrase","tags":["tysiąc","liczba","cyfra"]},{"id":"w0522","hanzi":"考试","pinyin":"kǎoshì","pl":"egzamin","sourceLesson":"第五课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"egzaminy","type":"word","tags":["egzamin","szkoła","test"]},{"id":"w0523","hanzi":"准备","pinyin":"zhǔnbèi","pl":"przygotowywać się","sourceLesson":"第五课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"przygotowanie","type":"word","tags":["przygotowywać","czynność","planowanie"]},{"id":"w0524","hanzi":"考","pinyin":"kǎo","pl":"zdawać egzamin","sourceLesson":"第五课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"egzaminy","type":"word","tags":["egzamin","zdawać","szkoła"]},{"id":"w0525","hanzi":"历史","pinyin":"lìshǐ","pl":"historia","sourceLesson":"第五课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"przedmioty szkolne","type":"word","tags":["historia","przedmiot","szkoła"]},{"id":"w0526","hanzi":"晚饭","pinyin":"wǎnfàn","pl":"kolacja","sourceLesson":"第五课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"posiłki","type":"word","tags":["kolacja","posiłek","jedzenie"]},{"id":"w0527","hanzi":"就","pinyin":"jiù","pl":"właśnie","sourceLesson":"第五课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"partykuła","type":"word","tags":["właśnie","gramatyka","partykuła"]},{"id":"w0528","hanzi":"鱼","pinyin":"yú","pl":"ryba","sourceLesson":"第五课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"mięso / ryby","type":"word","tags":["ryba","jedzenie","mięso"]},{"id":"w0529","hanzi":"咖啡吧","pinyin":"kāfēi ba","pl":"kawiarnia; może kawę?","sourceLesson":"第五课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"kawiarnia","type":"phrase","tags":["kawiarnia","kawa","propozycja"]},{"id":"w0530","hanzi":"吃了饭","pinyin":"chī le fàn","pl":"po jedzeniu","sourceLesson":"第五课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"posiłek – aspekt dokonany","type":"phrase","tags":["jedzenie","po","aspekt"]},{"id":"w0531","hanzi":"回","pinyin":"huí","pl":"wracać","sourceLesson":"第五课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"ruch","type":"word","tags":["wracać","ruch","czasownik"]},{"id":"w0532","hanzi":"烤鱼","pinyin":"kǎo yú","pl":"pieczona ryba","sourceLesson":"第五课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"dania rybne","type":"phrase","tags":["ryba","pieczona","jedzenie"]},{"id":"w0533","hanzi":"电影吧","pinyin":"diànyǐng ba","pl":"chodźmy do kina","sourceLesson":"第五课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"propozycja","type":"phrase","tags":["kino","propozycja","rozrywka"]},{"id":"w0534","hanzi":"不吃","pinyin":"bù chī","pl":"nie jeść","sourceLesson":"第五课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"jedzenie – przeczenie","type":"phrase","tags":["nie","jeść","zaprzeczenie"]},{"id":"w0535","hanzi":"对","pinyin":"duì","pl":"prawidłowy, wobec","sourceLesson":"第五课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"potwierdzenie","type":"word","tags":["prawidłowy","wobec","fraza"]},{"id":"w0536","hanzi":"对学","pinyin":"duì xué","pl":"uczyć się dla","sourceLesson":"第五课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"uczenie się","type":"phrase","tags":["uczyć się","dla","gramatyka"]},{"id":"w0537","hanzi":"早点儿","pinyin":"zǎo diǎnr","pl":"trochę wcześniej","sourceLesson":"第五课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"czas – stopień","type":"phrase","tags":["wcześniej","czas","modyfikator"]},{"id":"w0538","hanzi":"以前","pinyin":"yǐqián","pl":"wcześniej, dawniej","sourceLesson":"第五课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"przeszłość","type":"word","tags":["dawniej","przeszłość","czas"]},{"id":"w0539","hanzi":"以后","pinyin":"yǐhòu","pl":"później, po","sourceLesson":"第五课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"przyszłość","type":"word","tags":["później","przyszłość","czas"]},{"id":"w0540","hanzi":"要学","pinyin":"yào xué","pl":"chcieć się uczyć","sourceLesson":"第五课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"zamiar nauki","type":"phrase","tags":["uczyć się","chcieć","zamiar"]},{"id":"w0541","hanzi":"语言","pinyin":"yǔyán","pl":"język (jako system)","sourceLesson":"第五课","levelApprox":"HSK3","topic":"kraje_i_jezyki","subtopic":"język","type":"word","tags":["język","lingwistyka","system"]},{"id":"w0542","hanzi":"他学","pinyin":"tā xué","pl":"on uczy się","sourceLesson":"第五课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"nauka – forma osobowa","type":"phrase","tags":["on","uczyć się","szkoła"]},{"id":"w0543","hanzi":"洗手","pinyin":"xǐ shǒu","pl":"myć ręce","sourceLesson":"第五课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"higiena","type":"phrase","tags":["myć ręce","higiena","codzienność"]},{"id":"w0544","hanzi":"复习","pinyin":"fùxí","pl":"powtarzać materiał","sourceLesson":"第五课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"powtórka","type":"word","tags":["powtarzać","szkoła","nauka"]},{"id":"w0545","hanzi":"还在","pinyin":"hái zài","pl":"nadal jest/jestem","sourceLesson":"第五课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"trwający stan","type":"phrase","tags":["nadal","być","stan"]},{"id":"w0546","hanzi":"羊","pinyin":"yáng","pl":"owca, koza","sourceLesson":"第六课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"zwierzęta","type":"word","tags":["owca","koza","zwierzę"]},{"id":"w0547","hanzi":"天天","pinyin":"tiāntiān","pl":"codziennie","sourceLesson":"第六课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"częstotliwość","type":"word","tags":["codziennie","częstotliwość","czas"]},{"id":"w0548","hanzi":"里","pinyin":"lǐ","pl":"wewnątrz, w","sourceLesson":"第六课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"lokalizacja","type":"word","tags":["wewnątrz","w","lokalizacja"]},{"id":"w0549","hanzi":"每件","pinyin":"měi jiàn","pl":"każda sztuka","sourceLesson":"第六课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"każdy z klasyfikatorem","type":"phrase","tags":["każdy","klasyfikator","ilość"]},{"id":"w0550","hanzi":"个个","pinyin":"gègè","pl":"każdy jeden","sourceLesson":"第六课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"każdy bez wyjątku","type":"phrase","tags":["każdy","wszyscy","wyrażenie"]},{"id":"w0551","hanzi":"教室","pinyin":"jiàoshì","pl":"sala lekcyjna","sourceLesson":"第六课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"pomieszczenia szkolne","type":"word","tags":["sala","szkoła","klasa"]},{"id":"w0552","hanzi":"一条","pinyin":"yī tiáo","pl":"jedna (dla długich/cienkich)","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla długich obiektów","type":"phrase","tags":["klasyfikator","jedna","gramatyka"]},{"id":"w0553","hanzi":"路","pinyin":"lù","pl":"droga, ulica","sourceLesson":"第七课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"drogi","type":"word","tags":["droga","ulica","transport"]},{"id":"w0554","hanzi":"路上","pinyin":"lù shàng","pl":"w drodze","sourceLesson":"第七课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"w drodze","type":"phrase","tags":["droga","w drodze","transport"]},{"id":"w0555","hanzi":"慢","pinyin":"màn","pl":"powolny, wolno","sourceLesson":"第七课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"prędkość","type":"word","tags":["wolny","powolny","przymiotnik"]},{"id":"w0556","hanzi":"慢点儿","pinyin":"màn diǎnr","pl":"trochę wolniej","sourceLesson":"第七课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"polecenie prędkości","type":"phrase","tags":["wolniej","polecenie","prędkość"]},{"id":"w0557","hanzi":"快","pinyin":"kuài","pl":"szybki, szybko","sourceLesson":"第七课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"prędkość","type":"word","tags":["szybki","prędkość","przymiotnik"]},{"id":"w0558","hanzi":"快点儿","pinyin":"kuài diǎnr","pl":"trochę szybciej","sourceLesson":"第七课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"polecenie prędkości","type":"phrase","tags":["szybciej","polecenie","prędkość"]},{"id":"w0559","hanzi":"开","pinyin":"kāi","pl":"otwierać, prowadzić (pojazd)","sourceLesson":"第七课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"otwieranie / prowadzenie","type":"word","tags":["otwierać","prowadzić","czasownik"]},{"id":"w0560","hanzi":"跑","pinyin":"pǎo","pl":"biec","sourceLesson":"第七课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"ruch","type":"word","tags":["biec","ruch","sport"]},{"id":"w0561","hanzi":"过","pinyin":"guò","pl":"minąć, doświadczyć","sourceLesson":"第七课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"doświadczenie / czas","type":"word","tags":["minąć","doświadczyć","aspekt"]},{"id":"w0562","hanzi":"过生日","pinyin":"guò shēngrì","pl":"świętować urodziny","sourceLesson":"第七课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"urodziny","type":"phrase","tags":["urodziny","świętować","okazja"]},{"id":"w0563","hanzi":"过新年","pinyin":"guò xīnnián","pl":"świętować Nowy Rok","sourceLesson":"第七课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"Nowy Rok","type":"phrase","tags":["Nowy Rok","świętować","okazja"]},{"id":"w0564","hanzi":"过春节","pinyin":"guò Chūnjié","pl":"świętować Chiński Nowy Rok","sourceLesson":"第七课","levelApprox":"HSK3","topic":"nazwy_wlasne","subtopic":"Chiński Nowy Rok","type":"phrase","tags":["Chiński Nowy Rok","świętować","święto"]},{"id":"w0565","hanzi":"复活节","pinyin":"Fùhuó jié","pl":"Wielkanoc","sourceLesson":"第七课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"Wielkanoc","type":"proper_noun","tags":["Wielkanoc","święto","religia"]},{"id":"w0566","hanzi":"走","pinyin":"zǒu","pl":"iść","sourceLesson":"第七课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"ruch","type":"word","tags":["iść","ruch","czasownik"]},{"id":"w0567","hanzi":"公交车","pinyin":"gōngjiāo chē","pl":"autobus","sourceLesson":"第七课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"komunikacja miejska","type":"word","tags":["autobus","transport","miasto"]},{"id":"w0568","hanzi":"地铁","pinyin":"dìtiě","pl":"metro","sourceLesson":"第七课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"komunikacja miejska","type":"word","tags":["metro","transport","miasto"]},{"id":"w0569","hanzi":"打","pinyin":"dǎ","pl":"uderzać, dzwonić, grać","sourceLesson":"第七课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"wieloznaczny czasownik","type":"word","tags":["uderzać","dzwonić","grać"]},{"id":"w0570","hanzi":"离","pinyin":"lí","pl":"oddalony od","sourceLesson":"第七课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"odległość","type":"word","tags":["odległy","od","lokalizacja"]},{"id":"w0571","hanzi":"远","pinyin":"yuǎn","pl":"daleki, daleko","sourceLesson":"第七课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"odległość","type":"word","tags":["daleko","odległość","przymiotnik"]},{"id":"w0572","hanzi":"近","pinyin":"jìn","pl":"bliski, blisko","sourceLesson":"第七课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"odległość","type":"word","tags":["blisko","odległość","przymiotnik"]},{"id":"w0573","hanzi":"很近","pinyin":"hěn jìn","pl":"bardzo blisko","sourceLesson":"第七课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"odległość","type":"phrase","tags":["bardzo blisko","odległość","opis"]},{"id":"w0574","hanzi":"公里","pinyin":"gōnglǐ","pl":"kilometr","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"jednostki długości","type":"word","tags":["kilometr","odległość","jednostka"]},{"id":"w0575","hanzi":"米","pinyin":"mǐ","pl":"metr","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"jednostki długości","type":"word","tags":["metr","długość","jednostka"]},{"id":"w0576","hanzi":"三","pinyin":"sān","pl":"trzy","sourceLesson":"第七课","levelApprox":"starter","topic":"liczby_i_ilosci","subtopic":"liczba 3","type":"word","tags":["trzy","liczba","cyfra"]},{"id":"w0577","hanzi":"二十公里","pinyin":"èrshí gōnglǐ","pl":"dwadzieścia kilometrów","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"odległość","type":"phrase","tags":["dwadzieścia","kilometr","odległość"]},{"id":"w0578","hanzi":"走路","pinyin":"zǒu lù","pl":"chodzić pieszo","sourceLesson":"第七课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"chodzenie pieszo","type":"phrase","tags":["chodzić pieszo","ruch","transport"]},{"id":"w0579","hanzi":"五分钟","pinyin":"wǔ fēnzhōng","pl":"pięć minut","sourceLesson":"第七课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"czas trwania","type":"phrase","tags":["pięć","minut","czas"]},{"id":"w0580","hanzi":"十分钟","pinyin":"shí fēnzhōng","pl":"dziesięć minut","sourceLesson":"第七课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"czas trwania","type":"phrase","tags":["dziesięć","minut","czas"]},{"id":"w0581","hanzi":"二十分钟","pinyin":"èrshí fēnzhōng","pl":"dwadzieścia minut","sourceLesson":"第七课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"czas trwania","type":"phrase","tags":["dwadzieścia","minut","czas"]},{"id":"w0582","hanzi":"还有","pinyin":"hái yǒu","pl":"jest jeszcze, i jeszcze","sourceLesson":"第七课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"dodawanie informacji","type":"phrase","tags":["jeszcze","i","fraza"]},{"id":"w0583","hanzi":"圣诞节","pinyin":"Shèngdàn jié","pl":"Boże Narodzenie","sourceLesson":"第七课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"Boże Narodzenie","type":"proper_noun","tags":["Boże Narodzenie","święto","religia"]},{"id":"w0584","hanzi":"三十天","pinyin":"sānshí tiān","pl":"trzydzieści dni","sourceLesson":"第七课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"czas trwania","type":"phrase","tags":["trzydzieści","dni","czas"]},{"id":"w0585","hanzi":"半年","pinyin":"bàn nián","pl":"pół roku","sourceLesson":"第七课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"czas trwania","type":"phrase","tags":["pół roku","czas","okres"]},{"id":"w0586","hanzi":"半小时","pinyin":"bàn xiǎoshí","pl":"pół godziny","sourceLesson":"第七课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"czas trwania","type":"phrase","tags":["pół godziny","czas","okres"]},{"id":"w0587","hanzi":"三分钟","pinyin":"sān fēnzhōng","pl":"trzy minuty","sourceLesson":"第七课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"czas trwania","type":"phrase","tags":["trzy","minuty","czas"]},{"id":"w0588","hanzi":"多长时间","pinyin":"duō cháng shíjiān","pl":"jak długo","sourceLesson":"第七课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"pytanie o czas","type":"phrase","tags":["jak długo","pytanie","czas"]},{"id":"w0589","hanzi":"多久","pinyin":"duō jiǔ","pl":"jak długo","sourceLesson":"第七课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"pytanie o czas","type":"phrase","tags":["jak długo","pytanie","czas"]},{"id":"w0590","hanzi":"三十分钟","pinyin":"sānshí fēnzhōng","pl":"trzydzieści minut","sourceLesson":"第七课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"czas trwania","type":"phrase","tags":["trzydzieści","minut","czas"]},{"id":"w0591","hanzi":"再","pinyin":"zài","pl":"znowu","sourceLesson":"第八课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"powtórzenie","type":"word","tags":["znowu","powtórzenie","przysłówek"]},{"id":"w0592","hanzi":"再见","pinyin":"zàijiàn","pl":"do widzenia","sourceLesson":"lekcja_powitania","levelApprox":"starter","topic":"rozmowa_i_frazy","subtopic":"pożegnanie","type":"phrase","tags":["do widzenia","pożegnanie","fraza"]},{"id":"w0593","hanzi":"再说","pinyin":"zài shuō","pl":"powiedzieć jeszcze raz; zobaczymy","sourceLesson":"第八课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"powtórzenie / odłożenie","type":"phrase","tags":["jeszcze raz","zobaczymy","fraza"]},{"id":"w0594","hanzi":"一遍","pinyin":"yī biàn","pl":"jeden raz (od początku do końca)","sourceLesson":"第八课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"krotność czynności","type":"phrase","tags":["raz","krotność","gramatyka"]},{"id":"w0595","hanzi":"一点","pinyin":"yī diǎn","pl":"trochę, odrobinę","sourceLesson":"第八课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"ilość","type":"phrase","tags":["trochę","odrobina","ilość"]},{"id":"w0596","hanzi":"一会儿","pinyin":"yīhuìr","pl":"za chwilę, chwilę","sourceLesson":"第八课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"krótki czas","type":"phrase","tags":["chwila","za chwilę","czas"]},{"id":"w0597","hanzi":"让","pinyin":"ràng","pl":"pozwolić, kazać","sourceLesson":"第八课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"pozwolenie / nakaz","type":"word","tags":["pozwolić","kazać","gramatyka"]},{"id":"w0598","hanzi":"买菜","pinyin":"mǎi cài","pl":"kupować warzywa/jedzenie","sourceLesson":"第八课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"zakupy spożywcze","type":"phrase","tags":["warzywa","kupować","jedzenie"]},{"id":"w0599","hanzi":"不让","pinyin":"bù ràng","pl":"nie pozwalać","sourceLesson":"第八课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"zakaz","type":"phrase","tags":["nie pozwalać","zakaz","gramatyka"]},{"id":"w0600","hanzi":"人去","pinyin":"rén qù","pl":"osoba idzie","sourceLesson":"第八课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"ruch osoby","type":"phrase","tags":["osoba","iść","ruch"]},{"id":"w0601","hanzi":"告诉","pinyin":"gàosu","pl":"mówić (komuś), informować","sourceLesson":"第八课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"komunikacja werbalna","type":"word","tags":["czasownik","komunikacja","mówienie"]},{"id":"w0602","hanzi":"大卫","pinyin":"Dàwèi","pl":"Dawid (imię)","sourceLesson":"第八课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"imię własne","type":"proper_noun","tags":["imię","nazwa własna"]},{"id":"w0603","hanzi":"等","pinyin":"děng","pl":"czekać","sourceLesson":"第八课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"czekanie","type":"word","tags":["czasownik","czekanie"]},{"id":"w0604","hanzi":"等等","pinyin":"děngdeng","pl":"poczekaj chwilę","sourceLesson":"第八课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"prośba o chwilę","type":"phrase","tags":["zwrot","prośba","czekanie"]},{"id":"w0605","hanzi":"不请","pinyin":"bù qǐng","pl":"nie zapraszać","sourceLesson":"第八课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"zaproszenie","type":"phrase","tags":["negacja","zaproszenie","czasownik"]},{"id":"w0606","hanzi":"找","pinyin":"zhǎo","pl":"szukać","sourceLesson":"第八课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"szukanie","type":"word","tags":["czasownik","szukanie"]},{"id":"w0607","hanzi":"找到","pinyin":"zhǎodào","pl":"znaleźć","sourceLesson":"第八课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"szukanie","type":"word","tags":["czasownik","znalezienie","rezultat"]},{"id":"w0608","hanzi":"手机","pinyin":"shǒujī","pl":"telefon komórkowy","sourceLesson":"第八课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"urządzenia elektroniczne","type":"word","tags":["rzeczownik","telefon","technologia"]},{"id":"w0609","hanzi":"有事","pinyin":"yǒu shì","pl":"mieć sprawę, być zajętym","sourceLesson":"第八课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"bycie zajętym","type":"phrase","tags":["zwrot","zajętość","sprawa"]},{"id":"w0610","hanzi":"大叫","pinyin":"dà jiào","pl":"krzyczeć głośno","sourceLesson":"第八课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"wyrażanie emocji głosem","type":"phrase","tags":["czasownik","krzyk","emocje"]},{"id":"w0611","hanzi":"帮忙","pinyin":"bāng máng","pl":"pomagać","sourceLesson":"第八课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"pomoc","type":"word","tags":["czasownik","pomoc"]},{"id":"w0612","hanzi":"先写","pinyin":"xiān xiě","pl":"najpierw napisać","sourceLesson":"第八课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"pisanie","type":"phrase","tags":["czasownik","kolejność","pisanie"]},{"id":"w0613","hanzi":"话","pinyin":"huà","pl":"słowo, mowa","sourceLesson":"第八课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"język i mowa","type":"word","tags":["rzeczownik","mowa","język"]},{"id":"w0614","hanzi":"错","pinyin":"cuò","pl":"błędny, błąd","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"błędy w nauce","type":"word","tags":["przymiotnik","błąd","ocena"]},{"id":"w0615","hanzi":"答案","pinyin":"dá'àn","pl":"odpowiedź","sourceLesson":"第九课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"sprawdzanie odpowiedzi","type":"word","tags":["rzeczownik","odpowiedź","szkoła"]},{"id":"w0616","hanzi":"我错","pinyin":"wǒ cuò","pl":"mam błąd, mylę się","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"błędy w nauce","type":"phrase","tags":["zwrot","błąd","przyznanie się"]},{"id":"w0617","hanzi":"题","pinyin":"tí","pl":"zadanie, pytanie","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"zadania szkolne","type":"word","tags":["rzeczownik","zadanie","szkoła"]},{"id":"w0618","hanzi":"就是","pinyin":"jiù shì","pl":"właśnie jest","sourceLesson":"第九课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"potwierdzenie","type":"phrase","tags":["zwrot","potwierdzenie","spójnik"]},{"id":"w0619","hanzi":"做错了","pinyin":"zuò cuò le","pl":"zrobić źle","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"błędy w nauce","type":"phrase","tags":["czasownik","błąd","rezultat"]},{"id":"w0620","hanzi":"写错了","pinyin":"xiě cuò le","pl":"napisać źle","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"błędy w nauce","type":"phrase","tags":["czasownik","pisanie","błąd"]},{"id":"w0621","hanzi":"听错了","pinyin":"tīng cuò le","pl":"przesłyszeć się","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"błędy w nauce","type":"phrase","tags":["czasownik","słuchanie","błąd"]},{"id":"w0622","hanzi":"看错了","pinyin":"kàn cuò le","pl":"pomylić się patrząc","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"błędy w nauce","type":"phrase","tags":["czasownik","patrzenie","błąd"]},{"id":"w0623","hanzi":"做对了","pinyin":"zuò duì le","pl":"zrobić prawidłowo","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"poprawne odpowiedzi","type":"phrase","tags":["czasownik","poprawność","rezultat"]},{"id":"w0624","hanzi":"写对了","pinyin":"xiě duì le","pl":"napisać prawidłowo","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"poprawne odpowiedzi","type":"phrase","tags":["czasownik","pisanie","poprawność"]},{"id":"w0625","hanzi":"从","pinyin":"cóng","pl":"od, z (miejsca/czasu)","sourceLesson":"第九课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"przyimki czasu i miejsca","type":"word","tags":["przyimek","czas","miejsce"]},{"id":"w0626","hanzi":"一月","pinyin":"yī yuè","pl":"styczeń","sourceLesson":"第九课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"miesiące","type":"word","tags":["miesiąc","styczeń","czas"]},{"id":"w0627","hanzi":"十二月","pinyin":"shí'èr yuè","pl":"grudzień","sourceLesson":"第九课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"miesiące","type":"word","tags":["miesiąc","grudzień","czas"]},{"id":"w0628","hanzi":"从二零二零年","pinyin":"cóng èr líng èr líng nián","pl":"od roku 2020","sourceLesson":"第九课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"daty i lata","type":"phrase","tags":["rok","data","przyimek"]},{"id":"w0629","hanzi":"二零二","pinyin":"èr líng èr","pl":"202","sourceLesson":"第九课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczby","type":"word","tags":["liczba","cyfra"]},{"id":"w0630","hanzi":"五年","pinyin":"wǔ nián","pl":"pięć lat","sourceLesson":"第九课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"okresy czasu","type":"phrase","tags":["rok","liczba","czas"]},{"id":"w0631","hanzi":"深圳","pinyin":"Shēnzhèn","pl":"Shenzhen","sourceLesson":"第九课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"miasto w Chinach","type":"proper_noun","tags":["miasto","Chiny","nazwa własna"]},{"id":"w0632","hanzi":"人到","pinyin":"rén dào","pl":"osoba przybywa","sourceLesson":"第九课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"przybycie","type":"phrase","tags":["czasownik","przybycie","osoba"]},{"id":"w0633","hanzi":"小明","pinyin":"Xiǎo Míng","pl":"Xiao Ming (imię)","sourceLesson":"第九课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"imię własne","type":"proper_noun","tags":["imię","nazwa własna"]},{"id":"w0634","hanzi":"夫妻","pinyin":"fūqī","pl":"małżeństwo (para)","sourceLesson":"第九课","levelApprox":"HSK3","topic":"rodzina_i_relacje","subtopic":"związki","type":"word","tags":["rzeczownik","małżeństwo","rodzina"]},{"id":"w0635","hanzi":"三十年","pinyin":"sānshí nián","pl":"trzydzieści lat","sourceLesson":"第九课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"okresy czasu","type":"phrase","tags":["rok","liczba","czas"]},{"id":"w0636","hanzi":"过来","pinyin":"guòlái","pl":"przyjść tu, podejść","sourceLesson":"第九课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"ruch i przemieszczanie","type":"word","tags":["czasownik","ruch","przyjście"]},{"id":"w0637","hanzi":"三十公里","pinyin":"sānshí gōnglǐ","pl":"trzydzieści kilometrów","sourceLesson":"第九课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"odległości","type":"phrase","tags":["odległość","liczba","miara"]},{"id":"w0638","hanzi":"飞机","pinyin":"fēijī","pl":"samolot","sourceLesson":"第九课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"transport lotniczy","type":"word","tags":["rzeczownik","samolot","transport"]},{"id":"w0639","hanzi":"起飞","pinyin":"qǐfēi","pl":"startować (samolot)","sourceLesson":"第九课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"transport lotniczy","type":"word","tags":["czasownik","samolot","start"]},{"id":"w0640","hanzi":"跳舞","pinyin":"tiào wǔ","pl":"tańczyć","sourceLesson":"第九课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"taniec","type":"word","tags":["czasownik","taniec","aktywność"]},{"id":"w0641","hanzi":"跳","pinyin":"tiào","pl":"skakać, tańczyć","sourceLesson":"第九课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"ruch fizyczny","type":"word","tags":["czasownik","skakanie","ruch"]},{"id":"w0642","hanzi":"舞","pinyin":"wǔ","pl":"taniec","sourceLesson":"第九课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"taniec","type":"word","tags":["rzeczownik","taniec","sztuka"]},{"id":"w0643","hanzi":"婚礼","pinyin":"hūnlǐ","pl":"wesele, ślub","sourceLesson":"第九课","levelApprox":"HSK3","topic":"rodzina_i_relacje","subtopic":"uroczystości rodzinne","type":"word","tags":["rzeczownik","ślub","wesele","uroczystość"]},{"id":"w0644","hanzi":"第一","pinyin":"dì yī","pl":"pierwszy","sourceLesson":"第九课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczby porządkowe","type":"word","tags":["liczba porządkowa","pierwszy"]},{"id":"w0645","hanzi":"第二","pinyin":"dì èr","pl":"drugi","sourceLesson":"第九课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczby porządkowe","type":"word","tags":["liczba porządkowa","drugi"]},{"id":"w0646","hanzi":"第三","pinyin":"dì sān","pl":"trzeci","sourceLesson":"第九课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczby porządkowe","type":"word","tags":["liczba porządkowa","trzeci"]},{"id":"w0647","hanzi":"第一次","pinyin":"dì yī cì","pl":"po raz pierwszy","sourceLesson":"第九课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"kolejność zdarzeń","type":"phrase","tags":["zwrot","kolejność","pierwszy raz"]},{"id":"w0648","hanzi":"第二次","pinyin":"dì èr cì","pl":"po raz drugi","sourceLesson":"第九课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"kolejność zdarzeń","type":"phrase","tags":["zwrot","kolejność","drugi raz"]},{"id":"w0649","hanzi":"希望","pinyin":"xīwàng","pl":"mieć nadzieję, nadzieja","sourceLesson":"第九课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"nadzieja i życzenia","type":"word","tags":["czasownik","rzeczownik","nadzieja","emocje"]},{"id":"w0650","hanzi":"事情","pinyin":"shìqing","pl":"sprawa, rzecz","sourceLesson":"第九课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"tematy ogólne","type":"word","tags":["rzeczownik","sprawa","rzecz"]},{"id":"w0651","hanzi":"做好","pinyin":"zuò hǎo","pl":"zrobić dobrze","sourceLesson":"第九课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"wykonywanie czynności","type":"phrase","tags":["czasownik","poprawność","rezultat"]},{"id":"w0652","hanzi":"地","pinyin":"de","pl":"partykuła przysłówkowa","sourceLesson":"第九课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"gramatyka","type":"word","tags":["partykuła","gramatyka","przysłówkowa"]},{"id":"w0653","hanzi":"欢迎","pinyin":"huānyíng","pl":"witać, witamy","sourceLesson":"第九课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"powitania","type":"word","tags":["czasownik","powitanie","grzeczność"]},{"id":"w0654","hanzi":"懂","pinyin":"dǒng","pl":"rozumieć","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"rozumienie","type":"word","tags":["czasownik","rozumienie","nauka"]},{"id":"w0655","hanzi":"听懂","pinyin":"tīng dǒng","pl":"zrozumieć ze słuchu","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"rozumienie ze słuchu","type":"phrase","tags":["czasownik","słuchanie","rozumienie"]},{"id":"w0656","hanzi":"完","pinyin":"wán","pl":"skończyć","sourceLesson":"第九课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"kończenie czynności","type":"word","tags":["czasownik","zakończenie","rezultat"]},{"id":"w0657","hanzi":"做完作业","pinyin":"zuò wán zuòyè","pl":"skończyć odrabiać lekcje","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"zadania domowe","type":"phrase","tags":["czasownik","praca domowa","zakończenie"]},{"id":"w0658","hanzi":"玩完","pinyin":"wán wán","pl":"skończyć się bawić","sourceLesson":"第九课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"zabawa","type":"phrase","tags":["czasownik","zabawa","zakończenie"]},{"id":"w0659","hanzi":"游戏","pinyin":"yóuxì","pl":"gra","sourceLesson":"第九课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"gry i rozrywka","type":"word","tags":["rzeczownik","gra","rozrywka"]},{"id":"w0660","hanzi":"喝完","pinyin":"hē wán","pl":"wypić do końca","sourceLesson":"第九课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"picie","type":"phrase","tags":["czasownik","picie","zakończenie"]},{"id":"w0661","hanzi":"游","pinyin":"yóu","pl":"pływać","sourceLesson":"第九课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"sport i aktywność","type":"word","tags":["czasownik","pływanie","sport"]},{"id":"w0662","hanzi":"完泳","pinyin":"wán yǒng","pl":"skończyć pływanie","sourceLesson":"第九课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"sport i aktywność","type":"phrase","tags":["czasownik","pływanie","zakończenie"]},{"id":"w0663","hanzi":"写题","pinyin":"xiě tí","pl":"pisać zadania","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"zadania szkolne","type":"phrase","tags":["czasownik","pisanie","zadania"]},{"id":"w0664","hanzi":"题太多","pinyin":"tí tài duō","pl":"za dużo zadań","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"zadania szkolne","type":"phrase","tags":["zadania","ilość","skarżenie się"]},{"id":"w0665","hanzi":"讲","pinyin":"jiǎng","pl":"mówić, wyjaśniać","sourceLesson":"第九课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"wyjaśnianie","type":"word","tags":["czasownik","mówienie","wyjaśnianie"]},{"id":"w0666","hanzi":"非常","pinyin":"fēicháng","pl":"niezwykle, bardzo","sourceLesson":"第九课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"stopniowanie","type":"word","tags":["przysłówek","intensywność","stopniowanie"]},{"id":"w0667","hanzi":"交","pinyin":"jiāo","pl":"oddać, złożyć","sourceLesson":"第九课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"oddawanie pracy","type":"word","tags":["czasownik","oddanie","szkoła"]},{"id":"w0668","hanzi":"要交","pinyin":"yào jiāo","pl":"trzeba oddać","sourceLesson":"第九课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"oddawanie pracy","type":"phrase","tags":["czasownik","obowiązek","oddanie"]},{"id":"w0669","hanzi":"难","pinyin":"nán","pl":"trudny","sourceLesson":"第九课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"ocena trudności","type":"word","tags":["przymiotnik","trudność","ocena"]},{"id":"w0670","hanzi":"不难","pinyin":"bù nán","pl":"niezbyt trudny","sourceLesson":"第九课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"ocena trudności","type":"phrase","tags":["przymiotnik","negacja","trudność"]},{"id":"w0671","hanzi":"很难","pinyin":"hěn nán","pl":"bardzo trudny","sourceLesson":"第九课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"ocena trudności","type":"phrase","tags":["przymiotnik","intensywność","trudność"]},{"id":"w0672","hanzi":"容易","pinyin":"róngyì","pl":"łatwy","sourceLesson":"第九课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"ocena trudności","type":"word","tags":["przymiotnik","łatwość","ocena"]},{"id":"w0673","hanzi":"生活","pinyin":"shēnghuó","pl":"życie, żyć","sourceLesson":"第九课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"codzienne życie","type":"word","tags":["rzeczownik","czasownik","życie"]},{"id":"w0674","hanzi":"英语课","pinyin":"Yīngyǔ kè","pl":"lekcja angielskiego","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"przedmioty szkolne","type":"phrase","tags":["lekcja","angielski","szkoła"]},{"id":"w0675","hanzi":"历史课","pinyin":"lìshǐ kè","pl":"lekcja historii","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"przedmioty szkolne","type":"phrase","tags":["lekcja","historia","szkoła"]},{"id":"w0676","hanzi":"有课","pinyin":"yǒu kè","pl":"mieć lekcję","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"plan zajęć","type":"phrase","tags":["lekcja","plan","szkoła"]},{"id":"w0677","hanzi":"门","pinyin":"mén","pl":"drzwi; klasyfikator dla przedmiotów","sourceLesson":"第十课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"drzwi i wejście","type":"word","tags":["rzeczownik","drzwi","klasyfikator"]},{"id":"w0678","hanzi":"一门","pinyin":"yī mén","pl":"jeden (przedmiot szkolny)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"przedmioty szkolne","type":"phrase","tags":["klasyfikator","liczba","szkoła"]},{"id":"w0679","hanzi":"学期","pinyin":"xuéqī","pl":"semestr","sourceLesson":"第十课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"rok szkolny","type":"word","tags":["rzeczownik","semestr","szkoła"]},{"id":"w0680","hanzi":"五门","pinyin":"wǔ mén","pl":"pięć (przedmiotów)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"przedmioty szkolne","type":"phrase","tags":["klasyfikator","liczba","szkoła"]},{"id":"w0681","hanzi":"两门","pinyin":"liǎng mén","pl":"dwa (przedmioty)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"przedmioty szkolne","type":"phrase","tags":["klasyfikator","liczba","szkoła"]},{"id":"w0682","hanzi":"门课","pinyin":"mén kè","pl":"przedmiot (szkolny)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"przedmioty szkolne","type":"phrase","tags":["klasyfikator","przedmiot","szkoła"]},{"id":"w0683","hanzi":"下课","pinyin":"xià kè","pl":"kończyć lekcję","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"plan zajęć","type":"word","tags":["czasownik","koniec lekcji","szkoła"]},{"id":"w0684","hanzi":"出去","pinyin":"chū qù","pl":"wychodzić","sourceLesson":"第十课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"ruch i przemieszczanie","type":"word","tags":["czasownik","wychodzenie","ruch"]},{"id":"w0685","hanzi":"节","pinyin":"jié","pl":"klasyfikator dla lekcji","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"plan zajęć","type":"word","tags":["klasyfikator","lekcja","szkoła"]},{"id":"w0686","hanzi":"一节","pinyin":"yī jié","pl":"jedna (lekcja)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"plan zajęć","type":"phrase","tags":["klasyfikator","liczba","lekcja"]},{"id":"w0687","hanzi":"一节课","pinyin":"yī jié kè","pl":"jedna lekcja","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"plan zajęć","type":"phrase","tags":["klasyfikator","lekcja","szkoła"]},{"id":"w0688","hanzi":"分钟","pinyin":"fēnzhōng","pl":"minuta","sourceLesson":"第十课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"jednostki czasu","type":"word","tags":["rzeczownik","minuta","czas"]},{"id":"w0689","hanzi":"两节课","pinyin":"liǎng jié kè","pl":"dwie lekcje","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"plan zajęć","type":"phrase","tags":["klasyfikator","lekcja","liczba"]},{"id":"w0690","hanzi":"需要","pinyin":"xūyào","pl":"potrzebować","sourceLesson":"第十课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"potrzeby","type":"word","tags":["czasownik","potrzeba","modalny"]},{"id":"w0691","hanzi":"喝太多","pinyin":"hē tài duō","pl":"pić za dużo","sourceLesson":"第十课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"picie","type":"phrase","tags":["czasownik","picie","nadmiar"]},{"id":"w0692","hanzi":"别","pinyin":"bié","pl":"nie rób! (zakaz)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"zakazy","type":"word","tags":["partykuła","zakaz","polecenie"]},{"id":"w0693","hanzi":"说话","pinyin":"shuō huà","pl":"mówić, rozmawiać","sourceLesson":"第十课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"mówienie","type":"word","tags":["czasownik","mówienie","rozmowa"]},{"id":"w0694","hanzi":"正在","pinyin":"zhèngzài","pl":"właśnie teraz (czas teraźniejszy ciągły)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"gramatyka","type":"word","tags":["partykuła","czas teraźniejszy","gramatyka"]},{"id":"w0695","hanzi":"时","pinyin":"shí","pl":"czas, kiedy","sourceLesson":"第十课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"określenie czasu","type":"word","tags":["rzeczownik","czas","gramatyka"]},{"id":"w0696","hanzi":"候","pinyin":"hòu","pl":"czas, czekać","sourceLesson":"第十课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"określenie czasu","type":"word","tags":["rzeczownik","czas","czekanie"]},{"id":"w0697","hanzi":"洗","pinyin":"xǐ","pl":"myć","sourceLesson":"第十课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"higiena","type":"word","tags":["czasownik","mycie","higiena"]},{"id":"w0698","hanzi":"洗碗","pinyin":"xǐ wǎn","pl":"myć naczynia","sourceLesson":"第十课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"obowiązki domowe","type":"phrase","tags":["czasownik","naczynia","dom"]},{"id":"w0699","hanzi":"洗衣服","pinyin":"xǐ yīfu","pl":"prać ubrania","sourceLesson":"第十课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"obowiązki domowe","type":"phrase","tags":["czasownik","pranie","ubrania"]},{"id":"w0700","hanzi":"一首歌","pinyin":"yī shǒu gē","pl":"jedna piosenka","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"muzyka","type":"phrase","tags":["klasyfikator","piosenka","muzyka"]},{"id":"w0701","hanzi":"两首歌","pinyin":"liǎng shǒu gē","pl":"dwie piosenki","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"muzyka","type":"phrase","tags":["klasyfikator","piosenka","muzyka"]},{"id":"w0702","hanzi":"唱歌","pinyin":"chàng gē","pl":"śpiewać","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"muzyka","type":"word","tags":["czasownik","śpiewanie","muzyka"]},{"id":"w0703","hanzi":"可能","pinyin":"kěnéng","pl":"możliwe, może","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"możliwość","type":"word","tags":["przysłówek","możliwość","modalny"]},{"id":"w0704","hanzi":"礼物","pinyin":"lǐwù","pl":"prezent","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"prezenty","type":"word","tags":["rzeczownik","prezent","dar"]},{"id":"w0705","hanzi":"唱","pinyin":"chàng","pl":"śpiewać","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"muzyka","type":"word","tags":["czasownik","śpiewanie","muzyka"]},{"id":"w0706","hanzi":"歌","pinyin":"gē","pl":"piosenka","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"muzyka","type":"word","tags":["rzeczownik","piosenka","muzyka"]},{"id":"w0707","hanzi":"泳","pinyin":"yǒng","pl":"pływanie","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"sport i aktywność","type":"word","tags":["rzeczownik","pływanie","sport"]},{"id":"w0708","hanzi":"步","pinyin":"bù","pl":"krok","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"ruch fizyczny","type":"word","tags":["rzeczownik","krok","ruch"]},{"id":"w0709","hanzi":"觉","pinyin":"jiào","pl":"spać (sen)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"sen i odpoczynek","type":"word","tags":["czasownik","sen","odpoczynek"]},{"id":"w0710","hanzi":"安静","pinyin":"ānjìng","pl":"cicho, spokojnie","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"nastrój i atmosfera","type":"word","tags":["przymiotnik","cisza","spokój"]},{"id":"w0711","hanzi":"也许","pinyin":"yěxǔ","pl":"być może","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"możliwość","type":"word","tags":["przysłówek","możliwość","niepewność"]},{"id":"w0712","hanzi":"我姓","pinyin":"wǒ xìng","pl":"moje nazwisko to","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"nazwisko","type":"phrase","tags":["zwrot","nazwisko","przedstawianie się"]},{"id":"w0713","hanzi":"陈","pinyin":"Chén","pl":"Chen (nazwisko)","sourceLesson":"第十一课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"nazwisko chińskie","type":"proper_noun","tags":["nazwisko","nazwa własna","chińskie"]},{"id":"w0714","hanzi":"姓李","pinyin":"xìng Lǐ","pl":"mieć na nazwisko Li","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"nazwisko","type":"phrase","tags":["zwrot","nazwisko","przedstawianie się"]},{"id":"w0715","hanzi":"比","pinyin":"bǐ","pl":"porównywać, niż","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"porównania","type":"word","tags":["przyimek","porównanie","gramatyka"]},{"id":"w0716","hanzi":"那件","pinyin":"nà jiàn","pl":"tamta sztuka (ubrania)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"phrase","tags":["zaimek wskazujący","klasyfikator","ubrania"]},{"id":"w0717","hanzi":"贵","pinyin":"guì","pl":"drogi","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"ceny","type":"word","tags":["przymiotnik","cena","drogi"]},{"id":"w0718","hanzi":"可爱","pinyin":"kě'ài","pl":"uroczy","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"opis wyglądu","type":"word","tags":["przymiotnik","uroczy","opis"]},{"id":"w0719","hanzi":"得","pinyin":"de/dé","pl":"partykuła wynikowa / osiągnąć","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"gramatyka","type":"word","tags":["partykuła","gramatyka","wynikowa"]},{"id":"w0720","hanzi":"贵多","pinyin":"guì duō","pl":"dużo droższy","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"porównania cen","type":"phrase","tags":["przymiotnik","cena","porównanie"]},{"id":"w0721","hanzi":"贵得","pinyin":"guì de","pl":"drogi (stopień)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"ceny","type":"phrase","tags":["przymiotnik","stopniowanie","cena"]},{"id":"w0722","hanzi":"可爱多","pinyin":"kě'ài duō","pl":"dużo słodszy","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"opis wyglądu","type":"phrase","tags":["przymiotnik","porównanie","uroczy"]},{"id":"w0723","hanzi":"不比","pinyin":"bù bǐ","pl":"nie jest lepszy niż","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"porównania","type":"phrase","tags":["negacja","porównanie","gramatyka"]},{"id":"w0724","hanzi":"十公分","pinyin":"shí gōngfēn","pl":"dziesięć centymetrów","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"miary długości","type":"phrase","tags":["liczba","miara","centymetry"]},{"id":"w0725","hanzi":"十块钱","pinyin":"shí kuài qián","pl":"dziesięć juanów","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"pieniądze","type":"phrase","tags":["liczba","pieniądze","juan"]},{"id":"w0726","hanzi":"国家","pinyin":"guójiā","pl":"kraj, państwo","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"kraje_i_jezyki","subtopic":"kraje","type":"word","tags":["rzeczownik","kraj","państwo"]},{"id":"w0727","hanzi":"漂亮衣服","pinyin":"piàoliang yīfu","pl":"ładne ubranie","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"phrase","tags":["przymiotnik","ubrania","opis"]},{"id":"w0728","hanzi":"乖","pinyin":"guāi","pl":"grzeczny","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"ocena zachowania","type":"word","tags":["przymiotnik","grzeczny","zachowanie"]},{"id":"w0729","hanzi":"太好","pinyin":"tài hǎo","pl":"za dobre, świetnie","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"ocena pozytywna","type":"phrase","tags":["przymiotnik","intensywność","ocena"]},{"id":"w0730","hanzi":"腐是","pinyin":"fǔ shì","pl":"tofu jest","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"składniki potraw","type":"phrase","tags":["jedzenie","tofu","zdanie"]},{"id":"w0731","hanzi":"不乖","pinyin":"bù guāi","pl":"niegrzeczny","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"ocena zachowania","type":"phrase","tags":["przymiotnik","negacja","niegrzeczny"]},{"id":"w0732","hanzi":"坐车来","pinyin":"zuò chē lái","pl":"przyjechać (pojazdem)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"transport","type":"phrase","tags":["czasownik","transport","przybycie"]},{"id":"w0733","hanzi":"零下","pinyin":"líng xià","pl":"poniżej zera","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"pogoda","type":"phrase","tags":["temperatura","mróz","pogoda"]},{"id":"w0734","hanzi":"一度","pinyin":"yī dù","pl":"jeden stopień","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"temperatura","type":"phrase","tags":["liczba","stopień","temperatura"]},{"id":"w0735","hanzi":"二十度","pinyin":"èrshí dù","pl":"dwadzieścia stopni","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"temperatura","type":"phrase","tags":["liczba","stopień","temperatura"]},{"id":"w0736","hanzi":"十五","pinyin":"shíwǔ","pl":"piętnaście","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczby","type":"word","tags":["liczba","piętnaście"]},{"id":"w0737","hanzi":"度","pinyin":"dù","pl":"stopień (temperatura)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"temperatura","type":"word","tags":["miara","stopień","temperatura"]},{"id":"w0738","hanzi":"十七","pinyin":"shíqī","pl":"siedemnaście","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczby","type":"word","tags":["liczba","siedemnaście"]},{"id":"w0739","hanzi":"温度","pinyin":"wēndù","pl":"temperatura","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"pogoda","type":"word","tags":["rzeczownik","temperatura","pogoda"]},{"id":"w0740","hanzi":"水温","pinyin":"shuǐ wēn","pl":"temperatura wody","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"pogoda","type":"phrase","tags":["temperatura","woda","pomiar"]},{"id":"w0741","hanzi":"茶温","pinyin":"chá wēn","pl":"temperatura herbaty","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"jedzenie_i_picie","subtopic":"herbata","type":"phrase","tags":["temperatura","herbata","napój"]},{"id":"w0742","hanzi":"体温","pinyin":"tǐwēn","pl":"temperatura ciała","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"badanie zdrowia","type":"word","tags":["temperatura","ciało","zdrowie"]},{"id":"w0743","hanzi":"温","pinyin":"wēn","pl":"ciepły, temperatura","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"pogoda","type":"word","tags":["przymiotnik","ciepły","temperatura"]},{"id":"w0744","hanzi":"室内","pinyin":"shì nèi","pl":"w pomieszczeniu","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"dom_i_przestrzen","subtopic":"pomieszczenie","type":"phrase","tags":["miejsce","wnętrze","pomieszczenie"]},{"id":"w0745","hanzi":"室温","pinyin":"shì wēn","pl":"temperatura pokojowa","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"dom_i_przestrzen","subtopic":"pomieszczenie","type":"phrase","tags":["temperatura","pokój","dom"]},{"id":"w0746","hanzi":"戴","pinyin":"dài","pl":"nosić (na głowie/twarzy)","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania i akcesoria","type":"word","tags":["czasownik","nosić","akcesoria"]},{"id":"w0747","hanzi":"穿","pinyin":"chuān","pl":"ubierać, nosić (ubranie)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["czasownik","nosić","ubrania"]},{"id":"w0748","hanzi":"穿衣服","pinyin":"chuān yīfu","pl":"ubierać się","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"phrase","tags":["czasownik","ubieranie","codzienne czynności"]},{"id":"w0749","hanzi":"眼镜","pinyin":"yǎnjìng","pl":"okulary","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"akcesoria","type":"word","tags":["rzeczownik","okulary","akcesoria"]},{"id":"w0750","hanzi":"外边","pinyin":"wàibiān","pl":"na zewnątrz","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"kierunki i położenie","type":"word","tags":["przysłówek","zewnątrz","miejsce"]},{"id":"w0751","hanzi":"不冷","pinyin":"bù lěng","pl":"nie zimno","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"pogoda","type":"phrase","tags":["przymiotnik","negacja","temperatura"]},{"id":"w0752","hanzi":"我少","pinyin":"wǒ shǎo","pl":"mam mało","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"ilość","type":"phrase","tags":["przymiotnik","ilość","mało"]},{"id":"w0753","hanzi":"围脖","pinyin":"wéibó","pl":"szalik","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["rzeczownik","szalik","ubrania"]},{"id":"w0754","hanzi":"衣","pinyin":"yī","pl":"ubranie","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["rzeczownik","ubranie","odzież"]},{"id":"w0755","hanzi":"裙","pinyin":"qún","pl":"spódnica","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["rzeczownik","spódnica","odzież"]},{"id":"w0756","hanzi":"帽","pinyin":"mào","pl":"czapka, kapelusz","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["rzeczownik","czapka","nakrycie głowy"]},{"id":"w0757","hanzi":"裤","pinyin":"kù","pl":"spodnie","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["rzeczownik","spodnie","odzież"]},{"id":"w0758","hanzi":"鞋","pinyin":"xié","pl":"buty","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["rzeczownik","buty","obuwie"]},{"id":"w0759","hanzi":"大衣","pinyin":"dàyī","pl":"płaszcz","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["rzeczownik","płaszcz","odzież"]},{"id":"w0760","hanzi":"绒服","pinyin":"róngfú","pl":"polarowa bluza","sourceLesson":"第十一课","levelApprox":"HSK3plus","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["rzeczownik","bluza","polar"]},{"id":"w0761","hanzi":"袜","pinyin":"wà","pl":"skarpetki","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["rzeczownik","skarpetki","odzież"]},{"id":"w0762","hanzi":"脱","pinyin":"tuō","pl":"zdejmować (ubranie)","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"word","tags":["czasownik","zdejmowanie","ubrania"]},{"id":"w0763","hanzi":"脱衣服","pinyin":"tuō yīfu","pl":"rozbierać się","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"phrase","tags":["czasownik","rozbieranie","ubrania"]},{"id":"w0764","hanzi":"脱鞋","pinyin":"tuō xié","pl":"zdejmować buty","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"phrase","tags":["czasownik","buty","zdejmowanie"]},{"id":"w0765","hanzi":"脱袜","pinyin":"tuō wà","pl":"zdejmować skarpetki","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"phrase","tags":["czasownik","skarpetki","zdejmowanie"]},{"id":"w0766","hanzi":"脱裤","pinyin":"tuō kù","pl":"zdejmować spodnie","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"phrase","tags":["czasownik","spodnie","zdejmowanie"]},{"id":"w0767","hanzi":"脱裙","pinyin":"tuō qún","pl":"zdejmować spódnicę","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"ubrania","type":"phrase","tags":["czasownik","spódnica","zdejmowanie"]},{"id":"w0768","hanzi":"进来","pinyin":"jìn lái","pl":"wchodzić tu","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"ruch i przemieszczanie","type":"word","tags":["czasownik","wejście","ruch"]},{"id":"w0769","hanzi":"进","pinyin":"jìn","pl":"wchodzić","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"ruch i przemieszczanie","type":"word","tags":["czasownik","wejście","ruch"]},{"id":"w0770","hanzi":"人家","pinyin":"rénjiā","pl":"inni ludzie; dom","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"tozsamosc_i_ludzie","subtopic":"ludzie","type":"word","tags":["zaimek","inni","dom"]},{"id":"w0771","hanzi":"家里","pinyin":"jiā lǐ","pl":"w domu","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"dom","type":"phrase","tags":["miejsce","dom","wnętrze"]},{"id":"w0772","hanzi":"所有","pinyin":"suǒyǒu","pl":"wszystkie, cały","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"całość","type":"word","tags":["przymiotnik","wszystkie","całość"]},{"id":"w0773","hanzi":"亚洲","pinyin":"Yàzhōu","pl":"Azja","sourceLesson":"第十一课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"kontynent","type":"proper_noun","tags":["kontynent","Azja","nazwa własna"]},{"id":"w0774","hanzi":"人进","pinyin":"rén jìn","pl":"osoba wchodzi","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"ruch i przemieszczanie","type":"phrase","tags":["czasownik","wejście","osoba"]},{"id":"w0775","hanzi":"出来","pinyin":"chū lái","pl":"wychodzić (tu)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"ruch i przemieszczanie","type":"word","tags":["czasownik","wychodzenie","ruch"]},{"id":"w0776","hanzi":"进去","pinyin":"jìn qù","pl":"wchodzić (tam)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"ruch i przemieszczanie","type":"word","tags":["czasownik","wejście","ruch"]},{"id":"w0777","hanzi":"得奖","pinyin":"dé jiǎng","pl":"otrzymać nagrodę","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"nagrody","type":"phrase","tags":["czasownik","nagroda","osiągnięcie"]},{"id":"w0778","hanzi":"得病","pinyin":"dé bìng","pl":"zachorować","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"choroba","type":"phrase","tags":["czasownik","choroba","zdrowie"]},{"id":"w0779","hanzi":"得到","pinyin":"dédào","pl":"otrzymać, osiągnąć","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"osiąganie","type":"word","tags":["czasownik","otrzymanie","osiągnięcie"]},{"id":"w0780","hanzi":"水果","pinyin":"shuǐguǒ","pl":"owoc","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["rzeczownik","owoc","jedzenie"]},{"id":"w0781","hanzi":"我得学","pinyin":"wǒ děi xué","pl":"muszę się uczyć","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"nauka","type":"phrase","tags":["modalny","obowiązek","nauka"]},{"id":"w0782","hanzi":"起得","pinyin":"qǐ de","pl":"wstawać (stopień)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"poranek","type":"phrase","tags":["czasownik","wstawanie","stopień"]},{"id":"w0783","hanzi":"很早","pinyin":"hěn zǎo","pl":"bardzo wcześnie","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"pora dnia","type":"phrase","tags":["przysłówek","rano","czas"]},{"id":"w0784","hanzi":"睡得","pinyin":"shuì de","pl":"spać (stopień)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"sen i odpoczynek","type":"phrase","tags":["czasownik","sen","stopień"]},{"id":"w0785","hanzi":"晚","pinyin":"wǎn","pl":"późno, późny, wieczór","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pora dnia","type":"word","tags":["przysłówek","przymiotnik","wieczór","późno"]},{"id":"w0786","hanzi":"玩得","pinyin":"wán de","pl":"bawić się (stopień)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"zabawa","type":"phrase","tags":["czasownik","zabawa","stopień"]},{"id":"w0787","hanzi":"不错","pinyin":"bú cuò","pl":"nieźle, całkiem dobrze","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"ocena pozytywna","type":"phrase","tags":["przymiotnik","ocena","nieźle"]},{"id":"w0788","hanzi":"写得","pinyin":"xiě de","pl":"pisać (stopień)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"pisanie","type":"phrase","tags":["czasownik","pisanie","stopień"]},{"id":"w0789","hanzi":"不早","pinyin":"bù zǎo","pl":"nie wcześnie","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"pora dnia","type":"phrase","tags":["przysłówek","negacja","rano"]},{"id":"w0790","hanzi":"早","pinyin":"zǎo","pl":"wcześnie, wczesny, rano","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pora dnia","type":"word","tags":["przysłówek","przymiotnik","rano","wcześnie"]},{"id":"w0791","hanzi":"早不早","pinyin":"zǎo bù zǎo","pl":"czy wcześnie czy nie","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"pora dnia","type":"phrase","tags":["pytanie","rano","gramatyka"]},{"id":"w0792","hanzi":"不晚","pinyin":"bù wǎn","pl":"nie późno","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"pora dnia","type":"phrase","tags":["przysłówek","negacja","wieczór"]},{"id":"w0793","hanzi":"晚不晚","pinyin":"wǎn bù wǎn","pl":"czy późno czy nie","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"pora dnia","type":"phrase","tags":["pytanie","wieczór","gramatyka"]},{"id":"w0794","hanzi":"唱得","pinyin":"chàng de","pl":"śpiewać (stopień)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"muzyka","type":"phrase","tags":["czasownik","śpiewanie","stopień"]},{"id":"w0795","hanzi":"不太好","pinyin":"bù tài hǎo","pl":"niezbyt dobrze","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"ocena negatywna","type":"phrase","tags":["przymiotnik","negacja","ocena"]},{"id":"w0796","hanzi":"着","pinyin":"zhe","pl":"partykuła ciągłości","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"gramatyka","type":"word","tags":["partykuła","ciągłość","gramatyka"]},{"id":"w0797","hanzi":"看着","pinyin":"kàn zhe","pl":"patrząc","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"patrzenie","type":"phrase","tags":["czasownik","patrzenie","ciągłość"]},{"id":"w0798","hanzi":"笑","pinyin":"xiào","pl":"śmiać się","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"wyrażanie emocji","type":"word","tags":["czasownik","śmiech","emocje"]},{"id":"w0799","hanzi":"唱着歌","pinyin":"chàng zhe gē","pl":"śpiewając piosenkę","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"muzyka","type":"phrase","tags":["czasownik","śpiewanie","ciągłość"]},{"id":"w0800","hanzi":"门开","pinyin":"mén kāi","pl":"drzwi otwarte","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"drzwi i wejście","type":"phrase","tags":["drzwi","otwarty","dom"]},{"id":"w0801","hanzi":"开着","pinyin":"kāi zhe","pl":"otwarte (trwa)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"stan czynności","type":"phrase","tags":["aspekt trwania","partykuła zhe","otwarty"]},{"id":"w0802","hanzi":"关","pinyin":"guān","pl":"zamykać, wyłączać","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"zamykanie/wyłączanie","type":"word","tags":["czasownik","zamykać","wyłączać"]},{"id":"w0803","hanzi":"门关","pinyin":"mén guān","pl":"drzwi zamknięte","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"drzwi","type":"phrase","tags":["drzwi","zamknięte","dom"]},{"id":"w0804","hanzi":"灯开","pinyin":"dēng kāi","pl":"światło włączone","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"oświetlenie","type":"phrase","tags":["światło","włączone","dom"]},{"id":"w0805","hanzi":"灯关","pinyin":"dēng guān","pl":"światło wyłączone","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"oświetlenie","type":"phrase","tags":["światło","wyłączone","dom"]},{"id":"w0806","hanzi":"灯","pinyin":"dēng","pl":"lampa, światło","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"oświetlenie","type":"word","tags":["lampa","światło","dom"]},{"id":"w0807","hanzi":"拿","pinyin":"ná","pl":"trzymać, wziąć","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"trzymanie przedmiotów","type":"word","tags":["czasownik","trzymać","wziąć"]},{"id":"w0808","hanzi":"手里","pinyin":"shǒu lǐ","pl":"w ręku","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"ręka","type":"phrase","tags":["ręka","lokalizacja","ciało"]},{"id":"w0809","hanzi":"一支","pinyin":"yī zhī","pl":"jeden (ołówek/długopis)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla długich przedmiotów","type":"phrase","tags":["klasyfikator","jeden","ołówek","długopis"]},{"id":"w0810","hanzi":"拿来","pinyin":"ná lái","pl":"przynieść","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"przynoszenie","type":"phrase","tags":["czasownik","przynieść","kierunek"]},{"id":"w0811","hanzi":"班","pinyin":"bān","pl":"klasa","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"klasa szkolna","type":"word","tags":["szkoła","klasa","nauka"]},{"id":"w0812","hanzi":"班有","pinyin":"bān yǒu","pl":"klasa ma","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"klasa szkolna","type":"phrase","tags":["szkoła","klasa","posiadanie"]},{"id":"w0813","hanzi":"长","pinyin":"cháng/zhǎng","pl":"długi / rosnąć","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"długość/wzrost","type":"word","tags":["przymiotnik","czasownik","długi","rosnąć"]},{"id":"w0814","hanzi":"长着","pinyin":"zhǎng zhe","pl":"mieć (cechy wyglądu)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"wygląd fizyczny","type":"phrase","tags":["wygląd","aspekt trwania","cechy"]},{"id":"w0815","hanzi":"一双","pinyin":"yī shuāng","pl":"jedna para","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikator para","type":"phrase","tags":["klasyfikator","para","jeden"]},{"id":"w0816","hanzi":"眼睛","pinyin":"yǎnjing","pl":"oczy","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"twarz","type":"word","tags":["oczy","ciało","twarz"]},{"id":"w0817","hanzi":"大大的","pinyin":"dàdà de","pl":"bardzo duże","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"rozmiar","type":"phrase","tags":["przymiotnik","duży","reduplikacja"]},{"id":"w0818","hanzi":"脸上","pinyin":"liǎn shàng","pl":"na twarzy","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"twarz","type":"phrase","tags":["twarz","lokalizacja","ciało"]},{"id":"w0819","hanzi":"痘痘","pinyin":"dòudou","pl":"pryszcze","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"skóra","type":"word","tags":["pryszcze","skóra","zdrowie"]},{"id":"w0820","hanzi":"身上","pinyin":"shēn shàng","pl":"na ciele","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"ciało","type":"phrase","tags":["ciało","lokalizacja","na ciele"]},{"id":"w0821","hanzi":"黑","pinyin":"hēi","pl":"czarny, ciemny","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"kolory","type":"word","tags":["kolor","czarny","ciemny"]},{"id":"w0822","hanzi":"斑","pinyin":"bān","pl":"plama, pieprzyk","sourceLesson":"第十一课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"skóra","type":"word","tags":["plama","pieprzyk","skóra"]},{"id":"w0823","hanzi":"长得","pinyin":"zhǎng de","pl":"wyglądać (stopień)","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"wygląd fizyczny","type":"phrase","tags":["wygląd","stopień","partykuła de"]},{"id":"w0824","hanzi":"孩","pinyin":"hái","pl":"dziecko","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"rodzina_i_relacje","subtopic":"dzieci","type":"word","tags":["dziecko","rodzina"]},{"id":"w0825","hanzi":"真帅","pinyin":"zhēn shuài","pl":"naprawdę przystojny","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"uroda","type":"phrase","tags":["przystojny","naprawdę","wygląd"]},{"id":"w0826","hanzi":"儿","pinyin":"ér","pl":"sufiks zdrabniający, dziecko","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"morfologia","type":"word","tags":["sufiks","zdrobnienie","dziecko"]},{"id":"w0827","hanzi":"真胖","pinyin":"zhēn pàng","pl":"naprawdę gruby","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"budowa ciała","type":"phrase","tags":["gruby","naprawdę","wygląd"]},{"id":"w0828","hanzi":"他长","pinyin":"tā zhǎng","pl":"on wygląda","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"wygląd fizyczny","type":"phrase","tags":["on","wygląd","zaimek"]},{"id":"w0829","hanzi":"不怎么样","pinyin":"bù zěnmeyàng","pl":"niezbyt dobry","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"oceny negatywne","type":"phrase","tags":["ocena","niezbyt","przymiotnik"]},{"id":"w0830","hanzi":"好笑","pinyin":"hǎoxiào","pl":"śmieszny","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"humor","type":"word","tags":["śmieszny","humor","ocena"]},{"id":"w0831","hanzi":"别笑","pinyin":"bié xiào","pl":"nie śmiej się","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"zakazy","type":"phrase","tags":["zakaz","śmiać się","imperatyw"]},{"id":"w0832","hanzi":"好看","pinyin":"hǎokàn","pl":"ładny (do patrzenia)","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"uroda","type":"word","tags":["ładny","wygląd","ocena"]},{"id":"w0833","hanzi":"哈哈大笑","pinyin":"hāhā dà xiào","pl":"śmiać się głośno","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"śmiech","type":"phrase","tags":["śmiać się","głośno","emocje"]},{"id":"w0834","hanzi":"哭","pinyin":"kū","pl":"płakać","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"płacz","type":"word","tags":["płakać","emocje","czasownik"]},{"id":"w0835","hanzi":"别哭","pinyin":"bié kū","pl":"nie płacz","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"zakazy","type":"phrase","tags":["zakaz","płakać","imperatyw"]},{"id":"w0836","hanzi":"大哭","pinyin":"dà kū","pl":"płakać głośno","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"płacz","type":"phrase","tags":["płakać","głośno","emocje"]},{"id":"w0837","hanzi":"直","pinyin":"zhí","pl":"prosto","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"kierunki","type":"word","tags":["prosto","kierunek","przysłówek"]},{"id":"w0838","hanzi":"一直","pinyin":"yīzhí","pl":"cały czas, prosto","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"ciągłość","type":"phrase","tags":["cały czas","prosto","przysłówek"]},{"id":"w0839","hanzi":"往","pinyin":"wǎng","pl":"w kierunku","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"kierunki","type":"word","tags":["kierunek","przyimek","ruch"]},{"id":"w0840","hanzi":"往前走","pinyin":"wǎng qián zǒu","pl":"iść prosto","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"kierunki","type":"phrase","tags":["iść","prosto","kierunek"]},{"id":"w0841","hanzi":"左","pinyin":"zuǒ","pl":"lewo","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"kierunki","type":"word","tags":["lewo","kierunek","strona"]},{"id":"w0842","hanzi":"往右","pinyin":"wǎng yòu","pl":"w prawo","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"kierunki","type":"phrase","tags":["prawo","kierunek","ruch"]},{"id":"w0843","hanzi":"往回","pinyin":"wǎng huí","pl":"z powrotem","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"kierunki","type":"phrase","tags":["z powrotem","kierunek","ruch"]},{"id":"w0844","hanzi":"走来","pinyin":"zǒu lái","pl":"przyjść pieszo","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"chodzenie pieszo","type":"phrase","tags":["iść","przyjść","kierunek"]},{"id":"w0845","hanzi":"汽车","pinyin":"qìchē","pl":"samochód","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"pojazdy","type":"word","tags":["samochód","transport","pojazd"]},{"id":"w0846","hanzi":"往左边","pinyin":"wǎng zuǒbiān","pl":"w lewo","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"kierunki","type":"phrase","tags":["lewo","kierunek","ruch"]},{"id":"w0847","hanzi":"生词","pinyin":"shēngcí","pl":"nowe słowo","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"słownictwo","type":"word","tags":["słownictwo","nauka","nowe słowo"]},{"id":"w0848","hanzi":"经常","pinyin":"jīngcháng","pl":"często, regularnie","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"częstotliwość","type":"word","tags":["często","regularnie","przysłówek"]},{"id":"w0849","hanzi":"法","pinyin":"fǎ","pl":"metoda, sposób; Francja","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"kraje_i_jezyki","subtopic":"metoda/Francja","type":"word","tags":["metoda","Francja","sposób"]},{"id":"w0850","hanzi":"基本","pinyin":"jīběn","pl":"podstawowy","sourceLesson":"第九课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"poziom podstawowy","type":"word","tags":["podstawowy","przymiotnik","poziom"]},{"id":"w0851","hanzi":"同","pinyin":"tóng","pl":"ten sam, wspólny","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"porównanie","type":"word","tags":["ten sam","wspólny","przymiotnik"]},{"id":"w0852","hanzi":"大部分","pinyin":"dà bùfen","pl":"większość","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"ilość","type":"phrase","tags":["większość","ilość","część"]},{"id":"w0853","hanzi":"情况","pinyin":"qíngkuàng","pl":"sytuacja","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"opis sytuacji","type":"word","tags":["sytuacja","kontekst","rzeczownik"]},{"id":"w0854","hanzi":"互换","pinyin":"hùhuàn","pl":"wymieniać wzajemnie","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"codzienne_czynnosci","subtopic":"wymiana","type":"word","tags":["wymieniać","wzajemnie","czasownik"]},{"id":"w0855","hanzi":"个别","pinyin":"gèbié","pl":"indywidualny, wyjątkowy","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"wyjątki","type":"word","tags":["indywidualny","wyjątkowy","przymiotnik"]},{"id":"w0856","hanzi":"词","pinyin":"cí","pl":"słowo, wyraz","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"słownictwo","type":"word","tags":["słowo","wyraz","język"]},{"id":"w0857","hanzi":"习惯","pinyin":"xíguàn","pl":"nawyk, przyzwyczajenie","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"przyzwyczajenia","type":"word","tags":["nawyk","przyzwyczajenie","czasownik"]},{"id":"w0858","hanzi":"比如","pinyin":"bǐrú","pl":"na przykład","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"przykłady","type":"phrase","tags":["na przykład","fraza","przykład"]},{"id":"w0859","hanzi":"社","pinyin":"shè","pl":"organizacja, towarzystwo","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"praca_i_biuro","subtopic":"organizacja","type":"word","tags":["organizacja","towarzystwo","instytucja"]},{"id":"w0860","hanzi":"团","pinyin":"tuán","pl":"grupa, drużyna","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"rodzina_i_relacje","subtopic":"grupy","type":"word","tags":["grupa","drużyna","zbiorowość"]},{"id":"w0861","hanzi":"旅游团","pinyin":"lǚyóu tuán","pl":"wycieczka grupowa","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"turystyka","type":"phrase","tags":["wycieczka","grupowa","turystyka"]},{"id":"w0862","hanzi":"说法","pinyin":"shuōfǎ","pl":"sposób mówienia, wersja","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"styl mowy","type":"word","tags":["sposób mówienia","wersja","wyrażenie"]},{"id":"w0863","hanzi":"这次","pinyin":"zhè cì","pl":"tym razem","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"odniesienie czasowe","type":"phrase","tags":["tym razem","czas","zaimek wskazujący"]},{"id":"w0864","hanzi":"有意思","pinyin":"yǒu yìsi","pl":"interesujący","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"oceny pozytywne","type":"phrase","tags":["interesujący","ciekawy","ocena"]},{"id":"w0865","hanzi":"冷不冷","pinyin":"lěng bù lěng","pl":"czy zimno czy nie","sourceLesson":"第十七课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"pytania A-nie-A","type":"phrase","tags":["zimno","pytanie","pogoda"]},{"id":"w0866","hanzi":"舒服","pinyin":"shūfu","pl":"wygodny, komfortowy","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"komfort","type":"word","tags":["wygodny","komfortowy","samopoczucie"]},{"id":"w0867","hanzi":"可乐","pinyin":"kělè","pl":"cola","sourceLesson":"第十课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["cola","napój","picie"]},{"id":"w0868","hanzi":"学过","pinyin":"xué guò","pl":"już się uczyłem","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"doświadczenie nauki","type":"phrase","tags":["uczyć się","aspekt dokonany","doświadczenie"]},{"id":"w0869","hanzi":"不来","pinyin":"bù lái","pl":"nie przychodzić","sourceLesson":"第十七课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"przyjście","type":"phrase","tags":["nie","przyjść","negacja"]},{"id":"w0870","hanzi":"量词","pinyin":"liàngcí","pl":"klasyfikator","sourceLesson":"第九课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"gramatyka","type":"word","tags":["klasyfikator","gramatyka","język"]},{"id":"w0871","hanzi":"有名","pinyin":"yǒumíng","pl":"sławny, znany","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"sława","type":"word","tags":["sławny","znany","przymiotnik"]},{"id":"w0872","hanzi":"运动员","pinyin":"yùndòng yuán","pl":"sportowiec","sourceLesson":"第六课","levelApprox":"HSK3","topic":"praca_i_biuro","subtopic":"zawody","type":"word","tags":["sportowiec","zawód","sport"]},{"id":"w0873","hanzi":"常常","pinyin":"chángcháng","pl":"często","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"częstotliwość","type":"word","tags":["często","przysłówek","częstotliwość"]},{"id":"w0874","hanzi":"球场","pinyin":"qiúchǎng","pl":"boisko","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"obiekty sportowe","type":"word","tags":["boisko","sport","miejsce"]},{"id":"w0875","hanzi":"踢","pinyin":"tī","pl":"kopać","sourceLesson":"第六课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"sport","type":"word","tags":["kopać","piłka nożna","czasownik"]},{"id":"w0876","hanzi":"公园","pinyin":"gōngyuán","pl":"park","sourceLesson":"第十六课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"miejsca w mieście","type":"word","tags":["park","miasto","miejsce"]},{"id":"w0877","hanzi":"森林","pinyin":"sēnlín","pl":"las","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"dom_i_przestrzen","subtopic":"przyroda","type":"word","tags":["las","przyroda","miejsce"]},{"id":"w0878","hanzi":"公","pinyin":"gōng","pl":"publiczny; pan (tytuł)","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"tytuły","type":"word","tags":["publiczny","tytuł","pan"]},{"id":"w0879","hanzi":"昨天早上","pinyin":"zuótiān zǎoshang","pl":"wczoraj rano","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"phrase","tags":["wczoraj","rano","czas"]},{"id":"w0880","hanzi":"一公","pinyin":"yī gōng","pl":"jeden (publiczny)","sourceLesson":"第七课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"klasyfikator","type":"phrase","tags":["jeden","publiczny","liczebnik"]},{"id":"w0881","hanzi":"半个","pinyin":"bàn gè","pl":"połowa (sztuki)","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"ułamki","type":"phrase","tags":["połowa","klasyfikator","ułamek"]},{"id":"w0882","hanzi":"两件","pinyin":"liǎng jiàn","pl":"dwie sztuki (ubrania)","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla ubrań","type":"phrase","tags":["dwa","ubranie","klasyfikator"]},{"id":"w0883","hanzi":"哪件","pinyin":"nǎ jiàn","pl":"która sztuka?","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla ubrań","type":"phrase","tags":["który","ubranie","klasyfikator"]},{"id":"w0884","hanzi":"三件","pinyin":"sān jiàn","pl":"trzy sztuki","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla ubrań","type":"phrase","tags":["trzy","ubranie","klasyfikator"]},{"id":"w0885","hanzi":"一共","pinyin":"yīgòng","pl":"łącznie, razem","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"suma","type":"word","tags":["łącznie","razem","suma"]},{"id":"w0886","hanzi":"块钱","pinyin":"kuài qián","pl":"juanów (pieniędzy)","sourceLesson":"第七课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"pieniądze","type":"phrase","tags":["juan","pieniądze","waluta"]},{"id":"w0887","hanzi":"张桌","pinyin":"zhāng zhuō","pl":"stołów (klasyfikator)","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla mebli","type":"phrase","tags":["stół","klasyfikator","mebel"]},{"id":"w0888","hanzi":"新不新","pinyin":"xīn bù xīn","pl":"nowy czy nie?","sourceLesson":"第十七课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"pytania A-nie-A","type":"phrase","tags":["nowy","pytanie","A-nie-A"]},{"id":"w0889","hanzi":"不新","pinyin":"bù xīn","pl":"nie nowy","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"stan przedmiotu","type":"phrase","tags":["nie","nowy","negacja"]},{"id":"w0890","hanzi":"新房","pinyin":"xīn fáng","pl":"nowy pokój/dom","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"dom","type":"phrase","tags":["nowy","dom","pokój"]},{"id":"w0891","hanzi":"一辆","pinyin":"yī liàng","pl":"jeden (pojazd)","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla pojazdów","type":"phrase","tags":["jeden","pojazd","klasyfikator"]},{"id":"w0892","hanzi":"辆","pinyin":"liàng","pl":"klasyfikator dla pojazdów","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla pojazdów","type":"word","tags":["klasyfikator","pojazd","transport"]},{"id":"w0893","hanzi":"新年快乐","pinyin":"xīnnián kuàilè","pl":"Szczęśliwego Nowego Roku","sourceLesson":"lekcja_uprzejmosc","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"życzenia","type":"phrase","tags":["Nowy Rok","życzenia","święto"]},{"id":"w0894","hanzi":"太旧","pinyin":"tài jiù","pl":"za stary","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"stan przedmiotu","type":"phrase","tags":["za","stary","przymiotnik"]},{"id":"w0895","hanzi":"把","pinyin":"bǎ","pl":"klasyfikator; partykuła","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"gramatyka","type":"word","tags":["klasyfikator","partykuła ba","gramatyka"]},{"id":"w0896","hanzi":"卖","pinyin":"mài","pl":"sprzedawać","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"praca_i_biuro","subtopic":"handel","type":"word","tags":["sprzedawać","handel","czasownik"]},{"id":"w0897","hanzi":"一把","pinyin":"yī bǎ","pl":"jedna (parasolka/nóż)","sourceLesson":"第七课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"klasyfikator","type":"phrase","tags":["jeden","parasol","nóż","klasyfikator"]},{"id":"w0898","hanzi":"旧房","pinyin":"jiù fáng","pl":"stary pokój/dom","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"dom","type":"phrase","tags":["stary","dom","pokój"]},{"id":"w0899","hanzi":"电话号码","pinyin":"diànhuà hàomǎ","pl":"numer telefonu","sourceLesson":"第四课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"kontakt","type":"phrase","tags":["telefon","numer","kontakt"]},{"id":"w0900","hanzi":"号码","pinyin":"hàomǎ","pl":"numer","sourceLesson":"第四课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"numery","type":"word","tags":["numer","liczba","kontakt"]},{"id":"w0901","hanzi":"老人","pinyin":"lǎorén","pl":"starszy człowiek","sourceLesson":"第五课","levelApprox":"HSK2","topic":"tozsamosc_i_ludzie","subtopic":"wiek","type":"word","tags":["starszy","człowiek","wiek"]},{"id":"w0902","hanzi":"老家","pinyin":"lǎojiā","pl":"rodzinne strony, dawny dom","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"dom_i_przestrzen","subtopic":"rodzinne miejsca","type":"word","tags":["rodzinne strony","dawny dom","nostalgía"]},{"id":"w0903","hanzi":"回老家","pinyin":"huí lǎojiā","pl":"wracać w rodzinne strony","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"dom_i_przestrzen","subtopic":"rodzinne miejsca","type":"phrase","tags":["wracać","rodzinne strony","podróż"]},{"id":"w0904","hanzi":"一只","pinyin":"yī zhī","pl":"jedno (zwierzę)","sourceLesson":"第七课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla zwierząt","type":"phrase","tags":["jeden","zwierzę","klasyfikator"]},{"id":"w0905","hanzi":"颜","pinyin":"yán","pl":"kolor, twarz","sourceLesson":"第十二课","levelApprox":"HSK3plus","topic":"wyglad_i_opisy","subtopic":"kolory","type":"word","tags":["kolor","twarz","wygląd"]},{"id":"w0906","hanzi":"蓝","pinyin":"lán","pl":"niebieski","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"wyglad_i_opisy","subtopic":"kolory","type":"word","tags":["niebieski","kolor","przymiotnik"]},{"id":"w0907","hanzi":"补充","pinyin":"bǔchōng","pl":"uzupełnienie, dodatkowy","sourceLesson":"第九课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"uzupełnienie","type":"word","tags":["uzupełnienie","dodatkowy","czasownik"]},{"id":"w0908","hanzi":"词汇","pinyin":"cíhuì","pl":"słownictwo","sourceLesson":"第九课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"słownictwo","type":"word","tags":["słownictwo","język","nauka"]},{"id":"w0909","hanzi":"棕","pinyin":"zōng","pl":"brązowy","sourceLesson":"第十二课","levelApprox":"HSK3","topic":"wyglad_i_opisy","subtopic":"kolory","type":"word","tags":["brązowy","kolor","przymiotnik"]},{"id":"w0910","hanzi":"花儿","pinyin":"huār","pl":"kwiatek","sourceLesson":"第六课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"rośliny","type":"word","tags":["kwiatek","roślina","zdrobnienie"]},{"id":"w0911","hanzi":"朵","pinyin":"duǒ","pl":"klasyfikator dla kwiatów","sourceLesson":"第七课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla kwiatów","type":"word","tags":["klasyfikator","kwiat","liczebnik"]},{"id":"w0912","hanzi":"三朵","pinyin":"sān duǒ","pl":"trzy kwiaty","sourceLesson":"第七课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla kwiatów","type":"phrase","tags":["trzy","kwiaty","klasyfikator"]},{"id":"w0913","hanzi":"束","pinyin":"shù","pl":"wiązka, bukiet","sourceLesson":"第七课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla bukietów","type":"word","tags":["bukiet","wiązka","klasyfikator"]},{"id":"w0914","hanzi":"这束","pinyin":"zhè shù","pl":"ten bukiet","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"dom_i_przestrzen","subtopic":"rośliny","type":"phrase","tags":["ten","bukiet","zaimek wskazujący"]},{"id":"w0915","hanzi":"花店","pinyin":"huādiàn","pl":"kwiaciarnia","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"sklepy","type":"word","tags":["kwiaciarnia","sklep","kwiaty"]},{"id":"w0916","hanzi":"不常去","pinyin":"bù cháng qù","pl":"rzadko chodzić","sourceLesson":"第六课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"częstotliwość","type":"phrase","tags":["rzadko","chodzić","negacja"]},{"id":"w0917","hanzi":"上个月","pinyin":"shàng gè yuè","pl":"w zeszłym miesiącu","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"miesiące","type":"phrase","tags":["zeszły miesiąc","czas","miesiąc"]},{"id":"w0918","hanzi":"要花","pinyin":"yào huā","pl":"trzeba wydać","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"praca_i_biuro","subtopic":"wydatki","type":"phrase","tags":["trzeba","wydać","pieniądze"]},{"id":"w0919","hanzi":"花花","pinyin":"huā huā","pl":"kwiatki (zdrobnienie)","sourceLesson":"第六课","levelApprox":"HSK2","topic":"dom_i_przestrzen","subtopic":"rośliny","type":"word","tags":["kwiatki","zdrobnienie","reduplikacja"]},{"id":"w0920","hanzi":"它","pinyin":"tā","pl":"ono (zwierzę/rzecz)","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"zaimki","type":"word","tags":["ono","zaimek","rzecz","zwierzę"]},{"id":"w0921","hanzi":"东","pinyin":"dōng","pl":"wschód","sourceLesson":"第十六课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"kierunki świata","type":"word","tags":["wschód","kierunek","strona świata"]},{"id":"w0922","hanzi":"详解","pinyin":"xiángjiě","pl":"szczegółowe wyjaśnienie","sourceLesson":"第九课","levelApprox":"HSK3plus","topic":"szkola_i_nauka","subtopic":"wyjaśnienie","type":"word","tags":["szczegółowe","wyjaśnienie","nauka"]},{"id":"w0923","hanzi":"答对了","pinyin":"dá duì le","pl":"odpowiedzieć poprawnie","sourceLesson":"第九课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"odpowiedzi","type":"phrase","tags":["odpowiedzieć","poprawnie","wynik"]},{"id":"w0924","hanzi":"读错了","pinyin":"dú cuò le","pl":"przeczytać źle","sourceLesson":"第九课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"błędy","type":"phrase","tags":["czytać","źle","błąd"]},{"id":"w0925","hanzi":"打错了","pinyin":"dǎ cuò le","pl":"zadzwonić pod zły numer","sourceLesson":"第九课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"telefon","type":"phrase","tags":["zadzwonić","zły numer","błąd"]},{"id":"w0926","hanzi":"是从","pinyin":"shì cóng","pl":"pochodzi z","sourceLesson":"第九课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"pochodzenie","type":"phrase","tags":["pochodzi","z","przyimek"]},{"id":"w0927","hanzi":"那里","pinyin":"nàlǐ","pl":"tam","sourceLesson":"第九课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"zaimki miejsca","type":"word","tags":["tam","zaimek","miejsce"]},{"id":"w0928","hanzi":"外婆家","pinyin":"wàipó jiā","pl":"dom babci (matki matki)","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"rodzina_i_relacje","subtopic":"dziadkowie","type":"phrase","tags":["babcia","mama mamy","dom","rodzina"]},{"id":"w0929","hanzi":"跳来跳去","pinyin":"tiào lái tiào qù","pl":"skakać tu i tam","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"ruch","type":"phrase","tags":["skakać","tu i tam","ruch"]},{"id":"w0930","hanzi":"跳绳","pinyin":"tiào shéng","pl":"skakać przez skakankę","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"sport","type":"phrase","tags":["skakanka","skakać","sport"]},{"id":"w0931","hanzi":"拉丁舞","pinyin":"lādīng wǔ","pl":"taniec latynoamerykański","sourceLesson":"第十五课","levelApprox":"HSK3plus","topic":"codzienne_czynnosci","subtopic":"taniec","type":"phrase","tags":["taniec","latynoamerykański","rozrywka"]},{"id":"w0932","hanzi":"华尔兹舞","pinyin":"huá'ěrzī wǔ","pl":"walc","sourceLesson":"第十五课","levelApprox":"HSK3plus","topic":"codzienne_czynnosci","subtopic":"taniec","type":"phrase","tags":["walc","taniec","rozrywka"]},{"id":"w0933","hanzi":"肚皮舞","pinyin":"dùpí wǔ","pl":"taniec brzucha","sourceLesson":"第十五课","levelApprox":"HSK3plus","topic":"codzienne_czynnosci","subtopic":"taniec","type":"phrase","tags":["taniec brzucha","taniec","rozrywka"]},{"id":"w0934","hanzi":"第一个","pinyin":"dì yī gè","pl":"pierwszy","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczebniki porządkowe","type":"phrase","tags":["pierwszy","liczebnik porządkowy","kolejność"]},{"id":"w0935","hanzi":"没问","pinyin":"méi wèn","pl":"nie pytać","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"pytania","type":"phrase","tags":["nie","pytać","negacja"]},{"id":"w0936","hanzi":"一来","pinyin":"yī lái","pl":"gdy tylko przyjdzie","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"warunki","type":"phrase","tags":["gdy tylko","przyjść","warunek"]},{"id":"w0937","hanzi":"打来","pinyin":"dǎ lái","pl":"zadzwonić (do mnie)","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"telefon","type":"phrase","tags":["zadzwonić","do mnie","kierunek"]},{"id":"w0938","hanzi":"下班","pinyin":"xià bān","pl":"kończyć pracę","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"praca_i_biuro","subtopic":"godziny pracy","type":"phrase","tags":["kończyć pracę","praca","godziny"]},{"id":"w0939","hanzi":"后要","pinyin":"hòu yào","pl":"po (czymś) chcieć","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"kolejność","type":"phrase","tags":["po","chcieć","kolejność"]},{"id":"w0940","hanzi":"就要","pinyin":"jiù yào","pl":"zaraz, za chwilę","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"czas przyszły","type":"phrase","tags":["zaraz","za chwilę","czas przyszły"]},{"id":"w0941","hanzi":"这本","pinyin":"zhè běn","pl":"ta (książka)","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"książki","type":"phrase","tags":["ta","książka","zaimek wskazujący"]},{"id":"w0942","hanzi":"中","pinyin":"zhōng","pl":"środek, Chiny","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"kraje_i_jezyki","subtopic":"Chiny","type":"word","tags":["środek","Chiny","kraj"]},{"id":"w0943","hanzi":"文书","pinyin":"wénshū","pl":"dokument, pismo","sourceLesson":"第十五课","levelApprox":"HSK3plus","topic":"praca_i_biuro","subtopic":"dokumenty","type":"word","tags":["dokument","pismo","biuro"]},{"id":"w0944","hanzi":"吃完饭","pinyin":"chī wán fàn","pl":"skończyć jeść","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"posiłki","type":"phrase","tags":["skończyć","jeść","posiłek"]},{"id":"w0945","hanzi":"表示","pinyin":"biǎoshì","pl":"wyrażać, oznaczać","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"znaczenie","type":"word","tags":["wyrażać","oznaczać","czasownik"]},{"id":"w0946","hanzi":"做题","pinyin":"zuò tí","pl":"rozwiązywać zadania","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"zadania","type":"phrase","tags":["rozwiązywać","zadania","szkoła"]},{"id":"w0947","hanzi":"数学课","pinyin":"shùxué kè","pl":"lekcja matematyki","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"przedmioty szkolne","type":"phrase","tags":["matematyka","lekcja","szkoła"]},{"id":"w0948","hanzi":"在家","pinyin":"zài jiā","pl":"być w domu","sourceLesson":"第十课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"dom","type":"phrase","tags":["być","w domu","lokalizacja"]},{"id":"w0949","hanzi":"下课后","pinyin":"xià kè hòu","pl":"po lekcji","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"rozkład zajęć","type":"phrase","tags":["po lekcji","szkoła","czas"]},{"id":"w0950","hanzi":"课去","pinyin":"kè qù","pl":"iść na lekcję","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"zajęcia","type":"phrase","tags":["iść","lekcja","szkoła"]},{"id":"w0951","hanzi":"五节课","pinyin":"wǔ jié kè","pl":"pięć lekcji","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"rozkład zajęć","type":"phrase","tags":["pięć","lekcji","szkoła"]},{"id":"w0952","hanzi":"节课","pinyin":"jié kè","pl":"lekcja (jednostka)","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"rozkład zajęć","type":"phrase","tags":["lekcja","jednostka","klasyfikator"]},{"id":"w0953","hanzi":"想学","pinyin":"xiǎng xué","pl":"chcieć się uczyć","sourceLesson":"第十课","levelApprox":"HSK2","topic":"szkola_i_nauka","subtopic":"motywacja","type":"phrase","tags":["chcieć","uczyć się","motywacja"]},{"id":"w0954","hanzi":"学了","pinyin":"xué le","pl":"uczyłem się już","sourceLesson":"第十课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"nauka","type":"phrase","tags":["uczyć się","aspekt dokonany","przeszłość"]},{"id":"w0955","hanzi":"太晚","pinyin":"tài wǎn","pl":"za późno","sourceLesson":"第四课","levelApprox":"HSK1","topic":"czas_i_kalendarz","subtopic":"pory dnia","type":"phrase","tags":["za","późno","czas"]},{"id":"w0956","hanzi":"别买","pinyin":"bié mǎi","pl":"nie kupuj","sourceLesson":"第四课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"zakupy","type":"phrase","tags":["nie","kupować","zakaz"]},{"id":"w0957","hanzi":"别睡了","pinyin":"bié shuì le","pl":"nie śpij!","sourceLesson":"第四课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"sen","type":"phrase","tags":["nie","spać","zakaz"]},{"id":"w0958","hanzi":"已学过","pinyin":"yǐ xué guò","pl":"już przerobione","sourceLesson":"第五课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"postęp nauki","type":"phrase","tags":["już","uczyć się","doświadczenie"]},{"id":"w0959","hanzi":"鸡蛋","pinyin":"jīdàn","pl":"jajko","sourceLesson":"第五课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"produkty spożywcze","type":"word","tags":["jajko","jedzenie","produkt"]},{"id":"w0960","hanzi":"西瓜","pinyin":"xīguā","pl":"arbuz","sourceLesson":"第五课","levelApprox":"HSK2","topic":"jedzenie_i_picie","subtopic":"owoce","type":"word","tags":["arbuz","owoc","jedzenie"]},{"id":"w0961","hanzi":"很大","pinyin":"hěn dà","pl":"bardzo duży","sourceLesson":"第五课","levelApprox":"starter","topic":"wyglad_i_opisy","subtopic":"rozmiar","type":"phrase","tags":["bardzo","duży","rozmiar"]},{"id":"w0962","hanzi":"买手机","pinyin":"mǎi shǒujī","pl":"kupić telefon","sourceLesson":"第五课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"zakupy","type":"phrase","tags":["kupić","telefon","zakupy"]},{"id":"w0963","hanzi":"太贵","pinyin":"tài guì","pl":"za drogi","sourceLesson":"第五课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"ceny","type":"phrase","tags":["za","drogi","cena"]},{"id":"w0964","hanzi":"平板","pinyin":"píngbǎn","pl":"tablet","sourceLesson":"第十课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"urządzenia elektroniczne","type":"word","tags":["tablet","elektronika","urządzenie"]},{"id":"w0965","hanzi":"笔记本电脑","pinyin":"bǐjìběn diànnǎo","pl":"laptop","sourceLesson":"第十课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"urządzenia elektroniczne","type":"phrase","tags":["laptop","komputer","elektronika"]},{"id":"w0966","hanzi":"种类","pinyin":"zhǒnglèi","pl":"rodzaj, typ","sourceLesson":"第十课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"kategorie","type":"word","tags":["rodzaj","typ","kategoria"]},{"id":"w0967","hanzi":"延伸","pinyin":"yánshēn","pl":"rozszerzyć, przedłużyć","sourceLesson":"第十课","levelApprox":"HSK3plus","topic":"szkola_i_nauka","subtopic":"rozszerzenie","type":"word","tags":["rozszerzyć","przedłużyć","czasownik"]},{"id":"w0968","hanzi":"首","pinyin":"shǒu","pl":"klasyfikator dla piosenek","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla muzyki","type":"word","tags":["klasyfikator","piosenka","muzyka"]},{"id":"w0969","hanzi":"一首","pinyin":"yī shǒu","pl":"jedna (piosenka)","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla muzyki","type":"phrase","tags":["jeden","piosenka","klasyfikator"]},{"id":"w0970","hanzi":"首歌","pinyin":"shǒu gē","pl":"utwór muzyczny","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"muzyka","type":"phrase","tags":["utwór","muzyczny","piosenka"]},{"id":"w0971","hanzi":"男","pinyin":"nán","pl":"mężczyzna, męski","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"płeć","type":"word","tags":["mężczyzna","męski","płeć"]},{"id":"w0972","hanzi":"有孩","pinyin":"yǒu hái","pl":"mieć dzieci","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"rodzina_i_relacje","subtopic":"dzieci","type":"phrase","tags":["mieć","dzieci","rodzina"]},{"id":"w0973","hanzi":"个孩","pinyin":"gè hái","pl":"(sztuk) dzieci","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"klasyfikator dla osób","type":"phrase","tags":["klasyfikator","dzieci","liczebnik"]},{"id":"w0974","hanzi":"多大","pinyin":"duō dà","pl":"ile lat? jak duży?","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"wiek","type":"phrase","tags":["ile lat","wiek","pytanie"]},{"id":"w0975","hanzi":"男孩","pinyin":"nánhái","pl":"chłopiec","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"dzieci","type":"word","tags":["chłopiec","dziecko","płeć"]},{"id":"w0976","hanzi":"女孩","pinyin":"nǚhái","pl":"dziewczynka","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"dzieci","type":"word","tags":["dziewczynka","dziecko","płeć"]},{"id":"w0977","hanzi":"右边","pinyin":"yòubiān","pl":"po prawej stronie","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"kierunki","type":"word","tags":["prawa strona","kierunek","lokalizacja"]},{"id":"w0978","hanzi":"坐在","pinyin":"zuò zài","pl":"siedzieć w/na","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"pozycja ciała","type":"phrase","tags":["siedzieć","na","lokalizacja"]},{"id":"w0979","hanzi":"便宜","pinyin":"piányí","pl":"tani","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"ceny","type":"word","tags":["tani","cena","przymiotnik"]},{"id":"w0980","hanzi":"那本书","pinyin":"nà běn shū","pl":"tamta książka","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"książki","type":"phrase","tags":["tamta","książka","zaimek wskazujący"]},{"id":"w0981","hanzi":"更想","pinyin":"gèng xiǎng","pl":"bardziej chcieć","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"pragnienia","type":"phrase","tags":["bardziej","chcieć","porównanie"]},{"id":"w0982","hanzi":"三公","pinyin":"sān gōng","pl":"trzy kilometry","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"odległość","type":"phrase","tags":["trzy","kilometry","odległość"]},{"id":"w0983","hanzi":"三十块","pinyin":"sānshí kuài","pl":"trzydzieści juanów","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"pieniądze","type":"phrase","tags":["trzydzieści","juanów","pieniądze"]},{"id":"w0984","hanzi":"十块","pinyin":"shí kuài","pl":"dziesięć juanów","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"pieniądze","type":"phrase","tags":["dziesięć","juanów","pieniądze"]},{"id":"w0985","hanzi":"大多","pinyin":"dàduō","pl":"większość, przeważnie","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"ilość","type":"word","tags":["większość","przeważnie","przysłówek"]},{"id":"w0986","hanzi":"多例","pinyin":"duō lì","pl":"wiele przykładów","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"przykłady","type":"phrase","tags":["wiele","przykładów","nauka"]},{"id":"w0987","hanzi":"查看","pinyin":"chákàn","pl":"sprawdzać, przeglądać","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"sprawdzanie","type":"word","tags":["sprawdzać","przeglądać","czasownik"]},{"id":"w0988","hanzi":"页","pinyin":"yè","pl":"strona (książki)","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"książki","type":"word","tags":["strona","książka","klasyfikator"]},{"id":"w0989","hanzi":"李月家","pinyin":"Lǐ Yuè jiā","pl":"dom Li Yue","sourceLesson":"第十一课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"imię i dom","type":"proper_noun","tags":["imię","dom","Li Yue"]},{"id":"w0990","hanzi":"家大","pinyin":"jiā dà","pl":"duży dom","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"dom_i_przestrzen","subtopic":"dom","type":"phrase","tags":["duży","dom","rozmiar"]},{"id":"w0991","hanzi":"回国","pinyin":"huí guó","pl":"wracać do ojczyzny","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"kraje_i_jezyki","subtopic":"ojczyzna","type":"phrase","tags":["wracać","ojczyzna","kraj"]},{"id":"w0992","hanzi":"这样","pinyin":"zhèyàng","pl":"w ten sposób, tak","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"sposób","type":"word","tags":["w ten sposób","tak","zaimek wskazujący"]},{"id":"w0993","hanzi":"再也不能","pinyin":"zài yě bù néng","pl":"już nigdy nie móc","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"negacja absolutna","type":"phrase","tags":["już nigdy","nie móc","negacja"]},{"id":"w0994","hanzi":"见面","pinyin":"jiànmiàn","pl":"spotkać się","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"rodzina_i_relacje","subtopic":"spotkania","type":"phrase","tags":["spotkać się","relacje","czasownik"]},{"id":"w0995","hanzi":"姓","pinyin":"xìng","pl":"nosić nazwisko","sourceLesson":"第十一课","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"nazwisko","type":"word","tags":["nazwisko","tożsamość","czasownik"]},{"id":"w0996","hanzi":"贵姓","pinyin":"guì xìng","pl":"jak Pana/Pani nazwisko?","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"grzecznościowe pytania","type":"phrase","tags":["nazwisko","grzeczność","pytanie"]},{"id":"w0997","hanzi":"姓张","pinyin":"xìng Zhāng","pl":"nosić nazwisko Zhang","sourceLesson":"第十一课","levelApprox":"HSK2","topic":"tozsamosc_i_ludzie","subtopic":"nazwisko","type":"phrase","tags":["nazwisko","Zhang","tożsamość"]},{"id":"w0998","hanzi":"张大","pinyin":"Zhāng Dà","pl":"Zhang Da (imię)","sourceLesson":"第十一课","levelApprox":"proper_noun","topic":"nazwy_wlasne","subtopic":"imię osoby","type":"proper_noun","tags":["imię","Zhang Da","osoba"]},{"id":"w0999","hanzi":"为","pinyin":"wèi","pl":"dla, ze względu na","sourceLesson":"第十一课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"przyimki","type":"word","tags":["dla","ze względu na","przyimek"]},{"id":"w1000","hanzi":"跑得快","pinyin":"pǎo de kuài","pl":"biec szybko","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"sport","type":"phrase","tags":["biec","szybko","stopień"]},{"id":"w1001","hanzi":"得晚","pinyin":"de wǎn","pl":"późno (stopień)","sourceLesson":"第十二课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"konstrukcja stopnia","type":"phrase","tags":["stopień","przysłówek","gramatyka"]},{"id":"w1002","hanzi":"考得","pinyin":"kǎo de","pl":"zdawać egzamin (stopień)","sourceLesson":"第十二课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"konstrukcja stopnia","type":"phrase","tags":["stopień","egzamin","gramatyka"]},{"id":"w1003","hanzi":"拼音","pinyin":"pīnyīn","pl":"pinyin (transkrypcja)","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"system zapisu języka","type":"word","tags":["pinyin","transkrypcja","język"]},{"id":"w1004","hanzi":"车开","pinyin":"chē kāi","pl":"samochód jedzie","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"jazda samochodem","type":"phrase","tags":["samochód","jazda","transport"]},{"id":"w1005","hanzi":"很慢","pinyin":"hěn màn","pl":"bardzo wolno","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"szkola_i_nauka","subtopic":"przysłówki stopnia","type":"phrase","tags":["przysłówek","stopień","wolno"]},{"id":"w1006","hanzi":"省略","pinyin":"shěnglüè","pl":"opuszczać, pomijać","sourceLesson":"第十二课","levelApprox":"HSK3plus","topic":"szkola_i_nauka","subtopic":"gramatyka i składnia","type":"word","tags":["gramatyka","pominięcie","język"]},{"id":"w1007","hanzi":"句型","pinyin":"jùxíng","pl":"wzorzec zdania","sourceLesson":"第十二课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"gramatyka i składnia","type":"word","tags":["gramatyka","zdanie","wzorzec"]},{"id":"w1008","hanzi":"例","pinyin":"lì","pl":"przykład","sourceLesson":"第十二课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"materiały dydaktyczne","type":"word","tags":["przykład","nauka","język"]},{"id":"w1009","hanzi":"参考","pinyin":"cānkǎo","pl":"materiały referencyjne","sourceLesson":"第十二课","levelApprox":"HSK3","topic":"szkola_i_nauka","subtopic":"materiały dydaktyczne","type":"word","tags":["nauka","materiały","referencje"]},{"id":"w1010","hanzi":"感冒","pinyin":"gǎnmào","pl":"przeziębienie","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"choroby i dolegliwości","type":"word","tags":["choroba","przeziębienie","zdrowie"]},{"id":"w1011","hanzi":"还","pinyin":"hái","pl":"jeszcze, nadal","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"objawy choroby","type":"word","tags":["gorączka","choroba","objawy"]},{"id":"w1012","hanzi":"奖","pinyin":"jiǎng","pl":"nagroda","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"objawy choroby","type":"word","tags":["ból","głowa","objawy"]},{"id":"w1013","hanzi":"吃些","pinyin":"chī xiē","pl":"zjeść trochę","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"objawy choroby","type":"word","tags":["ból","brzuch","objawy"]},{"id":"w1014","hanzi":"吃水果","pinyin":"chī shuǐguǒ","pl":"jeść owoce","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"objawy choroby","type":"word","tags":["ból","gardło","objawy"]},{"id":"w1015","hanzi":"此","pinyin":"cǐ","pl":"ten (formalny)","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"objawy choroby","type":"word","tags":["ból","noga","objawy"]},{"id":"w1016","hanzi":"语法","pinyin":"yǔfǎ","pl":"gramatyka","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"objawy choroby","type":"word","tags":["ból","ząb","objawy"]},{"id":"w1017","hanzi":"主要","pinyin":"zhǔyào","pl":"główny, przede wszystkim","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","stopa","anatomia"]},{"id":"w1018","hanzi":"妻","pinyin":"qī","pl":"żona (formalne)","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","ręka","anatomia"]},{"id":"w1019","hanzi":"老婆","pinyin":"lǎopo","pl":"żona (potoczne)","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","oko","anatomia"]},{"id":"w1020","hanzi":"丈夫","pinyin":"zhàngfu","pl":"mąż","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","usta","anatomia"]},{"id":"w1021","hanzi":"老公","pinyin":"lǎogōng","pl":"mąż (potoczne)","sourceLesson":"第十二课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","ucho","anatomia"]},{"id":"w1022","hanzi":"雪","pinyin":"xuě","pl":"śnieg","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"stan zdrowia","type":"phrase","tags":["choroba","zdrowie","stan"]},{"id":"w1023","hanzi":"雪人","pinyin":"xuě rén","pl":"bałwan","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"wizyta lekarska","type":"phrase","tags":["szpital","wizyta","zdrowie"]},{"id":"w1024","hanzi":"零","pinyin":"líng","pl":"zero","sourceLesson":"第七课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"zabiegi medyczne","type":"phrase","tags":["zastrzyk","zabieg","zdrowie"]},{"id":"w1025","hanzi":"预备","pinyin":"yùbèi","pl":"przygotowywać","sourceLesson":"第十二课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"leczenie","type":"phrase","tags":["leki","leczenie","zdrowie"]},{"id":"w1026","hanzi":"十度","pinyin":"shí dù","pl":"dziesięć stopni","sourceLesson":"第十七课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"odpoczynek i relaks","type":"word","tags":["odpoczynek","relaks","czynności"]},{"id":"w1027","hanzi":"会到","pinyin":"huì dào","pl":"dojdzie do","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"leczenie w domu","type":"phrase","tags":["odpoczynek","łóżko","zdrowie"]},{"id":"w1028","hanzi":"二十五","pinyin":"èrshíwǔ","pl":"dwadzieścia pięć","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"zalecenia zdrowotne","type":"phrase","tags":["woda","zdrowie","zalecenie"]},{"id":"w1029","hanzi":"点儿","pinyin":"diǎnr","pl":"trochę","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"zalecenia zdrowotne","type":"phrase","tags":["warzywa","zdrowie","jedzenie"]},{"id":"w1030","hanzi":"三十度","pinyin":"sānshí dù","pl":"trzydzieści stopni","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"zachowania i nawyki","type":"word","tags":["uwaga","dbanie","czynności"]},{"id":"w1031","hanzi":"出门","pinyin":"chū mén","pl":"wychodzić z domu","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"aktywność fizyczna","type":"word","tags":["sport","ćwiczenia","aktywność"]},{"id":"w1032","hanzi":"与","pinyin":"yǔ","pl":"i, z (formalne)","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"pytanie o stan zdrowia","type":"phrase","tags":["pytanie","zdrowie","rozmowa"]},{"id":"w1033","hanzi":"没错","pinyin":"méi cuò","pl":"zgadza się, racja","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"wizyta lekarska","type":"phrase","tags":["lekarz","wizyta","zdrowie"]},{"id":"w1034","hanzi":"比较","pinyin":"bǐjiào","pl":"porównywać, stosunkowo","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"personel medyczny","type":"word","tags":["lekarz","medycyna","zawód"]},{"id":"w1035","hanzi":"正式","pinyin":"zhèngshì","pl":"formalny, oficjalny","sourceLesson":"第十七课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"miejsca medyczne","type":"word","tags":["szpital","medycyna","miejsce"]},{"id":"w1036","hanzi":"温是","pinyin":"wēn shì","pl":"temperatura wynosi","sourceLesson":"第十七课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"leki i leczenie","type":"word","tags":["leki","medycyna","zdrowie"]},{"id":"w1037","hanzi":"版本","pinyin":"bǎnběn","pl":"wersja, wydanie","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"zabiegi chirurgiczne","type":"word","tags":["operacja","chirurgia","zdrowie"]},{"id":"w1038","hanzi":"短","pinyin":"duǎn","pl":"krótki","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"zabiegi chirurgiczne","type":"phrase","tags":["operacja","chirurgia","poważna"]},{"id":"w1039","hanzi":"房间","pinyin":"fángjiān","pl":"pokój","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"wynik leczenia","type":"phrase","tags":["operacja","sukces","zdrowie"]},{"id":"w1040","hanzi":"大件","pinyin":"dà jiàn","pl":"duże przedmioty","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"pobyt w szpitalu","type":"word","tags":["szpital","hospitalizacja","zdrowie"]},{"id":"w1041","hanzi":"衣物","pinyin":"yīwù","pl":"odzież, ubrania","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"pobyt w szpitalu","type":"word","tags":["szpital","wypis","zdrowie"]},{"id":"w1042","hanzi":"并非","pinyin":"bìng fēi","pl":"wcale nie","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"relacje i opieka","type":"word","tags":["towarzyszenie","opieka","relacje"]},{"id":"w1043","hanzi":"饰品","pinyin":"shìpǐn","pl":"akcesoria, biżuteria","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"relacje i opieka","type":"word","tags":["opieka","troska","rodzina"]},{"id":"w1044","hanzi":"什么样","pinyin":"shénme yàng","pl":"jaki, jakiego rodzaju","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"diagnostyka medyczna","type":"word","tags":["badanie","diagnoza","zdrowie"]},{"id":"w1045","hanzi":"帮孩","pinyin":"bāng hái","pl":"pomagać dziecku","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"diagnostyka medyczna","type":"word","tags":["laboratorium","badanie","zdrowie"]},{"id":"w1046","hanzi":"穿鞋","pinyin":"chuān xié","pl":"zakładać buty","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"ratownictwo medyczne","type":"word","tags":["karetka","ratownictwo","zdrowie"]},{"id":"w1047","hanzi":"我进","pinyin":"wǒ jìn","pl":"ja wchodzę","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"ratownictwo medyczne","type":"phrase","tags":["karetka","wezwanie","ratownictwo"]},{"id":"w1048","hanzi":"别人","pinyin":"biérén","pl":"inni ludzie","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"zabiegi chirurgiczne","type":"phrase","tags":["operacja","chirurgia","zabieg"]},{"id":"w1049","hanzi":"马上","pinyin":"mǎshàng","pl":"zaraz, natychmiast","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"diagnostyka medyczna","type":"word","tags":["krew","grupa","medycyna"]},{"id":"w1050","hanzi":"上车","pinyin":"shàng chē","pl":"wsiadać do pojazdu","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"zabiegi medyczne","type":"word","tags":["dezynfekcja","higienа","medycyna"]},{"id":"w1051","hanzi":"朝着","pinyin":"cháo zhe","pl":"w kierunku","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"zabiegi medyczne","type":"word","tags":["bandaż","opatrunek","medycyna"]},{"id":"w1052","hanzi":"者","pinyin":"zhě","pl":"osoba (sufiks)","sourceLesson":"第十七课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","ręka","anatomia"]},{"id":"w1053","hanzi":"靠近","pinyin":"kào jìn","pl":"zbliżać się","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","nadgarstek","anatomia"]},{"id":"w1054","hanzi":"远离","pinyin":"yuǎnlí","pl":"oddalać się od","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","ramię","anatomia"]},{"id":"w1055","hanzi":"原地","pinyin":"yuándì","pl":"na miejscu, w tym samym miejscu","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","palec","anatomia"]},{"id":"w1056","hanzi":"详细","pinyin":"xiánxì","pl":"szczegółowy","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","bark","anatomia"]},{"id":"w1057","hanzi":"内容","pinyin":"nèiróng","pl":"treść, zawartość","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","kolano","anatomia"]},{"id":"w1058","hanzi":"耐","pinyin":"nài","pl":"wytrzymały, cierpliwy","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","kostka","anatomia"]},{"id":"w1059","hanzi":"等候","pinyin":"děnghòu","pl":"czekać (formalnie)","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","szyja","anatomia"]},{"id":"w1060","hanzi":"级","pinyin":"jí","pl":"poziom, klasa","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","talia","anatomia"]},{"id":"w1061","hanzi":"解释","pinyin":"jiěshì","pl":"wyjaśniać","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","klatka","anatomia"]},{"id":"w1062","hanzi":"向","pinyin":"xiàng","pl":"w kierunku, ku","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","plecy","anatomia"]},{"id":"w1063","hanzi":"出","pinyin":"chū","pl":"wychodzić","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","łokieć","anatomia"]},{"id":"w1064","hanzi":"朝","pinyin":"cháo","pl":"w kierunku, dynastia","sourceLesson":"第十七课","levelApprox":"HSK1","topic":"cialo_i_zdrowie","subtopic":"personel medyczny","type":"word","tags":["lekarz","zawód","medycyna"]},{"id":"w1065","hanzi":"我人","pinyin":"wǒ rén","pl":"ja (osoba)","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"personel medyczny","type":"word","tags":["pielęgniarka","zawód","medycyna"]},{"id":"w1066","hanzi":"状态","pinyin":"zhuàngtài","pl":"stan, kondycja","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"parametry zdrowotne","type":"word","tags":["ciśnienie","krew","medycyna"]},{"id":"w1067","hanzi":"延续","pinyin":"yánxù","pl":"kontynuować, przedłużać","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"parametry zdrowotne","type":"word","tags":["temperatura","ciało","medycyna"]},{"id":"w1068","hanzi":"非","pinyin":"fēi","pl":"nie, nieprawidłowy","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"parametry zdrowotne","type":"word","tags":["puls","medycyna","diagnostyka"]},{"id":"w1069","hanzi":"生命体","pinyin":"shēngmìng tǐ","pl":"żywe stworzenie","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"funkcje życiowe","type":"word","tags":["oddychanie","zdrowie","funkcje"]},{"id":"w1070","hanzi":"穿着","pinyin":"chuān zhe","pl":"nosząc (ubranie)","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"choroby i dolegliwości","type":"word","tags":["alergia","choroba","zdrowie"]},{"id":"w1071","hanzi":"红","pinyin":"hóng","pl":"czerwony","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"rodzaje chorób","type":"phrase","tags":["choroba","przewlekła","medycyna"]},{"id":"w1072","hanzi":"手","pinyin":"shǒu","pl":"ręka","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"rodzaje chorób","type":"phrase","tags":["choroba","ostra","medycyna"]},{"id":"w1073","hanzi":"手套","pinyin":"shǒutào","pl":"rękawiczki","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"rodzaje chorób","type":"phrase","tags":["choroba","zakaźna","epidemia"]},{"id":"w1074","hanzi":"双手","pinyin":"shuāng shǒu","pl":"obie ręce","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"profilaktyka zdrowotna","type":"phrase","tags":["szczepienie","profilaktyka","zdrowie"]},{"id":"w1075","hanzi":"看看","pinyin":"kànkan","pl":"popatrzeć chwilę","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"rodzaje chorób","type":"phrase","tags":["genetyka","choroba","dziedziczna"]},{"id":"w1076","hanzi":"奶奶","pinyin":"nǎinai","pl":"babcia (ze strony ojca)","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"urazy i kontuzje","type":"word","tags":["złamanie","kość","uraz"]},{"id":"w1077","hanzi":"太客","pinyin":"tài kè","pl":"zbyt uprzejmy","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"urazy i kontuzje","type":"word","tags":["zwichnięcie","uraz","zdrowie"]},{"id":"w1078","hanzi":"车","pinyin":"chē","pl":"pojazd, samochód","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"urazy i kontuzje","type":"word","tags":["skręcenie","uraz","kontuzja"]},{"id":"w1079","hanzi":"钥匙","pinyin":"yàoshi","pl":"klucz","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"urazy i kontuzje","type":"word","tags":["oparzenie","uraz","zdrowie"]},{"id":"w1080","hanzi":"铅笔","pinyin":"qiānbǐ","pl":"ołówek","sourceLesson":"第十三课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"urazy i kontuzje","type":"word","tags":["otarcie","uraz","rana"]},{"id":"w1081","hanzi":"用","pinyin":"yòng","pl":"używać","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"urazy i kontuzje","type":"word","tags":["zatrucie","toksyny","zdrowie"]},{"id":"w1082","hanzi":"写字","pinyin":"xiě zì","pl":"pisać (znaki)","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"stany nagłe","type":"word","tags":["omdlenie","nagłe","zdrowie"]},{"id":"w1083","hanzi":"很贵","pinyin":"hěn guì","pl":"bardzo drogi","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"stan zdrowia","type":"phrase","tags":["samopoczucie","zdrowie","stan"]},{"id":"w1084","hanzi":"六个","pinyin":"liù gè","pl":"sześć (sztuk)","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"ocena stanu zdrowia","type":"phrase","tags":["poważny","zdrowie","stopień"]},{"id":"w1085","hanzi":"爱笑","pinyin":"ài xiào","pl":"lubić się śmiać","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"pobyt w szpitalu","type":"phrase","tags":["dni","szpital","hospitalizacja"]},{"id":"w1086","hanzi":"大笑","pinyin":"dà xiào","pl":"głośno się śmiać","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"zalecenia zdrowotne","type":"phrase","tags":["odpoczynek","zdrowie","zalecenie"]},{"id":"w1087","hanzi":"宾馆","pinyin":"bīnguǎn","pl":"hotel","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"cialo_i_zdrowie","subtopic":"życzenia zdrowotne","type":"phrase","tags":["zdrowie","życzenia","powrót"]},{"id":"w1088","hanzi":"讲过","pinyin":"jiǎng guò","pl":"już powiedziane","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"pozdrowienia i grzeczności","type":"phrase","tags":["pozdrowienia","grzeczność","rozmowa"]},{"id":"w1089","hanzi":"火车站","pinyin":"huǒchēzhàn","pl":"dworzec kolejowy","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"życzenia zdrowotne","type":"phrase","tags":["życzenia","zdrowie","grzeczność"]},{"id":"w1090","hanzi":"路口","pinyin":"lùkǒu","pl":"skrzyżowanie","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"podróże i turystyka","type":"word","tags":["podróż","turystyka","rekreacja"]},{"id":"w1091","hanzi":"左边","pinyin":"zuǒbiān","pl":"po lewej stronie","sourceLesson":"第十三课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"podróże i turystyka","type":"word","tags":["podróż","transport","rekreacja"]},{"id":"w1092","hanzi":"杨","pinyin":"Yáng","pl":"Yang (nazwisko)","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"podróże i turystyka","type":"word","tags":["wyjazd","podróż","transport"]},{"id":"w1093","hanzi":"笑笑","pinyin":"Xiào Xiào","pl":"Xiao Xiao (imię)","sourceLesson":"第十三课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"podróże i turystyka","type":"word","tags":["przyjazd","podróż","transport"]},{"id":"w1094","hanzi":"没意思","pinyin":"méi yìsi","pl":"nudny, bez sensu","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"turystyka i zwiedzanie","type":"word","tags":["zwiedzanie","turystyka","kultura"]},{"id":"w1095","hanzi":"不看","pinyin":"bù kàn","pl":"nie patrzeć, nie oglądać","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"turystyka i zwiedzanie","type":"word","tags":["zwiedzanie","spacer","turystyka"]},{"id":"w1096","hanzi":"课真","pinyin":"kè zhēn","pl":"lekcja naprawdę","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"planowanie podróży","type":"word","tags":["trasa","plan","podróż"]},{"id":"w1097","hanzi":"虽然","pinyin":"suīrán","pl":"chociaż","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"atrakcje i zabytki","type":"word","tags":["atrakcja","turystyka","miejsce"]},{"id":"w1098","hanzi":"次","pinyin":"cì","pl":"raz (krotność)","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"liczebniki i mierniki","type":"word","tags":["krotność","miernik","liczba"]},{"id":"w1099","hanzi":"参照","pinyin":"cānzhào","pl":"odwoływać się do","sourceLesson":"第十四课","levelApprox":"HSK3plus","topic":"codzienne_czynnosci","subtopic":"atrakcje i zabytki","type":"phrase","tags":["zabytki","historia","turystyka"]},{"id":"w1100","hanzi":"去过","pinyin":"qù guò","pl":"byłem/tam już był","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"obsługa turystyczna","type":"word","tags":["przewodnik","turystyka","zawód"]},{"id":"w1101","hanzi":"三次","pinyin":"sān cì","pl":"trzy razy","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"liczebniki i mierniki","type":"phrase","tags":["krotność","trzy","liczba"]},{"id":"w1102","hanzi":"他来","pinyin":"tā lái","pl":"on przychodzi","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"bilety i rezerwacje","type":"word","tags":["bilet","lotniczy","podróż"]},{"id":"w1103","hanzi":"一次","pinyin":"yī cì","pl":"jeden raz","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"bilety i rezerwacje","type":"word","tags":["bilet","kolej","transport"]},{"id":"w1104","hanzi":"看过","pinyin":"kàn guò","pl":"już oglądałem","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"rozmowa_i_frazy","subtopic":"aspekt dokonany","type":"phrase","tags":["aspekt","dokonany","gramatyka"]},{"id":"w1105","hanzi":"两次","pinyin":"liǎng cì","pl":"dwa razy","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"liczby_i_ilosci","subtopic":"liczebniki i mierniki","type":"phrase","tags":["krotność","dwa","liczba"]},{"id":"w1106","hanzi":"玩","pinyin":"wán","pl":"bawić się","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"czas wolny i rozrywka","type":"word","tags":["zabawa","rekreacja","czas wolny"]},{"id":"w1107","hanzi":"玩游戏","pinyin":"wán yóuxì","pl":"grać w gry","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"czas wolny i rozrywka","type":"phrase","tags":["gry","rozrywka","czas wolny"]},{"id":"w1108","hanzi":"出去玩","pinyin":"chū qù wán","pl":"wyjść się bawić","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"dokumenty podróżne","type":"word","tags":["paszport","dokument","podróż"]},{"id":"w1109","hanzi":"什么游戏","pinyin":"shénme yóuxì","pl":"jaka gra","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"dokumenty podróżne","type":"word","tags":["wiza","dokument","podróż"]},{"id":"w1110","hanzi":"晴","pinyin":"qíng","pl":"pogodny","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"odprawa i formalności","type":"word","tags":["cło","granica","podróż"]},{"id":"w1111","hanzi":"很晴","pinyin":"hěn qíng","pl":"bardzo słonecznie","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"podróże i turystyka","type":"word","tags":["bagaż","walizka","podróż"]},{"id":"w1112","hanzi":"自然","pinyin":"zìrán","pl":"naturalny, przyroda","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"odprawa i formalności","type":"phrase","tags":["bagaż","odprawa","lotnisko"]},{"id":"w1113","hanzi":"英文","pinyin":"Yīngwén","pl":"angielski (pismo)","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"podróże lotnicze","type":"phrase","tags":["bagaż","podręczny","lotnisko"]},{"id":"w1114","hanzi":"翻","pinyin":"fān","pl":"tłumaczyć, przekładać","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"podróże lotnicze","type":"word","tags":["karta","pokładowa","lotnisko"]},{"id":"w1115","hanzi":"晴天","pinyin":"qíng tiān","pl":"słoneczny dzień","sourceLesson":"第十四课","levelApprox":"HSK3plus","topic":"miasto_i_transport","subtopic":"podróże lotnicze","type":"word","tags":["odprawa","lotnisko","check-in"]},{"id":"w1116","hanzi":"天晴","pinyin":"tiān qíng","pl":"pogoda się klaruje","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"podróże lotnicze","type":"word","tags":["start","samolot","lot"]},{"id":"w1117","hanzi":"不下雨","pinyin":"bù xià yǔ","pl":"nie pada deszcz","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"podróże lotnicze","type":"word","tags":["lądowanie","samolot","lot"]},{"id":"w1118","hanzi":"形容词","pinyin":"xíngróngcí","pl":"przymiotnik","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"problemy w podróży","type":"word","tags":["opóźnienie","transport","problem"]},{"id":"w1119","hanzi":"一般","pinyin":"yībān","pl":"zwykle, ogólnie","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"problemy w podróży","type":"word","tags":["anulowanie","odwołanie","transport"]},{"id":"w1120","hanzi":"用来","pinyin":"yòng lái","pl":"używać do","sourceLesson":"第十四课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"komunikacja miejska","type":"word","tags":["przesiadka","transport","komunikacja"]},{"id":"w1121","hanzi":"形容","pinyin":"xíngróng","pl":"opisywać","sourceLesson":"第十四课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"środki transportu","type":"word","tags":["autobus","komunikacja","miejski"]},{"id":"w1122","hanzi":"变化","pinyin":"biànhuà","pl":"zmiana","sourceLesson":"第十四课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"środki transportu","type":"word","tags":["metro","komunikacja","miejski"]},{"id":"w1123","hanzi":"百","pinyin":"bǎi","pl":"sto","sourceLesson":"第十四课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"środki transportu","type":"word","tags":["taksówka","transport","miejski"]},{"id":"w1124","hanzi":"课学过","pinyin":"kè xué guò","pl":"już przerobiono na lekcji","sourceLesson":"第十四课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"środki transportu","type":"word","tags":["motocykl","transport","pojazd"]},{"id":"w1125","hanzi":"日","pinyin":"rì","pl":"dzień, słońce","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"miasto_i_transport","subtopic":"środki transportu","type":"word","tags":["rower","transport","pojazd"]},{"id":"w1126","hanzi":"五月","pinyin":"wǔ yuè","pl":"maj","sourceLesson":"第十五课","levelApprox":"HSK3plus","topic":"miasto_i_transport","subtopic":"transport współdzielony","type":"phrase","tags":["rower","miejski","współdzielony"]},{"id":"w1127","hanzi":"星期日","pinyin":"xīngqīrì","pl":"niedziela","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"środki transportu","type":"phrase","tags":["taksówka","transport","czynność"]},{"id":"w1128","hanzi":"口语","pinyin":"kǒuyǔ","pl":"język mówiony","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"zamawianie transportu","type":"phrase","tags":["zamówienie","auto","transport"]},{"id":"w1129","hanzi":"用法","pinyin":"yòngfǎ","pl":"użycie, sposób użycia","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"problemy komunikacyjne","type":"word","tags":["korek","ruch","transport"]},{"id":"w1130","hanzi":"可","pinyin":"kě","pl":"móc, ale","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"czasowniki modalne","type":"word","tags":["modalny","możliwość","gramatyka"]},{"id":"w1131","hanzi":"用于","pinyin":"yòng yú","pl":"używać dla/do","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"wyrażenia użycia","type":"phrase","tags":["użycie","zastosowanie","gramatyka"]},{"id":"w1132","hanzi":"元旦","pinyin":"Yuándàn","pl":"Nowy Rok (1 stycznia)","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"infrastruktura drogowa","type":"word","tags":["sygnalizacja","drogowa","transport"]},{"id":"w1133","hanzi":"春节","pinyin":"Chūnjié","pl":"Chiński Nowy Rok","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"infrastruktura drogowa","type":"word","tags":["przejście","piesi","ulica"]},{"id":"w1134","hanzi":"新年好","pinyin":"xīnnián hǎo","pl":"Szczęśliwego Nowego Roku","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"infrastruktura drogowa","type":"word","tags":["autostrada","droga","transport"]},{"id":"w1135","hanzi":"一日","pinyin":"yī rì","pl":"jeden dzień (formalne)","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"miasto_i_transport","subtopic":"ruch i komunikacja","type":"word","tags":["ruch","komunikacja","transport"]},{"id":"w1136","hanzi":"地铁站","pinyin":"dìtiězhàn","pl":"stacja metra","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"praca i zatrudnienie","type":"word","tags":["praca","zawód","czynność"]},{"id":"w1137","hanzi":"公交车站","pinyin":"gōngjiāo chēzhàn","pl":"przystanek autobusowy","sourceLesson":"第十五课","levelApprox":"HSK3","topic":"tozsamosc_i_ludzie","subtopic":"zawód i profesja","type":"word","tags":["zawód","profesja","tożsamość"]},{"id":"w1138","hanzi":"站","pinyin":"zhàn","pl":"przystanek, stać","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"miejsce pracy","type":"word","tags":["firma","praca","biznes"]},{"id":"w1139","hanzi":"大家","pinyin":"dàjiā","pl":"wszyscy","sourceLesson":"第十五课","levelApprox":"HSK2","topic":"tozsamosc_i_ludzie","subtopic":"relacje w pracy","type":"word","tags":["współpracownik","praca","relacje"]},{"id":"w1140","hanzi":"过得","pinyin":"guò de","pl":"spędzać","sourceLesson":"第十五课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"praca i zatrudnienie","type":"word","tags":["praca","czynność","rutyna"]},{"id":"w1141","hanzi":"阴","pinyin":"yīn","pl":"pochmurny, zachmurzony","sourceLesson":"第五课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"praca i zatrudnienie","type":"word","tags":["praca","czynność","rutyna"]},{"id":"w1142","hanzi":"阴天","pinyin":"yīn tiān","pl":"pochmurny dzień","sourceLesson":"第五课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"praca i zatrudnienie","type":"word","tags":["nadgodziny","praca","czas"]},{"id":"w1143","hanzi":"阴阴的","pinyin":"yīnyīn de","pl":"trochę pochmurnie","sourceLesson":"第五课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"obowiązki zawodowe","type":"word","tags":["wyjazd","służbowy","praca"]},{"id":"w1144","hanzi":"很累","pinyin":"hěn lèi","pl":"bardzo zmęczony","sourceLesson":"第五课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"spotkania i konferencje","type":"word","tags":["spotkanie","konferencja","praca"]},{"id":"w1145","hanzi":"喝一杯","pinyin":"hē yī bēi","pl":"wypić jedną filiżankę","sourceLesson":"第五课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"spotkania i konferencje","type":"phrase","tags":["spotkanie","praca","czynność"]},{"id":"w1146","hanzi":"热茶","pinyin":"rè chá","pl":"gorąca herbata","sourceLesson":"第五课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"dokumenty biurowe","type":"word","tags":["raport","dokument","praca"]},{"id":"w1147","hanzi":"周末","pinyin":"zhōumò","pl":"weekend","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"zarządzanie projektami","type":"word","tags":["projekt","praca","biznes"]},{"id":"w1148","hanzi":"打算","pinyin":"dǎsuàn","pl":"plan; zamierzać","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"planowanie i organizacja","type":"word","tags":["plan","praca","organizacja"]},{"id":"w1149","hanzi":"跟","pinyin":"gēn","pl":"z (kimś), za","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"realizacja zadań","type":"word","tags":["ukończenie","zadanie","praca"]},{"id":"w1150","hanzi":"小丽","pinyin":"Xiǎo Lì","pl":"Xiaoli (imię)","sourceLesson":"第十六课","levelApprox":"HSK3plus","topic":"codzienne_czynnosci","subtopic":"dokumenty biurowe","type":"word","tags":["złożenie","dokument","praca"]},{"id":"w1151","hanzi":"小刚","pinyin":"Xiǎo Gāng","pl":"Xiaogang (imię)","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"komunikacja zawodowa","type":"word","tags":["odpowiedź","komunikacja","praca"]},{"id":"w1152","hanzi":"着急","pinyin":"zháojí","pl":"martwić się, niepokoić","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"komunikacja zawodowa","type":"word","tags":["kontakt","komunikacja","praca"]},{"id":"w1153","hanzi":"南(方)","pinyin":"nán (fāng)","pl":"południe, południowa część","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"kierunki i orientacja","type":"word","tags":["kierunek","południe","orientacja"]},{"id":"w1154","hanzi":"北(方)","pinyin":"běi (fāng)","pl":"północ, północna część","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"miasto_i_transport","subtopic":"kierunki i orientacja","type":"phrase","tags":["kierunek","północ","orientacja"]},{"id":"w1155","hanzi":"地图","pinyin":"dìtú","pl":"mapa","sourceLesson":"第十六课","levelApprox":"HSK3plus","topic":"codzienne_czynnosci","subtopic":"negocjacje biznesowe","type":"word","tags":["negocjacje","biznes","praca"]},{"id":"w1156","hanzi":"搬","pinyin":"bān","pl":"przeprowadzać się, przenosić","sourceLesson":"第十六课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"przeprowadzka i zmiana miejsca","type":"word","tags":["przeprowadzka","przenoszenie","dom"]},{"id":"w1157","hanzi":"腿","pinyin":"tuǐ","pl":"noga","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","noga","anatomia"]},{"id":"w1158","hanzi":"疼","pinyin":"téng","pl":"boleć, bolesny","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"cialo_i_zdrowie","subtopic":"dolegliwości i ból","type":"word","tags":["ból","zdrowie","dolegliwość"]},{"id":"w1159","hanzi":"脚","pinyin":"jiǎo","pl":"stopa","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"cialo_i_zdrowie","subtopic":"części ciała","type":"word","tags":["ciało","stopa","anatomia"]},{"id":"w1160","hanzi":"树","pinyin":"shù","pl":"drzewo","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"wyglad_i_opisy","subtopic":"rośliny i przyroda","type":"word","tags":["drzewo","roślina","natura"]},{"id":"w1161","hanzi":"秘书","pinyin":"mìshū","pl":"sekretarz/ka","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"praca_i_biuro","subtopic":"stanowiska i zawody","type":"word","tags":["zawód","biuro","stanowisko"]},{"id":"w1162","hanzi":"经理","pinyin":"jīnglǐ","pl":"kierownik, menadżer","sourceLesson":"第十七课","levelApprox":"HSK3plus","topic":"praca_i_biuro","subtopic":"stanowiska i zawody","type":"word","tags":["zawód","kierownik","stanowisko"]},{"id":"w1163","hanzi":"办公室","pinyin":"bàngōngshì","pl":"biuro","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"praca_i_biuro","subtopic":"miejsca pracy","type":"word","tags":["biuro","praca","miejsce"]},{"id":"w1164","hanzi":"周","pinyin":"Zhōu","pl":"Zhou (nazwisko)","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"rozwój i postęp","type":"word","tags":["rozwój","postęp","biznes"]},{"id":"w1165","hanzi":"周明","pinyin":"Zhōu Míng","pl":"Zhou Ming (imię)","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"sukces i osiągnięcia","type":"word","tags":["sukces","osiągnięcie","emocje"]},{"id":"w1166","hanzi":"楼","pinyin":"lóu","pl":"budynek, piętro","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"niepowodzenia i porażki","type":"word","tags":["porażka","niepowodzenie","emocje"]},{"id":"w1167","hanzi":"伞","pinyin":"sǎn","pl":"parasol","sourceLesson":"第十七课","levelApprox":"HSK2","topic":"codzienne_czynnosci","subtopic":"wysiłek i determinacja","type":"word","tags":["staranie","praca","determinacja"]},{"id":"w1168","hanzi":"胖","pinyin":"pàng","pl":"gruby, otyły","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"tozsamosc_i_ludzie","subtopic":"wartości i charakter","type":"word","tags":["odpowiedzialność","charakter","praca"]},{"id":"w1169","hanzi":"其实","pinyin":"qíshí","pl":"właściwie, w rzeczywistości","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"możliwości i szanse","type":"word","tags":["szansa","okazja","biznes"]},{"id":"w1170","hanzi":"瘦","pinyin":"shòu","pl":"chudy, szczupły","sourceLesson":"第十七课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"wyzwania i trudności","type":"word","tags":["wyzwanie","trudność","praca"]},{"id":"w1171","hanzi":"还是","pinyin":"háishì","pl":"albo… albo…; czy","sourceLesson":"第十八课","levelApprox":"HSK3","topic":"emocje_i_oceny","subtopic":"stres i presja","type":"word","tags":["stres","presja","emocje"]},{"id":"w1172","hanzi":"爬山","pinyin":"páshān","pl":"wspinać się na górę","sourceLesson":"第十八课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"aktywność na świeżym powietrzu","type":"word","tags":["wspinaczka","góra","rekreacja"]},{"id":"w1173","hanzi":"小心","pinyin":"xiǎoxīn","pl":"ostrożny, uważać","sourceLesson":"第十八课","levelApprox":"HSK3","topic":"rozmowa_i_frazy","subtopic":"ostrzeżenia i rady","type":"word","tags":["ostrzeżenie","ostrożność","fraza"]},{"id":"w1174","hanzi":"条","pinyin":"tiáo","pl":"m. do spodni, sukienek","sourceLesson":"第十八课","levelApprox":"HSK2","topic":"czas_i_kalendarz","subtopic":"urlop i wolny czas","type":"word","tags":["urlop","wakacje","czas"]},{"id":"w1175","hanzi":"裤子","pinyin":"kùzi","pl":"spodnie","sourceLesson":"第十八课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"urlop i zwolnienie","type":"phrase","tags":["urlop","praca","czynność"]},{"id":"w1176","hanzi":"记得","pinyin":"jìde","pl":"pamiętać","sourceLesson":"第十八课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"zmiany pracy","type":"word","tags":["rezygnacja","praca","zmiana"]},{"id":"w1177","hanzi":"衬衫","pinyin":"chènshān","pl":"koszula","sourceLesson":"第十八课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"rekrutacja i zatrudnienie","type":"word","tags":["rekrutacja","zatrudnienie","praca"]},{"id":"w1178","hanzi":"元","pinyin":"yuán","pl":"yuan (jednostka waluty)","sourceLesson":"第十八课","levelApprox":"HSK3","topic":"tozsamosc_i_ludzie","subtopic":"dokumenty i tożsamość","type":"word","tags":["cv","życiorys","praca"]},{"id":"w1179","hanzi":"新鲜","pinyin":"xīnxiān","pl":"świeży","sourceLesson":"第十八课","levelApprox":"HSK3","topic":"codzienne_czynnosci","subtopic":"rekrutacja i zatrudnienie","type":"word","tags":["rozmowa","kwalifikacyjna","praca"]},{"id":"w1180","hanzi":"甜","pinyin":"tián","pl":"słodki","sourceLesson":"第十八课","levelApprox":"HSK3plus","topic":"codzienne_czynnosci","subtopic":"rekrutacja i zatrudnienie","type":"word","tags":["zatrudnienie","przyjęcie","praca"]},{"id":"w1181","hanzi":"只","pinyin":"zhǐ","pl":"tylko, jedynie","sourceLesson":"第十八课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"partykuły i spójniki","type":"word","tags":["partykuła","ograniczenie","gramatyka"]},{"id":"w1182","hanzi":"放","pinyin":"fàng","pl":"kłaść, umieszczać","sourceLesson":"第十八课","levelApprox":"HSK1","topic":"codzienne_czynnosci","subtopic":"czynności domowe","type":"word","tags":["kłaść","umieszczać","czynność"]},{"id":"w1183","hanzi":"饮料","pinyin":"yǐnliào","pl":"napój","sourceLesson":"第十八课","levelApprox":"HSK1","topic":"jedzenie_i_picie","subtopic":"napoje","type":"word","tags":["napój","picie","jedzenie"]},{"id":"w1184","hanzi":"或者","pinyin":"huòzhě","pl":"lub, albo (w zdaniach twierdzących)","sourceLesson":"第十八课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"spójniki i łączniki","type":"word","tags":["spójnik","alternatywa","gramatyka"]},{"id":"w1185","hanzi":"舒服","pinyin":"shūfú","pl":"wygodny, komfortowy","sourceLesson":"第十八课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"samopoczucie","type":"word","tags":["komfort","samopoczucie","przymiotnik"]},{"id":"w1186","hanzi":"花","pinyin":"huā","pl":"kwiat","sourceLesson":"第十八课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"rośliny i kwiaty","type":"word","tags":["kwiat","roślina","natura"]},{"id":"w1187","hanzi":"绿","pinyin":"lǜ","pl":"zielony","sourceLesson":"第十八课","levelApprox":"HSK1","topic":"wyglad_i_opisy","subtopic":"kolory i barwy","type":"word","tags":["kolor","zielony","przymiotnik"]},{"id":"w1188","hanzi":"测试","pinyin":"cèshì","pl":"test","sourceLesson":"Lesson 99","levelApprox":"HSK1","topic":"test","subtopic":"test","type":"word","tags":["test"]},{"id":"w1189","hanzi":"您","pinyin":"nín","pl":"Pan/Pani (forma grzecznościowa)","sourceLesson":"lekcja_przedstawianie","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"zaimki osobowe","type":"word","tags":["zaimek","grzeczność","formalny"]},{"id":"w1190","hanzi":"汉语","pinyin":"Hànyǔ","pl":"język chiński","sourceLesson":"第三课","levelApprox":"HSK1","topic":"kraje_i_jezyki","subtopic":"języki","type":"word","tags":["język","chiński"]},{"id":"w1191","hanzi":"英语","pinyin":"Yīngyǔ","pl":"język angielski","sourceLesson":"第三课","levelApprox":"HSK1","topic":"kraje_i_jezyki","subtopic":"języki","type":"word","tags":["język","angielski"]},{"id":"w1192","hanzi":"波兰语","pinyin":"Bōlányǔ","pl":"język polski","sourceLesson":"第三课","levelApprox":"HSK2","topic":"kraje_i_jezyki","subtopic":"języki","type":"word","tags":["język","polski"]},{"id":"w1193","hanzi":"人","pinyin":"rén","pl":"człowiek, osoba","sourceLesson":"第四课","levelApprox":"HSK1","topic":"tozsamosc_i_ludzie","subtopic":"ludzie","type":"word","tags":["rzeczownik","osoba"]},{"id":"w1194","hanzi":"和","pinyin":"hé","pl":"i (łącznik rzeczowników)","sourceLesson":"第五课","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"spójniki","type":"word","tags":["spójnik"]},{"id":"w1195","hanzi":"二","pinyin":"èr","pl":"dwa (samodzielna liczba)","sourceLesson":"第七课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"liczby","type":"word","tags":["liczba","cyfra"]},{"id":"w1196","hanzi":"个","pinyin":"gè","pl":"(miernik ogólny dla osób i rzeczy)","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"mierniki","type":"word","tags":["miernik"]},{"id":"w1197","hanzi":"一个","pinyin":"yī gè","pl":"jeden, jedna (+ rzeczownik)","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"mierniki","type":"phrase","tags":["liczba","miernik"]},{"id":"w1198","hanzi":"两个","pinyin":"liǎng gè","pl":"dwa, dwie (+ rzeczownik)","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"mierniki","type":"phrase","tags":["liczba","miernik"]},{"id":"w1199","hanzi":"三个","pinyin":"sān gè","pl":"trzy (+ rzeczownik)","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"mierniki","type":"phrase","tags":["liczba","miernik"]},{"id":"w1200","hanzi":"五个","pinyin":"wǔ gè","pl":"pięć (+ rzeczownik)","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"mierniki","type":"phrase","tags":["liczba","miernik"]},{"id":"w1201","hanzi":"很多","pinyin":"hěn duō","pl":"bardzo dużo, mnóstwo","sourceLesson":"第八课","levelApprox":"HSK1","topic":"liczby_i_ilosci","subtopic":"ilości","type":"phrase","tags":["ilość","dużo"]},{"id":"w1202","hanzi":"很少","pinyin":"hěn shǎo","pl":"bardzo mało, prawie wcale","sourceLesson":"第八课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"ilości","type":"phrase","tags":["ilość","mało"]},{"id":"w1203","hanzi":"不少","pinyin":"bù shǎo","pl":"niemało, całkiem sporo","sourceLesson":"第八课","levelApprox":"HSK2","topic":"liczby_i_ilosci","subtopic":"ilości","type":"phrase","tags":["ilość","dużo"]},{"id":"w1204","hanzi":"喜欢","pinyin":"xǐhuān","pl":"lubić, podobać się","sourceLesson":"第九课","levelApprox":"HSK1","topic":"emocje_i_oceny","subtopic":"uczucia i preferencje","type":"word","tags":["czasownik","uczucia"]},{"id":"w1205","hanzi":"爱","pinyin":"ài","pl":"kochać, miłość","sourceLesson":"第九课","levelApprox":"HSK2","topic":"emocje_i_oceny","subtopic":"uczucia i preferencje","type":"word","tags":["czasownik","uczucia"]},{"id":"w1206","hanzi":"我们","pinyin":"wǒmen","pl":"my","sourceLesson":"lekcja_ja_i_inni","levelApprox":"starter","topic":"tozsamosc_i_ludzie","subtopic":"zaimki osobowe","type":"word","tags":["zaimek","my","liczba mnoga"]},{"id":"w1207","hanzi":"你们","pinyin":"nǐmen","pl":"wy","sourceLesson":"lekcja_ja_i_inni","levelApprox":"starter","topic":"tozsamosc_i_ludzie","subtopic":"zaimki osobowe","type":"word","tags":["zaimek","wy","liczba mnoga"]},{"id":"w1208","hanzi":"他们","pinyin":"tāmen","pl":"oni, one","sourceLesson":"lekcja_ja_i_inni","levelApprox":"starter","topic":"tozsamosc_i_ludzie","subtopic":"zaimki osobowe","type":"word","tags":["zaimek","oni","liczba mnoga"]},{"id":"w1209","hanzi":"您好","pinyin":"nín hǎo","pl":"dzień dobry (forma grzecznościowa)","sourceLesson":"lekcja_powitania","levelApprox":"HSK1","topic":"rozmowa_i_frazy","subtopic":"powitania","type":"word","tags":["powitanie","grzeczność","formalny"]}];
+const WORDS = 
+[
+  {
+    "id": "w0001",
+    "hanzi": "我",
+    "pinyin": "wǒ",
+    "pl": "ja",
+    "sourceLesson": "1.3 Przedstawianie się",
+    "levelApprox": "starter",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "przedstawianie_sie",
+    "type": "word",
+    "tags": [
+      "zaimek",
+      "osoba"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0002",
+    "hanzi": "叫",
+    "pinyin": "jiào",
+    "pl": "nazywać się, wołać",
+    "sourceLesson": "1.3 Przedstawianie się",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "przedstawianie_sie",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "imię"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0004",
+    "hanzi": "你",
+    "pinyin": "nǐ",
+    "pl": "ty",
+    "sourceLesson": "1.3 Przedstawianie się",
+    "levelApprox": "starter",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "przedstawianie_sie",
+    "type": "word",
+    "tags": [
+      "zaimek",
+      "osoba"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0005",
+    "hanzi": "什么",
+    "pinyin": "shénme",
+    "pl": "co, jaki",
+    "sourceLesson": "1.3 Przedstawianie się",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "przedstawianie_sie",
+    "type": "word",
+    "tags": [
+      "pytanie",
+      "zaimek pytający"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0006",
+    "hanzi": "名字",
+    "pinyin": "míngzi",
+    "pl": "imię, nazwa",
+    "sourceLesson": "1.3 Przedstawianie się",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "imię",
+      "tożsamość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0007",
+    "hanzi": "是",
+    "pinyin": "shì",
+    "pl": "być, to jest",
+    "sourceLesson": "1.3 Przedstawianie się",
+    "levelApprox": "starter",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "przedstawianie_sie",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "kopuła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0008",
+    "hanzi": "老师",
+    "pinyin": "lǎoshī",
+    "pl": "nauczyciel",
+    "sourceLesson": "13.1 Role szkolne",
+    "levelApprox": "A1",
+    "topic": "ludzie_role_zawody",
+    "subtopic": "role_szkolne",
+    "type": "word",
+    "tags": [
+      "zawód",
+      "edukacja"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "位",
+      "pinyin": "wèi"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "个",
+        "pinyin": "gè"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0009",
+    "hanzi": "学生",
+    "pinyin": "xuésheng",
+    "pl": "uczeń, student",
+    "sourceLesson": "13.1 Role szkolne",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "edukacja",
+      "osoba"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "名",
+        "pinyin": "míng"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0010",
+    "hanzi": "哪国人",
+    "pinyin": "nǎ guó rén",
+    "pl": "jakiej narodowości",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "phrase",
+    "tags": [
+      "pytanie",
+      "narodowość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0011",
+    "hanzi": "波兰人",
+    "pinyin": "Bōlán rén",
+    "pl": "Polak/Polka",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "narodowość",
+      "Polska",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0012",
+    "hanzi": "美国人",
+    "pinyin": "Měiguó rén",
+    "pl": "Amerykanin/Amerykanka",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "narodowość",
+      "USA",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0013",
+    "hanzi": "他",
+    "pinyin": "tā",
+    "pl": "on",
+    "sourceLesson": "1.4 Ja i inni",
+    "levelApprox": "starter",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "zaimki_osobowe",
+    "type": "word",
+    "tags": [
+      "zaimek",
+      "osoba"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0014",
+    "hanzi": "中国人",
+    "pinyin": "Zhōngguó rén",
+    "pl": "Chińczyk/Chinka",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "narodowość",
+      "Chiny",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0015",
+    "hanzi": "谁",
+    "pinyin": "shéi",
+    "pl": "kto",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "pytanie",
+      "zaimek pytający"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "b01_w004",
+    "hanzi": "同学",
+    "pinyin": "tóngxué",
+    "pl": "kolega/koleżanka z klasy",
+    "sourceLesson": "13.1 Role szkolne",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "szkoła",
+      "osoba",
+      "klasa",
+      "edukacja"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "位",
+        "pinyin": "wèi"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0016",
+    "hanzi": "朋友",
+    "pinyin": "péngyou",
+    "pl": "przyjaciel",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "relacje",
+      "przyjaciel"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "位",
+        "pinyin": "wèi"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0017",
+    "hanzi": "美国",
+    "pinyin": "Měiguó",
+    "pl": "USA, Ameryka",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "kraj",
+      "USA",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0018",
+    "hanzi": "波兰",
+    "pinyin": "Bōlán",
+    "pl": "Polska",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "kraj",
+      "Polska",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0019",
+    "hanzi": "中国",
+    "pinyin": "Zhōngguó",
+    "pl": "Chiny",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "kraj",
+      "Chiny",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0020",
+    "hanzi": "英国",
+    "pinyin": "Yīngguó",
+    "pl": "Wielka Brytania",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "kraj",
+      "Wielka Brytania",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0021",
+    "hanzi": "的",
+    "pinyin": "de",
+    "pl": "partykuła przynależności",
+    "sourceLesson": "17.1 Partykuły i elementy pytania",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "partykuly_pytanie",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0022",
+    "hanzi": "她",
+    "pinyin": "tā",
+    "pl": "ona",
+    "sourceLesson": "1.4 Ja i inni",
+    "levelApprox": "starter",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "zaimki_osobowe",
+    "type": "word",
+    "tags": [
+      "zaimek",
+      "osoba"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0023",
+    "hanzi": "狗",
+    "pinyin": "gǒu",
+    "pl": "pies",
+    "sourceLesson": "23.1 Zwierzęta domowe",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_zwierzeta",
+    "type": "word",
+    "tags": [
+      "zwierzę",
+      "pies"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "只",
+      "pinyin": "zhī"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "条",
+        "pinyin": "tiáo"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0024",
+    "hanzi": "猫",
+    "pinyin": "māo",
+    "pl": "kot",
+    "sourceLesson": "23.1 Zwierzęta domowe",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_zwierzeta",
+    "type": "word",
+    "tags": [
+      "zwierzę",
+      "kot"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "只",
+      "pinyin": "zhī"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0025",
+    "hanzi": "它",
+    "pinyin": "tā",
+    "pl": "ono (rzecz/zwierzę)",
+    "sourceLesson": "1.4 Ja i inni",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "zaimki_osobowe",
+    "type": "word",
+    "tags": [
+      "zaimek",
+      "rzecz",
+      "zwierzę"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0026",
+    "hanzi": "这",
+    "pinyin": "zhè",
+    "pl": "to, ten, ta",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "zaimek wskazujący",
+      "blisko"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0027",
+    "hanzi": "那",
+    "pinyin": "nà",
+    "pl": "tamto, tamten, tamta",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "zaimek wskazujący",
+      "daleko"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0028",
+    "hanzi": "也",
+    "pinyin": "yě",
+    "pl": "też, także",
+    "sourceLesson": "17.4 Spójniki i łączenie zdań",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "spojniki",
+    "type": "word",
+    "tags": [
+      "przysłówek",
+      "też"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0029",
+    "hanzi": "不",
+    "pinyin": "bù",
+    "pl": "nie, nie jest",
+    "sourceLesson": "17.2 Negacja i podstawowe operatory",
+    "levelApprox": "starter",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "negacja_operatory",
+    "type": "word",
+    "tags": [
+      "negacja",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0030",
+    "hanzi": "对",
+    "pinyin": "duì",
+    "pl": "poprawny, tak (potwierdzenie)",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "potwierdzenie",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0032",
+    "hanzi": "吗",
+    "pinyin": "ma",
+    "pl": "partykuła pytająca",
+    "sourceLesson": "17.1 Partykuły i elementy pytania",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "partykuly_pytanie",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "pytanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0033",
+    "hanzi": "呢",
+    "pinyin": "ne",
+    "pl": "a co z...? partykuła pytająca",
+    "sourceLesson": "17.1 Partykuły i elementy pytania",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "partykuly_pytanie",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "pytanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0034",
+    "hanzi": "日本",
+    "pinyin": "Rìběn",
+    "pl": "Japonia",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "kraj",
+      "Japonia",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0035",
+    "hanzi": "日本人",
+    "pinyin": "Rìběn rén",
+    "pl": "Japończyk/Japonka",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "narodowość",
+      "Japonia",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0036",
+    "hanzi": "法国",
+    "pinyin": "Fǎguó",
+    "pl": "Francja",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "kraj",
+      "Francja",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0037",
+    "hanzi": "法国人",
+    "pinyin": "Fǎguó rén",
+    "pl": "Francuz/Francuzka",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "narodowość",
+      "Francja",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0038",
+    "hanzi": "德国",
+    "pinyin": "Déguó",
+    "pl": "Niemcy",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "kraj",
+      "Niemcy",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0039",
+    "hanzi": "德国人",
+    "pinyin": "Déguó rén",
+    "pl": "Niemiec/Niemka",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "narodowość",
+      "Niemcy",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0040",
+    "hanzi": "俄罗斯",
+    "pinyin": "Éluósī",
+    "pl": "Rosja",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "kraj",
+      "Rosja",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0041",
+    "hanzi": "俄罗斯人",
+    "pinyin": "Éluósī rén",
+    "pl": "Rosjanin/Rosjanka",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "narodowość",
+      "Rosja",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0042",
+    "hanzi": "韩国",
+    "pinyin": "Hánguó",
+    "pl": "Korea Południowa",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "kraj",
+      "Korea",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0043",
+    "hanzi": "韩国人",
+    "pinyin": "Hánguó rén",
+    "pl": "Koreańczyk/Koreanka",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "narodowość",
+      "Korea",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0044",
+    "hanzi": "哪",
+    "pinyin": "nǎ",
+    "pl": "który, które (pytanie)",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "pytanie",
+      "zaimek pytający"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0045",
+    "hanzi": "现在",
+    "pinyin": "xiànzài",
+    "pl": "teraz, obecnie",
+    "sourceLesson": "15.3 Proste wyrażenia czasu",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "proste_wyrazenia_czasu",
+    "type": "word",
+    "tags": [
+      "czas",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0046",
+    "hanzi": "几",
+    "pinyin": "jǐ",
+    "pl": "ile (małe liczby), kilka",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "A1",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "pytanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0047",
+    "hanzi": "点",
+    "pinyin": "diǎn",
+    "pl": "godzina (liczebnik)",
+    "sourceLesson": "20.2 Godziny i minuty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "godziny_i_minuty",
+    "type": "word",
+    "tags": [
+      "czas",
+      "godzina"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0048",
+    "hanzi": "分",
+    "pinyin": "fēn",
+    "pl": "minuta; fen (moneta)",
+    "sourceLesson": "12.1 Pieniądze i ceny",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "pieniadze_i_ceny",
+    "type": "word",
+    "tags": [
+      "czas",
+      "minuta"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0049",
+    "hanzi": "半",
+    "pinyin": "bàn",
+    "pl": "pół, połowa",
+    "sourceLesson": "20.2 Godziny i minuty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "godziny_i_minuty",
+    "type": "word",
+    "tags": [
+      "czas",
+      "liczba"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0050",
+    "hanzi": "上午",
+    "pinyin": "shàngwǔ",
+    "pl": "rano, przed południem",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "word",
+    "tags": [
+      "pora dnia",
+      "rano"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0051",
+    "hanzi": "下午",
+    "pinyin": "xiàwǔ",
+    "pl": "popołudnie",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "word",
+    "tags": [
+      "pora dnia",
+      "popołudnie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0052",
+    "hanzi": "晚上",
+    "pinyin": "wǎnshang",
+    "pl": "wieczór",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "word",
+    "tags": [
+      "pora dnia",
+      "wieczór"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0053",
+    "hanzi": "中午",
+    "pinyin": "zhōngwǔ",
+    "pl": "południe",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "word",
+    "tags": [
+      "pora dnia",
+      "południe"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0054",
+    "hanzi": "早上",
+    "pinyin": "zǎoshang",
+    "pl": "wczesny ranek",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "word",
+    "tags": [
+      "pora dnia",
+      "ranek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0055",
+    "hanzi": "吃",
+    "pinyin": "chī",
+    "pl": "jeść",
+    "sourceLesson": "8.6 Jedzenie i picie w działaniu",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "jedzenie_i_picie_w_dzialaniu",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "jedzenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0056",
+    "hanzi": "饭",
+    "pinyin": "fàn",
+    "pl": "ryż, posiłek",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_naczynia",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "ryż"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "碗",
+      "pinyin": "wǎn"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0057",
+    "hanzi": "早饭",
+    "pinyin": "zǎofàn",
+    "pl": "śniadanie",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "posiłek",
+      "śniadanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0058",
+    "hanzi": "午饭",
+    "pinyin": "wǔfàn",
+    "pl": "obiad",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "posiłek",
+      "obiad"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0059",
+    "hanzi": "晚饭",
+    "pinyin": "wǎnfàn",
+    "pl": "kolacja",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "posiłek",
+      "kolacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0060",
+    "hanzi": "睡觉",
+    "pinyin": "shuìjiào",
+    "pl": "spać",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "sen"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0061",
+    "hanzi": "起床",
+    "pinyin": "qǐchuáng",
+    "pl": "wstawać z łóżka",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "poranek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "b01_w010",
+    "hanzi": "上课",
+    "pinyin": "shàng kè",
+    "pl": "mieć lekcję, iść na zajęcia",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "phrase",
+    "tags": [
+      "szkoła",
+      "zajęcia",
+      "nauka",
+      "edukacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "b01_w011",
+    "hanzi": "下课",
+    "pinyin": "xià kè",
+    "pl": "skończyć lekcję",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "phrase",
+    "tags": [
+      "szkoła",
+      "zajęcia",
+      "koniec",
+      "edukacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0063",
+    "hanzi": "每天",
+    "pinyin": "měitiān",
+    "pl": "każdego dnia, codziennie",
+    "sourceLesson": "20.4 Częstotliwość i powtarzalność",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "czestotliwosc_i_powtarzalnosc",
+    "type": "word",
+    "tags": [
+      "czas",
+      "codziennie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0065",
+    "hanzi": "到",
+    "pinyin": "dào",
+    "pl": "do, docierać",
+    "sourceLesson": "6.3 Ruch aktywny i dotarcie",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "ruch_aktywny",
+    "type": "word",
+    "tags": [
+      "przyimek",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0066",
+    "hanzi": "一",
+    "pinyin": "yī",
+    "pl": "jeden",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "starter",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "1"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0067",
+    "hanzi": "两",
+    "pinyin": "liǎng",
+    "pl": "dwa (przy rzeczowniku)",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "liczba_dwa_liang",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "2"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0068",
+    "hanzi": "三",
+    "pinyin": "sān",
+    "pl": "trzy",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "starter",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "3"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0069",
+    "hanzi": "四",
+    "pinyin": "sì",
+    "pl": "cztery",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "starter",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "4"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0070",
+    "hanzi": "五",
+    "pinyin": "wǔ",
+    "pl": "pięć",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "starter",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "5"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0071",
+    "hanzi": "六",
+    "pinyin": "liù",
+    "pl": "sześć",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "starter",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "6"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0072",
+    "hanzi": "七",
+    "pinyin": "qī",
+    "pl": "siedem",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "starter",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "7"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0073",
+    "hanzi": "八",
+    "pinyin": "bā",
+    "pl": "osiem",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "starter",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "8"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0074",
+    "hanzi": "九",
+    "pinyin": "jiǔ",
+    "pl": "dziewięć",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "starter",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "9"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0075",
+    "hanzi": "十",
+    "pinyin": "shí",
+    "pl": "dziesięć",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "starter",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "10"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0076",
+    "hanzi": "零",
+    "pinyin": "líng",
+    "pl": "zero",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "A1",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "0"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0077",
+    "hanzi": "多少",
+    "pinyin": "duōshao",
+    "pl": "ile (duże liczby)",
+    "sourceLesson": "12.3 Pytanie o ilość i cenę",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "pytanie_o_ilosc_i_cene",
+    "type": "word",
+    "tags": [
+      "pytanie",
+      "ilość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0078",
+    "hanzi": "钱",
+    "pinyin": "qián",
+    "pl": "pieniądze",
+    "sourceLesson": "12.1 Pieniądze i ceny",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "pieniadze_i_ceny",
+    "type": "word",
+    "tags": [
+      "pieniądze",
+      "finanse"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0080",
+    "hanzi": "毛",
+    "pinyin": "máo",
+    "pl": "mao (10 fenów, potoczne)",
+    "sourceLesson": "12.1 Pieniądze i ceny",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "pieniadze_i_ceny",
+    "type": "word",
+    "tags": [
+      "pieniądze",
+      "moneta"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0081",
+    "hanzi": "买",
+    "pinyin": "mǎi",
+    "pl": "kupować",
+    "sourceLesson": "12.2 Kupowanie i sprzedaż",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "kupowanie_i_sprzedaz",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "zakupy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0082",
+    "hanzi": "卖",
+    "pinyin": "mài",
+    "pl": "sprzedawać",
+    "sourceLesson": "12.2 Kupowanie i sprzedaż",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "kupowanie_i_sprzedaz",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "sprzedaż"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0083",
+    "hanzi": "便宜",
+    "pinyin": "piányí",
+    "pl": "tani",
+    "sourceLesson": "12.4 Ocena ceny",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "ocena_ceny",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "cena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0084",
+    "hanzi": "贵",
+    "pinyin": "guì",
+    "pl": "drogi (cena)",
+    "sourceLesson": "12.4 Ocena ceny",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "ocena_ceny",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "cena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0085",
+    "hanzi": "好",
+    "pinyin": "hǎo",
+    "pl": "dobry, dobrze",
+    "sourceLesson": "11.1 Samopoczucie podstawowe",
+    "levelApprox": "starter",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "samopoczucie_podstawowe",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0086",
+    "hanzi": "大",
+    "pinyin": "dà",
+    "pl": "duży",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "rozmiar"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0087",
+    "hanzi": "小",
+    "pinyin": "xiǎo",
+    "pl": "mały",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "rozmiar"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0088",
+    "hanzi": "新",
+    "pinyin": "xīn",
+    "pl": "nowy",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "nowy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0090",
+    "hanzi": "颜色",
+    "pinyin": "yánsè",
+    "pl": "kolor",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "kolor",
+      "opis"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0091",
+    "hanzi": "红",
+    "pinyin": "hóng",
+    "pl": "czerwony",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "kolor",
+      "czerwony"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0092",
+    "hanzi": "白",
+    "pinyin": "bái",
+    "pl": "biały",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "kolor",
+      "biały"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0093",
+    "hanzi": "黑",
+    "pinyin": "hēi",
+    "pl": "czarny",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "kolor",
+      "czarny"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0096",
+    "hanzi": "这个",
+    "pinyin": "zhège",
+    "pl": "ten, to (ten tutaj)",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "zaimek wskazujący",
+      "blisko"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0097",
+    "hanzi": "那个",
+    "pinyin": "nàge",
+    "pl": "tamten, tamto",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "zaimek wskazujący",
+      "daleko"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0098",
+    "hanzi": "件",
+    "pinyin": "jiàn",
+    "pl": "sztuka (ubranie)",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "classifiery_rzeczy_codziennych",
+    "type": "word",
+    "tags": [
+      "miernik",
+      "ubranie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0099",
+    "hanzi": "衣服",
+    "pinyin": "yīfu",
+    "pl": "ubranie, ciuchy",
+    "sourceLesson": "7.1 Podstawowe ubrania",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_ubrania",
+    "type": "word",
+    "tags": [
+      "ubranie",
+      "odzież",
+      "moda",
+      "wygląd"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "件",
+      "pinyin": "jiàn"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0100",
+    "hanzi": "太",
+    "pinyin": "tài",
+    "pl": "zbyt, za bardzo",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "word",
+    "tags": [
+      "przysłówek",
+      "stopień"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0101",
+    "hanzi": "一点儿",
+    "pinyin": "yīdiǎnr",
+    "pl": "trochę, odrobinę",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "phrase",
+    "tags": [
+      "ilość",
+      "trochę"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0102",
+    "hanzi": "还是",
+    "pinyin": "háishì",
+    "pl": "czy… czy…; nadal",
+    "sourceLesson": "17.4 Spójniki i łączenie zdań",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "spojniki",
+    "type": "word",
+    "tags": [
+      "spójnik",
+      "pytanie alternatywne"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0103",
+    "hanzi": "或者",
+    "pinyin": "huòzhě",
+    "pl": "lub, albo",
+    "sourceLesson": "17.4 Spójniki i łączenie zdań",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "spojniki",
+    "type": "word",
+    "tags": [
+      "spójnik",
+      "alternatywa"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0105",
+    "hanzi": "喝",
+    "pinyin": "hē",
+    "pl": "pić",
+    "sourceLesson": "8.6 Jedzenie i picie w działaniu",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "jedzenie_i_picie_w_dzialaniu",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "picie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0106",
+    "hanzi": "茶",
+    "pinyin": "chá",
+    "pl": "herbata",
+    "sourceLesson": "8.2 Napoje",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_naczynia",
+    "type": "word",
+    "tags": [
+      "napój",
+      "herbata"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "杯",
+      "pinyin": "bēi"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0107",
+    "hanzi": "咖啡",
+    "pinyin": "kāfēi",
+    "pl": "kawa",
+    "sourceLesson": "8.2 Napoje",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_naczynia",
+    "type": "word",
+    "tags": [
+      "napój",
+      "kawa"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "杯",
+      "pinyin": "bēi"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0108",
+    "hanzi": "水",
+    "pinyin": "shuǐ",
+    "pl": "woda",
+    "sourceLesson": "8.2 Napoje",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_naczynia",
+    "type": "word",
+    "tags": [
+      "napój",
+      "woda"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "杯",
+      "pinyin": "bēi"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": "używa się z 杯 (kubek) lub 瓶 (butelka)"
+  },
+  {
+    "id": "w0109",
+    "hanzi": "果汁",
+    "pinyin": "guǒzhī",
+    "pl": "sok owocowy",
+    "sourceLesson": "8.2 Napoje",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "napoje",
+    "type": "word",
+    "tags": [
+      "napój",
+      "sok"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0110",
+    "hanzi": "牛奶",
+    "pinyin": "niúnǎi",
+    "pl": "mleko",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "napój",
+      "mleko"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": "używa się z 杯 (kubek) lub 盒 (karton)"
+  },
+  {
+    "id": "w0113",
+    "hanzi": "一起",
+    "pinyin": "yīqǐ",
+    "pl": "razem",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "przysłówek",
+      "razem"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0114",
+    "hanzi": "去",
+    "pinyin": "qù",
+    "pl": "iść, jechać",
+    "sourceLesson": "6.1 Podstawowy ruch i kierunek",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "ruch_podstawowy",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0115",
+    "hanzi": "来",
+    "pinyin": "lái",
+    "pl": "przychodzić, przyjeżdżać",
+    "sourceLesson": "6.1 Podstawowy ruch i kierunek",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "ruch_podstawowy",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0116",
+    "hanzi": "吧",
+    "pinyin": "ba",
+    "pl": "partykuła sugestii/pewności",
+    "sourceLesson": "17.1 Partykuły i elementy pytania",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "partykuly_pytanie",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "sugestia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0117",
+    "hanzi": "好的",
+    "pinyin": "hǎo de",
+    "pl": "dobrze, okej",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "zgoda",
+      "odpowiedź"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0118",
+    "hanzi": "没关系",
+    "pinyin": "méi guānxi",
+    "pl": "nic nie szkodzi, nie ma problemu",
+    "sourceLesson": "1.2 Uprzejmość i podstawowe zwroty",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "uprzejmosc_zwroty",
+    "type": "phrase",
+    "tags": [
+      "grzeczność",
+      "odpowiedź"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0119",
+    "hanzi": "对不起",
+    "pinyin": "duìbuqǐ",
+    "pl": "przepraszam",
+    "sourceLesson": "1.2 Uprzejmość i podstawowe zwroty",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "uprzejmosc_zwroty",
+    "type": "phrase",
+    "tags": [
+      "grzeczność",
+      "przepraszam"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0120",
+    "hanzi": "没有",
+    "pinyin": "méiyǒu",
+    "pl": "nie mieć, nie ma",
+    "sourceLesson": "9.4 Posiadanie i potrzeby",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "posiadanie_i_potrzeby",
+    "type": "word",
+    "tags": [
+      "negacja",
+      "posiadanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0121",
+    "hanzi": "有",
+    "pinyin": "yǒu",
+    "pl": "mieć, jest",
+    "sourceLesson": "9.4 Posiadanie i potrzeby",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "posiadanie_i_potrzeby",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "posiadanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0123",
+    "hanzi": "服务员",
+    "pinyin": "fúwùyuán",
+    "pl": "kelner/kelnerka",
+    "sourceLesson": "13.2 Role codzienne",
+    "levelApprox": "A1",
+    "topic": "ludzie_role_zawody",
+    "subtopic": "role_codzienne",
+    "type": "word",
+    "tags": [
+      "zawód",
+      "restauracja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0125",
+    "hanzi": "好吃",
+    "pinyin": "hǎochī",
+    "pl": "smaczny",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "smak"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0126",
+    "hanzi": "不客气",
+    "pinyin": "bù kèqi",
+    "pl": "nie ma za co",
+    "sourceLesson": "1.2 Uprzejmość i podstawowe zwroty",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "uprzejmosc_zwroty",
+    "type": "phrase",
+    "tags": [
+      "grzeczność",
+      "odpowiedź"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0127",
+    "hanzi": "谢谢",
+    "pinyin": "xièxie",
+    "pl": "dziękuję",
+    "sourceLesson": "1.2 Uprzejmość i podstawowe zwroty",
+    "levelApprox": "starter",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "uprzejmosc_zwroty",
+    "type": "phrase",
+    "tags": [
+      "grzeczność",
+      "dziękuję"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0128",
+    "hanzi": "再见",
+    "pinyin": "zàijiàn",
+    "pl": "do widzenia",
+    "sourceLesson": "1.1 Powitania i pożegnania",
+    "levelApprox": "starter",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "powitania_pozegnania",
+    "type": "phrase",
+    "tags": [
+      "pożegnanie",
+      "grzeczność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0129",
+    "hanzi": "你好",
+    "pinyin": "nǐ hǎo",
+    "pl": "cześć, dzień dobry",
+    "sourceLesson": "1.1 Powitania i pożegnania",
+    "levelApprox": "starter",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "powitania_pozegnania",
+    "type": "phrase",
+    "tags": [
+      "powitanie",
+      "grzeczność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0130",
+    "hanzi": "请",
+    "pinyin": "qǐng",
+    "pl": "proszę, zapraszać",
+    "sourceLesson": "1.2 Uprzejmość i podstawowe zwroty",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "uprzejmosc_zwroty",
+    "type": "word",
+    "tags": [
+      "grzeczność",
+      "proszę"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0132",
+    "hanzi": "等",
+    "pinyin": "děng",
+    "pl": "czekać",
+    "sourceLesson": "25.3 Działania codzienne rozszerzone",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "dzialania_codzienne_rozszerzone",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "czekać"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0133",
+    "hanzi": "多",
+    "pinyin": "duō",
+    "pl": "dużo, wiele",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "word",
+    "tags": [
+      "ilość",
+      "dużo"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0134",
+    "hanzi": "少",
+    "pinyin": "shǎo",
+    "pl": "mało, niewiele",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "word",
+    "tags": [
+      "ilość",
+      "mało"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0137",
+    "hanzi": "咸",
+    "pinyin": "xián",
+    "pl": "słony",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "smak",
+      "słony"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0138",
+    "hanzi": "酸",
+    "pinyin": "suān",
+    "pl": "kwaśny",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "smak",
+      "kwaśny"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0139",
+    "hanzi": "苦",
+    "pinyin": "kǔ",
+    "pl": "gorzki",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "smak",
+      "gorzki"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0140",
+    "hanzi": "面条",
+    "pinyin": "miàntiáo",
+    "pl": "makaron",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_naczynia",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "makaron"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "碗",
+      "pinyin": "wǎn"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0141",
+    "hanzi": "米饭",
+    "pinyin": "mǐfàn",
+    "pl": "gotowany ryż",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_naczynia",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "ryż"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "碗",
+      "pinyin": "wǎn"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0144",
+    "hanzi": "鱼",
+    "pinyin": "yú",
+    "pl": "ryba",
+    "sourceLesson": "8.5 Mięso i podstawowe jedzenie obiadowe",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_zwierzeta",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "ryba"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "条",
+      "pinyin": "tiáo"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0145",
+    "hanzi": "肉",
+    "pinyin": "ròu",
+    "pl": "mięso",
+    "sourceLesson": "8.3 Kategorie jedzenia",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "kategorie_jedzenia",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "mięso"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": "masa niepoliczalna"
+  },
+  {
+    "id": "w0150",
+    "hanzi": "水果",
+    "pinyin": "shuǐguǒ",
+    "pl": "owoce",
+    "sourceLesson": "8.3 Kategorie jedzenia",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "kategorie_jedzenia",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "owoce"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "种",
+      "pinyin": "zhǒng"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "个",
+        "pinyin": "gè"
+      }
+    ],
+    "measureWordNote": "种 dla rodzaju"
+  },
+  {
+    "id": "w0151",
+    "hanzi": "苹果",
+    "pinyin": "píngguǒ",
+    "pl": "jabłko",
+    "sourceLesson": "8.4 Owoce i proste produkty",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "jabłko"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0152",
+    "hanzi": "香蕉",
+    "pinyin": "xiāngjiāo",
+    "pl": "banan",
+    "sourceLesson": "8.4 Owoce i proste produkty",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "owoce_i_produkty",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "banan"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "根",
+      "pinyin": "gēn"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "只",
+        "pinyin": "zhī"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0153",
+    "hanzi": "橙子",
+    "pinyin": "chéngzi",
+    "pl": "pomarańcza",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "pomarańcza"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0154",
+    "hanzi": "西瓜",
+    "pinyin": "xīguā",
+    "pl": "arbuz",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "arbuz"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0155",
+    "hanzi": "葡萄",
+    "pinyin": "pútao",
+    "pl": "winogrona",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "winogrona"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0156",
+    "hanzi": "草莓",
+    "pinyin": "cǎoméi",
+    "pl": "truskawka",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "truskawka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0157",
+    "hanzi": "桃子",
+    "pinyin": "táozi",
+    "pl": "brzoskwinia",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "brzoskwinia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0158",
+    "hanzi": "梨",
+    "pinyin": "lí",
+    "pl": "gruszka",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "gruszka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0159",
+    "hanzi": "厨房",
+    "pinyin": "chúfáng",
+    "pl": "kuchnia",
+    "sourceLesson": "10.1 Nazwy pokoi",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "nazwy_pokoi",
+    "type": "word",
+    "tags": [
+      "dom",
+      "kuchnia"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "间",
+      "pinyin": "jiān"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0160",
+    "hanzi": "冰箱",
+    "pinyin": "bīngxiāng",
+    "pl": "lodówka",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "word",
+    "tags": [
+      "dom",
+      "lodówka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0161",
+    "hanzi": "锅",
+    "pinyin": "guō",
+    "pl": "garnek, wok",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "kuchnia",
+      "garnek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0163",
+    "hanzi": "筷子",
+    "pinyin": "kuàizi",
+    "pl": "pałeczki",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "sztućce",
+      "pałeczki"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0164",
+    "hanzi": "盘子",
+    "pinyin": "pánzi",
+    "pl": "talerz",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "naczynie",
+      "talerz"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0165",
+    "hanzi": "杯子",
+    "pinyin": "bēizi",
+    "pl": "kubek, szklanka",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "naczynie",
+      "kubek"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0166",
+    "hanzi": "勺子",
+    "pinyin": "sháozi",
+    "pl": "łyżka",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "sztućce",
+      "łyżka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0167",
+    "hanzi": "叉子",
+    "pinyin": "chāzi",
+    "pl": "widelec",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "sztućce",
+      "widelec"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0168",
+    "hanzi": "刀",
+    "pinyin": "dāo",
+    "pl": "nóż",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "sztućce",
+      "nóż"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0169",
+    "hanzi": "超市",
+    "pinyin": "chāoshì",
+    "pl": "supermarket",
+    "sourceLesson": "5.1 Codzienne miejsca",
+    "levelApprox": "A1",
+    "topic": "miejsca_w_miescie",
+    "subtopic": "codzienne_miejsca",
+    "type": "word",
+    "tags": [
+      "sklep",
+      "supermarket"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0171",
+    "hanzi": "商店",
+    "pinyin": "shāngdiàn",
+    "pl": "sklep",
+    "sourceLesson": "5.1 Codzienne miejsca",
+    "levelApprox": "A1",
+    "topic": "miejsca_w_miescie",
+    "subtopic": "codzienne_miejsca",
+    "type": "word",
+    "tags": [
+      "sklep",
+      "handel"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "家",
+      "pinyin": "jiā"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "个",
+        "pinyin": "gè"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0173",
+    "hanzi": "学校",
+    "pinyin": "xuéxiào",
+    "pl": "szkoła",
+    "sourceLesson": "5.1 Codzienne miejsca",
+    "levelApprox": "A1",
+    "topic": "miejsca_w_miescie",
+    "subtopic": "codzienne_miejsca",
+    "type": "word",
+    "tags": [
+      "szkoła",
+      "miejsce",
+      "nauka"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "所",
+      "pinyin": "suǒ"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "个",
+        "pinyin": "gè"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0176",
+    "hanzi": "回家",
+    "pinyin": "huí jiā",
+    "pl": "wracać do domu",
+    "sourceLesson": "6.4 Powrót i ruch do celu",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "powrot_ruch_do_celu",
+    "type": "phrase",
+    "tags": [
+      "ruch",
+      "dom",
+      "codzienność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0177",
+    "hanzi": "看",
+    "pinyin": "kàn",
+    "pl": "patrzeć, czytać (oglądać)",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "wzrok",
+      "czytanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0178",
+    "hanzi": "想",
+    "pinyin": "xiǎng",
+    "pl": "chcieć, myśleć, tęsknić",
+    "sourceLesson": "9.4 Posiadanie i potrzeby",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "posiadanie_i_potrzeby",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "emocje",
+      "pragnienie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0179",
+    "hanzi": "要",
+    "pinyin": "yào",
+    "pl": "chcieć, potrzebować",
+    "sourceLesson": "25.1 Czasowniki modalne",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "czasowniki_modalne",
+    "type": "word",
+    "tags": [
+      "modalny",
+      "pragnienie",
+      "podstawowe"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0180",
+    "hanzi": "不想",
+    "pinyin": "bù xiǎng",
+    "pl": "nie chcieć",
+    "sourceLesson": "25.1 Czasowniki modalne",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "czasowniki_modalne",
+    "type": "phrase",
+    "tags": [
+      "przeczenie",
+      "modalny",
+      "pragnienie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0181",
+    "hanzi": "喝咖啡",
+    "pinyin": "hē kāfēi",
+    "pl": "pić kawę",
+    "sourceLesson": "8.6 Jedzenie i picie w działaniu",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "jedzenie_i_picie_w_dzialaniu",
+    "type": "phrase",
+    "tags": [
+      "napój",
+      "kawa",
+      "czynność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0182",
+    "hanzi": "我要",
+    "pinyin": "wǒ yào",
+    "pl": "ja chcę",
+    "sourceLesson": "9.4 Posiadanie i potrzeby",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "posiadanie_i_potrzeby",
+    "type": "phrase",
+    "tags": [
+      "pragnienie",
+      "rozmowa",
+      "podstawowe"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "b01_w013",
+    "hanzi": "看书",
+    "pinyin": "kàn shū",
+    "pl": "czytać książkę",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "czytanie",
+      "książka",
+      "nauka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0183",
+    "hanzi": "朋友家",
+    "pinyin": "péngyou jiā",
+    "pl": "dom przyjaciela",
+    "sourceLesson": "10.1 Nazwy pokoi",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "nazwy_pokoi",
+    "type": "phrase",
+    "tags": [
+      "dom",
+      "przyjaciel",
+      "miejsce"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0184",
+    "hanzi": "爸爸妈妈",
+    "pinyin": "bàba māma",
+    "pl": "rodzice",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "word",
+    "tags": [
+      "rodzina",
+      "rodzice",
+      "podstawowe"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0185",
+    "hanzi": "不要",
+    "pinyin": "bú yào",
+    "pl": "nie chcieć; nie rób!",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "przeczenie",
+      "rozkaz",
+      "modalny"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0187",
+    "hanzi": "不用",
+    "pinyin": "bú yòng",
+    "pl": "nie trzeba",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "przeczenie",
+      "modalny",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0188",
+    "hanzi": "带",
+    "pinyin": "dài",
+    "pl": "zabrać, przynieść",
+    "sourceLesson": "7.4 Proste czasowniki pomocnicze",
+    "levelApprox": "A1",
+    "topic": "ubrania_rzeczy_osobiste",
+    "subtopic": "czasowniki_pomocnicze",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "ruch",
+      "czynność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0190",
+    "hanzi": "吃饭",
+    "pinyin": "chī fàn",
+    "pl": "jeść posiłek",
+    "sourceLesson": "8.6 Jedzenie i picie w działaniu",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "jedzenie_i_picie_w_dzialaniu",
+    "type": "phrase",
+    "tags": [
+      "jedzenie",
+      "posiłek",
+      "codzienność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0191",
+    "hanzi": "土",
+    "pinyin": "tǔ",
+    "pl": "ziemia, gleba",
+    "sourceLesson": "8.3 Kategorie jedzenia",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "kategorie_jedzenia",
+    "type": "word",
+    "tags": [
+      "ziemia",
+      "grunt",
+      "przyroda"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0192",
+    "hanzi": "面包",
+    "pinyin": "miànbāo",
+    "pl": "chleb",
+    "sourceLesson": "8.4 Owoce i proste produkty",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "owoce_i_produkty",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "chleb",
+      "pieczywo"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "片",
+      "pinyin": "piàn"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "块",
+        "pinyin": "kuài"
+      }
+    ],
+    "measureWordNote": "używa się z 片 (kromka) lub 块 (kawałek)"
+  },
+  {
+    "id": "w0194",
+    "hanzi": "包",
+    "pinyin": "bāo",
+    "pl": "bułka, opakowanie",
+    "sourceLesson": "7.3 Rzeczy osobiste",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "jedzenie",
+      "pieczywo",
+      "opakowanie"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0197",
+    "hanzi": "饭店",
+    "pinyin": "fàndiàn",
+    "pl": "restauracja, hotel",
+    "sourceLesson": "5.1 Codzienne miejsca",
+    "levelApprox": "A1",
+    "topic": "miejsca_w_miescie",
+    "subtopic": "codzienne_miejsca",
+    "type": "word",
+    "tags": [
+      "restauracja",
+      "hotel",
+      "miasto"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "家",
+      "pinyin": "jiā"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "个",
+        "pinyin": "gè"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0198",
+    "hanzi": "不去",
+    "pinyin": "bù qù",
+    "pl": "nie iść",
+    "sourceLesson": "6.1 Podstawowy ruch i kierunek",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "ruch_podstawowy",
+    "type": "phrase",
+    "tags": [
+      "negacja",
+      "ruch",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0199",
+    "hanzi": "喝茶",
+    "pinyin": "hē chá",
+    "pl": "pić herbatę",
+    "sourceLesson": "8.6 Jedzenie i picie w działaniu",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "jedzenie_i_picie_w_dzialaniu",
+    "type": "phrase",
+    "tags": [
+      "herbata",
+      "pić",
+      "napój"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0200",
+    "hanzi": "意大利",
+    "pinyin": "Yìdàlì",
+    "pl": "Włochy",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "kraj",
+      "Europa",
+      "Włochy",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0201",
+    "hanzi": "绿茶",
+    "pinyin": "lǜchá",
+    "pl": "zielona herbata",
+    "sourceLesson": "8.2 Napoje",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "napoje",
+    "type": "word",
+    "tags": [
+      "herbata",
+      "napój",
+      "zielona herbata"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0202",
+    "hanzi": "红茶",
+    "pinyin": "hóngchá",
+    "pl": "czarna herbata",
+    "sourceLesson": "8.2 Napoje",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "napoje",
+    "type": "word",
+    "tags": [
+      "herbata",
+      "napój",
+      "czarna herbata"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0203",
+    "hanzi": "奶茶",
+    "pinyin": "nǎichá",
+    "pl": "herbata z mlekiem",
+    "sourceLesson": "8.2 Napoje",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "napoje",
+    "type": "word",
+    "tags": [
+      "herbata",
+      "napój",
+      "mleko"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0204",
+    "hanzi": "抹茶",
+    "pinyin": "mǒchá",
+    "pl": "herbata matcha",
+    "sourceLesson": "8.2 Napoje",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "napoje",
+    "type": "word",
+    "tags": [
+      "herbata",
+      "matcha",
+      "napój"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0205",
+    "hanzi": "杯",
+    "pinyin": "bēi",
+    "pl": "filiżanka, szklanka",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_naczynia",
+    "type": "word",
+    "tags": [
+      "klasyfikator",
+      "naczynie",
+      "filiżanka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0209",
+    "hanzi": "元",
+    "pinyin": "yuán",
+    "pl": "juan (waluta)",
+    "sourceLesson": "12.1 Pieniądze i ceny",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "pieniadze_i_ceny",
+    "type": "word",
+    "tags": [
+      "waluta",
+      "juan",
+      "pieniądze"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0210",
+    "hanzi": "块",
+    "pinyin": "kuài",
+    "pl": "kawałek; juan (potocznie)",
+    "sourceLesson": "12.1 Pieniądze i ceny",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "pieniadze_i_ceny",
+    "type": "word",
+    "tags": [
+      "waluta",
+      "juan",
+      "potocznie",
+      "klasyfikator"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0211",
+    "hanzi": "角",
+    "pinyin": "jiǎo",
+    "pl": "jiao (0,1 juana)",
+    "sourceLesson": "12.1 Pieniądze i ceny",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "pieniadze_i_ceny",
+    "type": "word",
+    "tags": [
+      "waluta",
+      "jiao",
+      "pieniądze"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0216",
+    "hanzi": "小猫",
+    "pinyin": "xiǎo māo",
+    "pl": "kotek, mały kot",
+    "sourceLesson": "23.1 Zwierzęta domowe",
+    "levelApprox": "A1",
+    "topic": "zwierzeta",
+    "subtopic": "zwierzeta_domowe",
+    "type": "word",
+    "tags": [
+      "zwierzę",
+      "kot",
+      "pieszczotliwe"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0217",
+    "hanzi": "桌",
+    "pinyin": "zhuō",
+    "pl": "stół",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "word",
+    "tags": [
+      "meble",
+      "dom",
+      "stół"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "张",
+      "pinyin": "zhāng"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0218",
+    "hanzi": "上",
+    "pinyin": "shàng",
+    "pl": "góra, na",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "kierunek",
+      "położenie",
+      "przyimek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0219",
+    "hanzi": "面",
+    "pinyin": "miàn",
+    "pl": "strona, twarz, makaron",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "strona",
+      "twarz",
+      "makaron",
+      "kierunek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0220",
+    "hanzi": "在",
+    "pinyin": "zài",
+    "pl": "być (gdzieś), w, na",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "lokalizacja",
+      "być",
+      "przyimek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0221",
+    "hanzi": "哪儿",
+    "pinyin": "nǎr",
+    "pl": "gdzie",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "pytanie",
+      "gdzie",
+      "zaimek pytajny"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0222",
+    "hanzi": "椅",
+    "pinyin": "yǐ",
+    "pl": "krzesło",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "word",
+    "tags": [
+      "meble",
+      "dom",
+      "krzesło"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "把",
+      "pinyin": "bǎ"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0223",
+    "hanzi": "小狗",
+    "pinyin": "xiǎo gǒu",
+    "pl": "piesek, mały pies",
+    "sourceLesson": "23.1 Zwierzęta domowe",
+    "levelApprox": "A1",
+    "topic": "zwierzeta",
+    "subtopic": "zwierzeta_domowe",
+    "type": "word",
+    "tags": [
+      "zwierzę",
+      "pies",
+      "pieszczotliwe"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0224",
+    "hanzi": "下",
+    "pinyin": "xià",
+    "pl": "dół, pod",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "kierunek",
+      "położenie",
+      "pod"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0225",
+    "hanzi": "只",
+    "pinyin": "zhǐ",
+    "pl": "tylko",
+    "sourceLesson": "17.1 Partykuły i elementy pytania",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "partykuly_pytanie",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "tylko",
+      "ograniczenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0226",
+    "hanzi": "大猫",
+    "pinyin": "dà māo",
+    "pl": "duży kot",
+    "sourceLesson": "23.1 Zwierzęta domowe",
+    "levelApprox": "A1",
+    "topic": "zwierzeta",
+    "subtopic": "zwierzeta_domowe",
+    "type": "phrase",
+    "tags": [
+      "zwierzę",
+      "kot",
+      "duży"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0227",
+    "hanzi": "张",
+    "pinyin": "zhāng",
+    "pl": "klasyfikator dla płaskich przedmiotów",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "classifiery_rzeczy_codziennych",
+    "type": "word",
+    "tags": [
+      "klasyfikator",
+      "gramatyka",
+      "płaskie przedmioty"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0228",
+    "hanzi": "大狗",
+    "pinyin": "dà gǒu",
+    "pl": "duży pies",
+    "sourceLesson": "23.1 Zwierzęta domowe",
+    "levelApprox": "A1",
+    "topic": "zwierzeta",
+    "subtopic": "zwierzeta_domowe",
+    "type": "phrase",
+    "tags": [
+      "zwierzę",
+      "pies",
+      "duży"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0229",
+    "hanzi": "工作",
+    "pinyin": "gōngzuò",
+    "pl": "praca, pracować",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "word",
+    "tags": [
+      "praca",
+      "pracować",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0230",
+    "hanzi": "医院",
+    "pinyin": "yīyuàn",
+    "pl": "szpital",
+    "sourceLesson": "5.2 Usługi i instytucje",
+    "levelApprox": "A1",
+    "topic": "miejsca_w_miescie",
+    "subtopic": "uslugi_instytucje",
+    "type": "word",
+    "tags": [
+      "szpital",
+      "zdrowie",
+      "miasto"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "家",
+      "pinyin": "jiā"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "个",
+        "pinyin": "gè"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0231",
+    "hanzi": "电",
+    "pinyin": "diàn",
+    "pl": "elektryczność, prąd",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "word",
+    "tags": [
+      "elektryczność",
+      "prąd",
+      "dom"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0232",
+    "hanzi": "脑",
+    "pinyin": "nǎo",
+    "pl": "mózg",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "mózg",
+      "głowa"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0234",
+    "hanzi": "电脑",
+    "pinyin": "diànnǎo",
+    "pl": "komputer",
+    "sourceLesson": "16.1 Podstawowe urządzenia",
+    "levelApprox": "A1",
+    "topic": "technologia_i_urzadzenia",
+    "subtopic": "podstawowe_urzadzenia",
+    "type": "word",
+    "tags": [
+      "komputer",
+      "technologia",
+      "biuro"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "台",
+      "pinyin": "tái"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0237",
+    "hanzi": "台",
+    "pinyin": "tái",
+    "pl": "klasyfikator dla urządzeń",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "classifiery_rzeczy_codziennych",
+    "type": "word",
+    "tags": [
+      "klasyfikator",
+      "gramatyka",
+      "urządzenia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0239",
+    "hanzi": "了",
+    "pinyin": "le",
+    "pl": "partykuła (czas przeszły/zmiana)",
+    "sourceLesson": "17.3 Cząstki aspektu i struktury",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "czastki_aspektu",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "gramatyka",
+      "czas przeszły"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0240",
+    "hanzi": "里面",
+    "pinyin": "lǐmiàn",
+    "pl": "w środku, wewnątrz",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "kierunek",
+      "w środku",
+      "położenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0241",
+    "hanzi": "外面",
+    "pinyin": "wàimiàn",
+    "pl": "na zewnątrz",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "kierunek",
+      "na zewnątrz",
+      "położenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0242",
+    "hanzi": "前面",
+    "pinyin": "qiánmiàn",
+    "pl": "z przodu",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "kierunek",
+      "z przodu",
+      "położenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0243",
+    "hanzi": "后面",
+    "pinyin": "hòumiàn",
+    "pl": "z tyłu, za",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "kierunek",
+      "z tyłu",
+      "położenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0244",
+    "hanzi": "公司",
+    "pinyin": "gōngsī",
+    "pl": "firma, spółka",
+    "sourceLesson": "5.1 Codzienne miejsca",
+    "levelApprox": "A1",
+    "topic": "miejsca_w_miescie",
+    "subtopic": "codzienne_miejsca",
+    "type": "word",
+    "tags": [
+      "firma",
+      "biuro",
+      "praca"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "家",
+      "pinyin": "jiā"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "个",
+        "pinyin": "gè"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0245",
+    "hanzi": "可以",
+    "pinyin": "kěyǐ",
+    "pl": "móc, wolno",
+    "sourceLesson": "25.1 Czasowniki modalne",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "czasowniki_modalne",
+    "type": "word",
+    "tags": [
+      "modalny",
+      "pozwolenie",
+      "móc"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "b02_w030",
+    "hanzi": "这儿",
+    "pinyin": "zhèr",
+    "pl": "tutaj",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "wskazywanie",
+      "miejsce",
+      "potoczne",
+      "tutaj"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0247",
+    "hanzi": "坐",
+    "pinyin": "zuò",
+    "pl": "siedzieć, jechać (środkiem transportu)",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "siedzieć",
+      "transport",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0248",
+    "hanzi": "坐下",
+    "pinyin": "zuò xia",
+    "pl": "usiąść",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "usiąść",
+      "polecenie",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0250",
+    "hanzi": "十一点二十分",
+    "pinyin": "shíyī diǎn èrshí fēn",
+    "pl": "jedenasta dwadzieścia",
+    "sourceLesson": "20.2 Godziny i minuty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "godziny_i_minuty",
+    "type": "phrase",
+    "tags": [
+      "czas",
+      "godzina",
+      "minuta"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0251",
+    "hanzi": "十二点",
+    "pinyin": "shí'èr diǎn",
+    "pl": "dwunasta",
+    "sourceLesson": "20.2 Godziny i minuty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "godziny_i_minuty",
+    "type": "phrase",
+    "tags": [
+      "czas",
+      "godzina",
+      "południe"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0252",
+    "hanzi": "三十分",
+    "pinyin": "sānshí fēn",
+    "pl": "trzydzieści minut, wpół",
+    "sourceLesson": "20.2 Godziny i minuty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "godziny_i_minuty",
+    "type": "phrase",
+    "tags": [
+      "czas",
+      "minuta",
+      "wpół"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0253",
+    "hanzi": "时间",
+    "pinyin": "shíjiān",
+    "pl": "czas",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "word",
+    "tags": [
+      "czas",
+      "ogólnie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0254",
+    "hanzi": "时候",
+    "pinyin": "shíhou",
+    "pl": "czas, kiedy",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "word",
+    "tags": [
+      "czas",
+      "kiedy",
+      "spójnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0255",
+    "hanzi": "星期五",
+    "pinyin": "xīngqīwǔ",
+    "pl": "piątek",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "word",
+    "tags": [
+      "dzień tygodnia",
+      "piątek",
+      "kalendarz"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0257",
+    "hanzi": "两点",
+    "pinyin": "liǎng diǎn",
+    "pl": "druga (godzina)",
+    "sourceLesson": "20.2 Godziny i minuty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "godziny_i_minuty",
+    "type": "phrase",
+    "tags": [
+      "czas",
+      "godzina",
+      "dwa"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0258",
+    "hanzi": "住",
+    "pinyin": "zhù",
+    "pl": "mieszkać",
+    "sourceLesson": "10.1 Nazwy pokoi",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "nazwy_pokoi",
+    "type": "word",
+    "tags": [
+      "mieszkać",
+      "dom",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0260",
+    "hanzi": "二点",
+    "pinyin": "èr diǎn",
+    "pl": "druga (godzina)",
+    "sourceLesson": "20.2 Godziny i minuty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "godziny_i_minuty",
+    "type": "phrase",
+    "tags": [
+      "czas",
+      "godzina",
+      "dwa"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0262",
+    "hanzi": "七点",
+    "pinyin": "qī diǎn",
+    "pl": "siódma",
+    "sourceLesson": "20.2 Godziny i minuty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "godziny_i_minuty",
+    "type": "phrase",
+    "tags": [
+      "czas",
+      "godzina",
+      "siódma"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0263",
+    "hanzi": "九点",
+    "pinyin": "jiǔ diǎn",
+    "pl": "dziewiąta",
+    "sourceLesson": "20.2 Godziny i minuty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "godziny_i_minuty",
+    "type": "phrase",
+    "tags": [
+      "czas",
+      "godzina",
+      "dziewiąta"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0264",
+    "hanzi": "后",
+    "pinyin": "hòu",
+    "pl": "po, za (miejscem/czasem)",
+    "sourceLesson": "15.3 Proste wyrażenia czasu",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "proste_wyrazenia_czasu",
+    "type": "word",
+    "tags": [
+      "po",
+      "za",
+      "przyimek",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0265",
+    "hanzi": "三天",
+    "pinyin": "sān tiān",
+    "pl": "trzy dni",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "dzień",
+      "czas",
+      "trzy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0266",
+    "hanzi": "二月",
+    "pinyin": "èr yuè",
+    "pl": "luty",
+    "sourceLesson": "20.1 Miesiące i daty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "miesiace_i_daty",
+    "type": "word",
+    "tags": [
+      "miesiąc",
+      "luty",
+      "kalendarz"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0267",
+    "hanzi": "十点",
+    "pinyin": "shí diǎn",
+    "pl": "dziesiąta",
+    "sourceLesson": "20.2 Godziny i minuty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "godziny_i_minuty",
+    "type": "phrase",
+    "tags": [
+      "czas",
+      "godzina",
+      "dziesiąta"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0269",
+    "hanzi": "前",
+    "pinyin": "qián",
+    "pl": "przed, przód",
+    "sourceLesson": "15.3 Proste wyrażenia czasu",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "proste_wyrazenia_czasu",
+    "type": "word",
+    "tags": [
+      "przed",
+      "przód",
+      "przyimek",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0270",
+    "hanzi": "年前",
+    "pinyin": "nián qián",
+    "pl": "lat temu",
+    "sourceLesson": "15.1 Dni względne",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "dni_wzgledne",
+    "type": "phrase",
+    "tags": [
+      "rok",
+      "temu",
+      "przeszłość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0271",
+    "hanzi": "热",
+    "pinyin": "rè",
+    "pl": "gorący, gorąco",
+    "sourceLesson": "19.3 Temperatura i odczucia",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "temperatura_i_odczucia",
+    "type": "word",
+    "tags": [
+      "gorąco",
+      "temperatura",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0272",
+    "hanzi": "冷",
+    "pinyin": "lěng",
+    "pl": "zimny, zimno",
+    "sourceLesson": "19.3 Temperatura i odczucia",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "temperatura_i_odczucia",
+    "type": "word",
+    "tags": [
+      "zimno",
+      "temperatura",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0273",
+    "hanzi": "怎么样",
+    "pinyin": "zěnmeyàng",
+    "pl": "jak? co myślisz?",
+    "sourceLesson": "21.2 Proste pytania kontekstowe",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "proste_pytania_kontekstowe",
+    "type": "phrase",
+    "tags": [
+      "pytanie",
+      "opinia",
+      "jak"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0274",
+    "hanzi": "天",
+    "pinyin": "tiān",
+    "pl": "niebo, dzień",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "word",
+    "tags": [
+      "dzień",
+      "niebo",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0276",
+    "hanzi": "太热",
+    "pinyin": "tài rè",
+    "pl": "za gorąco",
+    "sourceLesson": "19.3 Temperatura i odczucia",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "temperatura_i_odczucia",
+    "type": "phrase",
+    "tags": [
+      "zbyt",
+      "gorąco",
+      "temperatura"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0277",
+    "hanzi": "太冷",
+    "pinyin": "tài lěng",
+    "pl": "za zimno",
+    "sourceLesson": "19.3 Temperatura i odczucia",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "temperatura_i_odczucia",
+    "type": "phrase",
+    "tags": [
+      "zbyt",
+      "zimno",
+      "temperatura"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0278",
+    "hanzi": "女",
+    "pinyin": "nǚ",
+    "pl": "kobieta, żeński",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "word",
+    "tags": [
+      "kobieta",
+      "płeć",
+      "rodzina"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0279",
+    "hanzi": "先生",
+    "pinyin": "xiānsheng",
+    "pl": "Pan, mąż",
+    "sourceLesson": "13.3 Tytuły i formy zwracania się",
+    "levelApprox": "A1",
+    "topic": "ludzie_role_zawody",
+    "subtopic": "tytuly_i_formy_zwracania",
+    "type": "word",
+    "tags": [
+      "pan",
+      "mąż",
+      "tytuł"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "位",
+      "pinyin": "wèi"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0280",
+    "hanzi": "下雨",
+    "pinyin": "xià yǔ",
+    "pl": "padać deszcz",
+    "sourceLesson": "22.1 Pogoda podstawowa",
+    "levelApprox": "A1",
+    "topic": "pogoda_i_warunki",
+    "subtopic": "pogoda_podstawowa",
+    "type": "phrase",
+    "tags": [
+      "pogoda",
+      "deszcz",
+      "padać"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0281",
+    "hanzi": "下雪",
+    "pinyin": "xià xuě",
+    "pl": "padać śnieg",
+    "sourceLesson": "22.1 Pogoda podstawowa",
+    "levelApprox": "A1",
+    "topic": "pogoda_i_warunki",
+    "subtopic": "pogoda_podstawowa",
+    "type": "phrase",
+    "tags": [
+      "pogoda",
+      "śnieg",
+      "padać"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0282",
+    "hanzi": "身体",
+    "pinyin": "shēntǐ",
+    "pl": "ciało, zdrowie",
+    "sourceLesson": "11.3 Ciało podstawowe",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "zdrowie",
+      "ciało ludzkie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0284",
+    "hanzi": "一些",
+    "pinyin": "yīxiē",
+    "pl": "kilka, trochę",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "word",
+    "tags": [
+      "kilka",
+      "trochę",
+      "ilość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0285",
+    "hanzi": "这些",
+    "pinyin": "zhèxiē",
+    "pl": "te (l. mn.)",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "zaimek wskazujący",
+      "liczba mnoga",
+      "te"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0286",
+    "hanzi": "那些",
+    "pinyin": "nàxiē",
+    "pl": "tamte (l. mn.)",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "zaimek wskazujący",
+      "liczba mnoga",
+      "tamte"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0287",
+    "hanzi": "哪些",
+    "pinyin": "nǎxiē",
+    "pl": "które (l. mn.)",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "zaimek pytajny",
+      "liczba mnoga",
+      "które"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0288",
+    "hanzi": "为什么",
+    "pinyin": "wèishénme",
+    "pl": "dlaczego",
+    "sourceLesson": "21.2 Proste pytania kontekstowe",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "proste_pytania_kontekstowe",
+    "type": "word",
+    "tags": [
+      "dlaczego",
+      "pytanie",
+      "powód"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0289",
+    "hanzi": "没",
+    "pinyin": "méi",
+    "pl": "nie (negacja dla 有)",
+    "sourceLesson": "17.2 Negacja i podstawowe operatory",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "negacja_operatory",
+    "type": "word",
+    "tags": [
+      "negacja",
+      "nie",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0291",
+    "hanzi": "因为",
+    "pinyin": "yīnwèi",
+    "pl": "ponieważ",
+    "sourceLesson": "17.4 Spójniki i łączenie zdań",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "spojniki",
+    "type": "word",
+    "tags": [
+      "ponieważ",
+      "przyczyna",
+      "spójnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0292",
+    "hanzi": "所以",
+    "pinyin": "suǒyǐ",
+    "pl": "więc, dlatego",
+    "sourceLesson": "17.4 Spójniki i łączenie zdań",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "spojniki",
+    "type": "word",
+    "tags": [
+      "więc",
+      "dlatego",
+      "spójnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0293",
+    "hanzi": "好喝",
+    "pinyin": "hǎo hē",
+    "pl": "smaczny (napój)",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "phrase",
+    "tags": [
+      "smaczny",
+      "napój",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0294",
+    "hanzi": "看电视",
+    "pinyin": "kàn diànshì",
+    "pl": "oglądać telewizję",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "telewizja",
+      "oglądać",
+      "rozrywka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0295",
+    "hanzi": "睡",
+    "pinyin": "shuì",
+    "pl": "spać",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "spać",
+      "sen",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0296",
+    "hanzi": "小时",
+    "pinyin": "xiǎoshí",
+    "pl": "godzina",
+    "sourceLesson": "15.4 Jednostki czasu podstawowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "jednostki_czasu_podstawowe",
+    "type": "word",
+    "tags": [
+      "godzina",
+      "czas",
+      "jednostka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0297",
+    "hanzi": "一天",
+    "pinyin": "yī tiān",
+    "pl": "jeden dzień",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "dzień",
+      "czas",
+      "jeden"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0298",
+    "hanzi": "都",
+    "pinyin": "dōu",
+    "pl": "wszyscy, wszystko",
+    "sourceLesson": "17.4 Spójniki i łączenie zdań",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "spojniki",
+    "type": "word",
+    "tags": [
+      "wszyscy",
+      "wszystko",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0299",
+    "hanzi": "给",
+    "pinyin": "gěi",
+    "pl": "dawać, dla",
+    "sourceLesson": "12.5 Proste działania transakcyjne",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "dzialania_transakcyjne",
+    "type": "word",
+    "tags": [
+      "dawać",
+      "dla",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0300",
+    "hanzi": "给你",
+    "pinyin": "gěi nǐ",
+    "pl": "dla ciebie, dać ci",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "dawać",
+      "tobie",
+      "fraza"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0301",
+    "hanzi": "打电话",
+    "pinyin": "dǎ diànhuà",
+    "pl": "dzwonić",
+    "sourceLesson": "9.3 Komunikacja i pisanie",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "komunikacja_i_pisanie",
+    "type": "phrase",
+    "tags": [
+      "telefon",
+      "dzwonić",
+      "komunikacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0303",
+    "hanzi": "回家吧",
+    "pinyin": "huí jiā ba",
+    "pl": "chodźmy do domu",
+    "sourceLesson": "21.3 Proste polecenia i propozycje",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "proste_polecenia_propozycje",
+    "type": "phrase",
+    "tags": [
+      "dom",
+      "chodźmy",
+      "sugestia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0304",
+    "hanzi": "问题",
+    "pinyin": "wèntí",
+    "pl": "pytanie, problem",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "pytanie",
+      "problem",
+      "komunikacja"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0305",
+    "hanzi": "已经",
+    "pinyin": "yǐjīng",
+    "pl": "już",
+    "sourceLesson": "17.3 Cząstki aspektu i struktury",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "czastki_aspektu",
+    "type": "word",
+    "tags": [
+      "już",
+      "czas",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0306",
+    "hanzi": "看电影",
+    "pinyin": "kàn diànyǐng",
+    "pl": "oglądać film",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "phrase",
+    "tags": [
+      "film",
+      "oglądać",
+      "rozrywka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0308",
+    "hanzi": "电影",
+    "pinyin": "diànyǐng",
+    "pl": "film",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "word",
+    "tags": [
+      "film",
+      "rozrywka",
+      "kino"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "部",
+      "pinyin": "bù"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "场",
+        "pinyin": "chǎng"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0309",
+    "hanzi": "太好了",
+    "pinyin": "tài hǎo le",
+    "pl": "świetnie!",
+    "sourceLesson": "21.1 Reakcje i emocje",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "reakcje_i_emocje",
+    "type": "phrase",
+    "tags": [
+      "świetnie",
+      "wykrzyknik",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0310",
+    "hanzi": "太漂亮",
+    "pinyin": "tài piàoliang",
+    "pl": "zbyt piękny",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "zbyt",
+      "piękny",
+      "wygląd"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0311",
+    "hanzi": "冷多",
+    "pinyin": "lěng duō",
+    "pl": "dużo zimniej",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "phrase",
+    "tags": [
+      "zimno",
+      "dużo",
+      "porównanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0312",
+    "hanzi": "热多",
+    "pinyin": "rè duō",
+    "pl": "dużo cieplej",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "phrase",
+    "tags": [
+      "ciepło",
+      "dużo",
+      "porównanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0313",
+    "hanzi": "好多",
+    "pinyin": "hǎo duō",
+    "pl": "o wiele lepiej / dużo",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "phrase",
+    "tags": [
+      "dużo",
+      "lepiej",
+      "porównanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0314",
+    "hanzi": "漂亮",
+    "pinyin": "piàoliang",
+    "pl": "ładny",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "word",
+    "tags": [
+      "ładny",
+      "piękny",
+      "wygląd"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0317",
+    "hanzi": "生病",
+    "pinyin": "shēng bìng",
+    "pl": "zachorować",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "phrase",
+    "tags": [
+      "choroba",
+      "zachorować",
+      "zdrowie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0318",
+    "hanzi": "东西",
+    "pinyin": "dōngxi",
+    "pl": "rzeczy, przedmioty",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "rzeczy",
+      "przedmioty",
+      "ogólnie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0319",
+    "hanzi": "有点儿",
+    "pinyin": "yǒudiǎnr",
+    "pl": "trochę (negatywnie)",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "word",
+    "tags": [
+      "trochę",
+      "negatywne",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0320",
+    "hanzi": "看见",
+    "pinyin": "kànjiàn",
+    "pl": "widzieć, zobaczyć",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "widzieć",
+      "zobaczyć",
+      "percepcja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0321",
+    "hanzi": "这是",
+    "pinyin": "zhè shì",
+    "pl": "to jest",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "starter",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "phrase",
+    "tags": [
+      "to jest",
+      "wskazywanie",
+      "starter"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0323",
+    "hanzi": "这件",
+    "pinyin": "zhè jiàn",
+    "pl": "ta (sztuka ubrania)",
+    "sourceLesson": "7.1 Podstawowe ubrania",
+    "levelApprox": "A1",
+    "topic": "ubrania_rzeczy_osobiste",
+    "subtopic": "podstawowe_ubrania",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "ubranie",
+      "wskazywanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0325",
+    "hanzi": "啊",
+    "pinyin": "a",
+    "pl": "partykuła (podziw/potwierdzenie)",
+    "sourceLesson": "25.1 Czasowniki modalne",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "czasowniki_modalne",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "podziw",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0327",
+    "hanzi": "快乐",
+    "pinyin": "kuàilè",
+    "pl": "szczęśliwy",
+    "sourceLesson": "2.1 Urodziny i gratulacje",
+    "levelApprox": "A1",
+    "topic": "zyczenia_i_okazje",
+    "subtopic": "urodziny_gratulacje",
+    "type": "word",
+    "tags": [
+      "szczęśliwy",
+      "radość",
+      "emocja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0328",
+    "hanzi": "坐火车",
+    "pinyin": "zuò huǒchē",
+    "pl": "jechać pociągiem",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "phrase",
+    "tags": [
+      "pociąg",
+      "transport",
+      "podróż"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0329",
+    "hanzi": "坐地铁",
+    "pinyin": "zuò dìtiě",
+    "pl": "jechać metrem",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "phrase",
+    "tags": [
+      "metro",
+      "transport",
+      "miasto"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0330",
+    "hanzi": "公共汽车",
+    "pinyin": "gōnggòng qìchē",
+    "pl": "autobus",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "word",
+    "tags": [
+      "autobus",
+      "transport",
+      "miasto"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0331",
+    "hanzi": "认识",
+    "pinyin": "rènshi",
+    "pl": "znać, poznać",
+    "sourceLesson": "25.2 Rozumienie i wiedza",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "rozumienie_i_wiedza",
+    "type": "word",
+    "tags": [
+      "znać",
+      "poznać",
+      "relacje"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0332",
+    "hanzi": "坐飞机",
+    "pinyin": "zuò fēijī",
+    "pl": "lecieć samolotem",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "phrase",
+    "tags": [
+      "samolot",
+      "transport",
+      "podróż"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0333",
+    "hanzi": "出租车",
+    "pinyin": "chūzūchē",
+    "pl": "taksówka",
+    "sourceLesson": "4.1 Transport miejski",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_pojazdy",
+    "type": "word",
+    "tags": [
+      "taksówka",
+      "transport",
+      "miasto"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "辆",
+      "pinyin": "liàng"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0334",
+    "hanzi": "电车",
+    "pinyin": "diànchē",
+    "pl": "tramwaj",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "word",
+    "tags": [
+      "tramwaj",
+      "transport",
+      "miasto"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0336",
+    "hanzi": "听",
+    "pinyin": "tīng",
+    "pl": "słuchać",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "słuchać",
+      "percepcja",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0337",
+    "hanzi": "音乐",
+    "pinyin": "yīnyuè",
+    "pl": "muzyka",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "word",
+    "tags": [
+      "muzyka",
+      "rozrywka",
+      "sztuka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": "niepoliczalna w ogólnym sensie"
+  },
+  {
+    "id": "w0339",
+    "hanzi": "吃晚饭",
+    "pinyin": "chī wǎnfàn",
+    "pl": "jeść kolację",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "phrase",
+    "tags": [
+      "kolacja",
+      "jeść",
+      "posiłek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0341",
+    "hanzi": "听说",
+    "pinyin": "tīng shuō",
+    "pl": "słyszałem, że",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "słyszałem",
+      "informacja",
+      "fraza"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0344",
+    "hanzi": "不是",
+    "pinyin": "bú shì",
+    "pl": "nie jest",
+    "sourceLesson": "17.2 Negacja i podstawowe operatory",
+    "levelApprox": "starter",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "negacja_operatory",
+    "type": "phrase",
+    "tags": [
+      "negacja",
+      "nie jest",
+      "starter"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0345",
+    "hanzi": "去年",
+    "pinyin": "qùnián",
+    "pl": "w zeszłym roku",
+    "sourceLesson": "15.1 Dni względne",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "dni_wzgledne",
+    "type": "word",
+    "tags": [
+      "zeszły rok",
+      "przeszłość",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0346",
+    "hanzi": "旅游",
+    "pinyin": "lǚyóu",
+    "pl": "podróżować",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "word",
+    "tags": [
+      "podróżować",
+      "turystyka",
+      "wypoczynek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0348",
+    "hanzi": "三十一",
+    "pinyin": "sānshíyī",
+    "pl": "trzydzieści jeden",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "A1",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "trzydzieści jeden",
+      "cyfra"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0349",
+    "hanzi": "但是",
+    "pinyin": "dànshì",
+    "pl": "ale",
+    "sourceLesson": "17.4 Spójniki i łączenie zdań",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "spojniki",
+    "type": "word",
+    "tags": [
+      "ale",
+      "spójnik",
+      "przeciwstawność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0350",
+    "hanzi": "太太",
+    "pinyin": "tàitai",
+    "pl": "żona, Pani",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "word",
+    "tags": [
+      "żona",
+      "pani",
+      "tytuł"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0351",
+    "hanzi": "明年",
+    "pinyin": "míngnián",
+    "pl": "w przyszłym roku",
+    "sourceLesson": "15.1 Dni względne",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "dni_wzgledne",
+    "type": "word",
+    "tags": [
+      "przyszły rok",
+      "przyszłość",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0352",
+    "hanzi": "觉得",
+    "pinyin": "juéde",
+    "pl": "uważać, czuć",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "word",
+    "tags": [
+      "uważać",
+      "czuć",
+      "opinia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0353",
+    "hanzi": "很漂亮",
+    "pinyin": "hěn piàoliang",
+    "pl": "bardzo ładny",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "ładny",
+      "bardzo",
+      "wygląd"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0354",
+    "hanzi": "饭馆",
+    "pinyin": "fànguǎn",
+    "pl": "restauracja",
+    "sourceLesson": "5.1 Codzienne miejsca",
+    "levelApprox": "A1",
+    "topic": "miejsca_w_miescie",
+    "subtopic": "codzienne_miejsca",
+    "type": "word",
+    "tags": [
+      "restauracja",
+      "jedzenie",
+      "miasto"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0355",
+    "hanzi": "最",
+    "pinyin": "zuì",
+    "pl": "najbardziej, naj-",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "word",
+    "tags": [
+      "najbardziej",
+      "stopień najwyższy",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0356",
+    "hanzi": "更",
+    "pinyin": "gèng",
+    "pl": "jeszcze bardziej",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "word",
+    "tags": [
+      "bardziej",
+      "porównanie",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0357",
+    "hanzi": "最好",
+    "pinyin": "zuì hǎo",
+    "pl": "najlepszy",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "phrase",
+    "tags": [
+      "najlepszy",
+      "stopień najwyższy",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0358",
+    "hanzi": "更好",
+    "pinyin": "gèng hǎo",
+    "pl": "lepszy, jeszcze lepiej",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "phrase",
+    "tags": [
+      "lepszy",
+      "porównanie",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0359",
+    "hanzi": "更热",
+    "pinyin": "gèng rè",
+    "pl": "jeszcze cieplej",
+    "sourceLesson": "19.3 Temperatura i odczucia",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "temperatura_i_odczucia",
+    "type": "phrase",
+    "tags": [
+      "cieplej",
+      "porównanie",
+      "temperatura"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0360",
+    "hanzi": "最大",
+    "pinyin": "zuì dà",
+    "pl": "największy",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "największy",
+      "rozmiar",
+      "stopień najwyższy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0361",
+    "hanzi": "更大",
+    "pinyin": "gèng dà",
+    "pl": "większy",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "większy",
+      "rozmiar",
+      "porównanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0362",
+    "hanzi": "最小",
+    "pinyin": "zuì xiǎo",
+    "pl": "najmniejszy",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "najmniejszy",
+      "rozmiar",
+      "stopień najwyższy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0363",
+    "hanzi": "新年",
+    "pinyin": "xīnnián",
+    "pl": "Nowy Rok",
+    "sourceLesson": "2.2 Nowy rok i święta",
+    "levelApprox": "A1",
+    "topic": "zyczenia_i_okazje",
+    "subtopic": "nowy_rok_swieta",
+    "type": "word",
+    "tags": [
+      "Nowy Rok",
+      "święto",
+      "kalendarz"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0364",
+    "hanzi": "新桌",
+    "pinyin": "xīn zhuō",
+    "pl": "nowy stół",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "phrase",
+    "tags": [
+      "nowy",
+      "stół",
+      "meble"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0365",
+    "hanzi": "新椅",
+    "pinyin": "xīn yǐ",
+    "pl": "nowe krzesło",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "phrase",
+    "tags": [
+      "nowy",
+      "krzesło",
+      "meble"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0366",
+    "hanzi": "运动",
+    "pinyin": "yùndòng",
+    "pl": "sport, ćwiczenie",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "sport",
+      "ćwiczenie",
+      "aktywność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0367",
+    "hanzi": "不好",
+    "pinyin": "bù hǎo",
+    "pl": "niedobry, źle",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "starter",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "niedobry",
+      "źle",
+      "negacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0368",
+    "hanzi": "足球",
+    "pinyin": "zúqiú",
+    "pl": "piłka nożna",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "piłka nożna",
+      "sport",
+      "aktywność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0370",
+    "hanzi": "昨天晚上",
+    "pinyin": "zuótiān wǎnshang",
+    "pl": "wczorajszy wieczór",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "phrase",
+    "tags": [
+      "czas",
+      "wczoraj",
+      "wieczór"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0371",
+    "hanzi": "男朋友",
+    "pinyin": "nánpéngyou",
+    "pl": "chłopak, partner",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "związek",
+      "chłopak",
+      "relacje"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0372",
+    "hanzi": "花",
+    "pinyin": "huā",
+    "pl": "wydawać (pieniądze); kwiat",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "wydawać",
+      "pieniądze"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0375",
+    "hanzi": "花钱",
+    "pinyin": "huā qián",
+    "pl": "wydawać pieniądze",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "pieniądze",
+      "wydawać",
+      "finanse"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0377",
+    "hanzi": "踢足球",
+    "pinyin": "tī zúqiú",
+    "pl": "grać w piłkę nożną",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "sport",
+      "piłka nożna",
+      "aktywność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0378",
+    "hanzi": "老",
+    "pinyin": "lǎo",
+    "pl": "stary",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "stary",
+      "wiek",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0379",
+    "hanzi": "旧",
+    "pinyin": "jiù",
+    "pl": "stary (przedmiot)",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "stary",
+      "przedmiot",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0382",
+    "hanzi": "老朋友",
+    "pinyin": "lǎo péngyou",
+    "pl": "stary przyjaciel",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "phrase",
+    "tags": [
+      "przyjaciel",
+      "relacje",
+      "stary"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0384",
+    "hanzi": "旧书",
+    "pinyin": "jiù shū",
+    "pl": "stara książka",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "książka",
+      "stary",
+      "przedmiot"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0385",
+    "hanzi": "旧衣服",
+    "pinyin": "jiù yīfu",
+    "pl": "stare ubranie",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "ubranie",
+      "stary",
+      "odzież"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0386",
+    "hanzi": "旧电脑",
+    "pinyin": "jiù diànnǎo",
+    "pl": "stary komputer",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "komputer",
+      "stary",
+      "elektronika"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0387",
+    "hanzi": "旧桌",
+    "pinyin": "jiù zhuō",
+    "pl": "stary stół",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "phrase",
+    "tags": [
+      "stół",
+      "stary",
+      "meble"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0388",
+    "hanzi": "旧椅",
+    "pinyin": "jiù yǐ",
+    "pl": "stare krzesło",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "phrase",
+    "tags": [
+      "krzesło",
+      "stary",
+      "meble"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0389",
+    "hanzi": "这里",
+    "pinyin": "zhèlǐ",
+    "pl": "tutaj",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "miejsce",
+      "tutaj",
+      "wskazywanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0390",
+    "hanzi": "个人",
+    "pinyin": "gè rén",
+    "pl": "osoba",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "phrase",
+    "tags": [
+      "osoba",
+      "klasyfikator",
+      "ludzie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0391",
+    "hanzi": "十个",
+    "pinyin": "shí gè",
+    "pl": "dziesięć (sztuk)",
+    "sourceLesson": "18.4 Liczby w użyciu",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "liczby_w_uzyciu",
+    "type": "phrase",
+    "tags": [
+      "dziesięć",
+      "klasyfikator",
+      "liczba"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0392",
+    "hanzi": "十个月",
+    "pinyin": "shí gè yuè",
+    "pl": "dziesięć miesięcy",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "miesiąc",
+      "czas",
+      "dziesięć"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0393",
+    "hanzi": "十年",
+    "pinyin": "shí nián",
+    "pl": "dziesięć lat",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "rok",
+      "czas",
+      "dziesięć"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0394",
+    "hanzi": "十多个",
+    "pinyin": "shí duō gè",
+    "pl": "ponad dziesięć",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "phrase",
+    "tags": [
+      "ponad",
+      "dziesięć",
+      "ilość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0395",
+    "hanzi": "多月",
+    "pinyin": "duō yuè",
+    "pl": "kilka miesięcy",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "miesiąc",
+      "kilka",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0396",
+    "hanzi": "三年",
+    "pinyin": "sān nián",
+    "pl": "trzy lata",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "rok",
+      "trzy",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0397",
+    "hanzi": "多星期",
+    "pinyin": "duō xīngqī",
+    "pl": "kilka tygodni",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "tydzień",
+      "kilka",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0398",
+    "hanzi": "多个",
+    "pinyin": "duō gè",
+    "pl": "kilka (sztuk)",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "phrase",
+    "tags": [
+      "kilka",
+      "klasyfikator",
+      "ilość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0399",
+    "hanzi": "病",
+    "pinyin": "bìng",
+    "pl": "choroba, chory",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "choroba",
+      "zdrowie",
+      "chory"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0401",
+    "hanzi": "生",
+    "pinyin": "shēng",
+    "pl": "rodzić się, życie",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "word",
+    "tags": [
+      "życie",
+      "rodzić",
+      "narodziny"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0402",
+    "hanzi": "每",
+    "pinyin": "měi",
+    "pl": "każdy",
+    "sourceLesson": "20.4 Częstotliwość i powtarzalność",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "czestotliwosc_i_powtarzalnosc",
+    "type": "word",
+    "tags": [
+      "każdy",
+      "częstotliwość",
+      "zaimek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0403",
+    "hanzi": "每个",
+    "pinyin": "měi gè",
+    "pl": "każdy (sztuka)",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "classifiery_rzeczy_codziennych",
+    "type": "phrase",
+    "tags": [
+      "każdy",
+      "klasyfikator",
+      "ilość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0404",
+    "hanzi": "跑步",
+    "pinyin": "pǎo bù",
+    "pl": "biegać",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "biegać",
+      "sport",
+      "aktywność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0405",
+    "hanzi": "还没",
+    "pinyin": "hái méi",
+    "pl": "jeszcze nie",
+    "sourceLesson": "17.2 Negacja i podstawowe operatory",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "negacja_operatory",
+    "type": "phrase",
+    "tags": [
+      "jeszcze nie",
+      "zaprzeczenie",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0406",
+    "hanzi": "妹妹",
+    "pinyin": "mèimei",
+    "pl": "młodsza siostra",
+    "sourceLesson": "3.2 Rodzeństwo",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "siostra",
+      "rodzina",
+      "rodzeństwo"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0407",
+    "hanzi": "点要",
+    "pinyin": "diǎn yào",
+    "pl": "o (godzinie) chcę",
+    "sourceLesson": "20.2 Godziny i minuty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "godziny_i_minuty",
+    "type": "phrase",
+    "tags": [
+      "godzina",
+      "chcieć",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0408",
+    "hanzi": "星期六",
+    "pinyin": "xīngqīliù",
+    "pl": "sobota",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "word",
+    "tags": [
+      "sobota",
+      "tydzień",
+      "dzień"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0409",
+    "hanzi": "每年",
+    "pinyin": "měi nián",
+    "pl": "każdego roku",
+    "sourceLesson": "20.4 Częstotliwość i powtarzalność",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "czestotliwosc_i_powtarzalnosc",
+    "type": "phrase",
+    "tags": [
+      "rok",
+      "każdy",
+      "częstotliwość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0410",
+    "hanzi": "每月",
+    "pinyin": "měi yuè",
+    "pl": "każdego miesiąca",
+    "sourceLesson": "20.4 Częstotliwość i powtarzalność",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "czestotliwosc_i_powtarzalnosc",
+    "type": "phrase",
+    "tags": [
+      "miesiąc",
+      "każdy",
+      "częstotliwość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0411",
+    "hanzi": "每星期",
+    "pinyin": "měi xīngqī",
+    "pl": "każdego tygodnia",
+    "sourceLesson": "20.4 Częstotliwość i powtarzalność",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "czestotliwosc_i_powtarzalnosc",
+    "type": "phrase",
+    "tags": [
+      "tydzień",
+      "każdy",
+      "częstotliwość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0412",
+    "hanzi": "药",
+    "pinyin": "yào",
+    "pl": "lekarstwo",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "word",
+    "tags": [
+      "lekarstwo",
+      "zdrowie",
+      "leki"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "种",
+      "pinyin": "zhǒng"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "片",
+        "pinyin": "piàn"
+      }
+    ],
+    "measureWordNote": "种=rodzaj leku, 片=tabletka"
+  },
+  {
+    "id": "w0415",
+    "hanzi": "吃药",
+    "pinyin": "chī yào",
+    "pl": "brać lekarstwo",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "phrase",
+    "tags": [
+      "lekarstwo",
+      "brać",
+      "zdrowie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0417",
+    "hanzi": "医生",
+    "pinyin": "yīshēng",
+    "pl": "lekarz",
+    "sourceLesson": "13.2 Role codzienne",
+    "levelApprox": "A1",
+    "topic": "ludzie_role_zawody",
+    "subtopic": "role_codzienne",
+    "type": "word",
+    "tags": [
+      "lekarz",
+      "zawód",
+      "zdrowie"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "位",
+      "pinyin": "wèi"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "个",
+        "pinyin": "gè"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0419",
+    "hanzi": "下个星期",
+    "pinyin": "xià gè xīngqī",
+    "pl": "w przyszłym tygodniu",
+    "sourceLesson": "15.1 Dni względne",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "dni_wzgledne",
+    "type": "phrase",
+    "tags": [
+      "tydzień",
+      "przyszły",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0422",
+    "hanzi": "一米",
+    "pinyin": "yī mǐ",
+    "pl": "jeden metr",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "phrase",
+    "tags": [
+      "metr",
+      "długość",
+      "jednostka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0423",
+    "hanzi": "七五",
+    "pinyin": "qī wǔ",
+    "pl": "siedemdziesiąt pięć",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "A1",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "phrase",
+    "tags": [
+      "siedemdziesiąt pięć",
+      "liczba",
+      "cyfra"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0425",
+    "hanzi": "知道",
+    "pinyin": "zhīdào",
+    "pl": "wiedzieć",
+    "sourceLesson": "25.2 Rozumienie i wiedza",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "rozumienie_i_wiedza",
+    "type": "word",
+    "tags": [
+      "wiedzieć",
+      "czasownik",
+      "komunikacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "b01_w008",
+    "hanzi": "字",
+    "pinyin": "zì",
+    "pl": "znak, litera",
+    "sourceLesson": "14.1 Podstawowe rzeczy do nauki",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "podstawowe_rzeczy_do_nauki",
+    "type": "word",
+    "tags": [
+      "pismo",
+      "znak",
+      "litera",
+      "język"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0426",
+    "hanzi": "意思",
+    "pinyin": "yìsi",
+    "pl": "znaczenie, sens",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "znaczenie",
+      "sens",
+      "język"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0427",
+    "hanzi": "休息",
+    "pinyin": "xiūxi",
+    "pl": "odpoczywać",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "odpoczywać",
+      "czas wolny",
+      "aktywność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0428",
+    "hanzi": "一下",
+    "pinyin": "yīxià",
+    "pl": "chwilę, trochę (po czasowniku)",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "chwila",
+      "gramatyka",
+      "modyfikator"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0429",
+    "hanzi": "星期天",
+    "pinyin": "xīngqītiān",
+    "pl": "niedziela",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "word",
+    "tags": [
+      "niedziela",
+      "tydzień",
+      "dzień"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0430",
+    "hanzi": "开门",
+    "pinyin": "kāi mén",
+    "pl": "otwierać drzwi",
+    "sourceLesson": "25.3 Działania codzienne rozszerzone",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "dzialania_codzienne_rozszerzone",
+    "type": "phrase",
+    "tags": [
+      "drzwi",
+      "otwierać",
+      "dom"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0431",
+    "hanzi": "忙",
+    "pinyin": "máng",
+    "pl": "zajęty",
+    "sourceLesson": "11.1 Samopoczucie podstawowe",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "samopoczucie_podstawowe",
+    "type": "word",
+    "tags": [
+      "zajęty",
+      "stan",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0432",
+    "hanzi": "这么",
+    "pinyin": "zhème",
+    "pl": "tak (bardzo), w ten sposób",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "tak bardzo",
+      "sposób",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0433",
+    "hanzi": "累",
+    "pinyin": "lèi",
+    "pl": "zmęczony",
+    "sourceLesson": "11.1 Samopoczucie podstawowe",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "samopoczucie_podstawowe",
+    "type": "word",
+    "tags": [
+      "zmęczony",
+      "stan",
+      "emocje"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0434",
+    "hanzi": "太累",
+    "pinyin": "tài lèi",
+    "pl": "za bardzo zmęczony",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "zmęczony",
+      "za bardzo",
+      "emocje"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0435",
+    "hanzi": "学习",
+    "pinyin": "xuéxí",
+    "pl": "uczyć się, nauka",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "word",
+    "tags": [
+      "uczyć się",
+      "szkoła",
+      "nauka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0436",
+    "hanzi": "一块",
+    "pinyin": "yī kuài",
+    "pl": "jeden kawałek; jeden juan",
+    "sourceLesson": "12.1 Pieniądze i ceny",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "pieniadze_i_ceny",
+    "type": "phrase",
+    "tags": [
+      "juan",
+      "waluta",
+      "kawałek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0437",
+    "hanzi": "蛋糕",
+    "pinyin": "dàngāo",
+    "pl": "tort, ciasto",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "ciasto",
+      "tort",
+      "jedzenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0438",
+    "hanzi": "一块钱",
+    "pinyin": "yī kuài qián",
+    "pl": "jeden juan",
+    "sourceLesson": "12.1 Pieniądze i ceny",
+    "levelApprox": "A1",
+    "topic": "zakupy_i_pieniadze",
+    "subtopic": "pieniadze_i_ceny",
+    "type": "phrase",
+    "tags": [
+      "juan",
+      "pieniądze",
+      "waluta"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0439",
+    "hanzi": "披萨",
+    "pinyin": "pīsà",
+    "pl": "pizza",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "pizza",
+      "jedzenie",
+      "kuchnia zachodnia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0440",
+    "hanzi": "送",
+    "pinyin": "sòng",
+    "pl": "dawać w prezencie, odprowadzać",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "prezent",
+      "dawać",
+      "odprowadzać"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0441",
+    "hanzi": "本书",
+    "pinyin": "běn shū",
+    "pl": "ta książka",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "książka",
+      "klasyfikator",
+      "szkoła"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "本",
+      "pinyin": "běn"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0443",
+    "hanzi": "机场",
+    "pinyin": "jīchǎng",
+    "pl": "lotnisko",
+    "sourceLesson": "4.3 Miejsca związane z transportem",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "lotnisko",
+      "transport",
+      "podróże"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "座",
+        "pinyin": "zuò"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0444",
+    "hanzi": "女儿",
+    "pinyin": "nǚ'ér",
+    "pl": "córka",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "word",
+    "tags": [
+      "córka",
+      "rodzina",
+      "dziecko"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0445",
+    "hanzi": "外卖",
+    "pinyin": "wàimài",
+    "pl": "jedzenie na wynos",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "word",
+    "tags": [
+      "na wynos",
+      "dostawa",
+      "jedzenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0446",
+    "hanzi": "报纸",
+    "pinyin": "bàozhǐ",
+    "pl": "gazeta",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "gazeta",
+      "media",
+      "czytanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0447",
+    "hanzi": "不好意思",
+    "pinyin": "bù hǎo yìsi",
+    "pl": "przepraszam, wstyd mi",
+    "sourceLesson": "1.2 Uprzejmość i podstawowe zwroty",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "uprzejmosc_zwroty",
+    "type": "phrase",
+    "tags": [
+      "przepraszam",
+      "grzeczność",
+      "fraza"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0448",
+    "hanzi": "问",
+    "pinyin": "wèn",
+    "pl": "pytać",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "pytać",
+      "komunikacja",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0449",
+    "hanzi": "厕所",
+    "pinyin": "cèsuǒ",
+    "pl": "toaleta",
+    "sourceLesson": "10.1 Nazwy pokoi",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "nazwy_pokoi",
+    "type": "word",
+    "tags": [
+      "toaleta",
+      "łazienka",
+      "dom"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "b02_w003",
+    "hanzi": "电视",
+    "pinyin": "diànshì",
+    "pl": "telewizja, telewizor",
+    "sourceLesson": "16.1 Podstawowe urządzenia",
+    "levelApprox": "A1",
+    "topic": "technologia_i_urzadzenia",
+    "subtopic": "podstawowe_urzadzenia",
+    "type": "word",
+    "tags": [
+      "technologia",
+      "urządzenie",
+      "dom",
+      "telewizja"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "台",
+      "pinyin": "tái"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "b01_w014",
+    "hanzi": "作业",
+    "pinyin": "zuòyè",
+    "pl": "praca domowa",
+    "sourceLesson": "14.1 Podstawowe rzeczy do nauki",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "podstawowe_rzeczy_do_nauki",
+    "type": "word",
+    "tags": [
+      "szkoła",
+      "praca domowa",
+      "nauka",
+      "zadanie"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "份",
+      "pinyin": "fèn"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "个",
+        "pinyin": "gè"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0450",
+    "hanzi": "旁边",
+    "pinyin": "pángbiān",
+    "pl": "obok, z boku",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "obok",
+      "miejsce",
+      "lokalizacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0451",
+    "hanzi": "电影院",
+    "pinyin": "diànyǐngyuàn",
+    "pl": "kino",
+    "sourceLesson": "5.1 Codzienne miejsca",
+    "levelApprox": "A1",
+    "topic": "miejsca_w_miescie",
+    "subtopic": "codzienne_miejsca",
+    "type": "word",
+    "tags": [
+      "kino",
+      "rozrywka",
+      "miejsce"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0452",
+    "hanzi": "真",
+    "pinyin": "zhēn",
+    "pl": "naprawdę, prawdziwy",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "naprawdę",
+      "prawdziwy",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0453",
+    "hanzi": "真小",
+    "pinyin": "zhēn xiǎo",
+    "pl": "naprawdę mały",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "mały",
+      "naprawdę",
+      "opis"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0454",
+    "hanzi": "真想",
+    "pinyin": "zhēn xiǎng",
+    "pl": "naprawdę chcę",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "chcieć",
+      "naprawdę",
+      "emocje"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0455",
+    "hanzi": "真冷",
+    "pinyin": "zhēn lěng",
+    "pl": "naprawdę zimno",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "zimno",
+      "naprawdę",
+      "pogoda"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0457",
+    "hanzi": "真热",
+    "pinyin": "zhēn rè",
+    "pl": "naprawdę gorąco",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "gorąco",
+      "naprawdę",
+      "pogoda"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0458",
+    "hanzi": "真的",
+    "pinyin": "zhēn de",
+    "pl": "naprawdę, serio",
+    "sourceLesson": "21.1 Reakcje i emocje",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "reakcje_i_emocje",
+    "type": "phrase",
+    "tags": [
+      "naprawdę",
+      "serio",
+      "fraza"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0459",
+    "hanzi": "十月",
+    "pinyin": "shí yuè",
+    "pl": "październik",
+    "sourceLesson": "20.1 Miesiące i daty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "miesiace_i_daty",
+    "type": "word",
+    "tags": [
+      "październik",
+      "miesiąc",
+      "rok"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0460",
+    "hanzi": "七号",
+    "pinyin": "qī hào",
+    "pl": "siódmego (dnia)",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "data",
+      "dzień",
+      "siódmy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0461",
+    "hanzi": "祝",
+    "pinyin": "zhù",
+    "pl": "życzyć",
+    "sourceLesson": "2.3 Życzenia ogólne",
+    "levelApprox": "A1",
+    "topic": "zyczenia_i_okazje",
+    "subtopic": "zyczenia_ogolne",
+    "type": "word",
+    "tags": [
+      "życzyć",
+      "życzenia",
+      "fraza"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0462",
+    "hanzi": "生日快乐",
+    "pinyin": "shēngrì kuàilè",
+    "pl": "wszystkiego najlepszego z okazji urodzin",
+    "sourceLesson": "2.1 Urodziny i gratulacje",
+    "levelApprox": "A1",
+    "topic": "zyczenia_i_okazje",
+    "subtopic": "urodziny_gratulacje",
+    "type": "phrase",
+    "tags": [
+      "urodziny",
+      "życzenia",
+      "fraza"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0463",
+    "hanzi": "帮",
+    "pinyin": "bāng",
+    "pl": "pomagać",
+    "sourceLesson": "25.3 Działania codzienne rozszerzone",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "dzialania_codzienne_rozszerzone",
+    "type": "word",
+    "tags": [
+      "pomagać",
+      "pomoc",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0464",
+    "hanzi": "做作业",
+    "pinyin": "zuò zuòyè",
+    "pl": "odrabiać lekcje",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "praca domowa",
+      "odrabiać",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0465",
+    "hanzi": "一件",
+    "pinyin": "yī jiàn",
+    "pl": "jedna sztuka (ubrania)",
+    "sourceLesson": "18.4 Liczby w użyciu",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "liczby_w_uzyciu",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "ubranie",
+      "jedna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0466",
+    "hanzi": "帮助",
+    "pinyin": "bāngzhù",
+    "pl": "pomagać, pomoc",
+    "sourceLesson": "25.3 Działania codzienne rozszerzone",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "dzialania_codzienne_rozszerzone",
+    "type": "word",
+    "tags": [
+      "pomoc",
+      "pomagać",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0467",
+    "hanzi": "乌克兰人",
+    "pinyin": "Wūkèlán rén",
+    "pl": "Ukrainiec/Ukrainka",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "Ukraina",
+      "narodowość",
+      "kraj",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0468",
+    "hanzi": "贫穷",
+    "pinyin": "pínqióng",
+    "pl": "biedny, ubogi",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "biedny",
+      "ubogi",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0470",
+    "hanzi": "接电话",
+    "pinyin": "jiē diànhuà",
+    "pl": "odbierać telefon",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "telefon",
+      "odbierać",
+      "komunikacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0471",
+    "hanzi": "不接",
+    "pinyin": "bù jiē",
+    "pl": "nie odbierać",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "telefon",
+      "nie odbierać",
+      "komunikacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0472",
+    "hanzi": "电话",
+    "pinyin": "diànhuà",
+    "pl": "telefon",
+    "sourceLesson": "16.1 Podstawowe urządzenia",
+    "levelApprox": "A1",
+    "topic": "technologia_i_urzadzenia",
+    "subtopic": "podstawowe_urzadzenia",
+    "type": "word",
+    "tags": [
+      "telefon",
+      "komunikacja",
+      "elektronika"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "部",
+      "pinyin": "bù"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0473",
+    "hanzi": "快点",
+    "pinyin": "kuài diǎn",
+    "pl": "szybciej",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "szybciej",
+      "polecenie",
+      "fraza"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0474",
+    "hanzi": "介绍",
+    "pinyin": "jièshào",
+    "pl": "przedstawiać, przedstawienie",
+    "sourceLesson": "25.4 Mówienie i przekaz",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "mowienie_i_przekaz",
+    "type": "word",
+    "tags": [
+      "przedstawiać",
+      "komunikacja",
+      "fraza"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0476",
+    "hanzi": "接",
+    "pinyin": "jiē",
+    "pl": "odbierać, odbierać (kogoś)",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "odbierać",
+      "czasownik",
+      "transport"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0478",
+    "hanzi": "车站",
+    "pinyin": "chēzhàn",
+    "pl": "przystanek, dworzec",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "word",
+    "tags": [
+      "przystanek",
+      "dworzec",
+      "transport"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0479",
+    "hanzi": "开始",
+    "pinyin": "kāishǐ",
+    "pl": "zaczynać",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "zaczynać",
+      "czasownik",
+      "czynność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0481",
+    "hanzi": "上班",
+    "pinyin": "shàng bān",
+    "pl": "iść do pracy",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "phrase",
+    "tags": [
+      "praca",
+      "iść do pracy",
+      "codzienność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0483",
+    "hanzi": "一千",
+    "pinyin": "yī qiān",
+    "pl": "tysiąc",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "A1",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "phrase",
+    "tags": [
+      "tysiąc",
+      "liczba",
+      "cyfra"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0484",
+    "hanzi": "考试",
+    "pinyin": "kǎoshì",
+    "pl": "egzamin",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "egzamin",
+      "szkoła",
+      "test"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0485",
+    "hanzi": "准备",
+    "pinyin": "zhǔnbèi",
+    "pl": "przygotowywać się",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "przygotowywać",
+      "czynność",
+      "planowanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0486",
+    "hanzi": "考",
+    "pinyin": "kǎo",
+    "pl": "zdawać egzamin",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "egzamin",
+      "zdawać",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0488",
+    "hanzi": "就",
+    "pinyin": "jiù",
+    "pl": "właśnie",
+    "sourceLesson": "17.1 Partykuły i elementy pytania",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "partykuly_pytanie",
+    "type": "word",
+    "tags": [
+      "właśnie",
+      "gramatyka",
+      "partykuła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0489",
+    "hanzi": "咖啡吧",
+    "pinyin": "kāfēi ba",
+    "pl": "kawiarnia; może kawę?",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "phrase",
+    "tags": [
+      "kawiarnia",
+      "kawa",
+      "propozycja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0490",
+    "hanzi": "吃了饭",
+    "pinyin": "chī le fàn",
+    "pl": "po jedzeniu",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "phrase",
+    "tags": [
+      "jedzenie",
+      "po",
+      "aspekt"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0491",
+    "hanzi": "回",
+    "pinyin": "huí",
+    "pl": "wracać",
+    "sourceLesson": "6.4 Powrót i ruch do celu",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "powrot_ruch_do_celu",
+    "type": "word",
+    "tags": [
+      "wracać",
+      "ruch",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0494",
+    "hanzi": "不吃",
+    "pinyin": "bù chī",
+    "pl": "nie jeść",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "phrase",
+    "tags": [
+      "nie",
+      "jeść",
+      "zaprzeczenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0496",
+    "hanzi": "对学",
+    "pinyin": "duì xué",
+    "pl": "uczyć się dla",
+    "sourceLesson": "13.1 Role szkolne",
+    "levelApprox": "A1",
+    "topic": "ludzie_role_zawody",
+    "subtopic": "role_szkolne",
+    "type": "phrase",
+    "tags": [
+      "uczyć się",
+      "dla",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0497",
+    "hanzi": "早点儿",
+    "pinyin": "zǎo diǎnr",
+    "pl": "trochę wcześniej",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "wcześniej",
+      "czas",
+      "modyfikator"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0498",
+    "hanzi": "以前",
+    "pinyin": "yǐqián",
+    "pl": "wcześniej, dawniej",
+    "sourceLesson": "15.1 Dni względne",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "dni_wzgledne",
+    "type": "word",
+    "tags": [
+      "dawniej",
+      "przeszłość",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0499",
+    "hanzi": "以后",
+    "pinyin": "yǐhòu",
+    "pl": "później, po",
+    "sourceLesson": "15.1 Dni względne",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "dni_wzgledne",
+    "type": "word",
+    "tags": [
+      "później",
+      "przyszłość",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0500",
+    "hanzi": "要学",
+    "pinyin": "yào xué",
+    "pl": "chcieć się uczyć",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "uczyć się",
+      "chcieć",
+      "zamiar"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0502",
+    "hanzi": "他学",
+    "pinyin": "tā xué",
+    "pl": "on uczy się",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "phrase",
+    "tags": [
+      "on",
+      "uczyć się",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0503",
+    "hanzi": "洗手",
+    "pinyin": "xǐ shǒu",
+    "pl": "myć ręce",
+    "sourceLesson": "25.3 Działania codzienne rozszerzone",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "dzialania_codzienne_rozszerzone",
+    "type": "phrase",
+    "tags": [
+      "myć ręce",
+      "higiena",
+      "codzienność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0505",
+    "hanzi": "还在",
+    "pinyin": "hái zài",
+    "pl": "nadal jest/jestem",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "nadal",
+      "być",
+      "stan"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0507",
+    "hanzi": "天天",
+    "pinyin": "tiāntiān",
+    "pl": "codziennie",
+    "sourceLesson": "20.4 Częstotliwość i powtarzalność",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "czestotliwosc_i_powtarzalnosc",
+    "type": "word",
+    "tags": [
+      "codziennie",
+      "częstotliwość",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0508",
+    "hanzi": "里",
+    "pinyin": "lǐ",
+    "pl": "wewnątrz, w",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "wewnątrz",
+      "w",
+      "lokalizacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0509",
+    "hanzi": "每件",
+    "pinyin": "měi jiàn",
+    "pl": "każda sztuka",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "classifiery_rzeczy_codziennych",
+    "type": "phrase",
+    "tags": [
+      "każdy",
+      "klasyfikator",
+      "ilość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0511",
+    "hanzi": "教室",
+    "pinyin": "jiàoshì",
+    "pl": "sala lekcyjna",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "sala",
+      "szkoła",
+      "klasa"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "间",
+      "pinyin": "jiān"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "个",
+        "pinyin": "gè"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0512",
+    "hanzi": "一条",
+    "pinyin": "yī tiáo",
+    "pl": "jedna (dla długich/cienkich)",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "classifiery_rzeczy_codziennych",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "jedna",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0513",
+    "hanzi": "路",
+    "pinyin": "lù",
+    "pl": "droga, ulica",
+    "sourceLesson": "5.3 Przestrzeń miejska",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_zwierzeta",
+    "type": "word",
+    "tags": [
+      "droga",
+      "ulica",
+      "transport"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "条",
+      "pinyin": "tiáo"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0514",
+    "hanzi": "路上",
+    "pinyin": "lù shàng",
+    "pl": "w drodze",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "phrase",
+    "tags": [
+      "droga",
+      "w drodze",
+      "transport"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0515",
+    "hanzi": "慢",
+    "pinyin": "màn",
+    "pl": "powolny, wolno",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "wolny",
+      "powolny",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0516",
+    "hanzi": "慢点儿",
+    "pinyin": "màn diǎnr",
+    "pl": "trochę wolniej",
+    "sourceLesson": "21.3 Proste polecenia i propozycje",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "proste_polecenia_propozycje",
+    "type": "phrase",
+    "tags": [
+      "wolniej",
+      "polecenie",
+      "prędkość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0517",
+    "hanzi": "快",
+    "pinyin": "kuài",
+    "pl": "szybki, szybko",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "szybki",
+      "prędkość",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0518",
+    "hanzi": "快点儿",
+    "pinyin": "kuài diǎnr",
+    "pl": "trochę szybciej",
+    "sourceLesson": "21.3 Proste polecenia i propozycje",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "proste_polecenia_propozycje",
+    "type": "phrase",
+    "tags": [
+      "szybciej",
+      "polecenie",
+      "prędkość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0519",
+    "hanzi": "开",
+    "pinyin": "kāi",
+    "pl": "otwierać, prowadzić (pojazd)",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "otwierać",
+      "prowadzić",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0520",
+    "hanzi": "跑",
+    "pinyin": "pǎo",
+    "pl": "biec",
+    "sourceLesson": "6.3 Ruch aktywny i dotarcie",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "ruch_aktywny",
+    "type": "word",
+    "tags": [
+      "biec",
+      "ruch",
+      "sport"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0521",
+    "hanzi": "过",
+    "pinyin": "guò",
+    "pl": "minąć, doświadczyć",
+    "sourceLesson": "17.3 Cząstki aspektu i struktury",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "czastki_aspektu",
+    "type": "word",
+    "tags": [
+      "minąć",
+      "doświadczyć",
+      "aspekt"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0522",
+    "hanzi": "过生日",
+    "pinyin": "guò shēngrì",
+    "pl": "świętować urodziny",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "urodziny",
+      "świętować",
+      "okazja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0523",
+    "hanzi": "过新年",
+    "pinyin": "guò xīnnián",
+    "pl": "świętować Nowy Rok",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "Nowy Rok",
+      "świętować",
+      "okazja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0525",
+    "hanzi": "复活节",
+    "pinyin": "Fùhuó jié",
+    "pl": "Wielkanoc",
+    "sourceLesson": "26.3 Okazje i wydarzenia",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "okazje_i_wydarzenia",
+    "type": "word",
+    "tags": [
+      "Wielkanoc",
+      "święto",
+      "religia",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0526",
+    "hanzi": "走",
+    "pinyin": "zǒu",
+    "pl": "iść",
+    "sourceLesson": "6.1 Podstawowy ruch i kierunek",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "ruch_podstawowy",
+    "type": "word",
+    "tags": [
+      "iść",
+      "ruch",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0527",
+    "hanzi": "公交车",
+    "pinyin": "gōngjiāo chē",
+    "pl": "autobus",
+    "sourceLesson": "4.1 Transport miejski",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_pojazdy",
+    "type": "word",
+    "tags": [
+      "autobus",
+      "transport",
+      "miasto"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "辆",
+      "pinyin": "liàng"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0528",
+    "hanzi": "地铁",
+    "pinyin": "dìtiě",
+    "pl": "metro",
+    "sourceLesson": "4.1 Transport miejski",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_zwierzeta",
+    "type": "word",
+    "tags": [
+      "metro",
+      "transport",
+      "miasto"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "条",
+      "pinyin": "tiáo"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": "条=linia, 辆=wagon/pociąg"
+  },
+  {
+    "id": "w0529",
+    "hanzi": "打",
+    "pinyin": "dǎ",
+    "pl": "uderzać, dzwonić, grać",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "uderzać",
+      "dzwonić",
+      "grać"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0530",
+    "hanzi": "离",
+    "pinyin": "lí",
+    "pl": "oddalony od",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "word",
+    "tags": [
+      "odległy",
+      "od",
+      "lokalizacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0531",
+    "hanzi": "远",
+    "pinyin": "yuǎn",
+    "pl": "daleki, daleko",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "word",
+    "tags": [
+      "daleko",
+      "odległość",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0532",
+    "hanzi": "近",
+    "pinyin": "jìn",
+    "pl": "bliski, blisko",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "word",
+    "tags": [
+      "blisko",
+      "odległość",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0533",
+    "hanzi": "很近",
+    "pinyin": "hěn jìn",
+    "pl": "bardzo blisko",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "phrase",
+    "tags": [
+      "bardzo blisko",
+      "odległość",
+      "opis"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0534",
+    "hanzi": "公里",
+    "pinyin": "gōnglǐ",
+    "pl": "kilometr",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "word",
+    "tags": [
+      "kilometr",
+      "odległość",
+      "jednostka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0535",
+    "hanzi": "米",
+    "pinyin": "mǐ",
+    "pl": "metr",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "word",
+    "tags": [
+      "metr",
+      "długość",
+      "jednostka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0536",
+    "hanzi": "二十公里",
+    "pinyin": "èrshí gōnglǐ",
+    "pl": "dwadzieścia kilometrów",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "phrase",
+    "tags": [
+      "dwadzieścia",
+      "kilometr",
+      "odległość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0537",
+    "hanzi": "走路",
+    "pinyin": "zǒu lù",
+    "pl": "chodzić pieszo",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "chodzić pieszo",
+      "ruch",
+      "transport"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0538",
+    "hanzi": "五分钟",
+    "pinyin": "wǔ fēnzhōng",
+    "pl": "pięć minut",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "pięć",
+      "minut",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0539",
+    "hanzi": "十分钟",
+    "pinyin": "shí fēnzhōng",
+    "pl": "dziesięć minut",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "dziesięć",
+      "minut",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0540",
+    "hanzi": "二十分钟",
+    "pinyin": "èrshí fēnzhōng",
+    "pl": "dwadzieścia minut",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "dwadzieścia",
+      "minut",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0541",
+    "hanzi": "还有",
+    "pinyin": "hái yǒu",
+    "pl": "jest jeszcze, i jeszcze",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "jeszcze",
+      "i",
+      "fraza"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0542",
+    "hanzi": "圣诞节",
+    "pinyin": "Shèngdàn jié",
+    "pl": "Boże Narodzenie",
+    "sourceLesson": "26.3 Okazje i wydarzenia",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "okazje_i_wydarzenia",
+    "type": "word",
+    "tags": [
+      "Boże Narodzenie",
+      "święto",
+      "religia",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0543",
+    "hanzi": "三十天",
+    "pinyin": "sānshí tiān",
+    "pl": "trzydzieści dni",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "trzydzieści",
+      "dni",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0544",
+    "hanzi": "半年",
+    "pinyin": "bàn nián",
+    "pl": "pół roku",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "pół roku",
+      "czas",
+      "okres"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0545",
+    "hanzi": "半小时",
+    "pinyin": "bàn xiǎoshí",
+    "pl": "pół godziny",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "pół godziny",
+      "czas",
+      "okres"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0546",
+    "hanzi": "三分钟",
+    "pinyin": "sān fēnzhōng",
+    "pl": "trzy minuty",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "trzy",
+      "minuty",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0547",
+    "hanzi": "多长时间",
+    "pinyin": "duō cháng shíjiān",
+    "pl": "jak długo",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "jak długo",
+      "pytanie",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0548",
+    "hanzi": "多久",
+    "pinyin": "duō jiǔ",
+    "pl": "jak długo",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "jak długo",
+      "pytanie",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0549",
+    "hanzi": "三十分钟",
+    "pinyin": "sānshí fēnzhōng",
+    "pl": "trzydzieści minut",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "trzydzieści",
+      "minut",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0550",
+    "hanzi": "再",
+    "pinyin": "zài",
+    "pl": "znowu",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "znowu",
+      "powtórzenie",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0551",
+    "hanzi": "再说",
+    "pinyin": "zài shuō",
+    "pl": "powiedzieć jeszcze raz; zobaczymy",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "jeszcze raz",
+      "zobaczymy",
+      "fraza"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0552",
+    "hanzi": "一遍",
+    "pinyin": "yī biàn",
+    "pl": "jeden raz (od początku do końca)",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "raz",
+      "krotność",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0553",
+    "hanzi": "一点",
+    "pinyin": "yī diǎn",
+    "pl": "trochę, odrobinę",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "trochę",
+      "odrobina",
+      "ilość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0554",
+    "hanzi": "一会儿",
+    "pinyin": "yīhuìr",
+    "pl": "za chwilę, chwilę",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "chwila",
+      "za chwilę",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0555",
+    "hanzi": "让",
+    "pinyin": "ràng",
+    "pl": "pozwolić, kazać",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "pozwolić",
+      "kazać",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0556",
+    "hanzi": "买菜",
+    "pinyin": "mǎi cài",
+    "pl": "kupować warzywa/jedzenie",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "phrase",
+    "tags": [
+      "warzywa",
+      "kupować",
+      "jedzenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0557",
+    "hanzi": "不让",
+    "pinyin": "bù ràng",
+    "pl": "nie pozwalać",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "nie pozwalać",
+      "zakaz",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0559",
+    "hanzi": "告诉",
+    "pinyin": "gàosu",
+    "pl": "mówić (komuś), informować",
+    "sourceLesson": "25.4 Mówienie i przekaz",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "mowienie_i_przekaz",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "komunikacja",
+      "mówienie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0561",
+    "hanzi": "等等",
+    "pinyin": "děngdeng",
+    "pl": "poczekaj chwilę",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "zwrot",
+      "prośba",
+      "czekanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0562",
+    "hanzi": "不请",
+    "pinyin": "bù qǐng",
+    "pl": "nie zapraszać",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "negacja",
+      "zaproszenie",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0563",
+    "hanzi": "找",
+    "pinyin": "zhǎo",
+    "pl": "szukać",
+    "sourceLesson": "25.3 Działania codzienne rozszerzone",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "dzialania_codzienne_rozszerzone",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "szukanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0564",
+    "hanzi": "找到",
+    "pinyin": "zhǎodào",
+    "pl": "znaleźć",
+    "sourceLesson": "25.3 Działania codzienne rozszerzone",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "dzialania_codzienne_rozszerzone",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "znalezienie",
+      "rezultat"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0565",
+    "hanzi": "手机",
+    "pinyin": "shǒujī",
+    "pl": "telefon komórkowy",
+    "sourceLesson": "7.3 Rzeczy osobiste",
+    "levelApprox": "A1",
+    "topic": "ubrania_rzeczy_osobiste",
+    "subtopic": "rzeczy_osobiste",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "telefon",
+      "technologia"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "部",
+      "pinyin": "bù"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0566",
+    "hanzi": "有事",
+    "pinyin": "yǒu shì",
+    "pl": "mieć sprawę, być zajętym",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "zwrot",
+      "zajętość",
+      "sprawa"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0568",
+    "hanzi": "帮忙",
+    "pinyin": "bāng máng",
+    "pl": "pomagać",
+    "sourceLesson": "25.3 Działania codzienne rozszerzone",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "dzialania_codzienne_rozszerzone",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "pomoc"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0569",
+    "hanzi": "先写",
+    "pinyin": "xiān xiě",
+    "pl": "najpierw napisać",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "kolejność",
+      "pisanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0570",
+    "hanzi": "话",
+    "pinyin": "huà",
+    "pl": "słowo, mowa",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "mowa",
+      "język"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0571",
+    "hanzi": "错",
+    "pinyin": "cuò",
+    "pl": "błędny, błąd",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "błąd",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0574",
+    "hanzi": "题",
+    "pinyin": "tí",
+    "pl": "zadanie, pytanie",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "zadanie",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0575",
+    "hanzi": "就是",
+    "pinyin": "jiù shì",
+    "pl": "właśnie jest",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "zwrot",
+      "potwierdzenie",
+      "spójnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0576",
+    "hanzi": "做错了",
+    "pinyin": "zuò cuò le",
+    "pl": "zrobić źle",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "błąd",
+      "rezultat"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0577",
+    "hanzi": "写错了",
+    "pinyin": "xiě cuò le",
+    "pl": "napisać źle",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "pisanie",
+      "błąd"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0578",
+    "hanzi": "听错了",
+    "pinyin": "tīng cuò le",
+    "pl": "przesłyszeć się",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "słuchanie",
+      "błąd"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0579",
+    "hanzi": "看错了",
+    "pinyin": "kàn cuò le",
+    "pl": "pomylić się patrząc",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "patrzenie",
+      "błąd"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0580",
+    "hanzi": "做对了",
+    "pinyin": "zuò duì le",
+    "pl": "zrobić prawidłowo",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "poprawność",
+      "rezultat"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0581",
+    "hanzi": "写对了",
+    "pinyin": "xiě duì le",
+    "pl": "napisać prawidłowo",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "pisanie",
+      "poprawność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0582",
+    "hanzi": "从",
+    "pinyin": "cóng",
+    "pl": "od, z (miejsca/czasu)",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "word",
+    "tags": [
+      "przyimek",
+      "czas",
+      "miejsce"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0583",
+    "hanzi": "一月",
+    "pinyin": "yī yuè",
+    "pl": "styczeń",
+    "sourceLesson": "20.1 Miesiące i daty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "miesiace_i_daty",
+    "type": "word",
+    "tags": [
+      "miesiąc",
+      "styczeń",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0584",
+    "hanzi": "十二月",
+    "pinyin": "shí'èr yuè",
+    "pl": "grudzień",
+    "sourceLesson": "20.1 Miesiące i daty",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "miesiace_i_daty",
+    "type": "word",
+    "tags": [
+      "miesiąc",
+      "grudzień",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0585",
+    "hanzi": "从二零二零年",
+    "pinyin": "cóng èr líng èr líng nián",
+    "pl": "od roku 2020",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "rok",
+      "data",
+      "przyimek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0586",
+    "hanzi": "二零二",
+    "pinyin": "èr líng èr",
+    "pl": "202",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "A1",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "cyfra"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0587",
+    "hanzi": "五年",
+    "pinyin": "wǔ nián",
+    "pl": "pięć lat",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "rok",
+      "liczba",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0592",
+    "hanzi": "三十年",
+    "pinyin": "sānshí nián",
+    "pl": "trzydzieści lat",
+    "sourceLesson": "20.3 Długość czasu",
+    "levelApprox": "A1",
+    "topic": "czas_rozszerzony",
+    "subtopic": "dlugosc_czasu",
+    "type": "phrase",
+    "tags": [
+      "rok",
+      "liczba",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0593",
+    "hanzi": "过来",
+    "pinyin": "guòlái",
+    "pl": "przyjść tu, podejść",
+    "sourceLesson": "6.4 Powrót i ruch do celu",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "powrot_ruch_do_celu",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "ruch",
+      "przyjście"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0594",
+    "hanzi": "三十公里",
+    "pinyin": "sānshí gōnglǐ",
+    "pl": "trzydzieści kilometrów",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "phrase",
+    "tags": [
+      "odległość",
+      "liczba",
+      "miara"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0595",
+    "hanzi": "飞机",
+    "pinyin": "fēijī",
+    "pl": "samolot",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_pojazdy",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "samolot",
+      "transport"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "架",
+      "pinyin": "jià"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0597",
+    "hanzi": "跳舞",
+    "pinyin": "tiào wǔ",
+    "pl": "tańczyć",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "taniec",
+      "aktywność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0598",
+    "hanzi": "跳",
+    "pinyin": "tiào",
+    "pl": "skakać, tańczyć",
+    "sourceLesson": "6.1 Podstawowy ruch i kierunek",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "ruch_podstawowy",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "skakanie",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0601",
+    "hanzi": "第一",
+    "pinyin": "dì yī",
+    "pl": "pierwszy",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "A1",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba porządkowa",
+      "pierwszy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0602",
+    "hanzi": "第二",
+    "pinyin": "dì èr",
+    "pl": "drugi",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "A1",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba porządkowa",
+      "drugi"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0603",
+    "hanzi": "第三",
+    "pinyin": "dì sān",
+    "pl": "trzeci",
+    "sourceLesson": "1.6 Liczby 0–10",
+    "levelApprox": "A1",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_0_10",
+    "type": "word",
+    "tags": [
+      "liczba porządkowa",
+      "trzeci"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0604",
+    "hanzi": "第一次",
+    "pinyin": "dì yī cì",
+    "pl": "po raz pierwszy",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "zwrot",
+      "kolejność",
+      "pierwszy raz"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0605",
+    "hanzi": "第二次",
+    "pinyin": "dì èr cì",
+    "pl": "po raz drugi",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "zwrot",
+      "kolejność",
+      "drugi raz"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0606",
+    "hanzi": "希望",
+    "pinyin": "xīwàng",
+    "pl": "mieć nadzieję, nadzieja",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "rzeczownik",
+      "nadzieja",
+      "emocje"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0607",
+    "hanzi": "事情",
+    "pinyin": "shìqing",
+    "pl": "sprawa, rzecz",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "sprawa",
+      "rzecz"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0608",
+    "hanzi": "做好",
+    "pinyin": "zuò hǎo",
+    "pl": "zrobić dobrze",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "poprawność",
+      "rezultat"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0609",
+    "hanzi": "地",
+    "pinyin": "de",
+    "pl": "partykuła przysłówkowa",
+    "sourceLesson": "17.3 Cząstki aspektu i struktury",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "czastki_aspektu",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "gramatyka",
+      "przysłówkowa"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0610",
+    "hanzi": "欢迎",
+    "pinyin": "huānyíng",
+    "pl": "witać, witamy",
+    "sourceLesson": "1.1 Powitania i pożegnania",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "powitania_pozegnania",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "powitanie",
+      "grzeczność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0611",
+    "hanzi": "懂",
+    "pinyin": "dǒng",
+    "pl": "rozumieć",
+    "sourceLesson": "25.2 Rozumienie i wiedza",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "rozumienie_i_wiedza",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "rozumienie",
+      "nauka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0612",
+    "hanzi": "听懂",
+    "pinyin": "tīng dǒng",
+    "pl": "zrozumieć ze słuchu",
+    "sourceLesson": "25.2 Rozumienie i wiedza",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "rozumienie_i_wiedza",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "słuchanie",
+      "rozumienie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0613",
+    "hanzi": "完",
+    "pinyin": "wán",
+    "pl": "skończyć",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "zakończenie",
+      "rezultat"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0614",
+    "hanzi": "做完作业",
+    "pinyin": "zuò wán zuòyè",
+    "pl": "skończyć odrabiać lekcje",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "praca domowa",
+      "zakończenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0615",
+    "hanzi": "玩完",
+    "pinyin": "wán wán",
+    "pl": "skończyć się bawić",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "zabawa",
+      "zakończenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0617",
+    "hanzi": "喝完",
+    "pinyin": "hē wán",
+    "pl": "wypić do końca",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "picie",
+      "zakończenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0618",
+    "hanzi": "游",
+    "pinyin": "yóu",
+    "pl": "pływać",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "pływanie",
+      "sport"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0620",
+    "hanzi": "写题",
+    "pinyin": "xiě tí",
+    "pl": "pisać zadania",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "pisanie",
+      "zadania"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0621",
+    "hanzi": "题太多",
+    "pinyin": "tí tài duō",
+    "pl": "za dużo zadań",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "zadania",
+      "ilość",
+      "skarżenie się"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0622",
+    "hanzi": "讲",
+    "pinyin": "jiǎng",
+    "pl": "mówić, wyjaśniać",
+    "sourceLesson": "25.4 Mówienie i przekaz",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "mowienie_i_przekaz",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "mówienie",
+      "wyjaśnianie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0623",
+    "hanzi": "非常",
+    "pinyin": "fēicháng",
+    "pl": "niezwykle, bardzo",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "word",
+    "tags": [
+      "przysłówek",
+      "intensywność",
+      "stopniowanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0626",
+    "hanzi": "难",
+    "pinyin": "nán",
+    "pl": "trudny",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "trudność",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0627",
+    "hanzi": "不难",
+    "pinyin": "bù nán",
+    "pl": "niezbyt trudny",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "negacja",
+      "trudność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0628",
+    "hanzi": "很难",
+    "pinyin": "hěn nán",
+    "pl": "bardzo trudny",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "intensywność",
+      "trudność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0629",
+    "hanzi": "容易",
+    "pinyin": "róngyì",
+    "pl": "łatwy",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "łatwość",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0630",
+    "hanzi": "生活",
+    "pinyin": "shēnghuó",
+    "pl": "życie, żyć",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "czasownik",
+      "życie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0631",
+    "hanzi": "英语课",
+    "pinyin": "Yīngyǔ kè",
+    "pl": "lekcja angielskiego",
+    "sourceLesson": "26.1 Szkoła i przedmioty",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "szkola_i_przedmioty",
+    "type": "phrase",
+    "tags": [
+      "lekcja",
+      "angielski",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0632",
+    "hanzi": "历史课",
+    "pinyin": "lìshǐ kè",
+    "pl": "lekcja historii",
+    "sourceLesson": "26.1 Szkoła i przedmioty",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "szkola_i_przedmioty",
+    "type": "phrase",
+    "tags": [
+      "lekcja",
+      "historia",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0633",
+    "hanzi": "有课",
+    "pinyin": "yǒu kè",
+    "pl": "mieć lekcję",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "lekcja",
+      "plan",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0634",
+    "hanzi": "门",
+    "pinyin": "mén",
+    "pl": "drzwi; klasyfikator dla przedmiotów",
+    "sourceLesson": "10.3 Elementy domu",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "elementy_domu",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "drzwi",
+      "klasyfikator"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "扇",
+      "pinyin": "shàn"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "道",
+        "pinyin": "dào"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0635",
+    "hanzi": "一门",
+    "pinyin": "yī mén",
+    "pl": "jeden (przedmiot szkolny)",
+    "sourceLesson": "26.1 Szkoła i przedmioty",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "szkola_i_przedmioty",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "liczba",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0637",
+    "hanzi": "五门",
+    "pinyin": "wǔ mén",
+    "pl": "pięć (przedmiotów)",
+    "sourceLesson": "26.1 Szkoła i przedmioty",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "szkola_i_przedmioty",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "liczba",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0638",
+    "hanzi": "两门",
+    "pinyin": "liǎng mén",
+    "pl": "dwa (przedmioty)",
+    "sourceLesson": "26.1 Szkoła i przedmioty",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "szkola_i_przedmioty",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "liczba",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0639",
+    "hanzi": "门课",
+    "pinyin": "mén kè",
+    "pl": "przedmiot (szkolny)",
+    "sourceLesson": "26.1 Szkoła i przedmioty",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "szkola_i_przedmioty",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "przedmiot",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0641",
+    "hanzi": "出去",
+    "pinyin": "chū qù",
+    "pl": "wychodzić",
+    "sourceLesson": "6.4 Powrót i ruch do celu",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "powrot_ruch_do_celu",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "wychodzenie",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0642",
+    "hanzi": "节",
+    "pinyin": "jié",
+    "pl": "klasyfikator dla lekcji",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "klasyfikator",
+      "lekcja",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0643",
+    "hanzi": "一节",
+    "pinyin": "yī jié",
+    "pl": "jedna (lekcja)",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "liczba",
+      "lekcja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0644",
+    "hanzi": "一节课",
+    "pinyin": "yī jié kè",
+    "pl": "jedna lekcja",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "lekcja",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0645",
+    "hanzi": "分钟",
+    "pinyin": "fēnzhōng",
+    "pl": "minuta",
+    "sourceLesson": "15.4 Jednostki czasu podstawowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "jednostki_czasu_podstawowe",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "minuta",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0646",
+    "hanzi": "两节课",
+    "pinyin": "liǎng jié kè",
+    "pl": "dwie lekcje",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "lekcja",
+      "liczba"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0647",
+    "hanzi": "需要",
+    "pinyin": "xūyào",
+    "pl": "potrzebować",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "potrzeba",
+      "modalny"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0648",
+    "hanzi": "喝太多",
+    "pinyin": "hē tài duō",
+    "pl": "pić za dużo",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "picie",
+      "nadmiar"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0649",
+    "hanzi": "别",
+    "pinyin": "bié",
+    "pl": "nie rób! (zakaz)",
+    "sourceLesson": "17.2 Negacja i podstawowe operatory",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "negacja_operatory",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "zakaz",
+      "polecenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0650",
+    "hanzi": "说话",
+    "pinyin": "shuō huà",
+    "pl": "mówić, rozmawiać",
+    "sourceLesson": "25.4 Mówienie i przekaz",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "mowienie_i_przekaz",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "mówienie",
+      "rozmowa"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0651",
+    "hanzi": "正在",
+    "pinyin": "zhèngzài",
+    "pl": "właśnie teraz (czas teraźniejszy ciągły)",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "czas teraźniejszy",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0652",
+    "hanzi": "时",
+    "pinyin": "shí",
+    "pl": "czas, kiedy",
+    "sourceLesson": "15.3 Proste wyrażenia czasu",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "proste_wyrazenia_czasu",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "czas",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0653",
+    "hanzi": "候",
+    "pinyin": "hòu",
+    "pl": "czas, czekać",
+    "sourceLesson": "15.3 Proste wyrażenia czasu",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "proste_wyrazenia_czasu",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "czas",
+      "czekanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0654",
+    "hanzi": "洗",
+    "pinyin": "xǐ",
+    "pl": "myć",
+    "sourceLesson": "25.3 Działania codzienne rozszerzone",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "dzialania_codzienne_rozszerzone",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "mycie",
+      "higiena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0655",
+    "hanzi": "洗碗",
+    "pinyin": "xǐ wǎn",
+    "pl": "myć naczynia",
+    "sourceLesson": "25.3 Działania codzienne rozszerzone",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "dzialania_codzienne_rozszerzone",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "naczynia",
+      "dom"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0656",
+    "hanzi": "洗衣服",
+    "pinyin": "xǐ yīfu",
+    "pl": "prać ubrania",
+    "sourceLesson": "25.3 Działania codzienne rozszerzone",
+    "levelApprox": "A1",
+    "topic": "czasowniki_i_frazy_rozszerzone",
+    "subtopic": "dzialania_codzienne_rozszerzone",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "pranie",
+      "ubrania"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0659",
+    "hanzi": "唱歌",
+    "pinyin": "chàng gē",
+    "pl": "śpiewać",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "śpiewanie",
+      "muzyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0660",
+    "hanzi": "可能",
+    "pinyin": "kěnéng",
+    "pl": "możliwe, może",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "przysłówek",
+      "możliwość",
+      "modalny"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0661",
+    "hanzi": "礼物",
+    "pinyin": "lǐwù",
+    "pl": "prezent",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "prezent",
+      "dar"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0662",
+    "hanzi": "唱",
+    "pinyin": "chàng",
+    "pl": "śpiewać",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "śpiewanie",
+      "muzyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0663",
+    "hanzi": "歌",
+    "pinyin": "gē",
+    "pl": "piosenka",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "piosenka",
+      "muzyka"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "首",
+      "pinyin": "shǒu"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0666",
+    "hanzi": "觉",
+    "pinyin": "jiào",
+    "pl": "spać (sen)",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "sen",
+      "odpoczynek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0672",
+    "hanzi": "比",
+    "pinyin": "bǐ",
+    "pl": "porównywać, niż",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "word",
+    "tags": [
+      "przyimek",
+      "porównanie",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0673",
+    "hanzi": "那件",
+    "pinyin": "nà jiàn",
+    "pl": "tamta sztuka (ubrania)",
+    "sourceLesson": "7.1 Podstawowe ubrania",
+    "levelApprox": "A1",
+    "topic": "ubrania_rzeczy_osobiste",
+    "subtopic": "podstawowe_ubrania",
+    "type": "phrase",
+    "tags": [
+      "zaimek wskazujący",
+      "klasyfikator",
+      "ubrania"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0676",
+    "hanzi": "得",
+    "pinyin": "de/dé",
+    "pl": "partykuła wynikowa / osiągnąć",
+    "sourceLesson": "17.3 Cząstki aspektu i struktury",
+    "levelApprox": "A1",
+    "topic": "gramatyka_podstawowa",
+    "subtopic": "czastki_aspektu",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "gramatyka",
+      "wynikowa"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0677",
+    "hanzi": "贵多",
+    "pinyin": "guì duō",
+    "pl": "dużo droższy",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "cena",
+      "porównanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0678",
+    "hanzi": "贵得",
+    "pinyin": "guì de",
+    "pl": "drogi (stopień)",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "stopniowanie",
+      "cena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0679",
+    "hanzi": "可爱多",
+    "pinyin": "kě'ài duō",
+    "pl": "dużo słodszy",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "porównanie",
+      "uroczy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0680",
+    "hanzi": "不比",
+    "pinyin": "bù bǐ",
+    "pl": "nie jest lepszy niż",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "phrase",
+    "tags": [
+      "negacja",
+      "porównanie",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0681",
+    "hanzi": "十公分",
+    "pinyin": "shí gōngfēn",
+    "pl": "dziesięć centymetrów",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "classifiery_rzeczy_codziennych",
+    "type": "phrase",
+    "tags": [
+      "liczba",
+      "miara",
+      "centymetry"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0682",
+    "hanzi": "十块钱",
+    "pinyin": "shí kuài qián",
+    "pl": "dziesięć juanów",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "phrase",
+    "tags": [
+      "liczba",
+      "pieniądze",
+      "juan"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0683",
+    "hanzi": "国家",
+    "pinyin": "guójiā",
+    "pl": "kraj, państwo",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "kraj",
+      "państwo"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0684",
+    "hanzi": "漂亮衣服",
+    "pinyin": "piàoliang yīfu",
+    "pl": "ładne ubranie",
+    "sourceLesson": "7.1 Podstawowe ubrania",
+    "levelApprox": "A1",
+    "topic": "ubrania_rzeczy_osobiste",
+    "subtopic": "podstawowe_ubrania",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "ubrania",
+      "opis"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0686",
+    "hanzi": "太好",
+    "pinyin": "tài hǎo",
+    "pl": "za dobre, świetnie",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "intensywność",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0689",
+    "hanzi": "坐车来",
+    "pinyin": "zuò chē lái",
+    "pl": "przyjechać (pojazdem)",
+    "sourceLesson": "4.1 Transport miejski",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "transport_miejski",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "transport",
+      "przybycie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0691",
+    "hanzi": "一度",
+    "pinyin": "yī dù",
+    "pl": "jeden stopień",
+    "sourceLesson": "22.3 Kierunki pogodowe i sezonowe użycie",
+    "levelApprox": "A1",
+    "topic": "pogoda_i_warunki",
+    "subtopic": "pogoda_sezonowa",
+    "type": "phrase",
+    "tags": [
+      "liczba",
+      "stopień",
+      "temperatura"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0692",
+    "hanzi": "二十度",
+    "pinyin": "èrshí dù",
+    "pl": "dwadzieścia stopni",
+    "sourceLesson": "22.3 Kierunki pogodowe i sezonowe użycie",
+    "levelApprox": "A1",
+    "topic": "pogoda_i_warunki",
+    "subtopic": "pogoda_sezonowa",
+    "type": "phrase",
+    "tags": [
+      "liczba",
+      "stopień",
+      "temperatura"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0693",
+    "hanzi": "十五",
+    "pinyin": "shíwǔ",
+    "pl": "piętnaście",
+    "sourceLesson": "1.7 Liczby 11–20",
+    "levelApprox": "A1",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_11_20",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "piętnaście"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0694",
+    "hanzi": "度",
+    "pinyin": "dù",
+    "pl": "stopień (temperatura)",
+    "sourceLesson": "22.2 Temperatura i odczucie",
+    "levelApprox": "A1",
+    "topic": "pogoda_i_warunki",
+    "subtopic": "temperatura_i_odczucie",
+    "type": "word",
+    "tags": [
+      "miara",
+      "stopień",
+      "temperatura"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0695",
+    "hanzi": "十七",
+    "pinyin": "shíqī",
+    "pl": "siedemnaście",
+    "sourceLesson": "1.7 Liczby 11–20",
+    "levelApprox": "A1",
+    "topic": "liczby_i_ilosci",
+    "subtopic": "liczby_11_20",
+    "type": "word",
+    "tags": [
+      "liczba",
+      "siedemnaście"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0704",
+    "hanzi": "穿",
+    "pinyin": "chuān",
+    "pl": "ubierać, nosić (ubranie)",
+    "sourceLesson": "7.4 Proste czasowniki pomocnicze",
+    "levelApprox": "A1",
+    "topic": "ubrania_rzeczy_osobiste",
+    "subtopic": "czasowniki_pomocnicze",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "nosić",
+      "ubrania"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0705",
+    "hanzi": "穿衣服",
+    "pinyin": "chuān yīfu",
+    "pl": "ubierać się",
+    "sourceLesson": "7.1 Podstawowe ubrania",
+    "levelApprox": "A1",
+    "topic": "ubrania_rzeczy_osobiste",
+    "subtopic": "podstawowe_ubrania",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "ubieranie",
+      "codzienne czynności"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0707",
+    "hanzi": "外边",
+    "pinyin": "wàibiān",
+    "pl": "na zewnątrz",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "przysłówek",
+      "zewnątrz",
+      "miejsce"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0708",
+    "hanzi": "不冷",
+    "pinyin": "bù lěng",
+    "pl": "nie zimno",
+    "sourceLesson": "22.1 Pogoda podstawowa",
+    "levelApprox": "A1",
+    "topic": "pogoda_i_warunki",
+    "subtopic": "pogoda_podstawowa",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "negacja",
+      "temperatura"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0709",
+    "hanzi": "我少",
+    "pinyin": "wǒ shǎo",
+    "pl": "mam mało",
+    "sourceLesson": "19.4 Cena i porównanie podstawowe",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "cena_i_porownanie",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "ilość",
+      "mało"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0711",
+    "hanzi": "衣",
+    "pinyin": "yī",
+    "pl": "ubranie",
+    "sourceLesson": "7.1 Podstawowe ubrania",
+    "levelApprox": "A1",
+    "topic": "ubrania_rzeczy_osobiste",
+    "subtopic": "podstawowe_ubrania",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "ubranie",
+      "odzież"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0715",
+    "hanzi": "鞋",
+    "pinyin": "xié",
+    "pl": "buty",
+    "sourceLesson": "7.1 Podstawowe ubrania",
+    "levelApprox": "A1",
+    "topic": "ubrania_rzeczy_osobiste",
+    "subtopic": "podstawowe_ubrania",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "buty",
+      "obuwie"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "双",
+      "pinyin": "shuāng"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "只",
+        "pinyin": "zhī"
+      }
+    ],
+    "measureWordNote": "双=para, 只=jeden but"
+  },
+  {
+    "id": "w0717",
+    "hanzi": "绒服",
+    "pinyin": "róngfú",
+    "pl": "polarowa bluza",
+    "sourceLesson": "7.1 Podstawowe ubrania",
+    "levelApprox": "A1",
+    "topic": "ubrania_rzeczy_osobiste",
+    "subtopic": "podstawowe_ubrania",
+    "type": "word",
+    "tags": [
+      "rzeczownik",
+      "bluza",
+      "polar"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0725",
+    "hanzi": "进来",
+    "pinyin": "jìn lái",
+    "pl": "wchodzić tu",
+    "sourceLesson": "6.4 Powrót i ruch do celu",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "powrot_ruch_do_celu",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "wejście",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0726",
+    "hanzi": "进",
+    "pinyin": "jìn",
+    "pl": "wchodzić",
+    "sourceLesson": "6.2 Wejście i wyjście",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "wejscie_wyjscie",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "wejście",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0728",
+    "hanzi": "家里",
+    "pinyin": "jiā lǐ",
+    "pl": "w domu",
+    "sourceLesson": "3.1 Dom i najbliższa rodzina",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "dom_i_najblizsi",
+    "type": "phrase",
+    "tags": [
+      "miejsce",
+      "dom",
+      "wnętrze"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0730",
+    "hanzi": "亚洲",
+    "pinyin": "Yàzhōu",
+    "pl": "Azja",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "kontynent",
+      "Azja",
+      "nazwa własna",
+      "nazwa_wlasna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0732",
+    "hanzi": "出来",
+    "pinyin": "chū lái",
+    "pl": "wychodzić (tu)",
+    "sourceLesson": "6.4 Powrót i ruch do celu",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "powrot_ruch_do_celu",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "wychodzenie",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0733",
+    "hanzi": "进去",
+    "pinyin": "jìn qù",
+    "pl": "wchodzić (tam)",
+    "sourceLesson": "6.4 Powrót i ruch do celu",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "powrot_ruch_do_celu",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "wejście",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0738",
+    "hanzi": "我得学",
+    "pinyin": "wǒ děi xué",
+    "pl": "muszę się uczyć",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "phrase",
+    "tags": [
+      "modalny",
+      "obowiązek",
+      "nauka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0739",
+    "hanzi": "起得",
+    "pinyin": "qǐ de",
+    "pl": "wstawać (stopień)",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "wstawanie",
+      "stopień"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0740",
+    "hanzi": "很早",
+    "pinyin": "hěn zǎo",
+    "pl": "bardzo wcześnie",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "phrase",
+    "tags": [
+      "przysłówek",
+      "rano",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0741",
+    "hanzi": "睡得",
+    "pinyin": "shuì de",
+    "pl": "spać (stopień)",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "sen",
+      "stopień"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0742",
+    "hanzi": "晚",
+    "pinyin": "wǎn",
+    "pl": "późno, późny, wieczór",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "word",
+    "tags": [
+      "przysłówek",
+      "przymiotnik",
+      "wieczór",
+      "późno"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0743",
+    "hanzi": "玩得",
+    "pinyin": "wán de",
+    "pl": "bawić się (stopień)",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "zabawa",
+      "stopień"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0744",
+    "hanzi": "不错",
+    "pinyin": "bú cuò",
+    "pl": "nieźle, całkiem dobrze",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "ocena",
+      "nieźle"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0745",
+    "hanzi": "写得",
+    "pinyin": "xiě de",
+    "pl": "pisać (stopień)",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "pisanie",
+      "stopień"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0746",
+    "hanzi": "不早",
+    "pinyin": "bù zǎo",
+    "pl": "nie wcześnie",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "phrase",
+    "tags": [
+      "przysłówek",
+      "negacja",
+      "rano"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0747",
+    "hanzi": "早",
+    "pinyin": "zǎo",
+    "pl": "wcześnie, wczesny, rano",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "word",
+    "tags": [
+      "przysłówek",
+      "przymiotnik",
+      "rano",
+      "wcześnie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0748",
+    "hanzi": "早不早",
+    "pinyin": "zǎo bù zǎo",
+    "pl": "czy wcześnie czy nie",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "phrase",
+    "tags": [
+      "pytanie",
+      "rano",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0749",
+    "hanzi": "不晚",
+    "pinyin": "bù wǎn",
+    "pl": "nie późno",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "phrase",
+    "tags": [
+      "przysłówek",
+      "negacja",
+      "wieczór"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0750",
+    "hanzi": "晚不晚",
+    "pinyin": "wǎn bù wǎn",
+    "pl": "czy późno czy nie",
+    "sourceLesson": "15.2 Pory dnia",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "pory_dnia",
+    "type": "phrase",
+    "tags": [
+      "pytanie",
+      "wieczór",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0751",
+    "hanzi": "唱得",
+    "pinyin": "chàng de",
+    "pl": "śpiewać (stopień)",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "śpiewanie",
+      "stopień"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0752",
+    "hanzi": "不太好",
+    "pinyin": "bù tài hǎo",
+    "pl": "niezbyt dobrze",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "negacja",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0753",
+    "hanzi": "着",
+    "pinyin": "zhe",
+    "pl": "partykuła ciągłości",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "partykuła",
+      "ciągłość",
+      "gramatyka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0754",
+    "hanzi": "看着",
+    "pinyin": "kàn zhe",
+    "pl": "patrząc",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "patrzenie",
+      "ciągłość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0755",
+    "hanzi": "笑",
+    "pinyin": "xiào",
+    "pl": "śmiać się",
+    "sourceLesson": "9.4 Posiadanie i potrzeby",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "posiadanie_i_potrzeby",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "śmiech",
+      "emocje"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0756",
+    "hanzi": "唱着歌",
+    "pinyin": "chàng zhe gē",
+    "pl": "śpiewając piosenkę",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "śpiewanie",
+      "ciągłość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0757",
+    "hanzi": "门开",
+    "pinyin": "mén kāi",
+    "pl": "drzwi otwarte",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "phrase",
+    "tags": [
+      "drzwi",
+      "otwarty",
+      "dom"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0758",
+    "hanzi": "开着",
+    "pinyin": "kāi zhe",
+    "pl": "otwarte (trwa)",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "aspekt trwania",
+      "partykuła zhe",
+      "otwarty"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0759",
+    "hanzi": "关",
+    "pinyin": "guān",
+    "pl": "zamykać, wyłączać",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "zamykać",
+      "wyłączać"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0763",
+    "hanzi": "灯",
+    "pinyin": "dēng",
+    "pl": "lampa, światło",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "word",
+    "tags": [
+      "lampa",
+      "światło",
+      "dom"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0764",
+    "hanzi": "拿",
+    "pinyin": "ná",
+    "pl": "trzymać, wziąć",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "czasownik",
+      "trzymać",
+      "wziąć"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0766",
+    "hanzi": "一支",
+    "pinyin": "yī zhī",
+    "pl": "jeden (ołówek/długopis)",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "classifiery_rzeczy_codziennych",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "jeden",
+      "ołówek",
+      "długopis"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0767",
+    "hanzi": "拿来",
+    "pinyin": "ná lái",
+    "pl": "przynieść",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "czasownik",
+      "przynieść",
+      "kierunek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0768",
+    "hanzi": "班",
+    "pinyin": "bān",
+    "pl": "klasa",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "szkoła",
+      "klasa",
+      "nauka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0770",
+    "hanzi": "长",
+    "pinyin": "cháng/zhǎng",
+    "pl": "długi / rosnąć",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "przymiotnik",
+      "czasownik",
+      "długi",
+      "rosnąć"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0771",
+    "hanzi": "长着",
+    "pinyin": "zhǎng zhe",
+    "pl": "mieć (cechy wyglądu)",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "wygląd",
+      "aspekt trwania",
+      "cechy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0772",
+    "hanzi": "一双",
+    "pinyin": "yī shuāng",
+    "pl": "jedna para",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "classifiery_rzeczy_codziennych",
+    "type": "phrase",
+    "tags": [
+      "klasyfikator",
+      "para",
+      "jeden"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0773",
+    "hanzi": "眼睛",
+    "pinyin": "yǎnjing",
+    "pl": "oczy",
+    "sourceLesson": "11.3 Ciało podstawowe",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "cialo_podstawowe",
+    "type": "word",
+    "tags": [
+      "oczy",
+      "ciało",
+      "twarz"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0774",
+    "hanzi": "大大的",
+    "pinyin": "dàdà de",
+    "pl": "bardzo duże",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "przymiotnik",
+      "duży",
+      "reduplikacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0775",
+    "hanzi": "脸上",
+    "pinyin": "liǎn shàng",
+    "pl": "na twarzy",
+    "sourceLesson": "11.3 Ciało podstawowe",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "cialo_podstawowe",
+    "type": "phrase",
+    "tags": [
+      "twarz",
+      "lokalizacja",
+      "ciało"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0777",
+    "hanzi": "身上",
+    "pinyin": "shēn shàng",
+    "pl": "na ciele",
+    "sourceLesson": "11.3 Ciało podstawowe",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "cialo_podstawowe",
+    "type": "phrase",
+    "tags": [
+      "ciało",
+      "lokalizacja",
+      "na ciele"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0779",
+    "hanzi": "斑",
+    "pinyin": "bān",
+    "pl": "plama, pieprzyk",
+    "sourceLesson": "11.3 Ciało podstawowe",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "cialo_podstawowe",
+    "type": "word",
+    "tags": [
+      "plama",
+      "pieprzyk",
+      "skóra"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0780",
+    "hanzi": "长得",
+    "pinyin": "zhǎng de",
+    "pl": "wyglądać (stopień)",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "wygląd",
+      "stopień",
+      "partykuła de"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0781",
+    "hanzi": "孩",
+    "pinyin": "hái",
+    "pl": "dziecko",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "word",
+    "tags": [
+      "dziecko",
+      "rodzina"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0782",
+    "hanzi": "真帅",
+    "pinyin": "zhēn shuài",
+    "pl": "naprawdę przystojny",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "przystojny",
+      "naprawdę",
+      "wygląd"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0783",
+    "hanzi": "儿",
+    "pinyin": "ér",
+    "pl": "sufiks zdrabniający, dziecko",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "sufiks",
+      "zdrobnienie",
+      "dziecko"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0784",
+    "hanzi": "真胖",
+    "pinyin": "zhēn pàng",
+    "pl": "naprawdę gruby",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "gruby",
+      "naprawdę",
+      "wygląd"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0785",
+    "hanzi": "他长",
+    "pinyin": "tā zhǎng",
+    "pl": "on wygląda",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "on",
+      "wygląd",
+      "zaimek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0788",
+    "hanzi": "别笑",
+    "pinyin": "bié xiào",
+    "pl": "nie śmiej się",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "zakaz",
+      "śmiać się",
+      "imperatyw"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0789",
+    "hanzi": "好看",
+    "pinyin": "hǎokàn",
+    "pl": "ładny (do patrzenia)",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "ładny",
+      "wygląd",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0791",
+    "hanzi": "哭",
+    "pinyin": "kū",
+    "pl": "płakać",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "word",
+    "tags": [
+      "płakać",
+      "emocje",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0792",
+    "hanzi": "别哭",
+    "pinyin": "bié kū",
+    "pl": "nie płacz",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "zakaz",
+      "płakać",
+      "imperatyw"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0793",
+    "hanzi": "大哭",
+    "pinyin": "dà kū",
+    "pl": "płakać głośno",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "płakać",
+      "głośno",
+      "emocje"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0794",
+    "hanzi": "直",
+    "pinyin": "zhí",
+    "pl": "prosto",
+    "sourceLesson": "10.3 Elementy domu",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "elementy_domu",
+    "type": "word",
+    "tags": [
+      "prosto",
+      "kierunek",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0795",
+    "hanzi": "一直",
+    "pinyin": "yīzhí",
+    "pl": "cały czas, prosto",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "cały czas",
+      "prosto",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0796",
+    "hanzi": "往",
+    "pinyin": "wǎng",
+    "pl": "w kierunku",
+    "sourceLesson": "10.3 Elementy domu",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "elementy_domu",
+    "type": "word",
+    "tags": [
+      "kierunek",
+      "przyimek",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0797",
+    "hanzi": "往前走",
+    "pinyin": "wǎng qián zǒu",
+    "pl": "iść prosto",
+    "sourceLesson": "10.3 Elementy domu",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "elementy_domu",
+    "type": "phrase",
+    "tags": [
+      "iść",
+      "prosto",
+      "kierunek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0798",
+    "hanzi": "左",
+    "pinyin": "zuǒ",
+    "pl": "lewo",
+    "sourceLesson": "10.3 Elementy domu",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "elementy_domu",
+    "type": "word",
+    "tags": [
+      "lewo",
+      "kierunek",
+      "strona"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0799",
+    "hanzi": "往右",
+    "pinyin": "wǎng yòu",
+    "pl": "w prawo",
+    "sourceLesson": "10.3 Elementy domu",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "elementy_domu",
+    "type": "phrase",
+    "tags": [
+      "prawo",
+      "kierunek",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0800",
+    "hanzi": "往回",
+    "pinyin": "wǎng huí",
+    "pl": "z powrotem",
+    "sourceLesson": "10.3 Elementy domu",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "elementy_domu",
+    "type": "phrase",
+    "tags": [
+      "z powrotem",
+      "kierunek",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0801",
+    "hanzi": "走来",
+    "pinyin": "zǒu lái",
+    "pl": "przyjść pieszo",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "phrase",
+    "tags": [
+      "iść",
+      "przyjść",
+      "kierunek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0802",
+    "hanzi": "汽车",
+    "pinyin": "qìchē",
+    "pl": "samochód",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "word",
+    "tags": [
+      "samochód",
+      "transport",
+      "pojazd"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0803",
+    "hanzi": "往左边",
+    "pinyin": "wǎng zuǒbiān",
+    "pl": "w lewo",
+    "sourceLesson": "10.3 Elementy domu",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "elementy_domu",
+    "type": "phrase",
+    "tags": [
+      "lewo",
+      "kierunek",
+      "ruch"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0804",
+    "hanzi": "生词",
+    "pinyin": "shēngcí",
+    "pl": "nowe słowo",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "słownictwo",
+      "nauka",
+      "nowe słowo"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0805",
+    "hanzi": "经常",
+    "pinyin": "jīngcháng",
+    "pl": "często, regularnie",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "często",
+      "regularnie",
+      "przysłówek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0811",
+    "hanzi": "互换",
+    "pinyin": "hùhuàn",
+    "pl": "wymieniać wzajemnie",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "wymieniać",
+      "wzajemnie",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0813",
+    "hanzi": "词",
+    "pinyin": "cí",
+    "pl": "słowo, wyraz",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "słowo",
+      "wyraz",
+      "język"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0815",
+    "hanzi": "比如",
+    "pinyin": "bǐrú",
+    "pl": "na przykład",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "na przykład",
+      "fraza",
+      "przykład"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0816",
+    "hanzi": "社",
+    "pinyin": "shè",
+    "pl": "organizacja, towarzystwo",
+    "sourceLesson": "13.2 Role codzienne",
+    "levelApprox": "A1",
+    "topic": "ludzie_role_zawody",
+    "subtopic": "role_codzienne",
+    "type": "word",
+    "tags": [
+      "organizacja",
+      "towarzystwo",
+      "instytucja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0820",
+    "hanzi": "这次",
+    "pinyin": "zhè cì",
+    "pl": "tym razem",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "tym razem",
+      "czas",
+      "zaimek wskazujący"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0821",
+    "hanzi": "有意思",
+    "pinyin": "yǒu yìsi",
+    "pl": "interesujący",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "interesujący",
+      "ciekawy",
+      "ocena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0822",
+    "hanzi": "冷不冷",
+    "pinyin": "lěng bù lěng",
+    "pl": "czy zimno czy nie",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "phrase",
+    "tags": [
+      "zimno",
+      "pytanie",
+      "pogoda"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0823",
+    "hanzi": "舒服",
+    "pinyin": "shūfu",
+    "pl": "wygodny, komfortowy",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "word",
+    "tags": [
+      "wygodny",
+      "komfortowy",
+      "samopoczucie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0824",
+    "hanzi": "学过",
+    "pinyin": "xué guò",
+    "pl": "już się uczyłem",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "uczyć się",
+      "aspekt dokonany",
+      "doświadczenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0825",
+    "hanzi": "不来",
+    "pinyin": "bù lái",
+    "pl": "nie przychodzić",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "nie",
+      "przyjść",
+      "negacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0826",
+    "hanzi": "量词",
+    "pinyin": "liàngcí",
+    "pl": "klasyfikator",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "klasyfikator",
+      "gramatyka",
+      "język"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0829",
+    "hanzi": "常常",
+    "pinyin": "chángcháng",
+    "pl": "często",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "często",
+      "przysłówek",
+      "częstotliwość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0832",
+    "hanzi": "公园",
+    "pinyin": "gōngyuán",
+    "pl": "park",
+    "sourceLesson": "5.1 Codzienne miejsca",
+    "levelApprox": "A1",
+    "topic": "miejsca_w_miescie",
+    "subtopic": "codzienne_miejsca",
+    "type": "word",
+    "tags": [
+      "park",
+      "miasto",
+      "miejsce"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0835",
+    "hanzi": "昨天早上",
+    "pinyin": "zuótiān zǎoshang",
+    "pl": "wczoraj rano",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "wczoraj",
+      "rano",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0837",
+    "hanzi": "半个",
+    "pinyin": "bàn gè",
+    "pl": "połowa (sztuki)",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "phrase",
+    "tags": [
+      "połowa",
+      "klasyfikator",
+      "ułamek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0839",
+    "hanzi": "哪件",
+    "pinyin": "nǎ jiàn",
+    "pl": "która sztuka?",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "classifiery_rzeczy_codziennych",
+    "type": "phrase",
+    "tags": [
+      "który",
+      "ubranie",
+      "klasyfikator"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0841",
+    "hanzi": "一共",
+    "pinyin": "yīgòng",
+    "pl": "łącznie, razem",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "word",
+    "tags": [
+      "łącznie",
+      "razem",
+      "suma"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0842",
+    "hanzi": "块钱",
+    "pinyin": "kuài qián",
+    "pl": "juanów (pieniędzy)",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "phrase",
+    "tags": [
+      "juan",
+      "pieniądze",
+      "waluta"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0844",
+    "hanzi": "新不新",
+    "pinyin": "xīn bù xīn",
+    "pl": "nowy czy nie?",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "phrase",
+    "tags": [
+      "nowy",
+      "pytanie",
+      "A-nie-A"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0845",
+    "hanzi": "不新",
+    "pinyin": "bù xīn",
+    "pl": "nie nowy",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "nie",
+      "nowy",
+      "negacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0846",
+    "hanzi": "新房",
+    "pinyin": "xīn fáng",
+    "pl": "nowy pokój/dom",
+    "sourceLesson": "3.1 Dom i najbliższa rodzina",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "dom_i_najblizsi",
+    "type": "phrase",
+    "tags": [
+      "nowy",
+      "dom",
+      "pokój"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0848",
+    "hanzi": "辆",
+    "pinyin": "liàng",
+    "pl": "klasyfikator dla pojazdów",
+    "sourceLesson": "18.2 Classifiery dla rzeczy codziennych",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_pojazdy",
+    "type": "word",
+    "tags": [
+      "klasyfikator",
+      "pojazd",
+      "transport"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0849",
+    "hanzi": "新年快乐",
+    "pinyin": "xīnnián kuàilè",
+    "pl": "Szczęśliwego Nowego Roku",
+    "sourceLesson": "2.2 Nowy rok i święta",
+    "levelApprox": "A1",
+    "topic": "zyczenia_i_okazje",
+    "subtopic": "nowy_rok_swieta",
+    "type": "phrase",
+    "tags": [
+      "Nowy Rok",
+      "życzenia",
+      "święto"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0850",
+    "hanzi": "太旧",
+    "pinyin": "tài jiù",
+    "pl": "za stary",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "za",
+      "stary",
+      "przymiotnik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0853",
+    "hanzi": "旧房",
+    "pinyin": "jiù fáng",
+    "pl": "stary pokój/dom",
+    "sourceLesson": "3.1 Dom i najbliższa rodzina",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "dom_i_najblizsi",
+    "type": "phrase",
+    "tags": [
+      "stary",
+      "dom",
+      "pokój"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0854",
+    "hanzi": "电话号码",
+    "pinyin": "diànhuà hàomǎ",
+    "pl": "numer telefonu",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "phrase",
+    "tags": [
+      "telefon",
+      "numer",
+      "kontakt"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0855",
+    "hanzi": "号码",
+    "pinyin": "hàomǎ",
+    "pl": "numer",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "word",
+    "tags": [
+      "numer",
+      "liczba",
+      "kontakt"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0856",
+    "hanzi": "老人",
+    "pinyin": "lǎorén",
+    "pl": "starszy człowiek",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "word",
+    "tags": [
+      "starszy",
+      "człowiek",
+      "wiek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0860",
+    "hanzi": "颜",
+    "pinyin": "yán",
+    "pl": "kolor, twarz",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "word",
+    "tags": [
+      "kolor",
+      "twarz",
+      "wygląd"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0864",
+    "hanzi": "花儿",
+    "pinyin": "huār",
+    "pl": "kwiatek",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "word",
+    "tags": [
+      "kwiatek",
+      "roślina",
+      "zdrobnienie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0870",
+    "hanzi": "不常去",
+    "pinyin": "bù cháng qù",
+    "pl": "rzadko chodzić",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "rzadko",
+      "chodzić",
+      "negacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0871",
+    "hanzi": "上个月",
+    "pinyin": "shàng gè yuè",
+    "pl": "w zeszłym miesiącu",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "zeszły miesiąc",
+      "czas",
+      "miesiąc"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0873",
+    "hanzi": "花花",
+    "pinyin": "huā huā",
+    "pl": "kwiatki (zdrobnienie)",
+    "sourceLesson": "10.2 Podstawowe meble i wyposażenie",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "meble_i_wyposazenie",
+    "type": "word",
+    "tags": [
+      "kwiatki",
+      "zdrobnienie",
+      "reduplikacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0875",
+    "hanzi": "东",
+    "pinyin": "dōng",
+    "pl": "wschód",
+    "sourceLesson": "10.3 Elementy domu",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "elementy_domu",
+    "type": "word",
+    "tags": [
+      "wschód",
+      "kierunek",
+      "strona świata"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0876",
+    "hanzi": "详解",
+    "pinyin": "xiángjiě",
+    "pl": "szczegółowe wyjaśnienie",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "szczegółowe",
+      "wyjaśnienie",
+      "nauka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0881",
+    "hanzi": "那里",
+    "pinyin": "nàlǐ",
+    "pl": "tam",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "word",
+    "tags": [
+      "tam",
+      "zaimek",
+      "miejsce"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0885",
+    "hanzi": "拉丁舞",
+    "pinyin": "lādīng wǔ",
+    "pl": "taniec latynoamerykański",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "phrase",
+    "tags": [
+      "taniec",
+      "latynoamerykański",
+      "rozrywka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0886",
+    "hanzi": "华尔兹舞",
+    "pinyin": "huá'ěrzī wǔ",
+    "pl": "walc",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "phrase",
+    "tags": [
+      "walc",
+      "taniec",
+      "rozrywka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0887",
+    "hanzi": "肚皮舞",
+    "pinyin": "dùpí wǔ",
+    "pl": "taniec brzucha",
+    "sourceLesson": "26.2 Rozrywka",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "rozrywka",
+    "type": "phrase",
+    "tags": [
+      "taniec brzucha",
+      "taniec",
+      "rozrywka"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0888",
+    "hanzi": "第一个",
+    "pinyin": "dì yī gè",
+    "pl": "pierwszy",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "phrase",
+    "tags": [
+      "pierwszy",
+      "liczebnik porządkowy",
+      "kolejność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0892",
+    "hanzi": "下班",
+    "pinyin": "xià bān",
+    "pl": "kończyć pracę",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "kończyć pracę",
+      "praca",
+      "godziny"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0894",
+    "hanzi": "就要",
+    "pinyin": "jiù yào",
+    "pl": "zaraz, za chwilę",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "zaraz",
+      "za chwilę",
+      "czas przyszły"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0895",
+    "hanzi": "这本",
+    "pinyin": "zhè běn",
+    "pl": "ta (książka)",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "ta",
+      "książka",
+      "zaimek wskazujący"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0896",
+    "hanzi": "中",
+    "pinyin": "zhōng",
+    "pl": "środek, Chiny",
+    "sourceLesson": "1.5 Kraje, języki, narodowości",
+    "levelApprox": "A1",
+    "topic": "kraje_i_jezyki",
+    "subtopic": "kraje_jezyki_narodowosci",
+    "type": "word",
+    "tags": [
+      "środek",
+      "Chiny",
+      "kraj"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0897",
+    "hanzi": "文书",
+    "pinyin": "wénshū",
+    "pl": "dokument, pismo",
+    "sourceLesson": "9.3 Komunikacja i pisanie",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "komunikacja_i_pisanie",
+    "type": "word",
+    "tags": [
+      "dokument",
+      "pismo",
+      "biuro"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0898",
+    "hanzi": "吃完饭",
+    "pinyin": "chī wán fàn",
+    "pl": "skończyć jeść",
+    "sourceLesson": "8.1 Podstawowe jedzenie / posiłki",
+    "levelApprox": "A1",
+    "topic": "jedzenie_i_picie",
+    "subtopic": "podstawowe_jedzenie",
+    "type": "phrase",
+    "tags": [
+      "skończyć",
+      "jeść",
+      "posiłek"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0901",
+    "hanzi": "数学课",
+    "pinyin": "shùxué kè",
+    "pl": "lekcja matematyki",
+    "sourceLesson": "26.1 Szkoła i przedmioty",
+    "levelApprox": "A1",
+    "topic": "kultura_nauka_rozrywka",
+    "subtopic": "szkola_i_przedmioty",
+    "type": "phrase",
+    "tags": [
+      "matematyka",
+      "lekcja",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0902",
+    "hanzi": "在家",
+    "pinyin": "zài jiā",
+    "pl": "być w domu",
+    "sourceLesson": "3.1 Dom i najbliższa rodzina",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "dom_i_najblizsi",
+    "type": "phrase",
+    "tags": [
+      "być",
+      "w domu",
+      "lokalizacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0903",
+    "hanzi": "下课后",
+    "pinyin": "xià kè hòu",
+    "pl": "po lekcji",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "po lekcji",
+      "szkoła",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0905",
+    "hanzi": "五节课",
+    "pinyin": "wǔ jié kè",
+    "pl": "pięć lekcji",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "pięć",
+      "lekcji",
+      "szkoła"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0906",
+    "hanzi": "节课",
+    "pinyin": "jié kè",
+    "pl": "lekcja (jednostka)",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "lekcja",
+      "jednostka",
+      "klasyfikator"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0907",
+    "hanzi": "想学",
+    "pinyin": "xiǎng xué",
+    "pl": "chcieć się uczyć",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "chcieć",
+      "uczyć się",
+      "motywacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0908",
+    "hanzi": "学了",
+    "pinyin": "xué le",
+    "pl": "uczyłem się już",
+    "sourceLesson": "9.2 Nauka i praca",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "nauka_i_praca",
+    "type": "phrase",
+    "tags": [
+      "uczyć się",
+      "aspekt dokonany",
+      "przeszłość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0909",
+    "hanzi": "太晚",
+    "pinyin": "tài wǎn",
+    "pl": "za późno",
+    "sourceLesson": "15.5 Ogólne słowa czasowe",
+    "levelApprox": "A1",
+    "topic": "czas_codzienny",
+    "subtopic": "ogolne_slowa_czasowe",
+    "type": "phrase",
+    "tags": [
+      "za",
+      "późno",
+      "czas"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0910",
+    "hanzi": "别买",
+    "pinyin": "bié mǎi",
+    "pl": "nie kupuj",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "nie",
+      "kupować",
+      "zakaz"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0911",
+    "hanzi": "别睡了",
+    "pinyin": "bié shuì le",
+    "pl": "nie śpij!",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "nie",
+      "spać",
+      "zakaz"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0913",
+    "hanzi": "鸡蛋",
+    "pinyin": "jīdàn",
+    "pl": "jajko",
+    "sourceLesson": "8.4 Owoce i proste produkty",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "jajko",
+      "jedzenie",
+      "produkt"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0914",
+    "hanzi": "很大",
+    "pinyin": "hěn dà",
+    "pl": "bardzo duży",
+    "sourceLesson": "19.2 Rozmiar i cechy",
+    "levelApprox": "starter",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "rozmiar_i_cechy",
+    "type": "phrase",
+    "tags": [
+      "bardzo",
+      "duży",
+      "rozmiar"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0915",
+    "hanzi": "买手机",
+    "pinyin": "mǎi shǒujī",
+    "pl": "kupić telefon",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "kupić",
+      "telefon",
+      "zakupy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0916",
+    "hanzi": "太贵",
+    "pinyin": "tài guì",
+    "pl": "za drogi",
+    "sourceLesson": "19.1 Ocena ogólna",
+    "levelApprox": "A1",
+    "topic": "przymiotniki_podstawowe",
+    "subtopic": "ocena_ogolna",
+    "type": "phrase",
+    "tags": [
+      "za",
+      "drogi",
+      "cena"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0920",
+    "hanzi": "延伸",
+    "pinyin": "yánshēn",
+    "pl": "rozszerzyć, przedłużyć",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "rozszerzyć",
+      "przedłużyć",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0924",
+    "hanzi": "男",
+    "pinyin": "nán",
+    "pl": "mężczyzna, męski",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "word",
+    "tags": [
+      "mężczyzna",
+      "męski",
+      "płeć"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0928",
+    "hanzi": "男孩",
+    "pinyin": "nánhái",
+    "pl": "chłopiec",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "word",
+    "tags": [
+      "chłopiec",
+      "dziecko",
+      "płeć"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0929",
+    "hanzi": "女孩",
+    "pinyin": "nǚhái",
+    "pl": "dziewczynka",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "word",
+    "tags": [
+      "dziewczynka",
+      "dziecko",
+      "płeć"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0930",
+    "hanzi": "右边",
+    "pinyin": "yòubiān",
+    "pl": "po prawej stronie",
+    "sourceLesson": "10.3 Elementy domu",
+    "levelApprox": "A1",
+    "topic": "dom_i_wyposazenie",
+    "subtopic": "elementy_domu",
+    "type": "word",
+    "tags": [
+      "prawa strona",
+      "kierunek",
+      "lokalizacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0931",
+    "hanzi": "坐在",
+    "pinyin": "zuò zài",
+    "pl": "siedzieć w/na",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "siedzieć",
+      "na",
+      "lokalizacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0932",
+    "hanzi": "那本书",
+    "pinyin": "nà běn shū",
+    "pl": "tamta książka",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "phrase",
+    "tags": [
+      "tamta",
+      "książka",
+      "zaimek wskazujący"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0935",
+    "hanzi": "三十块",
+    "pinyin": "sānshí kuài",
+    "pl": "trzydzieści juanów",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "phrase",
+    "tags": [
+      "trzydzieści",
+      "juanów",
+      "pieniądze"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0936",
+    "hanzi": "十块",
+    "pinyin": "shí kuài",
+    "pl": "dziesięć juanów",
+    "sourceLesson": "18.1 Ogólne classifiery",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "ogolne_classifiery",
+    "type": "phrase",
+    "tags": [
+      "dziesięć",
+      "juanów",
+      "pieniądze"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0944",
+    "hanzi": "这样",
+    "pinyin": "zhèyàng",
+    "pl": "w ten sposób, tak",
+    "sourceLesson": "21.4 Użyteczne frazy dnia codziennego",
+    "levelApprox": "A1",
+    "topic": "gotowe_frazy_codzienne",
+    "subtopic": "uzyteczne_frazy",
+    "type": "word",
+    "tags": [
+      "w ten sposób",
+      "tak",
+      "zaimek wskazujący"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0946",
+    "hanzi": "见面",
+    "pinyin": "jiànmiàn",
+    "pl": "spotkać się",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "spotkać się",
+      "relacje",
+      "czasownik"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0948",
+    "hanzi": "贵姓",
+    "pinyin": "guì xìng",
+    "pl": "jak Pana/Pani nazwisko?",
+    "sourceLesson": "1.8 Pytania i wskazywanie",
+    "levelApprox": "A1",
+    "topic": "podstawy_komunikacji",
+    "subtopic": "pytania_wskazywanie",
+    "type": "phrase",
+    "tags": [
+      "nazwisko",
+      "grzeczność",
+      "pytanie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0949",
+    "hanzi": "姓张",
+    "pinyin": "xìng Zhāng",
+    "pl": "nosić nazwisko Zhang",
+    "sourceLesson": "3.4 Osoby i relacje ogólne",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "osoby_i_relacje",
+    "type": "phrase",
+    "tags": [
+      "nazwisko",
+      "Zhang",
+      "tożsamość"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0952",
+    "hanzi": "跑得快",
+    "pinyin": "pǎo de kuài",
+    "pl": "biec szybko",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "phrase",
+    "tags": [
+      "biec",
+      "szybko",
+      "stopień"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0955",
+    "hanzi": "拼音",
+    "pinyin": "pīnyīn",
+    "pl": "pinyin (transkrypcja)",
+    "sourceLesson": "14.2 Miejsca i kontekst szkolny",
+    "levelApprox": "A1",
+    "topic": "nauka_i_rzeczy_szkolne",
+    "subtopic": "miejsca_i_kontekst_szkolny",
+    "type": "word",
+    "tags": [
+      "pinyin",
+      "transkrypcja",
+      "język"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0962",
+    "hanzi": "感冒",
+    "pinyin": "gǎnmào",
+    "pl": "przeziębienie",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "choroba",
+      "przeziębienie",
+      "zdrowie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0963",
+    "hanzi": "还",
+    "pinyin": "hái",
+    "pl": "jeszcze, nadal",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "gorączka",
+      "choroba",
+      "objawy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0964",
+    "hanzi": "奖",
+    "pinyin": "jiǎng",
+    "pl": "nagroda",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "ból",
+      "głowa",
+      "objawy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0966",
+    "hanzi": "吃水果",
+    "pinyin": "chī shuǐguǒ",
+    "pl": "jeść owoce",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "ból",
+      "gardło",
+      "objawy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0967",
+    "hanzi": "此",
+    "pinyin": "cǐ",
+    "pl": "ten (formalny)",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "ból",
+      "noga",
+      "objawy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0968",
+    "hanzi": "语法",
+    "pinyin": "yǔfǎ",
+    "pl": "gramatyka",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "ból",
+      "ząb",
+      "objawy"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0969",
+    "hanzi": "主要",
+    "pinyin": "zhǔyào",
+    "pl": "główny, przede wszystkim",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "stopa",
+      "anatomia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0970",
+    "hanzi": "妻",
+    "pinyin": "qī",
+    "pl": "żona (formalne)",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "ręka",
+      "anatomia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0971",
+    "hanzi": "老婆",
+    "pinyin": "lǎopo",
+    "pl": "żona (potoczne)",
+    "sourceLesson": "3.3 Relacje małżeńskie",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "malzenstwo",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "oko",
+      "anatomia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0972",
+    "hanzi": "丈夫",
+    "pinyin": "zhàngfu",
+    "pl": "mąż",
+    "sourceLesson": "3.3 Relacje małżeńskie",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikator_ge",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "usta",
+      "anatomia"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "个",
+      "pinyin": "gè"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "位",
+        "pinyin": "wèi"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0973",
+    "hanzi": "老公",
+    "pinyin": "lǎogōng",
+    "pl": "mąż (potoczne)",
+    "sourceLesson": "3.3 Relacje małżeńskie",
+    "levelApprox": "A1",
+    "topic": "rodzina_i_relacje",
+    "subtopic": "malzenstwo",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "ucho",
+      "anatomia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0974",
+    "hanzi": "雪",
+    "pinyin": "xuě",
+    "pl": "śnieg",
+    "sourceLesson": "11.1 Samopoczucie podstawowe",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "samopoczucie_podstawowe",
+    "type": "phrase",
+    "tags": [
+      "choroba",
+      "zdrowie",
+      "stan"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0975",
+    "hanzi": "雪人",
+    "pinyin": "xuě rén",
+    "pl": "bałwan",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "phrase",
+    "tags": [
+      "szpital",
+      "wizyta",
+      "zdrowie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0976",
+    "hanzi": "预备",
+    "pinyin": "yùbèi",
+    "pl": "przygotowywać",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "phrase",
+    "tags": [
+      "leki",
+      "leczenie",
+      "zdrowie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0977",
+    "hanzi": "十度",
+    "pinyin": "shí dù",
+    "pl": "dziesięć stopni",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "odpoczynek",
+      "relaks",
+      "czynności"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0978",
+    "hanzi": "会到",
+    "pinyin": "huì dào",
+    "pl": "dojdzie do",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "phrase",
+    "tags": [
+      "odpoczynek",
+      "łóżko",
+      "zdrowie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0979",
+    "hanzi": "二十五",
+    "pinyin": "èrshíwǔ",
+    "pl": "dwadzieścia pięć",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "phrase",
+    "tags": [
+      "woda",
+      "zdrowie",
+      "zalecenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0980",
+    "hanzi": "点儿",
+    "pinyin": "diǎnr",
+    "pl": "trochę",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "phrase",
+    "tags": [
+      "warzywa",
+      "zdrowie",
+      "jedzenie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0981",
+    "hanzi": "三十度",
+    "pinyin": "sānshí dù",
+    "pl": "trzydzieści stopni",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "uwaga",
+      "dbanie",
+      "czynności"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0982",
+    "hanzi": "出门",
+    "pinyin": "chū mén",
+    "pl": "wychodzić z domu",
+    "sourceLesson": "9.1 Podstawowe działania",
+    "levelApprox": "A1",
+    "topic": "codzienne_czynnosci",
+    "subtopic": "podstawowe_dzialania",
+    "type": "word",
+    "tags": [
+      "sport",
+      "ćwiczenia",
+      "aktywność"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0983",
+    "hanzi": "与",
+    "pinyin": "yǔ",
+    "pl": "i, z (formalne)",
+    "sourceLesson": "11.1 Samopoczucie podstawowe",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "samopoczucie_podstawowe",
+    "type": "phrase",
+    "tags": [
+      "pytanie",
+      "zdrowie",
+      "rozmowa"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0984",
+    "hanzi": "没错",
+    "pinyin": "méi cuò",
+    "pl": "zgadza się, racja",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "phrase",
+    "tags": [
+      "lekarz",
+      "wizyta",
+      "zdrowie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0985",
+    "hanzi": "比较",
+    "pinyin": "bǐjiào",
+    "pl": "porównywać, stosunkowo",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "word",
+    "tags": [
+      "lekarz",
+      "medycyna",
+      "zawód"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0986",
+    "hanzi": "正式",
+    "pinyin": "zhèngshì",
+    "pl": "formalny, oficjalny",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "word",
+    "tags": [
+      "szpital",
+      "medycyna",
+      "miejsce"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0987",
+    "hanzi": "温是",
+    "pinyin": "wēn shì",
+    "pl": "temperatura wynosi",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "word",
+    "tags": [
+      "leki",
+      "medycyna",
+      "zdrowie"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w0999",
+    "hanzi": "马上",
+    "pinyin": "mǎshàng",
+    "pl": "zaraz, natychmiast",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "word",
+    "tags": [
+      "krew",
+      "grupa",
+      "medycyna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1000",
+    "hanzi": "上车",
+    "pinyin": "shàng chē",
+    "pl": "wsiadać do pojazdu",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "word",
+    "tags": [
+      "dezynfekcja",
+      "higienа",
+      "medycyna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1001",
+    "hanzi": "朝着",
+    "pinyin": "cháo zhe",
+    "pl": "w kierunku",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "word",
+    "tags": [
+      "bandaż",
+      "opatrunek",
+      "medycyna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1002",
+    "hanzi": "者",
+    "pinyin": "zhě",
+    "pl": "osoba (sufiks)",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "ręka",
+      "anatomia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1005",
+    "hanzi": "原地",
+    "pinyin": "yuándì",
+    "pl": "na miejscu, w tym samym miejscu",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "palec",
+      "anatomia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1008",
+    "hanzi": "耐",
+    "pinyin": "nài",
+    "pl": "wytrzymały, cierpliwy",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "kostka",
+      "anatomia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1012",
+    "hanzi": "向",
+    "pinyin": "xiàng",
+    "pl": "w kierunku, ku",
+    "sourceLesson": "11.2 Stan zdrowia / dyskomfort",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "stan_zdrowia_dyskomfort",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "plecy",
+      "anatomia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1013",
+    "hanzi": "出",
+    "pinyin": "chū",
+    "pl": "wychodzić",
+    "sourceLesson": "6.2 Wejście i wyjście",
+    "levelApprox": "A1",
+    "topic": "ruch_i_transport",
+    "subtopic": "wejscie_wyjscie",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "łokieć",
+      "anatomia"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1014",
+    "hanzi": "朝",
+    "pinyin": "cháo",
+    "pl": "w kierunku, dynastia",
+    "sourceLesson": "11.4 Pomoc zdrowotna",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "pomoc_zdrowotna",
+    "type": "word",
+    "tags": [
+      "lekarz",
+      "zawód",
+      "medycyna"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1021",
+    "hanzi": "手",
+    "pinyin": "shǒu",
+    "pl": "ręka",
+    "sourceLesson": "11.3 Ciało podstawowe",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_zwierzeta",
+    "type": "phrase",
+    "tags": [
+      "choroba",
+      "ostra",
+      "medycyna"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "只",
+      "pinyin": "zhī"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "双",
+        "pinyin": "shuāng"
+      }
+    ],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1027",
+    "hanzi": "车",
+    "pinyin": "chē",
+    "pl": "pojazd, samochód",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_pojazdy",
+    "type": "word",
+    "tags": [
+      "skręcenie",
+      "uraz",
+      "kontuzja"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "辆",
+      "pinyin": "liàng"
+    },
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1031",
+    "hanzi": "很贵",
+    "pinyin": "hěn guì",
+    "pl": "bardzo drogi",
+    "sourceLesson": "11.1 Samopoczucie podstawowe",
+    "levelApprox": "A1",
+    "topic": "zdrowie_i_samopoczucie",
+    "subtopic": "samopoczucie_podstawowe",
+    "type": "phrase",
+    "tags": [
+      "samopoczucie",
+      "zdrowie",
+      "stan"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1038",
+    "hanzi": "路口",
+    "pinyin": "lùkǒu",
+    "pl": "skrzyżowanie",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "word",
+    "tags": [
+      "podróż",
+      "turystyka",
+      "rekreacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1039",
+    "hanzi": "左边",
+    "pinyin": "zuǒbiān",
+    "pl": "po lewej stronie",
+    "sourceLesson": "4.2 Podróż i przemieszczanie się",
+    "levelApprox": "A1",
+    "topic": "transport",
+    "subtopic": "podroze_pojazdy",
+    "type": "word",
+    "tags": [
+      "podróż",
+      "transport",
+      "rekreacja"
+    ],
+    "measureWordPrimary": null,
+    "measureWordAlt": [],
+    "measureWordNote": ""
+  },
+  {
+    "id": "w1107",
+    "hanzi": "脚",
+    "pinyin": "jiǎo",
+    "pl": "stopa",
+    "sourceLesson": "11.3 Ciało podstawowe",
+    "levelApprox": "A1",
+    "topic": "classifiery_i_liczenie",
+    "subtopic": "klasyfikatory_zwierzeta",
+    "type": "word",
+    "tags": [
+      "ciało",
+      "stopa",
+      "anatomia"
+    ],
+    "measureWordPrimary": {
+      "hanzi": "只",
+      "pinyin": "zhī"
+    },
+    "measureWordAlt": [
+      {
+        "hanzi": "双",
+        "pinyin": "shuāng"
+      }
+    ],
+    "measureWordNote": ""
+  }
+];
