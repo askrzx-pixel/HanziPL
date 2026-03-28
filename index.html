@@ -61,10 +61,14 @@
         <div class="home-focus-value" id="home-remaining-v">0</div>
         <div class="home-focus-note" id="home-remaining-note">słówek do zrobienia</div>
       </div>
-      <div class="home-focus-card next">
-        <div class="home-focus-label">Co dalej</div>
-        <div class="home-next-step" id="home-next-step">Ładowanie…</div>
-        <div class="home-focus-note" id="home-next-note">Zaraz przygotujemy plan sesji.</div>
+      <div class="home-focus-card next plan">
+        <div class="home-focus-label">Plan na dziś</div>
+        <div class="home-next-step" id="home-plan-head">Ładowanie…</div>
+        <div class="home-plan-list">
+          <div class="home-plan-item" id="home-plan-reviews">Sprawdzamy powtórki…</div>
+          <div class="home-plan-item" id="home-plan-new">Sprawdzamy nową lekcję…</div>
+          <div class="home-plan-item" id="home-plan-next">Ustalamy kolejny krok…</div>
+        </div>
       </div>
     </div>
     <div class="home-counts">
@@ -175,7 +179,7 @@
     <div class="fcwrap" onclick="flipCard()">
       <div class="fc" id="fc">
         <div class="face front"><span class="fhz" id="fc-hz">—</span><span class="fhint">dotknij, aby obrócić</span></div>
-        <div class="face back"><div class="bpy" id="fc-py"></div><div class="btr" id="fc-tr"></div><div class="bhz" id="fc-bh"></div><div class="fc-mw" id="fc-mw" style="display:none"></div></div>
+        <div class="face back"><div class="bpy" id="fc-py"></div><div class="btr" id="fc-tr"></div><div class="bhz" id="fc-bh"></div><div class="fc-source" id="fc-source" style="display:none"></div><div class="fc-mw" id="fc-mw" style="display:none"></div></div>
       </div>
     </div>
     <div id="srs-btns" style="display:none">
