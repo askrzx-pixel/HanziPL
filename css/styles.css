@@ -24,7 +24,6 @@
   html,body{background:#1e1a14;}
   .scr.on{background:#1e1a14;}
   .front{background:var(--paper2);}
-  .back .btr{color:#4E3B2A;opacity:1;}
 }
 
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -379,6 +378,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .back .bhz{font-family:'Noto Sans SC',sans-serif;font-size:4rem;font-weight:700;color:var(--paper);line-height:1.05;margin-bottom:6px;}
 .back .bpy{font-family:Inter,sans-serif;font-style:italic;font-size:1.05rem;font-weight:500;color:var(--gold2);margin-bottom:10px;}
 .back .btr{font-family:Inter,sans-serif;font-size:1.15rem;font-weight:600;color:rgba(242,232,213,.92);opacity:1;text-align:center;line-height:1.4;max-width:90%;}
+@media(prefers-color-scheme:dark){.back .btr{color:#4E3B2A;opacity:1;}}
 
 /* SRS answer buttons */
 .srs-btns{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:7px;max-width:480px;margin:0 auto;}
