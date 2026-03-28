@@ -24,6 +24,11 @@
   html,body{background:#1e1a14;}
   .scr.on{background:#1e1a14;}
   .front{background:var(--paper2);}
+  /* Keep flashcard back dark in dark mode (--ink flips to cream, which breaks the design) */
+  .back{background:#2a2218;border-color:#3d3528;}
+  .back .btr{color:#f0e6d0;}
+  .back .bpy{color:#d4b86a;}
+  .back .bhz{color:rgba(240,230,208,.18);}
 }
 
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -316,10 +321,10 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .progf{height:100%;background:linear-gradient(90deg,var(--red),var(--gold2));transition:width .5s cubic-bezier(.4,0,.2,1);}
 
 /* ── FLASHCARD ── */
-.fcwrap{perspective:1200px;margin:0 auto 20px;max-width:480px;height:260px;cursor:pointer;}
-.fc{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .58s cubic-bezier(.4,0,.2,1);}
+.fcwrap{-webkit-perspective:1200px;perspective:1200px;margin:0 auto 20px;max-width:480px;height:260px;cursor:pointer;}
+.fc{width:100%;height:100%;position:relative;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .58s cubic-bezier(.4,0,.2,1);}
 .fc.flip{transform:rotateY(180deg);}
-.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
 .front{background:var(--paper2);border:2px solid var(--border2);box-shadow:var(--shadow-lg);}
 .front::before{content:'';position:absolute;inset:7px;border:1px solid var(--border);border-radius:12px;pointer-events:none;}
 .back{background:var(--ink);border:2px solid var(--ink2);transform:rotateY(180deg);box-shadow:var(--shadow-lg);}
