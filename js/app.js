@@ -642,6 +642,7 @@ function startDailyPhase(index) {
 
 function showDailyTransitionScreen(nextPhase) {
   var prevPhase = dailySessionFlow.phases[dailySessionFlow.currentPhaseIndex - 1] || null;
+  var transitionPhase = prevPhase || nextPhase;
   hideAll();
   document.getElementById('sres').style.display = 'block';
 
@@ -651,15 +652,16 @@ function showDailyTransitionScreen(nextPhase) {
     banner.textContent = '✓ Etap ukończony';
   }
 
-  document.getElementById('rsc').textContent = nextPhase.stepLabel;
-  document.getElementById('rsl').textContent = nextPhase.transitionTitle;
-  document.getElementById('res-detail').textContent = nextPhase.transitionDetail;
+  document.getElementById('rsc').textContent = 'Krok ' + nextPhase.stepNumber + ' z ' + nextPhase.totalSteps;
+  document.getElementById('rsl').textContent = transitionPhase.transitionTitle || nextPhase.transitionTitle;
+  document.getElementById('res-detail').textContent = transitionPhase.transitionDetail || nextPhase.transitionDetail;
 
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
-    if (nextPhase.courseLine) {
+    var courseLine = nextPhase.courseLine || transitionPhase.courseLine || '';
+    if (courseLine) {
       courseEl.style.display = 'block';
-      courseEl.textContent = nextPhase.courseLine;
+      courseEl.textContent = courseLine;
     } else {
       courseEl.style.display = 'none';
       courseEl.textContent = '';
@@ -675,12 +677,19 @@ function showDailyTransitionScreen(nextPhase) {
   var nextEl = document.getElementById('res-next');
   if (nextEl) {
     nextEl.style.display = 'block';
-    nextEl.textContent = nextPhase.transitionNext;
+    nextEl.textContent = nextPhase.key === 'lesson'
+      ? 'Teraz: ' + nextPhase.title
+      : (transitionPhase.transitionNext || nextPhase.transitionNext);
   }
 
   resultsPrimaryAction = { type: 'daily_next_phase', phaseIndex: dailySessionFlow.currentPhaseIndex };
   resultsSecondaryAction = { type: 'back_home' };
-  updateResultsButtons(nextPhase.primaryCta || nextPhase.transitionCta, '🏠 Wróć do domu');
+  updateResultsButtons(
+    nextPhase.key === 'lesson'
+      ? ('Rozpocznij lekcję ' + (dailySessionFlow.lessonMeta ? dailySessionFlow.lessonMeta.lessonCode : '') + ' →')
+      : (transitionPhase.primaryCta || transitionPhase.transitionCta || nextPhase.primaryCta || nextPhase.transitionCta),
+    '🏠 Wróć do domu'
+  );
 }
 
 function showDailyCompletionScreen() {
