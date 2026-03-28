@@ -34,14 +34,13 @@ body{font-family:Inter,system-ui,sans-serif;color:var(--ink);padding-bottom:var(
 body::before{content:'';display:block;height:4px;background:repeating-linear-gradient(90deg,var(--red) 0,var(--red) 20px,var(--gold2) 20px,var(--gold2) 24px);}
 
 /* ── TOP BAR ── */
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--paper2);border-bottom:2px solid var(--border2);position:sticky;top:0;z-index:100;box-shadow:var(--shadow);gap:8px;flex-wrap:wrap;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--paper2);border-bottom:2px solid var(--border2);position:sticky;top:0;z-index:100;box-shadow:var(--shadow);gap:12px;}
 .logo{font-family:'Noto Sans SC',sans-serif;font-size:1.35rem;color:var(--red);letter-spacing:3px;}
 .logo small{display:block;font-family:Inter,sans-serif;font-size:.65rem;font-weight:400;color:var(--muted);letter-spacing:.5px;margin-top:-2px;}
-.topbar-right{display:flex;align-items:center;gap:12px;}
+.topbar-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.topbar-account{display:flex;align-items:center;gap:8px;}
 .streak-badge{display:flex;align-items:center;gap:4px;font-family:Inter,sans-serif;font-size:.7rem;font-weight:500;color:var(--gold);border:1px solid var(--gold2);border-radius:20px;padding:3px 10px;background:rgba(201,168,76,.1);}
 .streak-badge .fire{font-size:.9rem;}
-.nav-st{font-family:Inter,sans-serif;font-size:.65rem;font-weight:400;color:var(--muted);}
-.nav-st b{color:var(--ink);}
 
 /* ── BOTTOM NAV ── */
 .botnav{position:fixed;bottom:0;left:0;right:0;height:var(--nav-h);z-index:200;background:var(--paper2);border-top:2px solid var(--border2);display:flex;box-shadow:0 -2px 10px rgba(28,18,8,.12);}
@@ -81,37 +80,48 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   margin-bottom:16px;
   box-shadow:var(--shadow);
 }
-.home-hero-title{font-family:Inter,sans-serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:4px;}
-.home-hero-sub{font-family:Inter,sans-serif;font-size:.7rem;color:var(--muted);margin-bottom:16px;}
+.home-hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px;}
+.home-hero-kicker{font-family:Inter,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);margin-bottom:6px;}
+.home-hero-title{font-family:Inter,sans-serif;font-size:1.24rem;font-weight:700;color:var(--ink);line-height:1.15;}
+.home-hero-greeting{font-family:Inter,sans-serif;font-size:.68rem;font-weight:500;color:var(--muted);text-align:right;max-width:40%;}
+.home-hero-sub{font-family:Inter,sans-serif;font-size:.78rem;color:var(--muted);margin-bottom:16px;line-height:1.6;max-width:32rem;}
+.home-focus-row{display:grid;grid-template-columns:1.05fr 1.3fr;gap:10px;margin-bottom:14px;}
+.home-focus-card{
+  background:linear-gradient(180deg,rgba(201,168,76,.08),rgba(201,168,76,.02));
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px;
+}
+.home-focus-card.next{background:linear-gradient(180deg,rgba(139,26,26,.09),rgba(139,26,26,.03));}
+.home-focus-label{font-family:Inter,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.home-focus-value{font-family:'Noto Sans SC',sans-serif;font-size:2.1rem;line-height:1;color:var(--red);margin-bottom:4px;}
+.home-focus-note{font-family:Inter,sans-serif;font-size:.72rem;color:var(--muted);line-height:1.5;}
+.home-next-step{font-family:Inter,sans-serif;font-size:.96rem;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:4px;}
 .home-counts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;}
 .home-count{
-  background:var(--paper3);
+  background:rgba(0,0,0,.04);
   border-radius:10px;
-  padding:12px 8px;
+  padding:12px 10px;
   text-align:center;
   border:1px solid var(--border);
-  box-shadow:var(--shadow);
-  transition:transform .18s ease;
 }
-.home-count:active{transform:scale(.97);}
-.home-count .hcv{font-family:'Noto Sans SC',sans-serif;font-size:1.6rem;color:var(--red);line-height:1;}
+.home-count .hcv{font-family:'Noto Sans SC',sans-serif;font-size:1.45rem;color:var(--red);line-height:1;}
 .home-count.new .hcv{color:var(--gold);}
 .home-count.ok .hcv{color:var(--green);}
-.home-count .hcl{font-family:Inter,sans-serif;font-size:.6rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.2px;margin-top:3px;}
-.daily-prog-wrap{margin-bottom:4px;}
-.daily-prog-label{display:flex;justify-content:space-between;font-family:Inter,sans-serif;font-size:.65rem;font-weight:500;color:var(--muted);margin-bottom:5px;}
-.daily-prog-track{height:8px;background:var(--paper3);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.home-count .hcl{font-family:Inter,sans-serif;font-size:.58rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;margin-top:5px;}
+.daily-prog-wrap{margin-bottom:0;}
+.daily-prog-label{display:flex;justify-content:space-between;font-family:Inter,sans-serif;font-size:.66rem;font-weight:600;color:var(--muted);margin-bottom:7px;}
+.daily-prog-track{height:9px;background:var(--paper3);border:1px solid var(--border);border-radius:999px;overflow:hidden;}
 .daily-prog-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--gold2));border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1);width:0%;}
 
-/* Przycisk startowy — pulsowanie */
 .btn-start-day{
   display:block;width:100%;padding:16px;
   background:var(--red);color:var(--paper);
   border:none;border-radius:12px;
-  font-family:Inter,sans-serif;font-size:.9rem;font-weight:600;
+  font-family:Inter,sans-serif;font-size:.9rem;font-weight:700;
   cursor:pointer;letter-spacing:.3px;
   transition:all .2s ease;
-  margin-bottom:12px;
+  margin-top:16px;
   box-shadow:0 4px 14px rgba(139,26,26,.35);
   animation:pulse-btn 2.5s ease-in-out infinite;
 }
@@ -134,17 +144,17 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   animation:none;
 }
 
+.home-section-label{font-family:Inter,sans-serif;font-size:.66rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.18em;margin:4px 2px 10px;}
 .home-stats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
 .home-stat-card{
   background:var(--paper2);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:16px 14px;
-  box-shadow:var(--shadow);
+  padding:15px 14px;
 }
-.home-stat-card .sv{font-family:'Noto Sans SC',sans-serif;font-size:1.8rem;color:var(--red);}
+.home-stat-card .sv{font-family:'Noto Sans SC',sans-serif;font-size:1.65rem;color:var(--red);}
 .home-stat-card.g .sv{color:var(--green);}
-.home-stat-card .sl{font-family:Inter,sans-serif;font-size:.62rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.2px;margin-top:2px;}
+.home-stat-card .sl{font-family:Inter,sans-serif;font-size:.62rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;margin-top:4px;}
 
 /* ── STAT CARDS ── */
 .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px;}
@@ -486,14 +496,14 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 
 /* ── AUTH BUTTON ─────────────────────────────────── */
 .auth-btn{
-  padding:5px 12px;
+  padding:6px 12px;
   border:1px solid var(--border2);
   border-radius:20px;
-  background:var(--paper3);
+  background:transparent;
   cursor:pointer;
   font-family:Inter,sans-serif;
   font-size:.65rem;
-  font-weight:500;
+  font-weight:600;
   color:var(--ink);
   transition:all .18s;
   white-space:nowrap;
@@ -503,10 +513,20 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   font-family:Inter,sans-serif;
   font-size:.62rem;
   color:var(--muted);
-  max-width:100px;
+  max-width:92px;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
+  text-align:right;
+}
+
+@media(max-width:600px){
+  .topbar{align-items:flex-start;}
+  .topbar-right{width:auto;max-width:52%;justify-content:flex-end;flex-wrap:wrap;row-gap:8px;}
+  .topbar-account{width:100%;justify-content:flex-end;}
+  .home-hero-top{flex-direction:column;align-items:flex-start;}
+  .home-hero-greeting{max-width:none;text-align:left;}
+  .home-focus-row{grid-template-columns:1fr;}
 }
 
 /* ── WORD CARD META (topic / level / lesson) ── */

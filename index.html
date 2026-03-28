@@ -37,32 +37,52 @@
   <div class="logo">漢字學習<small>Nauka Chińskiego</small></div>
   <div class="topbar-right">
     <div class="streak-badge"><span class="fire">🔥</span><span id="streak-num">0</span> dni</div>
-    <div class="nav-st">Opanowane: <b id="nm">0</b></div>
-    <div id="auth-info" class="auth-info"></div>
-    <button id="auth-btn" class="auth-btn" onclick="signInWithGoogle()">🔑 Zaloguj</button>
+    <div class="topbar-account">
+      <div id="auth-info" class="auth-info"></div>
+      <button id="auth-btn" class="auth-btn" onclick="signInWithGoogle()">🔑 Zaloguj</button>
+    </div>
   </div>
 </div>
 
 <!-- ══ HOME ══ -->
 <div class="scr on" id="scr-home">
   <div class="home-hero">
-    <div class="home-hero-title" id="home-greeting">Dzień dobry!</div>
+    <div class="home-hero-top">
+      <div>
+        <div class="home-hero-kicker">Dziś</div>
+        <div class="home-hero-title">Dzisiejsza sesja</div>
+      </div>
+      <div class="home-hero-greeting" id="home-greeting">Dzień dobry!</div>
+    </div>
     <div class="home-hero-sub" id="home-sub">Ładowanie...</div>
+    <div class="home-focus-row">
+      <div class="home-focus-card">
+        <div class="home-focus-label">Zostało dziś</div>
+        <div class="home-focus-value" id="home-remaining-v">0</div>
+        <div class="home-focus-note" id="home-remaining-note">słówek do zrobienia</div>
+      </div>
+      <div class="home-focus-card next">
+        <div class="home-focus-label">Co dalej</div>
+        <div class="home-next-step" id="home-next-step">Ładowanie…</div>
+        <div class="home-focus-note" id="home-next-note">Zaraz przygotujemy plan sesji.</div>
+      </div>
+    </div>
     <div class="home-counts">
-      <div class="home-count" id="hc-due"><div class="hcv" id="hc-due-v">0</div><div class="hcl">Do powtórki</div></div>
-      <div class="home-count new" id="hc-new"><div class="hcv" id="hc-new-v">0</div><div class="hcl">Nowych</div></div>
-      <div class="home-count ok"><div class="hcv" id="hc-done-v">0</div><div class="hcl">Dziś zrobione</div></div>
+      <div class="home-count" id="hc-due"><div class="hcv" id="hc-due-v">0</div><div class="hcl">Powtórki</div></div>
+      <div class="home-count new" id="hc-new"><div class="hcv" id="hc-new-v">0</div><div class="hcl">Nowe</div></div>
+      <div class="home-count ok"><div class="hcv" id="hc-done-v">0</div><div class="hcl">Ukończone</div></div>
     </div>
     <div class="daily-prog-wrap">
       <div class="daily-prog-label"><span>Dzienny cel</span><span id="daily-prog-txt">0 / 0</span></div>
       <div class="daily-prog-track"><div class="daily-prog-fill" id="daily-prog-fill" style="width:0%"></div></div>
     </div>
+    <button class="btn-start-day" id="btn-start-day" onclick="startDailySession()">Rozpocznij dzisiejszą sesję →</button>
   </div>
-  <button class="btn-start-day" id="btn-start-day" onclick="startDailySession()">Rozpocznij dzisiejszą sesję →</button>
+  <div class="home-section-label">Twoje postępy</div>
   <div class="home-stats-row">
-    <div class="home-stat-card"><div class="sv" id="hs-total">0</div><div class="sl">Wszystkich słówek</div></div>
-    <div class="home-stat-card g"><div class="sv" id="hs-mastered">0</div><div class="sl">Opanowanych</div></div>
-    <div class="home-stat-card"><div class="sv" id="hs-streak">0</div><div class="sl">Dni z rzędu 🔥</div></div>
+    <div class="home-stat-card g"><div class="sv" id="hs-mastered">0</div><div class="sl">Opanowane</div></div>
+    <div class="home-stat-card"><div class="sv" id="hs-streak">0</div><div class="sl">Seria dni</div></div>
+    <div class="home-stat-card"><div class="sv" id="hs-total">0</div><div class="sl">Wszystkie słówka</div></div>
     <div class="home-stat-card"><div class="sv" id="hs-acc">—</div><div class="sl">Skuteczność</div></div>
   </div>
 </div>

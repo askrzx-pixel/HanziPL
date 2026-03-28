@@ -93,7 +93,8 @@ function renderStreakBadge() {
 // ── NAV ───────────────────────────────────────────
 function updateNavMastered() {
   const m = WORDS.filter(w => SRS.isMastered(srsData[w.id])).length;
-  document.getElementById('nm').textContent = m;
+  const el = document.getElementById('nm');
+  if (el) el.textContent = m;
 }
 
 function go(name, btn) {
@@ -123,10 +124,10 @@ function renderHomeScreen() {
 
   let sub = '';
   if (remaining === 0 && done > 0) {
-    sub = '✓ Dzienny cel osiągnięty! Świetna robota.';
+    sub = 'Dzisiejszy plan masz już zamknięty. Możesz zrobić dodatkową powtórkę albo po prostu wrócić jutro.';
   } else {
     sub = remaining > 0
-      ? 'Masz ' + remaining + ' słówek do zrobienia dziś.'
+      ? 'Najpierw domknij dzisiejszy plan, a potem przejdź dalej bez zgadywania co jest najważniejsze.'
       : 'Brak zaplanowanych powtórek — świetnie!';
   }
   document.getElementById('home-sub').textContent = sub;
@@ -134,6 +135,26 @@ function renderHomeScreen() {
   document.getElementById('hc-due-v').textContent  = due.length;
   document.getElementById('hc-new-v').textContent  = newWords.length;
   document.getElementById('hc-done-v').textContent = done;
+  document.getElementById('home-remaining-v').textContent = remaining;
+  document.getElementById('home-remaining-note').textContent =
+    remaining === 1 ? 'słówko do zrobienia' : 'słówek do zrobienia';
+
+  let nextStep = 'Dziś nie ma już nic pilnego.';
+  let nextNote = 'Jeśli chcesz, możesz zrobić dodatkową sesję albo przejrzeć słówka.';
+  if (due.length > 0 && newWords.length > 0) {
+    nextStep = 'Najpierw powtórki, potem nowe słówka.';
+    nextNote = 'Zacznij teraz, żeby zamknąć zaległości i dopiero potem dodawać nowy materiał.';
+  } else if (due.length > 0) {
+    nextStep = 'Skup się na powtórkach.';
+    nextNote = 'To najszybsza droga, żeby utrzymać serię i nie gubić materiału.';
+  } else if (newWords.length > 0) {
+    nextStep = 'Czeka nowa porcja słówek.';
+    nextNote = 'Masz czystą kolejkę, więc możesz spokojnie wejść w nowy materiał.';
+  } else if (done === 0) {
+    nextNote = 'Na dziś system nie wyznaczył sesji.';
+  }
+  document.getElementById('home-next-step').textContent = nextStep;
+  document.getElementById('home-next-note').textContent = nextNote;
 
   const pct = goal > 0 ? Math.min(100, Math.round(done / goal * 100)) : 0;
   document.getElementById('daily-prog-fill').style.width = pct + '%';
