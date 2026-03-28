@@ -213,12 +213,13 @@
   <!-- Results -->
   <div id="sres" style="display:none">
     <div class="respanel">
+      <div id="res-daily-banner" class="res-daily-banner" style="display:none">✓ Sesja dzienna ukończona!</div>
       <div class="resc" id="rsc">0/0</div>
       <div class="resl" id="rsl"></div>
       <div class="res-detail" id="res-detail"></div>
       <div class="resbtns">
-        <button class="btn" style="width:auto;display:inline-block" onclick="restartSession()">Jeszcze raz</button>
-        <button class="btn-out" onclick="backHome()">← Menu</button>
+        <button class="btn" style="width:auto;display:inline-block" onclick="restartSession()">🔄 Jeszcze raz</button>
+        <button class="btn-out" id="res-menu-btn" onclick="backHome()">🏠 Wróć do domu</button>
       </div>
     </div>
   </div>

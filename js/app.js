@@ -16,27 +16,53 @@ var sessionCorrect  = 0;
 // ── Display label maps ─────────────────────────────
 // Display labels for topic keys found in WORDS. Formatter only — not a source of truth.
 var TOPIC_LABELS = {
+  // v3 topics
+  'podstawy_komunikacji':           'Podstawy komunikacji',
+  'zyczenia_i_okazje':              'Życzenia i okazje',
+  'rodzina_i_relacje':              'Rodzina i relacje',
+  'transport':                      'Transport',
+  'miejsca_w_miescie':              'Miejsca w mieście',
+  'codzienne_czynnosci':            'Codzienne czynności',
+  'ubrania_rzeczy_osobiste':        'Ubrania i rzeczy',
+  'jedzenie_i_picie':               'Jedzenie i picie',
+  'dom_i_wyposazenie':              'Dom i wyposażenie',
+  'zdrowie_i_samopoczucie':         'Zdrowie i samopoczucie',
+  'zakupy_i_pieniadze':             'Zakupy i pieniądze',
+  'ludzie_role_zawody':             'Ludzie, role, zawody',
+  'nauka_i_rzeczy_szkolne':         'Nauka i szkoła',
+  'czas_codzienny':                 'Czas codzienny',
+  'technologia_i_urzadzenia':       'Technologia',
+  'gramatyka_podstawowa':           'Gramatyka',
+  'classifiery_i_liczenie':         'Classifiery',
+  'przymiotniki_podstawowe':        'Przymiotniki',
+  'czas_rozszerzony':               'Czas rozszerzony',
+  'gotowe_frazy_codzienne':         'Frazy codzienne',
+  'pogoda_i_warunki':               'Pogoda',
+  'zwierzeta':                      'Zwierzęta',
+  'nazwy_wlasne_i_geografia':       'Nazwy własne',
+  'czasowniki_i_frazy_rozszerzone': 'Czasowniki rozszerzone',
+  'kultura_nauka_rozrywka':         'Kultura i rozrywka',
+  'liczby_i_ilosci':                'Liczby i ilości',
+  'kraje_i_jezyki':                 'Kraje i języki',
+  // legacy (backwards compat)
   'tozsamosc_i_ludzie':   'Tożsamość i ludzie',
-  'rodzina_i_relacje':    'Rodzina i relacje',
   'cialo_i_zdrowie':      'Ciało i zdrowie',
-  'jedzenie_i_picie':     'Jedzenie i picie',
   'dom_i_przestrzen':     'Dom i przestrzeń',
   'miasto_i_transport':   'Miasto i transport',
   'czas_i_kalendarz':     'Czas i kalendarz',
   'szkola_i_nauka':       'Szkoła i nauka',
   'praca_i_biuro':        'Praca i biuro',
-  'liczby_i_ilosci':      'Liczby i ilości',
   'wyglad_i_opisy':       'Wygląd i opisy',
   'emocje_i_oceny':       'Emocje i oceny',
-  'codzienne_czynnosci':  'Codzienne czynności',
   'rozmowa_i_frazy':      'Rozmowa i frazy',
-  'kraje_i_jezyki':       'Kraje i języki',
   'nazwy_wlasne':         'Nazwy własne'
 };
 
 // Display labels for levelApprox keys found in WORDS. Formatter only — not a source of truth.
 var LEVEL_LABELS = {
   'starter':      'Wstępny',
+  'A1':           'A1',
+  'A2':           'A2',
   'HSK1':         'HSK 1',
   'HSK2':         'HSK 2',
   'HSK3':         'HSK 3',
@@ -79,7 +105,7 @@ function go(name, btn) {
   if (name === 'stats')  renderStats();
   if (name === 'stages') renderStages();
   if (name === 'words')  renderWords();
-  if (name === 'study')  { updateSessionCount(); }
+  if (name === 'study')  { hideAll(); document.getElementById('sh').style.display = 'block'; updateSessionCount(); }
   window.scrollTo(0, 0);
 }
 
@@ -92,7 +118,7 @@ function renderHomeScreen() {
   const remaining = Math.max(0, total - done);
 
   const h     = new Date().getHours();
-  const greet = h < 12 ? 'Dzień dobry!' : h < 18 ? 'Dzień dobry!' : 'Dobry wieczór!';
+  const greet = h < 6 ? 'Dobranoc! 🌙' : h < 12 ? 'Dzień dobry! ☀️' : h < 18 ? 'Dzień dobry! 🌤️' : 'Dobry wieczór! 🌙';
   document.getElementById('home-greeting').textContent = greet;
 
   let sub = '';
@@ -384,8 +410,8 @@ function hideAll() {
 
 function backHome() {
   hideAll();
-  document.getElementById('sh').style.display = 'block';
   isDailySession = false;
+  go('home', document.getElementById('bn-home'));
 }
 
 function sp(p, i, t) {
@@ -647,8 +673,18 @@ function showResults() {
   document.getElementById('res-detail').textContent =
     'Sesja: ' + sessionReviews + ' powtórek · Skuteczność: ' +
     (sessionReviews > 0 ? Math.round(sessionCorrect / sessionReviews * 100) : 0) + '%';
+
+  // Daily session completion banner
+  const banner = document.getElementById('res-daily-banner');
+  if (banner) banner.style.display = isDailySession ? 'block' : 'none';
+
+  // Update home button label based on context
+  const menuBtn = document.getElementById('res-menu-btn');
+  if (menuBtn) menuBtn.textContent = isDailySession ? '🏠 Wróć do domu' : '🏠 Menu główne';
+
   checkAndUpdateStreak();
   renderStreakBadge();
+  updateNavMastered();
 }
 
 // ── BACK / DIALOG ─────────────────────────────────
@@ -826,7 +862,7 @@ function getTopicItems() {
 
 /** [{value, label}] for levelApprox values actually present in WORDS, sorted by HSK order. */
 function getLevelItems() {
-  var ORDER = ['starter', 'HSK1', 'HSK2', 'HSK3', 'HSK3plus', 'proper_noun'];
+  var ORDER = ['starter', 'A1', 'A2', 'HSK1', 'HSK2', 'HSK3', 'HSK3plus', 'proper_noun'];
   var seen = Object.create(null);
   var levels = [];
   WORDS.forEach(function(w) {

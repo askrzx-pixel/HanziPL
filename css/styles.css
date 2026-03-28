@@ -409,6 +409,18 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 
 /* ── RESULTS ── */
 .respanel{text-align:center;padding:36px 16px;}
+.res-daily-banner{
+  display:inline-block;
+  background:var(--green2);
+  color:#fff;
+  font-family:'Space Mono',monospace;
+  font-size:.68rem;
+  letter-spacing:1.2px;
+  padding:7px 18px;
+  border-radius:20px;
+  margin-bottom:20px;
+  text-transform:uppercase;
+}
 .resc{font-family:'Noto Serif SC',serif;font-size:4rem;color:var(--red);line-height:1;}
 .resl{font-family:'IM Fell English',serif;font-style:italic;font-size:1.1rem;color:var(--muted);margin:8px 0 6px;}
 .res-detail{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);margin-bottom:22px;}
