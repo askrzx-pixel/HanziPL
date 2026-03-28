@@ -1199,12 +1199,13 @@ function createDailySessionFlow() {
     return SRS.isNew(srsData[w.id]);
   }) : [];
   var lessonSlots = Math.max(0, goal - dueWords.length);
+  if (!lessonSlots && lessonPool.length) lessonSlots = 1;
   var lessonWords = lessonSlots > 0 ? lessonPool.slice(0, lessonSlots) : [];
   var lessonOverflow = lessonPool.length > lessonWords.length;
   var nextLesson = getNextCourseLesson(lessonMeta ? lessonMeta.key : '');
   var goalTotal = dueWords.length + lessonWords.length;
   var phases = [];
-  var totalSteps = lessonWords.length ? 3 : 2;
+  var totalSteps = (dueWords.length ? 1 : 0) + (lessonWords.length ? 1 : 0) + 1;
 
   if (dueWords.length) {
     phases.push({
