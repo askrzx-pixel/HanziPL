@@ -469,6 +469,20 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .resc{font-family:'Noto Sans SC',sans-serif;font-size:4rem;color:var(--red);line-height:1;}
 .resl{font-family:Inter,sans-serif;font-size:1.05rem;font-weight:400;color:var(--muted);margin:8px 0 6px;}
 .res-detail{font-family:Inter,sans-serif;font-size:.68rem;color:var(--muted);margin-bottom:22px;}
+.res-course{font-family:Inter,sans-serif;font-size:.82rem;font-weight:600;color:var(--ink2);margin:0 auto 12px;max-width:28rem;line-height:1.5;}
+.res-plan{
+  max-width:30rem;
+  margin:0 auto 16px;
+  padding:12px 14px;
+  background:var(--paper2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  text-align:left;
+}
+.res-plan-item{font-family:Inter,sans-serif;font-size:.74rem;color:var(--muted);line-height:1.5;padding:4px 0;}
+.res-plan-item strong{color:var(--ink);}
+.res-plan-item.now{color:var(--ink2);}
+.res-plan-item.done{color:var(--green2);}
 .res-next{font-family:Inter,sans-serif;font-size:.8rem;font-weight:600;color:var(--ink2);margin:0 auto 18px;max-width:28rem;line-height:1.55;}
 .resbtns{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;}
 
