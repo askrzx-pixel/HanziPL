@@ -588,6 +588,8 @@ function renderSessionStageCard() {
   document.getElementById('session-stage-title').textContent  = sessionMeta.title || 'Sesja';
   document.getElementById('session-stage-sub').textContent    = sessionMeta.sub || '';
   document.getElementById('session-stage-next').textContent   = sessionMeta.next || '';
+  var compact = sessionMeta.kind === 'daily' && sessionMeta.phaseKey === 'lesson' && sIdx > 0;
+  cardEl.classList.toggle('compact', compact);
   cardEl.style.display = 'block';
 }
 
@@ -631,6 +633,7 @@ function startDailyPhase(index) {
   dailySessionState = phase.state;
   beginSession(phase.words, 'fc', {
     kind: 'daily',
+    phaseKey: phase.key,
     modeLabel: phase.modeLabel,
     kicker: phase.kicker,
     title: phase.title,
@@ -801,56 +804,55 @@ function buildDailyPlan(flow, done, remaining) {
   if (flow.state === 'session_complete') {
     headline = 'Dzisiejsza sesja jest już skończona.';
     summary = nextLesson
-      ? 'Plan na dziś jest gotowy. Możesz teraz przejść dalej w kursie.'
-      : 'Plan na dziś jest gotowy. Nie ma już nowego materiału do uruchomienia w tej chwili.';
+      ? 'Plan na dziś gotowy. Możesz iść dalej w kursie.'
+      : 'Plan na dziś gotowy.';
     action = nextLesson ? { type: 'course_lesson', lessonKey: nextLesson.key } : { type: 'none' };
   } else if (flow.state === 'reviews_due') {
     headline = newWords.length > 0
       ? 'Najpierw powtórki, potem nowa lekcja.'
       : 'Dziś skupiasz się na powtórkach.';
     summary = newWords.length > 0
-      ? 'Zaczniesz od powtórek z wcześniejszych lekcji, a potem przejdziesz do nowego materiału z kursu.'
-      : 'Na dziś liczą się tylko powtórki z wcześniejszych lekcji.';
+      ? 'Powtórki z wcześniejszych lekcji, potem nowa lekcja.'
+      : 'Dziś tylko powtórki z wcześniejszych lekcji.';
     action = { type: 'daily_session' };
   } else if (flow.state === 'lesson_ready' && newWords.length > 0) {
     headline = 'Dziś wchodzisz w nową lekcję.';
     summary = newLesson
-      ? 'Dzisiejsze powtórki są już za Tobą. Teraz przechodzisz do lekcji ' + newLesson.shortLabel + '.'
-      : 'Dzisiejsze powtórki są już za Tobą. Teraz przechodzisz do nowego materiału.';
+      ? 'Teraz lekcja ' + newLesson.shortLabel + '.'
+      : 'Teraz nowe słowa.';
     action = { type: 'daily_session' };
   } else if (flow.state === 'no_content_available') {
     summary = nextLesson
-      ? 'Dzisiejsza sesja nie ma już kart, ale możesz przejść do kolejnej lekcji w kursie.'
-      : 'Na dziś system nie wyznaczył nowych kart ani powtórek.';
+      ? 'Na dziś brak kart. Możesz przejść do kolejnej lekcji.'
+      : 'Na dziś brak kart.';
     action = nextLesson ? { type: 'course_lesson', lessonKey: nextLesson.key } : { type: 'none' };
   } else {
-    summary = 'Na dziś system nie wyznaczył nowych kart ani powtórek.';
+    summary = 'Na dziś brak kart.';
   }
 
   var reviewsLine = due.length > 0
-    ? due.length + ' ' + pluralizeWords(due.length, 'powtórka', 'powtórki', 'powtórek') + ' z wcześniejszych lekcji'
-    : 'Brak zaległych powtórek na dziś';
+    ? 'Powtórki na dziś: ' + due.length
+    : 'Powtórki na dziś: 0';
 
-  var newLine = 'Dziś bez nowej lekcji';
+  var newLine = 'Nowe słowa: 0';
   if (newWords.length > 0) {
     if (newLesson) {
       newLine = newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów') +
-        ' z lekcji ' + newLesson.shortLabel;
+        ' · ' + newLesson.shortLabel;
       if (newLessonCount > 1) {
         newLine += ' i ' + (newLessonCount - 1) + ' ' +
           pluralizeWords(newLessonCount - 1, 'kolejnej lekcji', 'kolejnych lekcji', 'kolejnych lekcji');
       }
     } else {
-      newLine = newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów') +
-        ' z bieżącego kursu';
+      newLine = newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów');
     }
   }
 
-  var nextLine = 'Po tej sesji zamkniesz dzisiejszy plan.';
+  var nextLine = 'Po tej sesji zamkniesz plan dnia.';
   if (due.length > 0 && newWords.length > 0 && newLesson) {
-    nextLine = 'Po powtórkach wejdziesz w lekcję ' + newLesson.shortLabel;
+    nextLine = 'Po powtórkach: ' + newLesson.shortLabel;
   } else if (newWords.length > 0 && newLesson) {
-    nextLine = 'Jesteś w kursie: ' + newLesson.shortLabel;
+    nextLine = 'Lekcja: ' + newLesson.shortLabel;
   } else if (nextLesson) {
     nextLine = 'Następna lekcja: ' + nextLesson.shortLabel;
   }
