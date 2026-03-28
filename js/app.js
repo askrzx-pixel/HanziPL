@@ -139,16 +139,12 @@ function renderHomeScreen() {
   document.getElementById('hc-due-v').textContent  = due.length;
   document.getElementById('hc-new-v').textContent  = newWords.length;
   document.getElementById('hc-done-v').textContent = done;
-  document.getElementById('home-remaining-v').textContent = remaining;
-  document.getElementById('home-remaining-note').textContent =
-    remaining === 1 ? 'słówko' : 'słówek';
   document.getElementById('home-plan-head').textContent    = plan.headline;
   document.getElementById('home-session-counts').textContent =
     newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów') +
     ' · ' + due.length + ' ' + pluralizeWords(due.length, 'powtórka', 'powtórki', 'powtórek');
   document.getElementById('home-plan-reviews').textContent = plan.reviewsLine;
   document.getElementById('home-plan-new').textContent     = plan.newLine;
-  document.getElementById('home-plan-next').textContent    = plan.nextLine;
 
   const pct = goal > 0 ? Math.min(100, Math.round(done / goal * 100)) : 0;
   document.getElementById('daily-prog-fill').style.width = pct + '%';
@@ -798,7 +794,6 @@ function buildDailyPlan(flow, done, remaining) {
   var due = flow.dueWords;
   var newWords = flow.lessonWords;
   var newLesson = flow.lessonMeta;
-  var newLessonCount = getDistinctLessonCount(newWords);
   var nextLesson = flow.nextLesson;
   var summary = '';
   var headline = 'Dziś nie ma już nic pilnego.';
@@ -806,28 +801,23 @@ function buildDailyPlan(flow, done, remaining) {
 
   if (flow.state === 'session_complete') {
     headline = 'Dzisiejsza sesja jest już skończona.';
-    summary = nextLesson
-      ? 'Plan na dziś gotowy. Możesz iść dalej w kursie.'
-      : 'Plan na dziś gotowy.';
+    summary = nextLesson ? nextLesson.shortLabel : 'Plan na dziś gotowy.';
     action = nextLesson ? { type: 'course_lesson', lessonKey: nextLesson.key } : { type: 'none' };
   } else if (flow.state === 'reviews_due') {
-    headline = newWords.length > 0
-      ? 'Najpierw powtórki, potem nowa lekcja.'
-      : 'Dziś skupiasz się na powtórkach.';
+    headline = newWords.length > 0 && newLesson
+      ? ('Lekcja ' + newLesson.shortLabel)
+      : 'Dzisiejsze powtórki';
     summary = newWords.length > 0
-      ? 'Powtórki z wcześniejszych lekcji, potem nowa lekcja.'
-      : 'Dziś tylko powtórki z wcześniejszych lekcji.';
+      ? 'Najpierw powtórki, potem nowa lekcja.'
+      : 'Powtórki z wcześniejszych lekcji.';
     action = { type: 'daily_session' };
   } else if (flow.state === 'lesson_ready' && newWords.length > 0) {
-    headline = 'Dziś wchodzisz w nową lekcję.';
-    summary = newLesson
-      ? 'Teraz lekcja ' + newLesson.shortLabel + '.'
-      : 'Teraz nowe słowa.';
+    headline = newLesson ? ('Lekcja ' + newLesson.shortLabel) : 'Nowe słowa';
+    summary = 'Teraz nowe słowa.';
     action = { type: 'daily_session' };
   } else if (flow.state === 'no_content_available') {
-    summary = nextLesson
-      ? 'Na dziś brak kart. Możesz przejść do kolejnej lekcji.'
-      : 'Na dziś brak kart.';
+    headline = nextLesson ? ('Lekcja ' + nextLesson.shortLabel) : 'Dzisiejsza sesja';
+    summary = nextLesson ? 'Na dziś brak kart.' : 'Na dziś brak kart.';
     action = nextLesson ? { type: 'course_lesson', lessonKey: nextLesson.key } : { type: 'none' };
   } else {
     summary = 'Na dziś brak kart.';
@@ -841,23 +831,10 @@ function buildDailyPlan(flow, done, remaining) {
   if (newWords.length > 0) {
     if (newLesson) {
       newLine = newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów') +
-        ' · ' + newLesson.shortLabel;
-      if (newLessonCount > 1) {
-        newLine += ' i ' + (newLessonCount - 1) + ' ' +
-          pluralizeWords(newLessonCount - 1, 'kolejnej lekcji', 'kolejnych lekcji', 'kolejnych lekcji');
-      }
+        ' z lekcji ' + newLesson.lessonCode;
     } else {
       newLine = newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów');
     }
-  }
-
-  var nextLine = 'Po tej sesji zamkniesz plan dnia.';
-  if (due.length > 0 && newWords.length > 0 && newLesson) {
-    nextLine = 'Po powtórkach: ' + newLesson.shortLabel;
-  } else if (newWords.length > 0 && newLesson) {
-    nextLine = 'Lekcja: ' + newLesson.shortLabel;
-  } else if (nextLesson) {
-    nextLine = 'Następna lekcja: ' + nextLesson.shortLabel;
   }
 
   var cta = 'Powtórz słówka →';
@@ -882,7 +859,6 @@ function buildDailyPlan(flow, done, remaining) {
     headline: headline,
     reviewsLine: reviewsLine,
     newLine: newLine,
-    nextLine: nextLine,
     cta: cta,
     action: action
   };
