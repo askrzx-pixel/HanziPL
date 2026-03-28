@@ -243,8 +243,8 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 }
 .wcard:active{transform:scale(.97);}
 .wcard .hz{font-family:'Noto Sans SC',sans-serif;font-size:1.8rem;color:var(--red);display:block;}
-.wcard .py{font-family:Inter,sans-serif;font-size:.78rem;color:var(--gold);font-style:italic;margin-top:2px;}
-.wcard .tr{font-family:Inter,sans-serif;font-size:.85rem;color:var(--ink);font-weight:600;margin-top:4px;line-height:1.4;}
+.wcard .py{font-family:Inter,sans-serif;font-size:.75rem;color:var(--gold);font-style:italic;margin-top:2px;}
+.wcard .tr{font-family:Inter,sans-serif;font-size:.95rem;color:var(--ink);font-weight:700;margin-top:7px;line-height:1.4;opacity:1;}
 .wcard .ls{font-family:Inter,sans-serif;font-size:.62rem;font-weight:500;color:var(--muted);margin-top:4px;}
 .wcard .srs-tag{font-family:Inter,sans-serif;font-size:.58rem;font-weight:500;margin-top:6px;padding:2px 6px;border-radius:20px;display:inline-block;}
 .srs-tag.new{background:rgba(138,106,32,.15);color:var(--gold);}
@@ -326,7 +326,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .front .fhz{font-family:'Noto Sans SC',sans-serif;font-size:5rem;color:var(--red);line-height:1;}
 .front .fhint{font-family:Inter,sans-serif;font-size:.62rem;font-weight:500;color:var(--border2);margin-top:14px;letter-spacing:.7px;text-transform:uppercase;}
 .back .bpy{font-family:Inter,sans-serif;font-style:italic;font-size:1.25rem;font-weight:400;color:var(--gold2);margin-bottom:7px;}
-.back .btr{font-family:Inter,sans-serif;font-size:1.75rem;font-weight:600;color:var(--paper);text-align:center;line-height:1.3;}
+.back .btr{font-family:Inter,sans-serif;font-size:1.8rem;font-weight:700;color:var(--paper);text-align:center;line-height:1.3;opacity:1;}
 .back .bhz{font-family:'Noto Sans SC',sans-serif;font-size:.9rem;color:rgba(242,232,213,.25);margin-top:9px;}
 
 /* SRS answer buttons */
@@ -360,7 +360,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .qopt{
   background:var(--paper2);border:1.5px solid var(--border);
   border-radius:12px;padding:15px 12px;cursor:pointer;
-  font-family:Inter,sans-serif;font-size:.95rem;font-weight:500;
+  font-family:Inter,sans-serif;font-size:.95rem;font-weight:600;
   text-align:center;color:var(--ink);
   transition:all .18s ease;min-height:54px;
   display:flex;align-items:center;justify-content:center;
@@ -391,7 +391,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   transition:all .18s;min-height:50px;min-width:56px;
 }
 .tchk:active{background:var(--red);transform:scale(.97);}
-.tfb{text-align:center;margin-top:11px;min-height:22px;font-size:.9rem;}
+.tfb{text-align:center;margin-top:11px;min-height:22px;font-family:Inter,sans-serif;font-size:.92rem;font-weight:600;color:var(--ink);}
 .tfb.ok{color:var(--green);}
 .tfb.err{color:var(--red);}
 
