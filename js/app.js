@@ -163,7 +163,8 @@ function renderHomeScreen() {
   }
 
   const mastered = WORDS.filter(w => SRS.isMastered(srsData[w.id])).length;
-  document.getElementById('hs-total').textContent    = WORDS.length;
+  const courseStats = getCourseProgressStats();
+  document.getElementById('hs-total').textContent    = courseStats.completedLessons;
   document.getElementById('hs-mastered').textContent = mastered;
   updateNavMastered();
 
@@ -640,6 +641,7 @@ function startDailyPhase(index) {
 }
 
 function showDailyTransitionScreen(nextPhase) {
+  var prevPhase = dailySessionFlow.phases[dailySessionFlow.currentPhaseIndex - 1] || null;
   hideAll();
   document.getElementById('sres').style.display = 'block';
 
@@ -649,9 +651,26 @@ function showDailyTransitionScreen(nextPhase) {
     banner.textContent = '✓ Etap ukończony';
   }
 
-  document.getElementById('rsc').textContent = nextPhase.words.length;
+  document.getElementById('rsc').textContent = nextPhase.stepLabel;
   document.getElementById('rsl').textContent = nextPhase.transitionTitle;
   document.getElementById('res-detail').textContent = nextPhase.transitionDetail;
+
+  var courseEl = document.getElementById('res-course');
+  if (courseEl) {
+    if (nextPhase.courseLine) {
+      courseEl.style.display = 'block';
+      courseEl.textContent = nextPhase.courseLine;
+    } else {
+      courseEl.style.display = 'none';
+      courseEl.textContent = '';
+    }
+  }
+
+  var planEl = document.getElementById('res-plan');
+  if (planEl) {
+    planEl.style.display = 'block';
+    planEl.innerHTML = buildTransitionPlanMarkup(prevPhase, nextPhase);
+  }
 
   var nextEl = document.getElementById('res-next');
   if (nextEl) {
@@ -661,7 +680,7 @@ function showDailyTransitionScreen(nextPhase) {
 
   resultsPrimaryAction = { type: 'daily_next_phase', phaseIndex: dailySessionFlow.currentPhaseIndex };
   resultsSecondaryAction = { type: 'back_home' };
-  updateResultsButtons(nextPhase.transitionCta, '🏠 Wróć do domu');
+  updateResultsButtons(nextPhase.primaryCta || nextPhase.transitionCta, '🏠 Wróć do domu');
 }
 
 function showDailyCompletionScreen() {
@@ -678,6 +697,23 @@ function showDailyCompletionScreen() {
   document.getElementById('rsc').textContent = summary.score;
   document.getElementById('rsl').textContent = summary.title;
   document.getElementById('res-detail').textContent = summary.detail;
+
+  var courseEl = document.getElementById('res-course');
+  if (courseEl) {
+    if (summary.course) {
+      courseEl.style.display = 'block';
+      courseEl.textContent = summary.course;
+    } else {
+      courseEl.style.display = 'none';
+      courseEl.textContent = '';
+    }
+  }
+
+  var planEl = document.getElementById('res-plan');
+  if (planEl) {
+    planEl.style.display = 'none';
+    planEl.innerHTML = '';
+  }
 
   var nextEl = document.getElementById('res-next');
   if (nextEl) {
@@ -764,12 +800,14 @@ function buildDailyPlan(flow, done, remaining) {
       ? 'Najpierw powtórki, potem nowa lekcja.'
       : 'Dziś skupiasz się na powtórkach.';
     summary = newWords.length > 0
-      ? 'Zaczniesz od zaległych SRS, a potem przejdziesz do nowego materiału z kursu.'
+      ? 'Zaczniesz od powtórek z wcześniejszych lekcji, a potem przejdziesz do nowego materiału z kursu.'
       : 'Na dziś liczą się tylko powtórki z wcześniejszych lekcji.';
     action = { type: 'daily_session' };
   } else if (flow.state === 'lesson_ready' && newWords.length > 0) {
     headline = 'Dziś wchodzisz w nową lekcję.';
-    summary = 'Kolejka powtórek jest czysta, więc możesz przejść prosto do nowego materiału.';
+    summary = newLesson
+      ? 'Dzisiejsze powtórki są już za Tobą. Teraz przechodzisz do lekcji ' + newLesson.shortLabel + '.'
+      : 'Dzisiejsze powtórki są już za Tobą. Teraz przechodzisz do nowego materiału.';
     action = { type: 'daily_session' };
   } else if (flow.state === 'no_content_available') {
     summary = nextLesson
@@ -803,7 +841,7 @@ function buildDailyPlan(flow, done, remaining) {
   if (due.length > 0 && newWords.length > 0 && newLesson) {
     nextLine = 'Po powtórkach wejdziesz w lekcję ' + newLesson.shortLabel;
   } else if (newWords.length > 0 && newLesson) {
-    nextLine = 'Następny krok: lekcja ' + newLesson.shortLabel;
+    nextLine = 'Jesteś w kursie: ' + newLesson.shortLabel;
   } else if (nextLesson) {
     nextLine = 'Następna lekcja: ' + nextLesson.shortLabel;
   }
@@ -997,6 +1035,16 @@ function showResults() {
   document.getElementById('res-detail').textContent =
     'Sesja: ' + sessionReviews + ' powtórek · Skuteczność: ' +
     (sessionReviews > 0 ? Math.round(sessionCorrect / sessionReviews * 100) : 0) + '%';
+  var courseEl = document.getElementById('res-course');
+  if (courseEl) {
+    courseEl.style.display = 'none';
+    courseEl.textContent = '';
+  }
+  var planEl = document.getElementById('res-plan');
+  if (planEl) {
+    planEl.style.display = 'none';
+    planEl.innerHTML = '';
+  }
   var nextEl = document.getElementById('res-next');
   if (nextEl) {
     nextEl.style.display = 'none';
@@ -1166,6 +1214,7 @@ function createDailySessionFlow() {
   var nextLesson = getNextCourseLesson(lessonMeta ? lessonMeta.key : '');
   var goalTotal = dueWords.length + lessonWords.length;
   var phases = [];
+  var totalSteps = lessonWords.length ? 3 : 2;
 
   if (dueWords.length) {
     phases.push({
@@ -1173,21 +1222,26 @@ function createDailySessionFlow() {
       state: 'reviews_due',
       words: shuffle([].concat(dueWords)),
       countsToGoal: true,
-      modeLabel: 'ETAP 1 · POWTÓRKI',
-      kicker: 'Teraz',
-      title: dueWords.length + ' ' + pluralizeWords(dueWords.length, 'powtórka SRS', 'powtórki SRS', 'powtórek SRS'),
-      sub: 'Powtarzasz słowa z wcześniejszych lekcji. To ten etap, który podtrzymuje materiał w pamięci.',
+      stepNumber: 1,
+      totalSteps: totalSteps,
+      stepLabel: '1/' + totalSteps,
+      modeLabel: 'KROK 1 · POWTÓRKI',
+      kicker: 'Krok 1 z ' + totalSteps,
+      title: dueWords.length + ' ' + pluralizeWords(dueWords.length, 'dzisiejsza powtórka', 'dzisiejsze powtórki', 'dzisiejszych powtórek'),
+      sub: 'Powtarzasz słówka z wcześniejszych lekcji. To pierwszy etap dzisiejszego planu.',
       next: lessonWords.length
         ? 'Potem: nowe słowa z lekcji ' + lessonMeta.shortLabel
         : 'Potem: krótkie podsumowanie sesji.',
-      transitionTitle: lessonWords.length ? 'Powtórki zamknięte' : 'Powtórki gotowe',
+      transitionTitle: lessonWords.length ? 'Powtórki ukończone' : 'Powtórki gotowe',
       transitionDetail: lessonWords.length
-        ? 'Kolejny etap to nowy materiał z kursu. Teraz przejdziesz do konkretnej lekcji zamiast losowej puli słówek.'
+        ? 'Powtórki z wcześniejszych lekcji są już za Tobą. Teraz przechodzisz do nowego materiału z konkretnej lekcji w kursie.'
         : 'Nie ma dziś nowej lekcji do uruchomienia, więc po tym etapie domkniesz sesję.',
+      courseLine: lessonWords.length ? 'Jesteś w kursie: ' + lessonMeta.shortLabel : '',
       transitionNext: lessonWords.length
         ? 'Za chwilę: lekcja ' + lessonMeta.shortLabel
         : 'Za chwilę: ekran zakończenia sesji.',
-      transitionCta: lessonWords.length ? 'Przejdź do nowej lekcji →' : 'Zobacz podsumowanie →'
+      transitionCta: lessonWords.length ? 'Przejdź do nowych słów →' : 'Zobacz podsumowanie →',
+      primaryCta: lessonWords.length ? 'Rozpocznij lekcję ' + lessonMeta.lessonCode + ' →' : 'Zobacz podsumowanie →'
     });
   }
 
@@ -1197,10 +1251,13 @@ function createDailySessionFlow() {
       state: 'lesson_ready',
       words: shuffle([].concat(lessonWords)),
       countsToGoal: true,
-      modeLabel: 'ETAP 2 · NOWA LEKCJA',
-      kicker: 'Teraz',
+      stepNumber: dueWords.length ? 2 : 1,
+      totalSteps: totalSteps,
+      stepLabel: (dueWords.length ? 2 : 1) + '/' + totalSteps,
+      modeLabel: 'KROK ' + (dueWords.length ? 2 : 1) + ' · NOWE SŁOWA',
+      kicker: 'Krok ' + (dueWords.length ? 2 : 1) + ' z ' + totalSteps,
       title: 'Nowe słowa z lekcji ' + lessonMeta.shortLabel,
-      sub: 'Poznajesz nowy materiał w ramach kursu. Wszystkie te słowa pochodzą z jednej lekcji.',
+      sub: 'Poznajesz nowy materiał z jednej konkretnej lekcji. Wszystkie te słowa pochodzą z: ' + lessonMeta.shortLabel + '.',
       next: lessonOverflow
         ? 'Po sesji możesz dokończyć resztę tej lekcji.'
         : nextLesson
@@ -1208,6 +1265,7 @@ function createDailySessionFlow() {
           : 'Po sesji: zakończenie dziennego planu.',
       transitionTitle: 'Nowa lekcja gotowa',
       transitionDetail: 'Główna część dziennego planu jest skończona. Teraz zobaczysz krótkie domknięcie i następny sensowny krok.',
+      courseLine: 'Jesteś w kursie: ' + lessonMeta.shortLabel,
       transitionNext: lessonOverflow
         ? 'Możesz wrócić do tej samej lekcji lub iść dalej w kursie.'
         : nextLesson
@@ -1265,10 +1323,53 @@ function getDailyCompletionSummary() {
     score: goalDone + '/' + (dailySessionFlow ? dailySessionFlow.goalTotal : goalDone),
     title: reinforcement ? 'Plan na dziś zamknięty' : 'Dzisiejszy plan gotowy',
     detail: 'Do dziennego celu liczą się tylko karty z planu: powtórki i nowe słowa. Dzisiejsza skuteczność: ' + pct + '%.',
+    course: reinforcement && reinforcement.lessonKey ? 'Dalej w kursie: ' + (parseSourceLessonMeta(reinforcement.lessonKey) || {}).shortLabel : '',
     next: reinforcement ? reinforcement.summary : 'Możesz wrócić do domu albo zakończyć na dziś.',
     primaryAction: reinforcement || { type: 'back_home' },
     primaryLabel: reinforcement ? reinforcement.label : ''
   };
+}
+
+function buildTransitionPlanMarkup(prevPhase, nextPhase) {
+  var total = nextPhase && nextPhase.totalSteps ? nextPhase.totalSteps : 3;
+  var rows = [];
+
+  if (prevPhase) {
+    rows.push('<div class="res-plan-item done"><strong>Krok ' + prevPhase.stepNumber + ' z ' + total + ':</strong> ' + escapeHtml(prevPhase.title) + ' — ukończono</div>');
+  }
+  if (nextPhase) {
+    rows.push('<div class="res-plan-item now"><strong>Krok ' + nextPhase.stepNumber + ' z ' + total + ':</strong> ' + escapeHtml(nextPhase.title) + ' — teraz</div>');
+  }
+
+  if (total >= 3) {
+    var summaryStep = total;
+    var summaryState = nextPhase && nextPhase.stepNumber === summaryStep ? 'teraz' : 'potem';
+    rows.push('<div class="res-plan-item"><strong>Krok ' + summaryStep + ' z ' + total + ':</strong> Podsumowanie — ' + summaryState + '</div>');
+  }
+
+  return rows.join('');
+}
+
+function getCourseProgressStats() {
+  if (typeof getLessonStatusByKey !== 'function') {
+    return { completedLessons: 0, startedLessons: 0 };
+  }
+  var lessons = getOrderedCourseLessons();
+  var completed = 0;
+  var started = 0;
+  lessons.forEach(function(lesson) {
+    var status = getLessonStatusByKey(lesson.key);
+    if (status === 'done') completed++;
+    if (status === 'done' || status === 'in-progress') started++;
+  });
+  return { completedLessons: completed, startedLessons: started };
+}
+
+function escapeHtml(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 function pluralizeWords(n, one, few, many) {
