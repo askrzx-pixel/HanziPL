@@ -915,7 +915,7 @@ function renderCompletionExtras(data) {
 
   if (contextEl) {
     if (data && data.contextItems && data.contextItems.length) {
-      var contextTitle = data.contextTitle || 'Prosty kontekst';
+      var contextTitle = data.contextTitle || 'Jak używamy tych słów';
       contextEl.style.display = 'block';
       contextEl.innerHTML =
         '<div class="res-extra-title">' + escapeHtml(contextTitle) + '</div>' +
@@ -926,7 +926,8 @@ function renderCompletionExtras(data) {
                 '<span class="res-context-hz">' + escapeHtml(item.hanzi || '—') + '</span>' +
                 '<span class="res-context-py">' + escapeHtml(item.pinyin || '') + '</span>' +
               '</div>' +
-              '<div class="res-context-note">' + escapeHtml(item.note || item.pl || 'Prosta fraza z tej sesji.') + '</div>' +
+              '<div class="res-context-pl">' + escapeHtml(item.pl || '—') + '</div>' +
+              '<div class="res-context-note">' + escapeHtml(item.note || 'Używamy, gdy to słowo pasuje do sytuacji.') + '</div>' +
             '</div>';
           }).join('') +
         '</div>';
@@ -959,14 +960,21 @@ function getShortPolishLabel(text) {
 }
 
 function getCompletionUsageLabel(word) {
+  var hanzi = word && word.hanzi;
   var tags = Array.isArray(word && word.tags) ? word.tags : [];
-  if (tags.indexOf('powitanie') !== -1) return 'Na powitanie.';
-  if (tags.indexOf('pożegnanie') !== -1) return 'Na pożegnanie.';
-  if (tags.indexOf('pytanie') !== -1 || tags.indexOf('zaimek pytający') !== -1) return 'Gdy zadajesz proste pytanie.';
-  if (tags.indexOf('grzeczność') !== -1) return 'W uprzejmej odpowiedzi.';
-  if (tags.indexOf('czasownik') !== -1) return 'Przy prostym mówieniu o czynności.';
-  if (tags.indexOf('osoba') !== -1 || tags.indexOf('imię') !== -1) return 'Gdy mówisz o sobie albo o kimś.';
-  return 'Przyda się przy słowie: ' + getShortPolishLabel(word && word.pl);
+  if (hanzi === '对不起') return 'Używamy, gdy chcemy przeprosić.';
+  if (hanzi === '没关系') return 'Używamy, gdy odpowiadamy, że nic się nie stało.';
+  if (hanzi === '谢谢') return 'Używamy, gdy chcemy komuś podziękować.';
+  if (hanzi === '不客气') return 'Mówimy tak, gdy odpowiadamy na podziękowanie.';
+  if (hanzi === '请') return 'Używamy, gdy prosimy albo uprzejmie zapraszamy.';
+  if (hanzi === '不好意思') return 'Używamy, gdy chcemy kogoś grzecznie zaczepić albo lekko przeprosić.';
+  if (hanzi === '你好' || hanzi === '您好' || tags.indexOf('powitanie') !== -1) return 'Używamy, gdy się z kimś witamy.';
+  if (tags.indexOf('pożegnanie') !== -1) return 'Używamy, gdy się z kimś żegnamy.';
+  if (tags.indexOf('pytanie') !== -1 || tags.indexOf('zaimek pytający') !== -1) return 'Używamy, gdy zadajemy proste pytanie.';
+  if (tags.indexOf('grzeczność') !== -1) return 'Używamy w uprzejmej odpowiedzi albo prośbie.';
+  if (tags.indexOf('czasownik') !== -1) return 'Używamy, gdy mówimy o prostej czynności.';
+  if (tags.indexOf('osoba') !== -1 || tags.indexOf('imię') !== -1) return 'Używamy, gdy mówimy o sobie albo o innych osobach.';
+  return 'Używamy, gdy chcemy powiedzieć: ' + getShortPolishLabel(word && word.pl) + '.';
 }
 
 function buildCompletionContextItems(words) {
@@ -985,7 +993,7 @@ function buildCompletionExtras(options) {
   var sessionWords = getUniqueWords(getSessionBaseWords());
   var reviewWords = [];
   var reviewTitle = '';
-  var contextTitle = 'Prosty kontekst';
+  var contextTitle = 'Jak używamy tych słów';
   var lessonMeta = options && options.lessonMeta ? options.lessonMeta : null;
   var hasLessonReview = mode === 'daily' && options && Array.isArray(options.lessonWords) && options.lessonWords.length;
 
@@ -1011,9 +1019,9 @@ function buildCompletionExtras(options) {
   }
 
   if (mode === 'daily' && !hasLessonReview) {
-    contextTitle = 'Kontekst z dzisiejszej sesji';
+    contextTitle = 'Jak używamy tych słów';
   } else if (lessonMeta && lessonMeta.lessonCode) {
-    contextTitle = 'Po lekcji ' + lessonMeta.lessonCode;
+    contextTitle = 'Jak używamy tych słów';
   }
 
   var contextSource = reviewWords.length ? reviewWords : sessionWords;
