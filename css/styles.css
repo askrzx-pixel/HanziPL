@@ -488,12 +488,13 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   text-transform:uppercase;
 }
 .resc{font-family:'Noto Sans SC',sans-serif;font-size:4rem;color:var(--red);line-height:1;}
-.resl{font-family:Inter,sans-serif;font-size:1.05rem;font-weight:400;color:var(--muted);margin:8px 0 6px;}
+.resc.resc-step{font-family:Inter,sans-serif;font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.4px;line-height:1;margin-bottom:4px;}
+.resl{font-family:Inter,sans-serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin:6px 0 8px;}
 .res-detail{font-family:Inter,sans-serif;font-size:.68rem;color:var(--muted);margin-bottom:22px;}
 .res-course{font-family:Inter,sans-serif;font-size:.82rem;font-weight:600;color:var(--ink2);margin:0 auto 12px;max-width:28rem;line-height:1.5;}
 .res-plan{
   max-width:30rem;
-  margin:0 auto 16px;
+  margin:4px auto 16px;
   padding:12px 14px;
   background:var(--paper2);
   border:1px solid var(--border);
@@ -505,7 +506,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .res-plan-item.now{color:var(--ink2);}
 .res-plan-item.done{color:var(--green2);}
 .res-next{font-family:Inter,sans-serif;font-size:.8rem;font-weight:600;color:var(--ink2);margin:0 auto 18px;max-width:28rem;line-height:1.55;}
-.resbtns{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;}
+.resbtns{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
 
 /* Completion banner */
 .done-banner{background:var(--green);border-radius:var(--radius);padding:16px;text-align:center;margin-bottom:16px;}

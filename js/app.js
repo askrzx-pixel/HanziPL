@@ -748,12 +748,21 @@ function showDailyTransitionScreen(nextPhase) {
   var banner = document.getElementById('res-daily-banner');
   if (banner) {
     banner.style.display = 'block';
-    banner.textContent = '✓ Etap ukończony';
+    var bannerText = prevPhase
+      ? (prevPhase.key === 'reviews' ? '✓ Powtórki ukończone' : '✓ Lekcja ukończona')
+      : '✓ Etap ukończony';
+    banner.textContent = bannerText;
   }
 
-  document.getElementById('rsc').textContent = 'Krok ' + nextPhase.stepNumber + ' z ' + nextPhase.totalSteps;
+  var rscEl = document.getElementById('rsc');
+  if (rscEl) {
+    rscEl.textContent = 'Krok ' + nextPhase.stepNumber + ' z ' + nextPhase.totalSteps;
+    rscEl.classList.add('resc-step');
+  }
   document.getElementById('rsl').textContent = transitionPhase.transitionTitle || nextPhase.transitionTitle;
-  document.getElementById('res-detail').textContent = transitionPhase.transitionDetail || nextPhase.transitionDetail;
+
+  var detailEl = document.getElementById('res-detail');
+  if (detailEl) { detailEl.style.display = 'none'; detailEl.textContent = ''; }
 
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
@@ -774,12 +783,7 @@ function showDailyTransitionScreen(nextPhase) {
   }
 
   var nextEl = document.getElementById('res-next');
-  if (nextEl) {
-    nextEl.style.display = 'block';
-    nextEl.textContent = nextPhase.key === 'lesson'
-      ? 'Teraz: ' + nextPhase.title
-      : (transitionPhase.transitionNext || nextPhase.transitionNext);
-  }
+  if (nextEl) { nextEl.style.display = 'none'; nextEl.textContent = ''; }
 
   resultsPrimaryAction = { type: 'daily_next_phase', phaseIndex: dailySessionFlow.currentPhaseIndex };
   resultsSecondaryAction = { type: 'back_home' };
@@ -787,7 +791,7 @@ function showDailyTransitionScreen(nextPhase) {
     nextPhase.key === 'lesson'
       ? ('Rozpocznij lekcję ' + (dailySessionFlow.lessonMeta ? dailySessionFlow.lessonMeta.lessonCode : '') + ' →')
       : (transitionPhase.primaryCta || transitionPhase.transitionCta || nextPhase.primaryCta || nextPhase.transitionCta),
-    '🏠 Wróć do domu'
+    'Wróć do dziś'
   );
 }
 
@@ -802,9 +806,17 @@ function showDailyCompletionScreen() {
     banner.textContent = summary.banner;
   }
 
-  document.getElementById('rsc').textContent = summary.score;
+  var rscEl2 = document.getElementById('rsc');
+  if (rscEl2) {
+    rscEl2.textContent = summary.score;
+    rscEl2.classList.remove('resc-step');
+  }
   document.getElementById('rsl').textContent = summary.title;
-  document.getElementById('res-detail').textContent = summary.detail;
+  var detailEl2 = document.getElementById('res-detail');
+  if (detailEl2) {
+    detailEl2.style.display = '';
+    detailEl2.textContent = summary.detail;
+  }
 
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
@@ -836,7 +848,7 @@ function showDailyCompletionScreen() {
 
   resultsPrimaryAction = summary.primaryAction;
   resultsSecondaryAction = { type: 'back_home' };
-  updateResultsButtons(summary.primaryLabel, '🏠 Wróć do domu');
+  updateResultsButtons(summary.primaryLabel, 'Wróć do dziś');
 
   checkAndUpdateStreak();
   renderStreakBadge();
@@ -854,7 +866,7 @@ function updateResultsButtons(primaryLabel, secondaryLabel) {
       primaryBtn.style.display = 'none';
     }
   }
-  if (secondaryBtn) secondaryBtn.textContent = secondaryLabel || '🏠 Wróć do domu';
+  if (secondaryBtn) secondaryBtn.textContent = secondaryLabel || 'Wróć do dziś';
 }
 
 function handleResultsPrimaryAction() {
@@ -1330,11 +1342,9 @@ function createDailySessionFlow() {
       next: lessonWords.length
         ? 'Potem: nowe słowa z lekcji ' + lessonMeta.shortLabel
         : 'Potem: krótkie podsumowanie sesji.',
-      transitionTitle: lessonWords.length ? 'Powtórki ukończone' : 'Powtórki gotowe',
-      transitionDetail: lessonWords.length
-        ? 'Powtórki z wcześniejszych lekcji są już za Tobą. Teraz przechodzisz do nowego materiału z konkretnej lekcji w kursie.'
-        : 'Nie ma dziś nowej lekcji do uruchomienia, więc po tym etapie domkniesz sesję.',
-      courseLine: lessonWords.length ? 'Jesteś w kursie: ' + lessonMeta.shortLabel : '',
+      transitionTitle: lessonWords.length ? 'Czas na nowe słowa' : 'Powtórki gotowe',
+      transitionDetail: '',
+      courseLine: lessonWords.length ? lessonMeta.fullLabel : '',
       transitionNext: lessonWords.length
         ? 'Za chwilę: lekcja ' + lessonMeta.shortLabel
         : 'Za chwilę: ekran zakończenia sesji.',
@@ -1363,7 +1373,7 @@ function createDailySessionFlow() {
           : 'Po sesji: zakończenie dziennego planu.',
       transitionTitle: 'Nowa lekcja gotowa',
       transitionDetail: 'Główna część dziennego planu jest skończona. Teraz zobaczysz krótkie domknięcie i następny sensowny krok.',
-      courseLine: 'Jesteś w kursie: ' + lessonMeta.shortLabel,
+      courseLine: lessonMeta.fullLabel,
       transitionNext: lessonOverflow
         ? 'Możesz wrócić do tej samej lekcji lub iść dalej w kursie.'
         : nextLesson
@@ -1433,16 +1443,16 @@ function buildTransitionPlanMarkup(prevPhase, nextPhase) {
   var rows = [];
 
   if (prevPhase) {
-    rows.push('<div class="res-plan-item done"><strong>Krok ' + prevPhase.stepNumber + ' z ' + total + ':</strong> ' + escapeHtml(prevPhase.title) + ' — ukończono</div>');
+    rows.push('<div class="res-plan-item done">✓ Krok ' + prevPhase.stepNumber + ': ' + escapeHtml(prevPhase.title) + '</div>');
   }
   if (nextPhase) {
-    rows.push('<div class="res-plan-item now"><strong>Krok ' + nextPhase.stepNumber + ' z ' + total + ':</strong> ' + escapeHtml(nextPhase.title) + ' — teraz</div>');
+    rows.push('<div class="res-plan-item now">→ Krok ' + nextPhase.stepNumber + ': ' + escapeHtml(nextPhase.title) + '</div>');
   }
 
   if (total >= 3) {
     var summaryStep = total;
     var summaryState = nextPhase && nextPhase.stepNumber === summaryStep ? 'teraz' : 'potem';
-    rows.push('<div class="res-plan-item"><strong>Krok ' + summaryStep + ' z ' + total + ':</strong> Podsumowanie — ' + summaryState + '</div>');
+    rows.push('<div class="res-plan-item">· Krok ' + summaryStep + ': Podsumowanie' + (summaryState === 'teraz' ? ' — teraz' : '') + '</div>');
   }
 
   return rows.join('');
