@@ -381,37 +381,109 @@ function startHardSession() {
 }
 
 // ── WORDS BROWSER ─────────────────────────────────
-var curFilter2 = 'all';
-var curTopic2  = 'all';
-var curLevel2  = 'all';
+var curSegment2 = 'all';
+var curStatus2  = 'all';
+var curLesson2  = 'all';
 
-function filterWords(l, btn) {
-  curFilter2 = l;
-  document.querySelectorAll('#frow-lesson .chip').forEach(b => b.classList.remove('on'));
+function filterWordsSegment(segKey, btn) {
+  curSegment2 = segKey;
+  curLesson2 = 'all';
+  document.querySelectorAll('#frow-segment .chip').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  syncWordLessonFilter();
+  renderWords();
+}
+
+function filterWordStatus(status, btn) {
+  curStatus2 = status;
+  document.querySelectorAll('#frow-status .chip').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   renderWords();
 }
 
-function filterTopic(t, btn) {
-  curTopic2 = t;
-  document.querySelectorAll('#frow-topic .chip').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  renderWords();
-}
-
-function filterLevel(lv, btn) {
-  curLevel2 = lv;
+function filterWordLesson(lessonKey, btn) {
+  curLesson2 = lessonKey;
   document.querySelectorAll('#frow-level .chip').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   renderWords();
 }
 
+function isHardWord(word) {
+  var card = srsData[word.id] || SRS.defaultCard();
+  var reviews = card.reviews || 0;
+  var accuracy = (card.correct || 0) / Math.max(reviews, 1);
+  return reviews >= 2 && accuracy < 0.7;
+}
+
+function getWordBrowserSegmentItems() {
+  if (typeof getV3Segments !== 'function') return [{ value: 'all', label: 'Wszystkie' }];
+  return [{ value: 'all', label: 'Wszystkie' }].concat(
+    getV3Segments().map(function(seg) {
+      return { value: String(seg.segNum), label: 'Segment ' + seg.segNum };
+    })
+  );
+}
+
+function getWordBrowserStatusItems() {
+  return [
+    { value: 'all', label: 'Wszystkie' },
+    { value: 'new', label: 'Nowe' },
+    { value: 'learning', label: 'W nauce' },
+    { value: 'mastered', label: 'Opanowane' },
+    { value: 'hard', label: 'Trudne' }
+  ];
+}
+
+function getWordBrowserLessonItems() {
+  if (curSegment2 === 'all' || typeof getV3Segments !== 'function') {
+    return [{ value: 'all', label: 'Wszystkie' }];
+  }
+  var segments = getV3Segments();
+  for (var i = 0; i < segments.length; i++) {
+    if (String(segments[i].segNum) === String(curSegment2)) {
+      return [{ value: 'all', label: 'Wszystkie lekcje' }].concat(
+        segments[i].lessons.map(function(lesson) {
+          var meta = parseSourceLessonMeta(lesson.key);
+          return { value: lesson.key, label: meta.shortLabel || lesson.name };
+        })
+      );
+    }
+  }
+  return [{ value: 'all', label: 'Wszystkie lekcje' }];
+}
+
+function syncWordLessonFilter() {
+  var wrap = document.getElementById('words-lesson-filter');
+  if (!wrap) return;
+  if (curSegment2 === 'all') {
+    wrap.hidden = true;
+    document.getElementById('frow-level').innerHTML = '';
+    return;
+  }
+
+  wrap.hidden = false;
+  renderChipList('frow-level', getWordBrowserLessonItems(),
+    function(v) { return curLesson2 === v; },
+    filterWordLesson);
+}
+
 function renderWords() {
   const q = (document.getElementById('srch').value || '').toLowerCase();
   let f = getActiveWords();
-  if (curFilter2 !== 'all') f = f.filter(w => getNormalizedLessonKey(w) === curFilter2);
-  if (curTopic2  !== 'all') f = f.filter(w => w.topic === curTopic2);
-  if (curLevel2  !== 'all') f = f.filter(w => w.levelApprox === curLevel2);
+  if (curSegment2 !== 'all') {
+    f = f.filter(function(w) {
+      var meta = parseSourceLessonMeta(getRawWordLesson(w));
+      return meta && String(meta.segNum) === String(curSegment2);
+    });
+  }
+  if (curLesson2 !== 'all') f = f.filter(w => getRawWordLesson(w) === curLesson2);
+  if (curStatus2 === 'new') f = f.filter(w => SRS.isNew(srsData[w.id]));
+  if (curStatus2 === 'learning') f = f.filter(w => {
+    var c = srsData[w.id];
+    return !SRS.isNew(c) && !SRS.isMastered(c);
+  });
+  if (curStatus2 === 'mastered') f = f.filter(w => SRS.isMastered(srsData[w.id]));
+  if (curStatus2 === 'hard') f = f.filter(isHardWord);
   if (q) f = f.filter(w =>
     w.hanzi.includes(q) ||
     w.pinyin.toLowerCase().includes(q) ||
@@ -430,12 +502,10 @@ function renderWords() {
                : SRS.isDue(c)      ? '<span class="srs-tag due">Do powtórki</span>'
                :                     '<span class="srs-tag learning">W nauce</span>';
     const mPct = Math.min(100, Math.round((c.interval || 0) / 21 * 100));
-    const topicLbl = TOPIC_LABELS[w.topic] || w.topic || '';
-    const levelLbl = LEVEL_LABELS[w.levelApprox] || w.levelApprox || '';
+    const lessonMeta = parseSourceLessonMeta(getRawWordLesson(w));
     const metaHtml = '<div class="wcard-meta">' +
-      '<span class="ls">' + getNormalizedLessonKey(w) + '</span>' +
-      (topicLbl ? '<span class="wtopic">' + topicLbl + '</span>' : '') +
-      (levelLbl ? '<span class="wlevel">' + levelLbl + '</span>' : '') +
+      '<span class="ls">' + (lessonMeta ? lessonMeta.lessonCode : getNormalizedLessonKey(w)) + '</span>' +
+      (lessonMeta && lessonMeta.segNum !== null ? '<span class="wtopic">Segment ' + lessonMeta.segNum + '</span>' : '') +
       '</div>';
     const tagsHtml = (w.tags && w.tags.length)
       ? '<div class="wtags">' + w.tags.map(t => '<span class="wtag">' + t + '</span>').join('') + '</div>'
@@ -1886,15 +1956,13 @@ function initChips() {
   var levelItems  = getLevelItems();
 
   // Words browser — single-select filters
-  renderChipList('frow-lesson', lessonItems,
-    function(v) { return curFilter2 === v; },
-    filterWords);
-  renderChipList('frow-topic', topicItems,
-    function(v) { return curTopic2 === v; },
-    filterTopic);
-  renderChipList('frow-level', levelItems,
-    function(v) { return curLevel2 === v; },
-    filterLevel);
+  renderChipList('frow-segment', getWordBrowserSegmentItems(),
+    function(v) { return curSegment2 === v; },
+    filterWordsSegment);
+  renderChipList('frow-status', getWordBrowserStatusItems(),
+    function(v) { return curStatus2 === v; },
+    filterWordStatus);
+  syncWordLessonFilter();
 
   // Study screen — multi-select toggles
   renderChipList('slf', lessonItems,
