@@ -118,7 +118,12 @@ function buildSsml(hanzi, voice) {
 
 function filterWords(words, options) {
   let filtered = words.filter(function(word) {
-    return word && typeof word.id === 'string' && word.id.trim() && typeof word.hanzi === 'string' && word.hanzi.trim();
+    return word &&
+      word.contentStatus !== 'unresolved' &&
+      typeof word.id === 'string' &&
+      word.id.trim() &&
+      typeof word.hanzi === 'string' &&
+      word.hanzi.trim();
   });
 
   if (options.segment) {

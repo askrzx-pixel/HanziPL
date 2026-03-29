@@ -1,6 +1,7 @@
 # HanziPL audio generator
 
 Generator buduje bibliotekę pre-recorded audio dla słów z `js/words.js`.
+Domyślnie pomija rekordy oznaczone jako `contentStatus: "unresolved"`.
 
 ## Wymagane env vars
 
