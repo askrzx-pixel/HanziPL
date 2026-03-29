@@ -21,6 +21,7 @@ var resultsPrimaryAction = { type: 'restart_session' };
 var wordAudioPlayer = null;
 var wordAudioAvailability = Object.create(null);
 var currentWordAudioSrc = '';
+var currentWordAudioRequest = 0;
 var resultsSecondaryAction = { type: 'back_home' };
 
 function isActiveContentWord(word) {
@@ -815,14 +816,20 @@ function hideWordAudioButton() {
 async function syncCurrentWordAudio(word) {
   var btn = document.getElementById('fc-audio-btn');
   if (!btn) return;
+  var requestId = ++currentWordAudioRequest;
 
   hideWordAudioButton();
   currentWordAudioSrc = '';
+  if (wordAudioPlayer) {
+    wordAudioPlayer.pause();
+    wordAudioPlayer.currentTime = 0;
+  }
 
   var src = getWordAudioPath(word);
   if (!src) return;
 
   var available = await checkWordAudioAvailability(src);
+  if (requestId !== currentWordAudioRequest) return;
   if (!available) return;
 
   currentWordAudioSrc = src;
