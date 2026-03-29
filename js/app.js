@@ -16,6 +16,7 @@ var sessionMeta     = null;
 var dailySessionFlow = null;
 var dailySessionState = 'no_content_available';
 var todayPrimaryAction = { type: 'none' };
+var todaySecondaryAction = { type: 'none' };
 var resultsPrimaryAction = { type: 'restart_session' };
 var resultsSecondaryAction = { type: 'back_home' };
 
@@ -129,6 +130,7 @@ function renderHomeScreen() {
   const plan      = buildDailyPlan(flow, done, remaining);
   dailySessionState = flow.state;
   todayPrimaryAction = plan.action;
+  todaySecondaryAction = plan.secondaryAction || { type: 'none' };
 
   const h     = new Date().getHours();
   const greet = h < 6 ? 'Dobranoc! 🌙' : h < 12 ? 'Dzień dobry! ☀️' : h < 18 ? 'Dzień dobry! 🌤️' : 'Dobry wieczór! 🌙';
@@ -151,6 +153,7 @@ function renderHomeScreen() {
   document.getElementById('daily-prog-txt').textContent  = done + ' / ' + goal;
 
   const btn = document.getElementById('btn-start-day');
+  const secondaryBtn = document.getElementById('btn-start-lesson');
   if (todayPrimaryAction.type === 'none') {
     btn.textContent = plan.cta;
     btn.classList.add('done');
@@ -159,6 +162,15 @@ function renderHomeScreen() {
     btn.textContent = plan.cta;
     btn.classList.toggle('done', dailySessionState === 'session_complete');
     btn.disabled = false;
+  }
+
+  if (todaySecondaryAction.type === 'course_lesson' && plan.secondaryCta) {
+    secondaryBtn.textContent = plan.secondaryCta;
+    secondaryBtn.hidden = false;
+    secondaryBtn.disabled = false;
+  } else {
+    secondaryBtn.hidden = true;
+    secondaryBtn.disabled = true;
   }
 
   const mastered = WORDS.filter(w => SRS.isMastered(srsData[w.id])).length;
@@ -188,6 +200,12 @@ function handleTodayPrimaryAction() {
   }
   if (todayPrimaryAction.type === 'back_home') {
     go('home', document.getElementById('bn-home'));
+  }
+}
+
+function handleTodaySecondaryAction() {
+  if (todaySecondaryAction.type === 'course_lesson' && todaySecondaryAction.lessonKey) {
+    startLessonSessionByKey(todaySecondaryAction.lessonKey);
   }
 }
 
@@ -798,6 +816,7 @@ function buildDailyPlan(flow, done, remaining) {
   var summary = '';
   var headline = 'Dziś nie ma już nic pilnego.';
   var action = { type: 'none' };
+  var secondaryAction = { type: 'none' };
 
   if (flow.state === 'session_complete') {
     headline = 'Dzisiejsza sesja jest już skończona.';
@@ -811,6 +830,9 @@ function buildDailyPlan(flow, done, remaining) {
       ? 'Najpierw powtórki, potem nowa lekcja.'
       : 'Powtórki z wcześniejszych lekcji.';
     action = { type: 'daily_session' };
+    if (newWords.length > 0 && newLesson) {
+      secondaryAction = { type: 'course_lesson', lessonKey: newLesson.key };
+    }
   } else if (flow.state === 'lesson_ready' && newWords.length > 0) {
     headline = newLesson ? ('Lekcja ' + newLesson.shortLabel) : 'Nowe słowa';
     summary = 'Teraz nowe słowa.';
@@ -838,6 +860,7 @@ function buildDailyPlan(flow, done, remaining) {
   }
 
   var cta = 'Powtórz słówka →';
+  var secondaryCta = '';
   if (flow.state === 'session_complete') {
     cta = nextLesson ? 'Zobacz następną lekcję →' : '✓ Na dziś wszystko gotowe';
   } else if (done > 0 && remaining > 0 && flow.state !== 'reviews_due') {
@@ -846,6 +869,9 @@ function buildDailyPlan(flow, done, remaining) {
     cta = due.length <= 12
       ? 'Powtórz ' + due.length + ' ' + pluralizeWords(due.length, 'słówko', 'słówka', 'słówek') + ' →'
       : 'Zacznij od powtórek →';
+    if (newWords.length > 0 && newLesson) {
+      secondaryCta = 'Kontynuuj lekcję ' + newLesson.lessonCode + ' →';
+    }
   } else if (flow.state === 'lesson_ready' && newWords.length > 0 && newLesson) {
     cta = 'Przejdź do lekcji ' + newLesson.lessonCode + ' →';
   } else if (flow.state === 'lesson_ready' && newWords.length > 0) {
@@ -860,7 +886,9 @@ function buildDailyPlan(flow, done, remaining) {
     reviewsLine: reviewsLine,
     newLine: newLine,
     cta: cta,
-    action: action
+    action: action,
+    secondaryCta: secondaryCta,
+    secondaryAction: secondaryAction
   };
 }
 

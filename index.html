@@ -61,7 +61,10 @@
         <div class="home-session-counts" id="home-session-counts">0 nowych słów · 0 powtórek</div>
       </div>
     </div>
-    <button class="btn-start-day" id="btn-start-day" onclick="handleTodayPrimaryAction()">Rozpocznij dzisiejszą sesję →</button>
+    <div class="home-hero-actions">
+      <button class="btn-start-day" id="btn-start-day" onclick="handleTodayPrimaryAction()">Rozpocznij dzisiejszą sesję →</button>
+      <button class="btn-start-day btn-start-day-secondary" id="btn-start-lesson" onclick="handleTodaySecondaryAction()" hidden>Kontynuuj lekcję →</button>
+    </div>
     <div class="home-focus-row">
       <div class="home-focus-card next plan">
         <div class="home-focus-label">Plan na dziś</div>
