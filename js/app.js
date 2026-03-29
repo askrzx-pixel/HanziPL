@@ -757,12 +757,19 @@ function showDailyTransitionScreen(nextPhase) {
   var rscEl = document.getElementById('rsc');
   if (rscEl) {
     rscEl.textContent = 'Krok ' + nextPhase.stepNumber + ' z ' + nextPhase.totalSteps;
+    rscEl.classList.remove('resc-score');
     rscEl.classList.add('resc-step');
   }
   document.getElementById('rsl').textContent = transitionPhase.transitionTitle || nextPhase.transitionTitle;
 
   var detailEl = document.getElementById('res-detail');
-  if (detailEl) { detailEl.style.display = 'none'; detailEl.textContent = ''; }
+  if (detailEl) {
+    var transitionHint = (nextPhase.key === 'lesson' && dailySessionFlow.lessonMeta)
+      ? 'Teraz: nowe słowa z lekcji ' + dailySessionFlow.lessonMeta.lessonCode
+      : '';
+    detailEl.style.display = transitionHint ? '' : 'none';
+    detailEl.textContent = transitionHint;
+  }
 
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
@@ -809,11 +816,15 @@ function showDailyCompletionScreen() {
   var rscEl2 = document.getElementById('rsc');
   if (rscEl2) {
     rscEl2.textContent = summary.score;
-    rscEl2.classList.add('resc-step');
+    rscEl2.classList.remove('resc-step');
+    rscEl2.classList.add('resc-score');
   }
   document.getElementById('rsl').textContent = summary.title;
   var detailEl2 = document.getElementById('res-detail');
-  if (detailEl2) { detailEl2.style.display = 'none'; detailEl2.textContent = ''; }
+  if (detailEl2) {
+    detailEl2.style.display = summary.detail ? '' : 'none';
+    detailEl2.textContent = summary.detail || '';
+  }
 
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
@@ -849,7 +860,7 @@ function updateResultsButtons(primaryLabel, secondaryLabel) {
   var secondaryBtn = document.getElementById('res-secondary-btn');
   if (primaryBtn) {
     if (primaryLabel) {
-      primaryBtn.style.display = 'inline-block';
+      primaryBtn.style.display = '';
       primaryBtn.textContent = primaryLabel;
     } else {
       primaryBtn.style.display = 'none';
@@ -1128,7 +1139,7 @@ function showResults() {
   const t   = Math.min(sTotal, sIdx);
   const pct = t ? Math.round(sOk / t * 100) : 0;
   var rscElStd = document.getElementById('rsc');
-  if (rscElStd) { rscElStd.textContent = sOk + '/' + t; rscElStd.classList.remove('resc-step'); }
+  if (rscElStd) { rscElStd.textContent = sOk + '/' + t; rscElStd.classList.remove('resc-step'); rscElStd.classList.remove('resc-score'); }
   const labels = ['Spróbuj jeszcze raz 💪','Nieźle! Ćwicz dalej 📚','Świetnie! 🌟','Doskonale! 完美🏆'];
   document.getElementById('rsl').textContent = labels[Math.min(3, Math.floor(pct / 26))];
   var detailElStd = document.getElementById('res-detail');
@@ -1423,7 +1434,7 @@ function getDailyCompletionSummary() {
     banner: '✓ Dzisiejsza sesja ukończona',
     score: goalDone + '/' + (dailySessionFlow ? dailySessionFlow.goalTotal : goalDone),
     title: reinforcement ? 'Plan na dziś zamknięty' : 'Dzisiejszy plan gotowy',
-    detail: 'Do dziennego celu liczą się tylko karty z planu: powtórki i nowe słowa. Dzisiejsza skuteczność: ' + pct + '%.',
+    detail: 'Skuteczność: ' + pct + '%',
     course: reinforcement && reinforcement.lessonKey ? (parseSourceLessonMeta(reinforcement.lessonKey) || {}).fullLabel || '' : '',
     next: reinforcement ? reinforcement.summary : 'Możesz wrócić do domu albo zakończyć na dziś.',
     primaryAction: reinforcement || { type: 'back_home' },

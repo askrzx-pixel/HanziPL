@@ -489,6 +489,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 }
 .resc{font-family:'Noto Sans SC',sans-serif;font-size:4rem;color:var(--red);line-height:1;}
 .resc.resc-step{font-family:Inter,sans-serif;font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.4px;line-height:1;margin-bottom:4px;}
+.resc.resc-score{font-family:Inter,sans-serif;font-size:2rem;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1.1;margin-bottom:6px;}
 .resl{font-family:Inter,sans-serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin:6px 0 8px;}
 .res-detail{font-family:Inter,sans-serif;font-size:.68rem;color:var(--muted);margin-bottom:22px;}
 .res-course{font-family:Inter,sans-serif;font-size:.82rem;font-weight:600;color:var(--ink2);margin:0 auto 12px;max-width:28rem;line-height:1.5;}
@@ -507,6 +508,11 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .res-plan-item.done{color:var(--green2);}
 .res-next{font-family:Inter,sans-serif;font-size:.8rem;font-weight:600;color:var(--ink2);margin:0 auto 18px;max-width:28rem;line-height:1.55;}
 .resbtns{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
+.resbtns .btn{display:inline-block;width:auto;margin-top:0;}
+@media(max-width:480px){
+  .resbtns{flex-direction:column;align-items:stretch;gap:8px;}
+  .resbtns .btn,.resbtns .btn-out{width:100%;text-align:center;}
+}
 
 /* Completion banner */
 .done-banner{background:var(--green);border-radius:var(--radius);padding:16px;text-align:center;margin-bottom:16px;}
