@@ -809,14 +809,11 @@ function showDailyCompletionScreen() {
   var rscEl2 = document.getElementById('rsc');
   if (rscEl2) {
     rscEl2.textContent = summary.score;
-    rscEl2.classList.remove('resc-step');
+    rscEl2.classList.add('resc-step');
   }
   document.getElementById('rsl').textContent = summary.title;
   var detailEl2 = document.getElementById('res-detail');
-  if (detailEl2) {
-    detailEl2.style.display = '';
-    detailEl2.textContent = summary.detail;
-  }
+  if (detailEl2) { detailEl2.style.display = 'none'; detailEl2.textContent = ''; }
 
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
@@ -836,15 +833,7 @@ function showDailyCompletionScreen() {
   }
 
   var nextEl = document.getElementById('res-next');
-  if (nextEl) {
-    if (summary.next) {
-      nextEl.style.display = 'block';
-      nextEl.textContent = summary.next;
-    } else {
-      nextEl.style.display = 'none';
-      nextEl.textContent = '';
-    }
-  }
+  if (nextEl) { nextEl.style.display = 'none'; nextEl.textContent = ''; }
 
   resultsPrimaryAction = summary.primaryAction;
   resultsSecondaryAction = { type: 'back_home' };
@@ -1138,12 +1127,16 @@ function showResults() {
   document.getElementById('sres').style.display = 'block';
   const t   = Math.min(sTotal, sIdx);
   const pct = t ? Math.round(sOk / t * 100) : 0;
-  document.getElementById('rsc').textContent = sOk + '/' + t;
+  var rscElStd = document.getElementById('rsc');
+  if (rscElStd) { rscElStd.textContent = sOk + '/' + t; rscElStd.classList.remove('resc-step'); }
   const labels = ['Spróbuj jeszcze raz 💪','Nieźle! Ćwicz dalej 📚','Świetnie! 🌟','Doskonale! 完美🏆'];
   document.getElementById('rsl').textContent = labels[Math.min(3, Math.floor(pct / 26))];
-  document.getElementById('res-detail').textContent =
-    'Sesja: ' + sessionReviews + ' powtórek · Skuteczność: ' +
-    (sessionReviews > 0 ? Math.round(sessionCorrect / sessionReviews * 100) : 0) + '%';
+  var detailElStd = document.getElementById('res-detail');
+  if (detailElStd) {
+    detailElStd.style.display = '';
+    detailElStd.textContent = 'Sesja: ' + sessionReviews + ' powtórek · Skuteczność: ' +
+      (sessionReviews > 0 ? Math.round(sessionCorrect / sessionReviews * 100) : 0) + '%';
+  }
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
     courseEl.style.display = 'none';
@@ -1371,7 +1364,7 @@ function createDailySessionFlow() {
         : nextLesson
           ? 'Po sesji: następna lekcja ' + nextLesson.shortLabel
           : 'Po sesji: zakończenie dziennego planu.',
-      transitionTitle: 'Nowa lekcja gotowa',
+      transitionTitle: 'Lekcja ukończona',
       transitionDetail: 'Główna część dziennego planu jest skończona. Teraz zobaczysz krótkie domknięcie i następny sensowny krok.',
       courseLine: lessonMeta.fullLabel,
       transitionNext: lessonOverflow
@@ -1431,7 +1424,7 @@ function getDailyCompletionSummary() {
     score: goalDone + '/' + (dailySessionFlow ? dailySessionFlow.goalTotal : goalDone),
     title: reinforcement ? 'Plan na dziś zamknięty' : 'Dzisiejszy plan gotowy',
     detail: 'Do dziennego celu liczą się tylko karty z planu: powtórki i nowe słowa. Dzisiejsza skuteczność: ' + pct + '%.',
-    course: reinforcement && reinforcement.lessonKey ? 'Dalej w kursie: ' + (parseSourceLessonMeta(reinforcement.lessonKey) || {}).shortLabel : '',
+    course: reinforcement && reinforcement.lessonKey ? (parseSourceLessonMeta(reinforcement.lessonKey) || {}).fullLabel || '' : '',
     next: reinforcement ? reinforcement.summary : 'Możesz wrócić do domu albo zakończyć na dziś.',
     primaryAction: reinforcement || { type: 'back_home' },
     primaryLabel: reinforcement ? reinforcement.label : ''
