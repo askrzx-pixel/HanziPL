@@ -283,7 +283,7 @@ function renderStats() {
 
 function renderStatsLessons() {
   var container  = document.getElementById('st-lessons');
-  var lessonKeys = getLessonItemsFromWords().slice(1).map(function(i) { return i.value; });
+  var lessonKeys = getOrderedCourseLessons().map(function(lesson) { return lesson.key; });
   var activeWords = getActiveWords();
 
   var lessons = lessonKeys.map(function(ls) {
