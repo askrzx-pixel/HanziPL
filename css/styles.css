@@ -454,15 +454,15 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 
 /* ── FLASHCARD ── */
 .fcwrap{-webkit-perspective:1200px;perspective:1200px;margin:0 auto 20px;max-width:480px;height:260px;cursor:pointer;}
-.fc-audio-row{max-width:480px;margin:0 auto 14px;display:flex;justify-content:flex-end;}
+.fc-audio-row{max-width:480px;margin:-6px auto 14px;display:flex;justify-content:flex-end;}
 .fc-audio-btn{
-  padding:8px 12px;
-  border-radius:12px;
+  padding:6px 10px;
+  border-radius:10px;
   border:1px solid var(--border);
-  background:var(--paper2);
-  color:var(--ink);
+  background:rgba(28,18,8,.03);
+  color:var(--ink2);
   font-family:Inter,sans-serif;
-  font-size:.74rem;
+  font-size:.68rem;
   font-weight:600;
   cursor:pointer;
 }
