@@ -95,31 +95,47 @@
 
 <!-- ══ STATS ══ -->
 <div class="scr" id="scr-stats">
-  <div class="stat-grid">
-    <div class="scard"><div class="v" id="st-t">0</div><div class="l">Wszystkich</div></div>
-    <div class="scard green"><div class="v" id="st-m">0</div><div class="l">Opanowanych</div></div>
-    <div class="scard gold"><div class="v" id="st-l">0</div><div class="l">W nauce</div></div>
-    <div class="scard dim"><div class="v" id="st-n">0</div><div class="l">Nowych</div></div>
-  </div>
-  <div class="divider"><span>Ogólny postęp</span></div>
-  <div class="donut-row">
-    <svg width="130" height="130" viewBox="0 0 130 130">
-      <circle cx="65" cy="65" r="48" fill="none" stroke="#e4d4b0" stroke-width="14"/>
-      <circle cx="65" cy="65" r="48" fill="none" stroke="#4a8a40" stroke-width="14" stroke-dasharray="301.6" stroke-dashoffset="301.6" transform="rotate(-90 65 65)" id="d-m" style="transition:stroke-dashoffset .85s ease;"/>
-      <circle cx="65" cy="65" r="48" fill="none" stroke="#c9a84c" stroke-width="14" stroke-dasharray="301.6" stroke-dashoffset="301.6" transform="rotate(-90 65 65)" id="d-l" style="transition:stroke-dashoffset .85s ease;"/>
-      <text x="65" y="60" text-anchor="middle" font-size="20" font-weight="700" fill="#1c1208" font-family="Noto Sans SC,sans-serif" id="d-pct">0%</text>
-      <text x="65" y="75" text-anchor="middle" font-size="7.5" fill="#7a6545" font-family="Inter,sans-serif" letter-spacing="0.6">OPANOWANE</text>
-    </svg>
-    <div class="dleg">
-      <div class="dleg-item"><div class="dleg-dot" style="background:#4a8a40"></div>Opanowane: <b id="lg-m">0</b></div>
-      <div class="dleg-item"><div class="dleg-dot" style="background:#c9a84c"></div>W nauce: <b id="lg-l">0</b></div>
-      <div class="dleg-item"><div class="dleg-dot" style="background:#e4d4b0;border:1px solid #c8b090"></div>Nowe: <b id="lg-n">0</b></div>
+  <!-- Hero: seria + podsumowanie + skuteczność -->
+  <div class="st-hero">
+    <div class="st-streak-block">
+      <span class="st-streak-val" id="st-streak">0</span>
+      <span class="st-streak-lbl">dni serii</span>
+    </div>
+    <div class="st-summary">
+      <div class="st-bar-wrap">
+        <div class="st-bar-seg st-bar-m" id="st-bar-m"></div>
+        <div class="st-bar-seg st-bar-l" id="st-bar-l"></div>
+        <div class="st-bar-seg st-bar-n" id="st-bar-n"></div>
+      </div>
+      <div class="st-counts">
+        <div class="st-count st-count-m">
+          <span class="st-cnt-v" id="st-cnt-m">0</span>
+          <span class="st-cnt-k">Opanowane</span>
+        </div>
+        <div class="st-count st-count-l">
+          <span class="st-cnt-v" id="st-cnt-l">0</span>
+          <span class="st-cnt-k">W trakcie</span>
+        </div>
+        <div class="st-count st-count-n">
+          <span class="st-cnt-v" id="st-cnt-n">0</span>
+          <span class="st-cnt-k">Nowe</span>
+        </div>
+      </div>
+    </div>
+    <div class="st-acc-row">
+      <span class="st-acc-val" id="st-acc">—</span>
+      <span class="st-acc-lbl">skuteczność odpowiedzi</span>
     </div>
   </div>
-  <div class="divider"><span>Najsłabsze słówka</span></div>
-  <div class="weak-list" id="weak-list"></div>
-  <div class="divider"><span>Postęp według lekcji</span></div>
-  <div class="bchart" id="bchart"></div>
+
+  <!-- Postęp lekcji -->
+  <div class="divider"><span>Postęp lekcji</span></div>
+  <div class="st-lessons" id="st-lessons"></div>
+
+  <!-- Trudne słówka -->
+  <div class="divider"><span>Trudne słówka</span></div>
+  <div class="weak-list" id="st-hard"></div>
+  <div class="st-cta-wrap"><button class="btn" id="st-hard-btn" onclick="startHardSession()" style="display:none">Powtórz trudne słówka</button></div>
 </div>
 
 <!-- ══ WORDS ══ -->
@@ -256,8 +272,6 @@
       </div>
       <div class="res-plan" id="res-plan" style="display:none"></div>
       <div class="res-next" id="res-next" style="display:none"></div>
-      <div class="res-review" id="res-review" style="display:none"></div>
-      <div class="res-context" id="res-context" style="display:none"></div>
     </div>
   </div>
 </div>

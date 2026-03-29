@@ -239,57 +239,136 @@ function startDailySession() {
 
 // ── STATS ─────────────────────────────────────────
 function renderStats() {
-  const total    = WORDS.length;
-  const mastered = WORDS.filter(w =>  SRS.isMastered(srsData[w.id])).length;
-  const learning = WORDS.filter(w => { const c = srsData[w.id]; return !SRS.isNew(c) && !SRS.isMastered(c); }).length;
-  const newW     = WORDS.filter(w =>  SRS.isNew(srsData[w.id])).length;
+  // 1. Seria
+  document.getElementById('st-streak').textContent = (streakData && streakData.current) || 0;
 
-  document.getElementById('st-t').textContent = total;
-  document.getElementById('st-m').textContent = mastered;
-  document.getElementById('st-l').textContent = learning;
-  document.getElementById('st-n').textContent = newW;
-  document.getElementById('lg-m').textContent = mastered;
-  document.getElementById('lg-l').textContent = learning;
-  document.getElementById('lg-n').textContent = newW;
+  // 2. Word counts
+  var total    = WORDS.length;
+  var mastered = WORDS.filter(function(w) { return  SRS.isMastered(srsData[w.id]); }).length;
+  var learning = WORDS.filter(function(w) { var c = srsData[w.id]; return !SRS.isNew(c) && !SRS.isMastered(c); }).length;
+  var newW     = total - mastered - learning;
 
-  const C  = 301.6;
-  const mP = total ? mastered / total : 0;
-  const lP = total ? learning / total : 0;
-  document.getElementById('d-m').style.strokeDashoffset = C - mP * C;
-  document.getElementById('d-l').style.strokeDashoffset = C - lP * C;
-  document.getElementById('d-l').setAttribute('transform', 'rotate(' + (-90 + mP * 360) + ' 65 65)');
-  document.getElementById('d-pct').textContent = Math.round(mP * 100) + '%';
+  document.getElementById('st-cnt-m').textContent = mastered;
+  document.getElementById('st-cnt-l').textContent = learning;
+  document.getElementById('st-cnt-n').textContent = newW;
 
-  const weakEl     = document.getElementById('weak-list');
-  const candidates = WORDS
-    .map(w => ({ ...w, c: srsData[w.id] }))
-    .filter(w => (w.c.reviews || 0) >= 2)
-    .map(w => ({ ...w, acc: (w.c.correct || 0) / (w.c.reviews || 1) }))
-    .sort((a, b) => a.acc - b.acc)
-    .slice(0, 8);
+  document.getElementById('st-bar-m').style.width = (total ? mastered / total * 100 : 0) + '%';
+  document.getElementById('st-bar-l').style.width = (total ? learning / total * 100 : 0) + '%';
+  document.getElementById('st-bar-n').style.width = (total ? newW    / total * 100 : 0) + '%';
 
-  if (!candidates.length) {
-    weakEl.innerHTML = '<div class="empty">Ucz się więcej, żeby zobaczyć statystyki!</div>';
-  } else {
-    weakEl.innerHTML = candidates.map(w => {
-      const pct = Math.round(w.acc * 100);
-      const cls = pct < 50 ? 'bad' : 'mid';
-      return '<div class="weak-item">' +
-        '<div><span class="weak-hz">' + w.hanzi + '</span> <span class="weak-pl">' + w.pl + '</span></div>' +
-        '<div class="weak-acc ' + cls + '">' + pct + '%</div>' +
-        '</div>';
-    }).join('');
+  // 3. Skuteczność
+  var totalR = 0, totalC = 0;
+  WORDS.forEach(function(w) {
+    var c = srsData[w.id];
+    totalR += (c && c.reviews) || 0;
+    totalC += (c && c.correct) || 0;
+  });
+  var acc = totalR > 0 ? Math.round(totalC / totalR * 100) : null;
+  document.getElementById('st-acc').textContent = acc !== null ? acc + '%' : '—';
+
+  // 4. Postęp lekcji
+  renderStatsLessons();
+
+  // 5. Trudne słówka
+  renderStatsHard();
+}
+
+function renderStatsLessons() {
+  var container  = document.getElementById('st-lessons');
+  var lessonKeys = getLessonItemsFromWords().slice(1).map(function(i) { return i.value; });
+
+  var lessons = lessonKeys.map(function(ls) {
+    var lw = WORDS.filter(function(w) { return getNormalizedLessonKey(w) === ls; });
+    if (!lw.length) return null;
+    var m  = lw.filter(function(w) { return  SRS.isMastered(srsData[w.id]); }).length;
+    var nw = lw.filter(function(w) { return  SRS.isNew(srsData[w.id]); }).length;
+    var lrn = lw.length - m - nw;
+    var pct = Math.round(m / lw.length * 100);
+    var status = m === lw.length ? 'done'
+      : (lrn > 0 || (m > 0 && nw > 0)) ? 'active'
+      : 'new';
+    return { key: ls, pct: pct, status: status, total: lw.length, mastered: m };
+  }).filter(Boolean);
+
+  // find: last completed, current active, next unstarted
+  var lastDoneIdx = -1, activeIdx = -1, nextNewIdx = -1;
+  lessons.forEach(function(l, i) {
+    if (l.status === 'done')   lastDoneIdx = i;
+    if (l.status === 'active' && activeIdx === -1) activeIdx = i;
+  });
+  var searchFrom = activeIdx !== -1 ? activeIdx + 1 : 0;
+  for (var i = searchFrom; i < lessons.length; i++) {
+    if (lessons[i].status === 'new') { nextNewIdx = i; break; }
   }
 
-  var chartLessons = getLessonItemsFromWords().slice(1).map(function(i) { return i.value; });
-  document.getElementById('bchart').innerHTML = chartLessons.map(ls => {
-    const lw = WORDS.filter(w => getNormalizedLessonKey(w) === ls);
-    const lm = lw.filter(w => SRS.isMastered(srsData[w.id])).length;
-    const p  = lw.length ? Math.round(lm / lw.length * 100) : 0;
-    return '<div class="brow"><div class="blbl">' + ls + '</div>' +
-      '<div class="btrack"><div class="bfill" style="width:' + p + '%"></div></div>' +
-      '<div class="bpct">' + p + '%</div></div>';
+  var toShow = [];
+  if (lastDoneIdx !== -1) toShow.push({ l: lessons[lastDoneIdx], hi: false });
+  if (activeIdx   !== -1) toShow.push({ l: lessons[activeIdx],   hi: true  });
+  if (nextNewIdx  !== -1) toShow.push({ l: lessons[nextNewIdx],  hi: false });
+  if (!toShow.length && lessons.length) toShow.push({ l: lessons[0], hi: false });
+
+  if (!toShow.length) {
+    container.innerHTML = '<p class="st-empty">Zacznij naukę, żeby zobaczyć postęp lekcji.</p>';
+    return;
+  }
+
+  container.innerHTML = toShow.map(function(item) {
+    var l   = item.l;
+    var lbl = l.status === 'done' ? 'Ukończona' : l.status === 'active' ? 'W trakcie' : 'Następna';
+    var cls = l.status === 'done' ? 'st-ls-done' : l.status === 'active' ? 'st-ls-active' : 'st-ls-next';
+    return '<div class="st-lrow' + (item.hi ? ' st-lrow-hi' : '') + '">' +
+      '<div class="st-lrow-top">' +
+        '<span class="st-lrow-name">' + l.key + '</span>' +
+        '<span class="st-lchip ' + cls + '">' + lbl + '</span>' +
+      '</div>' +
+      '<div class="btrack"><div class="bfill" style="width:' + l.pct + '%"></div></div>' +
+      '<div class="st-lrow-sub">' + l.mastered + '\u202f/\u202f' + l.total + ' słów · ' + l.pct + '%</div>' +
+      '</div>';
   }).join('');
+}
+
+function renderStatsHard() {
+  var container  = document.getElementById('st-hard');
+  var btn        = document.getElementById('st-hard-btn');
+  var candidates = WORDS
+    .map(function(w) { return Object.assign({}, w, { _c: srsData[w.id] || SRS.defaultCard() }); })
+    .filter(function(w) { return (w._c.reviews || 0) >= 2; })
+    .map(function(w) { return Object.assign({}, w, { _acc: (w._c.correct || 0) / (w._c.reviews || 1) }); })
+    .sort(function(a, b) { return a._acc - b._acc; })
+    .slice(0, 3);
+
+  if (!candidates.length) {
+    container.innerHTML = '<div class="st-empty">Poćwicz więcej, żeby zobaczyć najtrudniejsze słówka.</div>';
+    if (btn) btn.style.display = 'none';
+    return;
+  }
+
+  container.innerHTML = candidates.map(function(w) {
+    var pct = Math.round(w._acc * 100);
+    var cls = pct < 50 ? 'bad' : 'mid';
+    return '<div class="weak-item">' +
+      '<div><span class="weak-hz">' + w.hanzi + '</span> <span class="weak-pl">' + w.pl + '</span></div>' +
+      '<div class="weak-acc ' + cls + '">' + pct + '%</div>' +
+      '</div>';
+  }).join('');
+  if (btn) btn.style.display = 'block';
+}
+
+function startHardSession() {
+  var pool = WORDS
+    .map(function(w) { return Object.assign({}, w, { _c: srsData[w.id] || SRS.defaultCard() }); })
+    .filter(function(w) { return (w._c.reviews || 0) >= 2; })
+    .map(function(w) { return Object.assign({}, w, { _acc: (w._c.correct || 0) / (w._c.reviews || 1) }); })
+    .sort(function(a, b) { return a._acc - b._acc; })
+    .slice(0, 10)
+    .map(function(w) { var r = Object.assign({}, w); delete r._c; delete r._acc; return r; });
+  if (!pool.length) return;
+  hideAll();
+  isDailySession   = false;
+  dailySessionFlow = null;
+  sessionMeta      = { modeLabel: 'TRUDNE SŁÓWKA', countsToGoal: false };
+  sWords = pool; sIdx = 0; sOk = 0; sTotal = pool.length;
+  startFC();
 }
 
 // ── WORDS BROWSER ─────────────────────────────────
@@ -669,12 +748,28 @@ function showDailyTransitionScreen(nextPhase) {
   var banner = document.getElementById('res-daily-banner');
   if (banner) {
     banner.style.display = 'block';
-    banner.textContent = '✓ Etap ukończony';
+    var bannerText = prevPhase
+      ? (prevPhase.key === 'reviews' ? '✓ Powtórki ukończone' : '✓ Lekcja ukończona')
+      : '✓ Etap ukończony';
+    banner.textContent = bannerText;
   }
 
-  document.getElementById('rsc').textContent = 'Krok ' + nextPhase.stepNumber + ' z ' + nextPhase.totalSteps;
+  var rscEl = document.getElementById('rsc');
+  if (rscEl) {
+    rscEl.textContent = 'Krok ' + nextPhase.stepNumber + ' z ' + nextPhase.totalSteps;
+    rscEl.classList.remove('resc-score');
+    rscEl.classList.add('resc-step');
+  }
   document.getElementById('rsl').textContent = transitionPhase.transitionTitle || nextPhase.transitionTitle;
-  document.getElementById('res-detail').textContent = transitionPhase.transitionDetail || nextPhase.transitionDetail;
+
+  var detailEl = document.getElementById('res-detail');
+  if (detailEl) {
+    var transitionHint = (nextPhase.key === 'lesson' && dailySessionFlow.lessonMeta)
+      ? 'Teraz: nowe słowa z lekcji ' + dailySessionFlow.lessonMeta.lessonCode
+      : '';
+    detailEl.style.display = transitionHint ? '' : 'none';
+    detailEl.textContent = transitionHint;
+  }
 
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
@@ -695,12 +790,7 @@ function showDailyTransitionScreen(nextPhase) {
   }
 
   var nextEl = document.getElementById('res-next');
-  if (nextEl) {
-    nextEl.style.display = 'block';
-    nextEl.textContent = nextPhase.key === 'lesson'
-      ? 'Teraz: ' + nextPhase.title
-      : (transitionPhase.transitionNext || nextPhase.transitionNext);
-  }
+  if (nextEl) { nextEl.style.display = 'none'; nextEl.textContent = ''; }
 
   renderCompletionExtras(null);
 
@@ -710,7 +800,7 @@ function showDailyTransitionScreen(nextPhase) {
     nextPhase.key === 'lesson'
       ? ('Rozpocznij lekcję ' + (dailySessionFlow.lessonMeta ? dailySessionFlow.lessonMeta.lessonCode : '') + ' →')
       : (transitionPhase.primaryCta || transitionPhase.transitionCta || nextPhase.primaryCta || nextPhase.transitionCta),
-    '🏠 Wróć do domu'
+    'Wróć do dziś'
   );
 }
 
@@ -725,9 +815,18 @@ function showDailyCompletionScreen() {
     banner.textContent = summary.banner;
   }
 
-  document.getElementById('rsc').textContent = summary.score;
+  var rscEl2 = document.getElementById('rsc');
+  if (rscEl2) {
+    rscEl2.textContent = summary.score;
+    rscEl2.classList.remove('resc-step');
+    rscEl2.classList.add('resc-score');
+  }
   document.getElementById('rsl').textContent = summary.title;
-  document.getElementById('res-detail').textContent = summary.detail;
+  var detailEl2 = document.getElementById('res-detail');
+  if (detailEl2) {
+    detailEl2.style.display = summary.detail ? '' : 'none';
+    detailEl2.textContent = summary.detail || '';
+  }
 
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
@@ -747,15 +846,7 @@ function showDailyCompletionScreen() {
   }
 
   var nextEl = document.getElementById('res-next');
-  if (nextEl) {
-    if (summary.next) {
-      nextEl.style.display = 'block';
-      nextEl.textContent = summary.next;
-    } else {
-      nextEl.style.display = 'none';
-      nextEl.textContent = '';
-    }
-  }
+  if (nextEl) { nextEl.style.display = 'none'; nextEl.textContent = ''; }
 
   renderCompletionExtras(buildCompletionExtras({
     mode: 'daily',
@@ -765,7 +856,7 @@ function showDailyCompletionScreen() {
 
   resultsPrimaryAction = summary.primaryAction;
   resultsSecondaryAction = { type: 'back_home' };
-  updateResultsButtons(summary.primaryLabel, '🏠 Wróć do domu');
+  updateResultsButtons(summary.primaryLabel, 'Wróć do dziś');
 
   checkAndUpdateStreak();
   renderStreakBadge();
@@ -777,13 +868,13 @@ function updateResultsButtons(primaryLabel, secondaryLabel) {
   var secondaryBtn = document.getElementById('res-secondary-btn');
   if (primaryBtn) {
     if (primaryLabel) {
-      primaryBtn.style.display = 'inline-block';
+      primaryBtn.style.display = '';
       primaryBtn.textContent = primaryLabel;
     } else {
       primaryBtn.style.display = 'none';
     }
   }
-  if (secondaryBtn) secondaryBtn.textContent = secondaryLabel || '🏠 Wróć do domu';
+  if (secondaryBtn) secondaryBtn.textContent = secondaryLabel || 'Wróć do dziś';
 }
 
 function renderCompletionExtras(data) {
@@ -1198,12 +1289,16 @@ function showResults() {
   document.getElementById('sres').style.display = 'block';
   const t   = Math.min(sTotal, sIdx);
   const pct = t ? Math.round(sOk / t * 100) : 0;
-  document.getElementById('rsc').textContent = sOk + '/' + t;
+  var rscElStd = document.getElementById('rsc');
+  if (rscElStd) { rscElStd.textContent = sOk + '/' + t; rscElStd.classList.remove('resc-step'); rscElStd.classList.remove('resc-score'); }
   const labels = ['Spróbuj jeszcze raz 💪','Nieźle! Ćwicz dalej 📚','Świetnie! 🌟','Doskonale! 完美🏆'];
   document.getElementById('rsl').textContent = labels[Math.min(3, Math.floor(pct / 26))];
-  document.getElementById('res-detail').textContent =
-    'Sesja: ' + sessionReviews + ' powtórek · Skuteczność: ' +
-    (sessionReviews > 0 ? Math.round(sessionCorrect / sessionReviews * 100) : 0) + '%';
+  var detailElStd = document.getElementById('res-detail');
+  if (detailElStd) {
+    detailElStd.style.display = '';
+    detailElStd.textContent = 'Sesja: ' + sessionReviews + ' powtórek · Skuteczność: ' +
+      (sessionReviews > 0 ? Math.round(sessionCorrect / sessionReviews * 100) : 0) + '%';
+  }
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
     courseEl.style.display = 'none';
@@ -1404,11 +1499,9 @@ function createDailySessionFlow() {
       next: lessonWords.length
         ? 'Potem: nowe słowa z lekcji ' + lessonMeta.shortLabel
         : 'Potem: krótkie podsumowanie sesji.',
-      transitionTitle: lessonWords.length ? 'Powtórki ukończone' : 'Powtórki gotowe',
-      transitionDetail: lessonWords.length
-        ? 'Powtórki z wcześniejszych lekcji są już za Tobą. Teraz przechodzisz do nowego materiału z konkretnej lekcji w kursie.'
-        : 'Nie ma dziś nowej lekcji do uruchomienia, więc po tym etapie domkniesz sesję.',
-      courseLine: lessonWords.length ? 'Jesteś w kursie: ' + lessonMeta.shortLabel : '',
+      transitionTitle: lessonWords.length ? 'Czas na nowe słowa' : 'Powtórki gotowe',
+      transitionDetail: '',
+      courseLine: lessonWords.length ? lessonMeta.fullLabel : '',
       transitionNext: lessonWords.length
         ? 'Za chwilę: lekcja ' + lessonMeta.shortLabel
         : 'Za chwilę: ekran zakończenia sesji.',
@@ -1435,9 +1528,9 @@ function createDailySessionFlow() {
         : nextLesson
           ? 'Po sesji: następna lekcja ' + nextLesson.shortLabel
           : 'Po sesji: zakończenie dziennego planu.',
-      transitionTitle: 'Nowa lekcja gotowa',
+      transitionTitle: 'Lekcja ukończona',
       transitionDetail: 'Główna część dziennego planu jest skończona. Teraz zobaczysz krótkie domknięcie i następny sensowny krok.',
-      courseLine: 'Jesteś w kursie: ' + lessonMeta.shortLabel,
+      courseLine: lessonMeta.fullLabel,
       transitionNext: lessonOverflow
         ? 'Możesz wrócić do tej samej lekcji lub iść dalej w kursie.'
         : nextLesson
@@ -1494,8 +1587,8 @@ function getDailyCompletionSummary() {
     banner: '✓ Dzisiejsza sesja ukończona',
     score: goalDone + '/' + (dailySessionFlow ? dailySessionFlow.goalTotal : goalDone),
     title: reinforcement ? 'Plan na dziś zamknięty' : 'Dzisiejszy plan gotowy',
-    detail: 'Do dziennego celu liczą się tylko karty z planu: powtórki i nowe słowa. Dzisiejsza skuteczność: ' + pct + '%.',
-    course: reinforcement && reinforcement.lessonKey ? 'Dalej w kursie: ' + (parseSourceLessonMeta(reinforcement.lessonKey) || {}).shortLabel : '',
+    detail: 'Skuteczność: ' + pct + '%',
+    course: reinforcement && reinforcement.lessonKey ? (parseSourceLessonMeta(reinforcement.lessonKey) || {}).fullLabel || '' : '',
     next: reinforcement ? reinforcement.summary : 'Możesz wrócić do domu albo zakończyć na dziś.',
     primaryAction: reinforcement || { type: 'back_home' },
     primaryLabel: reinforcement ? reinforcement.label : ''
@@ -1507,16 +1600,16 @@ function buildTransitionPlanMarkup(prevPhase, nextPhase) {
   var rows = [];
 
   if (prevPhase) {
-    rows.push('<div class="res-plan-item done"><strong>Krok ' + prevPhase.stepNumber + ' z ' + total + ':</strong> ' + escapeHtml(prevPhase.title) + ' — ukończono</div>');
+    rows.push('<div class="res-plan-item done">✓ Krok ' + prevPhase.stepNumber + ': ' + escapeHtml(prevPhase.title) + '</div>');
   }
   if (nextPhase) {
-    rows.push('<div class="res-plan-item now"><strong>Krok ' + nextPhase.stepNumber + ' z ' + total + ':</strong> ' + escapeHtml(nextPhase.title) + ' — teraz</div>');
+    rows.push('<div class="res-plan-item now">→ Krok ' + nextPhase.stepNumber + ': ' + escapeHtml(nextPhase.title) + '</div>');
   }
 
   if (total >= 3) {
     var summaryStep = total;
     var summaryState = nextPhase && nextPhase.stepNumber === summaryStep ? 'teraz' : 'potem';
-    rows.push('<div class="res-plan-item"><strong>Krok ' + summaryStep + ' z ' + total + ':</strong> Podsumowanie — ' + summaryState + '</div>');
+    rows.push('<div class="res-plan-item">· Krok ' + summaryStep + ': Podsumowanie' + (summaryState === 'teraz' ? ' — teraz' : '') + '</div>');
   }
 
   return rows.join('');
@@ -1821,7 +1914,7 @@ function renderStages() {
 
     var preview = lessons.slice(0, 2).map(function(l) { return l.name; }).join(' · ') + (lessons.length > 2 ? ' …' : '');
 
-    return '<div class="stage-card" onclick="renderSegmentDetail(' + seg.segNum + ')">' +
+    return '<div class="stage-card" data-action="open-segment" data-seg="' + seg.segNum + '">' +
       '<div class="stage-card-head">' +
         '<span class="stage-icon">' + seg.icon + '</span>' +
         '<div class="stage-card-title">' +
@@ -1916,7 +2009,7 @@ function renderSegmentDetail(segNum) {
       '</div>' +
       '<div class="lc-footer">' +
         '<span class="lc-meta">' + metaStr + '</span>' +
-        '<button class="btn-lesson" onclick="startLessonSessionByKey(' + JSON.stringify(lesson.key) + ')">' + btnLabel + '</button>' +
+        '<button class="btn-lesson" data-action="start-lesson" data-lesson-key="' + lesson.key.replace(/"/g, '&quot;') + '">' + btnLabel + '</button>' +
       '</div>' +
       (status !== 'new' ? '<div class="lc-bar"><div class="lc-fill" style="width:' + lpct + '%"></div></div>' : '') +
     '</div>';
@@ -1937,7 +2030,7 @@ function renderSegmentDetail(segNum) {
       '</div>';
 
   document.getElementById('stage-detail').innerHTML =
-    '<button class="btn-back-stage" onclick="renderStages()">← Wszystkie segmenty</button>' +
+    '<button class="btn-back-stage" data-action="back-to-segments">← Wszystkie segmenty</button>' +
     '<div class="stage-detail-head">' +
       '<span class="stage-icon">' + seg.icon + '</span>' +
       '<h2 class="stage-detail-name">' + seg.name + '</h2>' +
@@ -1951,7 +2044,7 @@ function renderSegmentDetail(segNum) {
         Math.round(doneCount / Math.max(totalLessons, 1) * 100) + '%"></div></div>' +
     '</div>' +
     nextCallout +
-    '<button class="btn-stage-cta" onclick="startLessonSessionByKey(' + JSON.stringify(ctaLesson.key) + ')">' + ctaLabel + '</button>' +
+    '<button class="btn-stage-cta" data-action="start-lesson" data-lesson-key="' + ctaLesson.key.replace(/"/g, '&quot;') + '">' + ctaLabel + '</button>' +
     wordStatsHtml +
     '<div class="divider"><span>Lekcje</span></div>' +
     '<div class="stage-lessons">' + lessonsHtml + '</div>';
@@ -2025,6 +2118,44 @@ function init() {
     mode: curMode
   });
 }
+
+// ── STAGES SCREEN EVENT DELEGATION ───────────────
+// Replaces inline onclick handlers to fix broken attributes caused by
+// JSON.stringify producing double-quotes inside double-quoted HTML attributes
+// (was breaking mobile Safari btn clicks).
+document.addEventListener('DOMContentLoaded', function() {
+  var scrStages = document.getElementById('scr-stages');
+  if (!scrStages) return;
+
+  scrStages.addEventListener('click', function(e) {
+    // Walk up from clicked target to find the element with data-action
+    var el = e.target;
+    while (el && el !== scrStages) {
+      var action = el.getAttribute('data-action');
+      if (action) {
+        if (action === 'open-segment') {
+          e.stopPropagation();
+          renderSegmentDetail(parseInt(el.getAttribute('data-seg'), 10));
+          return;
+        }
+        if (action === 'start-lesson') {
+          e.stopPropagation();
+          startLessonSessionByKey(el.getAttribute('data-lesson-key'));
+          return;
+        }
+        if (action === 'back-to-segments') {
+          e.stopPropagation();
+          renderStages();
+          return;
+        }
+      }
+      // If we hit a button with data-action inside a stage-card, stop bubbling
+      // before the card's own open-segment action fires
+      if (el.tagName === 'BUTTON') break;
+      el = el.parentElement;
+    }
+  });
+});
 
 window.renderStages = renderStages;
 window.renderSegmentDetail = renderSegmentDetail;
