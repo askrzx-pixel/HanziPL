@@ -454,7 +454,7 @@ function getWordBrowserLessonItems() {
   var segments = getV3Segments();
   for (var i = 0; i < segments.length; i++) {
     if (String(segments[i].segNum) === String(curSegment2)) {
-      return [{ value: 'all', label: 'Wszystkie lekcje' }].concat(
+      return [{ value: 'all', label: 'Wszystkie' }].concat(
         segments[i].lessons.map(function(lesson) {
           var meta = parseSourceLessonMeta(lesson.key);
           return { value: lesson.key, label: meta.shortLabel || lesson.name };
@@ -462,7 +462,7 @@ function getWordBrowserLessonItems() {
       );
     }
   }
-  return [{ value: 'all', label: 'Wszystkie lekcje' }];
+  return [{ value: 'all', label: 'Wszystkie' }];
 }
 
 function syncWordLessonFilter() {
@@ -516,9 +516,10 @@ function renderWords() {
                :                     '<span class="srs-tag learning">W nauce</span>';
     const mPct = Math.min(100, Math.round((c.interval || 0) / 21 * 100));
     const lessonMeta = parseSourceLessonMeta(getRawWordLesson(w));
+    const showSegmentBadge = curSegment2 === 'all' && lessonMeta && lessonMeta.segNum !== null;
     const metaHtml = '<div class="wcard-meta">' +
       '<span class="ls">' + (lessonMeta ? lessonMeta.lessonCode : getNormalizedLessonKey(w)) + '</span>' +
-      (lessonMeta && lessonMeta.segNum !== null ? '<span class="wtopic">Segment ' + lessonMeta.segNum + '</span>' : '') +
+      (showSegmentBadge ? '<span class="wtopic">Segment ' + lessonMeta.segNum + '</span>' : '') +
       '</div>';
     const tagsHtml = (w.tags && w.tags.length)
       ? '<div class="wtags">' + w.tags.map(t => '<span class="wtag">' + t + '</span>').join('') + '</div>'

@@ -317,19 +317,23 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .words-status-row{
   flex-wrap:nowrap;
   overflow-x:auto;
-  gap:5px;
-  padding-bottom:2px;
+  gap:4px;
+  padding-bottom:1px;
 }
 .words-status-row .chip{
-  padding:5px 10px;
-  min-height:30px;
-  font-size:.62rem;
+  padding:4px 9px;
+  min-height:28px;
+  font-size:.6rem;
+  font-weight:500;
   background:transparent;
+  border-radius:16px;
+  opacity:.88;
 }
 .words-status-row .chip.on{
   background:var(--paper3);
   color:var(--ink);
   border-color:var(--border2);
+  opacity:1;
 }
 .words-lesson-row .chip{
   padding:5px 10px;
