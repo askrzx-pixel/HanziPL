@@ -8,6 +8,8 @@
   --radius:14px;
   --shadow:0 4px 16px rgba(28,18,8,.10);
   --shadow-lg:0 8px 28px rgba(28,18,8,.15);
+  /* Flashcard back face — always dark regardless of mode */
+  --card-back:#1c1208;--card-back-border:#3b2a14;
 }
 
 /* ── DARK MODE ── */
@@ -20,12 +22,12 @@
     --green:#4a9a40;--green2:#5cb852;
     --shadow:0 4px 16px rgba(0,0,0,.35);
     --shadow-lg:0 8px 28px rgba(0,0,0,.45);
+    /* Keep card back dark — --ink flips to cream in dark mode */
+    --card-back:#2a2218;--card-back-border:#3d3528;
   }
   html,body{background:#1e1a14;}
   .scr.on{background:#1e1a14;}
   .front{background:var(--paper2);}
-  /* Keep card back dark — --ink flips to cream in dark mode, breaking contrast */
-  .back{background:#2a2218;border-color:#3d3528;}
 }
 
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -374,7 +376,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .face{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
 .front{background:var(--paper2);border:2px solid var(--border2);box-shadow:var(--shadow-lg);}
 .front::before{content:'';position:absolute;inset:7px;border:1px solid var(--border);border-radius:12px;pointer-events:none;}
-.back{background:var(--ink);border:2px solid var(--ink2);transform:rotateY(180deg);box-shadow:var(--shadow-lg);}
+.back{background:var(--card-back);border:2px solid var(--card-back-border);transform:rotateY(180deg);box-shadow:var(--shadow-lg);}
 .front .fhz{font-family:'Noto Sans SC',sans-serif;font-size:5rem;color:var(--red);line-height:1;}
 .front .fhint{font-family:Inter,sans-serif;font-size:.62rem;font-weight:500;color:var(--border2);margin-top:14px;letter-spacing:.7px;text-transform:uppercase;}
 .back .bhz{font-family:'Noto Sans SC',sans-serif;font-size:4rem;font-weight:700;color:var(--paper);line-height:1.05;margin-bottom:6px;}
