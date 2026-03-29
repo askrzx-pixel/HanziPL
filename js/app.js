@@ -2111,7 +2111,6 @@ function renderStages() {
         '<span class="stage-icon">' + seg.icon + '</span>' +
         '<div class="stage-card-title">' +
           '<div class="stage-name">' + seg.name + '</div>' +
-          '<div class="stage-desc">Mapa segmentu i kolejnych lekcji</div>' +
         '</div>' +
       '</div>' +
       '<div class="stage-meta-grid">' +
