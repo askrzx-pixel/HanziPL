@@ -388,10 +388,13 @@ var curLesson2  = 'all';
 function filterWordsSegment(segKey, btn) {
   curSegment2 = segKey;
   curLesson2 = 'all';
-  document.querySelectorAll('#frow-segment .chip').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
+  syncWordSegmentSelect();
   syncWordLessonFilter();
   renderWords();
+}
+
+function filterWordsSegmentSelect(segKey) {
+  filterWordsSegment(segKey);
 }
 
 function filterWordStatus(status, btn) {
@@ -432,6 +435,16 @@ function getWordBrowserStatusItems() {
     { value: 'mastered', label: 'Opanowane' },
     { value: 'hard', label: 'Trudne' }
   ];
+}
+
+function syncWordSegmentSelect() {
+  var select = document.getElementById('words-segment-select');
+  if (!select) return;
+  var items = getWordBrowserSegmentItems();
+  select.innerHTML = items.map(function(item) {
+    return '<option value="' + item.value.replace(/"/g, '&quot;') + '">' + item.label + '</option>';
+  }).join('');
+  select.value = curSegment2;
 }
 
 function getWordBrowserLessonItems() {
@@ -2049,9 +2062,7 @@ function getLevelItems() {
  */
 function initChips() {
   // Words browser — single-select filters
-  renderChipList('frow-segment', getWordBrowserSegmentItems(),
-    function(v) { return curSegment2 === v; },
-    filterWordsSegment);
+  syncWordSegmentSelect();
   renderChipList('frow-status', getWordBrowserStatusItems(),
     function(v) { return curStatus2 === v; },
     filterWordStatus);

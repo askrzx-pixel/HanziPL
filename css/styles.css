@@ -286,6 +286,57 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink);}
 .chip:hover:not(.on){border-color:var(--gold2);color:var(--ink);}
 
+#scr-words .wfilter{margin-bottom:2px;}
+#scr-words .flbl{margin-bottom:3px;}
+#scr-words .frow{margin-bottom:8px;}
+.wselect-wrap{position:relative;}
+.wselect{
+  width:100%;
+  appearance:none;
+  -webkit-appearance:none;
+  background:var(--paper2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 36px 10px 12px;
+  font-family:Inter,sans-serif;
+  font-size:.88rem;
+  color:var(--ink);
+  min-height:44px;
+  outline:none;
+}
+.wselect-wrap::after{
+  content:'▾';
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--muted);
+  pointer-events:none;
+  font-size:.8rem;
+}
+.words-status-row{
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  gap:5px;
+  padding-bottom:2px;
+}
+.words-status-row .chip{
+  padding:5px 10px;
+  min-height:30px;
+  font-size:.62rem;
+  background:transparent;
+}
+.words-status-row .chip.on{
+  background:var(--paper3);
+  color:var(--ink);
+  border-color:var(--border2);
+}
+.words-lesson-row .chip{
+  padding:5px 10px;
+  min-height:30px;
+  font-size:.62rem;
+}
+
 .srch{position:relative;margin-bottom:12px;}
 .srch input{
   width:100%;background:var(--paper2);border:1px solid var(--border);
