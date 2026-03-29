@@ -158,7 +158,7 @@ function renderHomeScreen() {
 
   const pct = goal > 0 ? Math.min(100, Math.round(done / goal * 100)) : 0;
   document.getElementById('daily-prog-fill').style.width = pct + '%';
-  document.getElementById('daily-prog-txt').textContent  = done + ' / ' + goal;
+  document.getElementById('daily-prog-txt').textContent  = done + ' / ' + goal + ' słów';
 
   const btn = document.getElementById('btn-start-day');
   const secondaryBtn = document.getElementById('btn-start-lesson');
@@ -273,6 +273,7 @@ function renderStats() {
   });
   var acc = totalR > 0 ? Math.round(totalC / totalR * 100) : null;
   document.getElementById('st-acc').textContent = acc !== null ? acc + '%' : '—';
+  document.getElementById('st-acc-empty').style.display = acc !== null ? 'none' : 'block';
 
   // 4. Postęp lekcji
   renderStatsLessons();
@@ -323,15 +324,20 @@ function renderStatsLessons() {
 
   container.innerHTML = toShow.map(function(item) {
     var l   = item.l;
-    var lbl = l.status === 'done' ? 'Ukończona' : l.status === 'active' ? 'W trakcie' : 'Następna';
+    var lessonMeta = parseSourceLessonMeta(l.key);
+    var lessonLabel = lessonMeta ? ('Przejdź do lekcji ' + lessonMeta.lessonCode + ' →') : ('Przejdź do ' + l.key + ' →');
+    var lbl = l.status === 'done' ? 'Ukończona' : l.status === 'active' ? 'W trakcie' : '';
     var cls = l.status === 'done' ? 'st-ls-done' : l.status === 'active' ? 'st-ls-active' : 'st-ls-next';
     return '<div class="st-lrow' + (item.hi ? ' st-lrow-hi' : '') + '">' +
       '<div class="st-lrow-top">' +
         '<span class="st-lrow-name">' + l.key + '</span>' +
-        '<span class="st-lchip ' + cls + '">' + lbl + '</span>' +
+        (lbl ? '<span class="st-lchip ' + cls + '">' + lbl + '</span>' : '') +
       '</div>' +
       '<div class="btrack"><div class="bfill" style="width:' + l.pct + '%"></div></div>' +
       '<div class="st-lrow-sub">' + l.mastered + '\u202f/\u202f' + l.total + ' słów · ' + l.pct + '%</div>' +
+      (l.status === 'new'
+        ? '<button class="st-next-btn" onclick="startLessonSessionByKey(\'' + l.key.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + '\')">' + lessonLabel + '</button>'
+        : '') +
       '</div>';
   }).join('');
 }
@@ -347,7 +353,7 @@ function renderStatsHard() {
     .slice(0, 3);
 
   if (!candidates.length) {
-    container.innerHTML = '<div class="st-empty">Poćwicz więcej, żeby zobaczyć najtrudniejsze słówka.</div>';
+    container.innerHTML = '<div class="st-empty">Ukończ kilka powtórek, aby zobaczyć trudne słówka.</div>';
     if (btn) btn.style.display = 'none';
     return;
   }

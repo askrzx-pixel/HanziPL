@@ -235,6 +235,22 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .st-lrow-hi{border-color:var(--border2);box-shadow:var(--shadow-lg);}
 .st-lrow-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
 .st-lrow-name{font-family:Inter,sans-serif;font-size:.88rem;font-weight:600;color:var(--ink);flex:1;min-width:0;margin-right:8px;}
+.st-next-btn{
+  margin-top:8px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 12px;
+  border-radius:12px;
+  border:1px solid rgba(74,138,64,.28);
+  background:rgba(74,138,64,.12);
+  color:var(--green2);
+  font-family:Inter,sans-serif;
+  font-size:.72rem;
+  font-weight:700;
+  cursor:pointer;
+}
+.st-next-btn:active{transform:scale(.98);}
 .st-lchip{font-family:Inter,sans-serif;font-size:.58rem;font-weight:700;padding:2px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap;flex-shrink:0;}
 .st-ls-done{background:rgba(45,90,39,.12);color:var(--green);}
 .st-ls-active{background:rgba(138,106,32,.14);color:var(--gold);}
