@@ -1912,11 +1912,23 @@ function initChips() {
 // Rendering driven by getV3Segments() from courseStages.js.
 // Status + session helpers live in courseStages.js (getLessonStatusByKey, startLessonSessionByKey).
 
+function getCourseLessonWordStats(lessonKey, activeWords) {
+  var words = (activeWords || getActiveWords()).filter(function(w) { return getRawWordLesson(w) === lessonKey; });
+  var mastered = words.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
+  var total = words.length;
+  return {
+    total: total,
+    mastered: mastered,
+    pct: total ? Math.round(mastered / total * 100) : 0
+  };
+}
+
 function renderStages() {
   document.getElementById('stages-list').style.display = 'block';
   document.getElementById('stage-detail').style.display = 'none';
 
   var segments = getV3Segments();
+  var activeWords = getActiveWords();
 
   if (!segments.length) {
     document.getElementById('stages-list').innerHTML =
@@ -1929,6 +1941,9 @@ function renderStages() {
     var doneCount = lessons.filter(function(l) { return getLessonStatusByKey(l.key) === 'done'; }).length;
     var pct       = lessons.length ? Math.round(doneCount / lessons.length * 100) : 0;
     var allDone   = doneCount === lessons.length;
+    var lessonKeyMap = Object.create(null);
+    lessons.forEach(function(lesson) { lessonKeyMap[lesson.key] = true; });
+    var wordCount = activeWords.filter(function(w) { return lessonKeyMap[getRawWordLesson(w)] === true; }).length;
 
     var nextLesson = null;
     for (var i = 0; i < lessons.length; i++) {
@@ -1941,22 +1956,22 @@ function renderStages() {
         ? '<div class="sc-next">Następna: <strong>' + nextLesson.name + '</strong></div>'
         : '';
 
-    var preview = lessons.slice(0, 2).map(function(l) { return l.name; }).join(' · ') + (lessons.length > 2 ? ' …' : '');
-
     return '<div class="stage-card" data-action="open-segment" data-seg="' + seg.segNum + '">' +
       '<div class="stage-card-head">' +
         '<span class="stage-icon">' + seg.icon + '</span>' +
         '<div class="stage-card-title">' +
           '<div class="stage-name">' + seg.name + '</div>' +
-          '<div class="stage-desc">' + preview + '</div>' +
+          '<div class="stage-desc">' + lessons.length + ' lekcji w segmencie</div>' +
         '</div>' +
       '</div>' +
-      '<div class="stage-lesson-summary">' +
-        '<span class="sls-count">' + lessons.length + ' lekcji</span>' +
-        '<span class="sls-done">' + doneCount + '/' + lessons.length + ' przerobionych</span>' +
+      '<div class="stage-meta-grid">' +
+        '<div class="stage-meta-item"><span class="stage-meta-label">Lekcje</span><strong>' + lessons.length + '</strong></div>' +
+        '<div class="stage-meta-item"><span class="stage-meta-label">Słowa</span><strong>' + wordCount + '</strong></div>' +
+        '<div class="stage-meta-item"><span class="stage-meta-label">Przerobione</span><strong>' + doneCount + '/' + lessons.length + '</strong></div>' +
       '</div>' +
       '<div class="stage-prog-wrap">' +
         '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + pct + '%"></div></div>' +
+        '<div class="stage-prog-txt">' + pct + '% segmentu ukończone</div>' +
       '</div>' +
       nextHint +
     '</div>';
@@ -2008,11 +2023,9 @@ function renderSegmentDetail(segNum) {
   var lessonsHtml = lessonStatuses.map(function(ls) {
     var lesson = ls.lesson;
     var status = ls.status;
-    var lw     = activeWords.filter(function(w) { return w.sourceLesson === lesson.key; });
-    var lNew   = lw.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
-    var lMast  = lw.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
-    var lLearn = lw.length - lNew - lMast;
-    var lpct   = lw.length ? Math.round(lMast / lw.length * 100) : 0;
+    var lessonMeta = parseSourceLessonMeta(lesson.key);
+    var stats  = getCourseLessonWordStats(lesson.key, activeWords);
+    var lpct   = stats.pct;
 
     var badge, btnLabel;
     if (status === 'done') {
@@ -2026,22 +2039,20 @@ function renderSegmentDetail(segNum) {
       btnLabel = 'Zacznij';
     }
 
-    var parts = [];
-    if (lNew   > 0) parts.push(lNew   + ' nowych');
-    if (lLearn > 0) parts.push(lLearn + ' w nauce');
-    if (lMast  > 0) parts.push(lMast  + ' opanowanych');
-    var metaStr = lw.length + ' słów' + (parts.length ? ' · ' + parts.join(' · ') : '');
-
     return '<div class="lesson-card' + (status === 'done' ? ' lc-done' : '') + '">' +
       '<div class="lc-header">' +
-        '<span class="lc-name">' + lesson.name + '</span>' +
+        '<div class="lc-title-wrap">' +
+          '<span class="lc-code">' + lessonMeta.lessonCode + '</span>' +
+          '<span class="lc-name">' + (lessonMeta.title || lesson.name) + '</span>' +
+        '</div>' +
         badge +
       '</div>' +
+      '<div class="lc-meta-row">' + stats.total + ' słów</div>' +
+      '<div class="lc-bar"><div class="lc-fill" style="width:' + lpct + '%"></div></div>' +
       '<div class="lc-footer">' +
-        '<span class="lc-meta">' + metaStr + '</span>' +
+        '<span class="lc-meta">' + lpct + '% opanowane</span>' +
         '<button class="btn-lesson" data-action="start-lesson" data-lesson-key="' + lesson.key.replace(/"/g, '&quot;') + '">' + btnLabel + '</button>' +
       '</div>' +
-      (status !== 'new' ? '<div class="lc-bar"><div class="lc-fill" style="width:' + lpct + '%"></div></div>' : '') +
     '</div>';
   }).join('');
 
