@@ -14,6 +14,7 @@
   --card-back-py:#d4b86a;       /* pinyin: warm gold accent */
   --card-back-tr:rgba(242,232,213,1); /* translation: light cream */
   --card-back-meta:#8a7a60;     /* lesson label / meta: soft muted */
+  --card-back-mw-hz:#b490f0;   /* measure word hanzi: light purple accent */
 }
 
 /* ── DARK MODE ── */
@@ -746,7 +747,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 /* ── MEASURE WORD ── */
 .mw-badge{display:inline-block;font-size:.75rem;font-weight:500;font-family:Inter,sans-serif;background:rgba(120,80,200,.1);color:#7850c8;border-radius:4px;padding:1px 5px;margin-left:4px;vertical-align:middle;cursor:default;}
 @media(prefers-color-scheme:dark){.mw-badge{background:rgba(160,120,240,.15);color:#b490f0;}}
-.fc-mw{margin-top:10px;padding:8px 12px;background:rgba(120,80,200,.07);border-radius:8px;font-size:.82rem;color:var(--card-back-meta);text-align:center;}
+.fc-mw{margin-top:10px;padding:8px 12px;background:rgba(160,120,240,.1);border-radius:8px;font-size:.82rem;color:var(--card-back-meta);text-align:center;}
 .fc-source{
   margin-top:10px;
   font-family:Inter,sans-serif;
@@ -757,8 +758,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   line-height:1.45;
 }
 .fc-mw-label{color:var(--card-back-meta);font-size:.74rem;margin-right:4px;}
-.fc-mw-hz{font-family:'Noto Sans SC',sans-serif;font-size:1.1rem;font-weight:700;color:#7850c8;margin-right:3px;}
+.fc-mw-hz{font-family:'Noto Sans SC',sans-serif;font-size:1.1rem;font-weight:700;color:var(--card-back-mw-hz);margin-right:3px;}
 .fc-mw-py{font-size:.82rem;color:var(--card-back-meta);}
 .fc-mw-ex{margin-top:5px;font-size:.78rem;color:var(--card-back-meta);}
 .fc-mw-ex-py{font-size:.74rem;}
-@media(prefers-color-scheme:dark){.fc-mw{background:rgba(160,120,240,.1);}.fc-mw-hz{color:#b490f0;}}
