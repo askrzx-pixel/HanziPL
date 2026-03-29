@@ -20,6 +20,14 @@ var todaySecondaryAction = { type: 'none' };
 var resultsPrimaryAction = { type: 'restart_session' };
 var resultsSecondaryAction = { type: 'back_home' };
 
+function isActiveContentWord(word) {
+  return !word || !word.contentStatus || word.contentStatus === 'active';
+}
+
+function getActiveWords() {
+  return WORDS.filter(isActiveContentWord);
+}
+
 // ── Display label maps ─────────────────────────────
 // Display labels for topic keys found in WORDS. Formatter only — not a source of truth.
 var TOPIC_LABELS = {
@@ -276,9 +284,10 @@ function renderStats() {
 function renderStatsLessons() {
   var container  = document.getElementById('st-lessons');
   var lessonKeys = getLessonItemsFromWords().slice(1).map(function(i) { return i.value; });
+  var activeWords = getActiveWords();
 
   var lessons = lessonKeys.map(function(ls) {
-    var lw = WORDS.filter(function(w) { return getNormalizedLessonKey(w) === ls; });
+    var lw = activeWords.filter(function(w) { return getNormalizedLessonKey(w) === ls; });
     if (!lw.length) return null;
     var m  = lw.filter(function(w) { return  SRS.isMastered(srsData[w.id]); }).length;
     var nw = lw.filter(function(w) { return  SRS.isNew(srsData[w.id]); }).length;
@@ -330,7 +339,7 @@ function renderStatsLessons() {
 function renderStatsHard() {
   var container  = document.getElementById('st-hard');
   var btn        = document.getElementById('st-hard-btn');
-  var candidates = WORDS
+  var candidates = getActiveWords()
     .map(function(w) { return Object.assign({}, w, { _c: srsData[w.id] || SRS.defaultCard() }); })
     .filter(function(w) { return (w._c.reviews || 0) >= 2; })
     .map(function(w) { return Object.assign({}, w, { _acc: (w._c.correct || 0) / (w._c.reviews || 1) }); })
@@ -355,7 +364,7 @@ function renderStatsHard() {
 }
 
 function startHardSession() {
-  var pool = WORDS
+  var pool = getActiveWords()
     .map(function(w) { return Object.assign({}, w, { _c: srsData[w.id] || SRS.defaultCard() }); })
     .filter(function(w) { return (w._c.reviews || 0) >= 2; })
     .map(function(w) { return Object.assign({}, w, { _acc: (w._c.correct || 0) / (w._c.reviews || 1) }); })
@@ -399,7 +408,7 @@ function filterLevel(lv, btn) {
 
 function renderWords() {
   const q = (document.getElementById('srch').value || '').toLowerCase();
-  let f = WORDS;
+  let f = getActiveWords();
   if (curFilter2 !== 'all') f = f.filter(w => getNormalizedLessonKey(w) === curFilter2);
   if (curTopic2  !== 'all') f = f.filter(w => w.topic === curTopic2);
   if (curLevel2  !== 'all') f = f.filter(w => w.levelApprox === curLevel2);
@@ -500,7 +509,7 @@ function toggleLevel(lv, btn) {
 }
 
 function getPool() {
-  let pool = selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(getNormalizedLessonKey(w)));
+  let pool = selLessons.has('all') ? getActiveWords() : getActiveWords().filter(w => selLessons.has(getNormalizedLessonKey(w)));
   if (!selTopics.has('all')) pool = pool.filter(w => selTopics.has(w.topic));
   if (!selLevels.has('all')) pool = pool.filter(w => selLevels.has(w.levelApprox));
   return pool;
@@ -1192,8 +1201,9 @@ function loadQZ() {
 
   sp('qz', sIdx + 1, sWords.length);
 
-  const sameLsn = WORDS.filter(x => x.pl !== w.pl && getNormalizedLessonKey(x) === getNormalizedLessonKey(w));
-  const other = WORDS.filter(x => x.pl !== w.pl && getNormalizedLessonKey(x) !== getNormalizedLessonKey(w));
+  const activeWords = getActiveWords();
+  const sameLsn = activeWords.filter(x => x.pl !== w.pl && getNormalizedLessonKey(x) === getNormalizedLessonKey(w));
+  const other = activeWords.filter(x => x.pl !== w.pl && getNormalizedLessonKey(x) !== getNormalizedLessonKey(w));
   const pool = shuffle(sameLsn).concat(shuffle(other));
 
   let opts = [w.pl];
@@ -1433,7 +1443,7 @@ function getRawWordLesson(w) {
 }
 
 function getDailyReviewWords() {
-  return WORDS.filter(function(w) {
+  return getActiveWords().filter(function(w) {
     var c = srsData[w.id];
     return !SRS.isNew(c) && SRS.isDue(c);
   });
@@ -1451,7 +1461,7 @@ function getOrderedCourseLessons() {
 }
 
 function getLessonWordsByKey(lessonKey) {
-  return WORDS.filter(function(w) { return getRawWordLesson(w) === lessonKey; });
+  return getActiveWords().filter(function(w) { return getRawWordLesson(w) === lessonKey; });
 }
 
 function getDailyLessonCandidate() {
@@ -1790,7 +1800,7 @@ function getNormalizedLessonKey(w) {
 function getAvailableLessons() {
   var seen = Object.create(null);
   var items = [];
-  WORDS.forEach(function(w) {
+  getActiveWords().forEach(function(w) {
     var key = getNormalizedLessonKey(w);
     if (!key || seen[key]) return;
     seen[key] = true;
@@ -1812,7 +1822,7 @@ function getLessonItemsFromWords() {
 function getTopicItems() {
   var seen = Object.create(null);
   var topics = [];
-  WORDS.forEach(function(w) {
+  getActiveWords().forEach(function(w) {
     var t = w.topic;
     if (!t || seen[t]) return;
     seen[t] = true;
@@ -1829,7 +1839,7 @@ function getLevelItems() {
   var ORDER = ['starter', 'A1', 'A2', 'HSK1', 'HSK2', 'HSK3', 'HSK3plus', 'proper_noun'];
   var seen = Object.create(null);
   var levels = [];
-  WORDS.forEach(function(w) {
+  getActiveWords().forEach(function(w) {
     var lv = w.levelApprox;
     if (!lv || seen[lv]) return;
     seen[lv] = true;
@@ -1967,7 +1977,8 @@ function renderSegmentDetail(segNum) {
   else             ctaLabel = '▶ Kontynuuj: ' + ctaLesson.name;
 
   // Segment word stats
-  var segWords    = WORDS.filter(function(w) {
+  var activeWords = getActiveWords();
+  var segWords    = activeWords.filter(function(w) {
     return lessons.some(function(l) { return l.key === w.sourceLesson; });
   });
   var segNew      = segWords.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
@@ -1978,7 +1989,7 @@ function renderSegmentDetail(segNum) {
   var lessonsHtml = lessonStatuses.map(function(ls) {
     var lesson = ls.lesson;
     var status = ls.status;
-    var lw     = WORDS.filter(function(w) { return w.sourceLesson === lesson.key; });
+    var lw     = activeWords.filter(function(w) { return w.sourceLesson === lesson.key; });
     var lNew   = lw.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
     var lMast  = lw.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
     var lLearn = lw.length - lNew - lMast;
