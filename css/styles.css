@@ -673,44 +673,44 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 /* ── STAGES SCREEN ─────────────────────────────── */
 .stage-card{
   background:var(--paper2);border:1px solid var(--border);border-radius:var(--radius);
-  padding:16px;margin-bottom:14px;cursor:pointer;
+  padding:12px 14px;margin-bottom:10px;cursor:pointer;
   transition:box-shadow .2s,transform .15s;
 }
 .stage-card:active{transform:scale(.985);}
 .stage-card:hover{box-shadow:var(--shadow-lg);}
-.stage-card-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;}
-.stage-icon{font-size:2rem;line-height:1;flex-shrink:0;margin-top:2px;}
+.stage-card-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
+.stage-icon{font-size:1.7rem;line-height:1;flex-shrink:0;margin-top:1px;}
 .stage-card-title{flex:1;}
-.stage-name{font-family:Inter,sans-serif;font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:4px;}
-.stage-desc{font-family:Inter,sans-serif;font-size:.78rem;color:var(--muted);line-height:1.45;}
+.stage-name{font-family:Inter,sans-serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:2px;}
+.stage-desc{font-family:Inter,sans-serif;font-size:.74rem;color:var(--muted);line-height:1.35;}
 .stage-meta-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:8px;
-  margin-bottom:10px;
+  gap:6px;
+  margin-bottom:8px;
 }
 .stage-meta-item{
   background:var(--paper3);
   border:1px solid var(--border);
-  border-radius:12px;
-  padding:10px 10px 9px;
+  border-radius:10px;
+  padding:8px 9px 7px;
   display:flex;
   flex-direction:column;
-  gap:3px;
+  gap:2px;
 }
-.stage-meta-item strong{font-family:Inter,sans-serif;font-size:.9rem;font-weight:700;color:var(--ink);}
+.stage-meta-item strong{font-family:Inter,sans-serif;font-size:.84rem;font-weight:700;color:var(--ink);line-height:1.25;}
 .stage-meta-label{
   font-family:Inter,sans-serif;
-  font-size:.62rem;
+  font-size:.58rem;
   font-weight:600;
   color:var(--muted);
   text-transform:uppercase;
   letter-spacing:.04em;
 }
-.stage-prog-wrap{margin:10px 0 8px;}
+.stage-prog-wrap{margin:8px 0 6px;}
 .stage-prog-track{height:6px;background:var(--paper3);border-radius:4px;overflow:hidden;margin-bottom:4px;}
 .stage-prog-fill{height:100%;background:var(--green2);border-radius:4px;transition:width .6s ease;}
-.stage-prog-txt{font-family:Inter,sans-serif;font-size:.65rem;font-weight:500;color:var(--muted);}
+.stage-prog-txt{font-family:Inter,sans-serif;font-size:.62rem;font-weight:500;color:var(--muted);}
 .stage-counts{display:flex;gap:8px;flex-wrap:wrap;}
 .sc-badge{font-family:Inter,sans-serif;font-size:.62rem;font-weight:500;padding:3px 8px;border-radius:10px;white-space:nowrap;}
 .sc-ok {background:rgba(74,138,64,.12);color:var(--green2);border:1px solid rgba(74,138,64,.25);}
@@ -764,10 +764,10 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 /* ── LESSON CARDS ── */
 .lesson-card{
   background:var(--paper2);border:1px solid var(--border);
-  border-radius:var(--radius);padding:14px;margin-bottom:10px;
+  border-radius:var(--radius);padding:12px;margin-bottom:9px;
 }
 .lesson-card.lc-done{opacity:.72;}
-.lc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;}
+.lc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
 .lc-title-wrap{display:flex;flex-direction:column;gap:2px;min-width:0;}
 .lc-code{font-family:'Space Mono',monospace;font-size:.68rem;font-weight:700;color:var(--gold);letter-spacing:.02em;}
 .lc-name{font-family:Inter,sans-serif;font-size:.9rem;font-weight:700;color:var(--ink);line-height:1.35;}
@@ -775,7 +775,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .ls-new{background:rgba(138,106,32,.12);color:var(--gold);}
 .ls-progress{background:rgba(74,138,64,.14);color:var(--green2);}
 .ls-done{background:rgba(74,138,64,.18);color:var(--green2);}
-.lc-meta-row{font-family:Inter,sans-serif;font-size:.72rem;color:var(--muted);margin-bottom:10px;}
+.lc-meta-row{font-family:Inter,sans-serif;font-size:.72rem;color:var(--muted);margin-bottom:8px;}
 .lc-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;}
 .lc-meta{font-family:Inter,sans-serif;font-size:.62rem;font-weight:500;color:var(--muted);}
 .btn-lesson{
@@ -785,7 +785,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 }
 .btn-lesson:active{transform:scale(.95);}
 .btn-lesson:hover{background:var(--green);}
-.lc-bar{height:3px;background:var(--paper3);border-radius:2px;overflow:hidden;margin-top:10px;}
+.lc-bar{height:3px;background:var(--paper3);border-radius:2px;overflow:hidden;margin-top:8px;}
 .lc-fill{height:100%;background:var(--green2);border-radius:2px;transition:width .5s ease;}
 /* ── STAGE STATS ROW (now compact/secondary) ── */
 .stage-word-stats{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 4px;}
@@ -806,11 +806,12 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .nlc-name{font-family:Inter,sans-serif;font-size:.95rem;font-weight:700;color:var(--ink);}
 .nlc-summary{font-family:Inter,sans-serif;font-size:.78rem;color:var(--muted);margin-top:2px;}
 /* ── STAGE CARD NEXT HINT ── */
-.sc-next{font-family:Inter,sans-serif;font-size:.78rem;color:var(--muted);padding:6px 0 2px;border-top:1px solid var(--border);margin-top:6px;}
+.sc-next{font-family:Inter,sans-serif;font-size:.74rem;color:var(--muted);padding:5px 0 1px;border-top:1px solid var(--border);margin-top:4px;line-height:1.35;}
 .sc-next strong{color:var(--ink2);}
 .sc-next.sc-next-done{color:var(--green2);}
 @media(max-width:480px){
-  .stage-meta-grid{grid-template-columns:1fr;}
+  .stage-card{padding:11px 12px;}
+  .stage-meta-grid{grid-template-columns:1fr 1fr;}
   .lc-header{align-items:flex-start;}
   .lc-footer{align-items:flex-start;flex-direction:column;}
   .btn-lesson{width:100%;}
