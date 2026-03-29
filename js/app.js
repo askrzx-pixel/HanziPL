@@ -2111,13 +2111,13 @@ function renderStages() {
         '<span class="stage-icon">' + seg.icon + '</span>' +
         '<div class="stage-card-title">' +
           '<div class="stage-name">' + seg.name + '</div>' +
-          '<div class="stage-desc">' + lessons.length + ' lekcji w segmencie</div>' +
+          '<div class="stage-desc">Mapa segmentu i kolejnych lekcji</div>' +
         '</div>' +
       '</div>' +
       '<div class="stage-meta-grid">' +
-        '<div class="stage-meta-item"><span class="stage-meta-label">Lekcje</span><strong>' + lessons.length + '</strong></div>' +
-        '<div class="stage-meta-item"><span class="stage-meta-label">Słowa</span><strong>' + wordCount + '</strong></div>' +
-        '<div class="stage-meta-item"><span class="stage-meta-label">Przerobione</span><strong>' + doneCount + '/' + lessons.length + '</strong></div>' +
+        '<div class="stage-meta-item"><span class="stage-meta-label">Liczba lekcji</span><strong>' + lessons.length + '</strong></div>' +
+        '<div class="stage-meta-item"><span class="stage-meta-label">Liczba słów</span><strong>' + wordCount + '</strong></div>' +
+        '<div class="stage-meta-item"><span class="stage-meta-label">Przerobione lekcje</span><strong>' + doneCount + '/' + lessons.length + '</strong></div>' +
       '</div>' +
       '<div class="stage-prog-wrap">' +
         '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + pct + '%"></div></div>' +
