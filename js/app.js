@@ -18,6 +18,9 @@ var dailySessionState = 'no_content_available';
 var todayPrimaryAction = { type: 'none' };
 var todaySecondaryAction = { type: 'none' };
 var resultsPrimaryAction = { type: 'restart_session' };
+var wordAudioPlayer = null;
+var wordAudioAvailability = Object.create(null);
+var currentWordAudioSrc = '';
 var resultsSecondaryAction = { type: 'back_home' };
 
 function isActiveContentWord(word) {
@@ -741,6 +744,8 @@ function backHome() {
   dailySessionFlow = null;
   dailySessionState = 'no_content_available';
   sessionMeta = null;
+  currentWordAudioSrc = '';
+  if (wordAudioPlayer) wordAudioPlayer.pause();
   go('home', document.getElementById('bn-home'));
 }
 
@@ -767,6 +772,83 @@ function recordAnswer(hanzi, correct, wasNew) {
 }
 
 // ── FLASHCARD ─────────────────────────────────────
+function getWordAudioPath(word) {
+  if (!word || !word.id) return '';
+  return 'audio/words/' + encodeURIComponent(word.id) + '.mp3';
+}
+
+async function checkWordAudioAvailability(src) {
+  if (!src) return false;
+  if (typeof wordAudioAvailability[src] === 'boolean') return wordAudioAvailability[src];
+
+  try {
+    var response = await fetch(src, { method: 'HEAD', cache: 'force-cache' });
+    if (response.ok) {
+      wordAudioAvailability[src] = true;
+      return true;
+    }
+    if (response.status !== 405 && response.status !== 501) {
+      wordAudioAvailability[src] = false;
+      return false;
+    }
+  } catch (_) {
+    // Fallback to GET below.
+  }
+
+  try {
+    var getResponse = await fetch(src, { method: 'GET', cache: 'force-cache' });
+    wordAudioAvailability[src] = getResponse.ok;
+    return getResponse.ok;
+  } catch (_) {
+    wordAudioAvailability[src] = false;
+    return false;
+  }
+}
+
+function hideWordAudioButton() {
+  var btn = document.getElementById('fc-audio-btn');
+  if (!btn) return;
+  btn.hidden = true;
+  btn.disabled = true;
+}
+
+async function syncCurrentWordAudio(word) {
+  var btn = document.getElementById('fc-audio-btn');
+  if (!btn) return;
+
+  hideWordAudioButton();
+  currentWordAudioSrc = '';
+
+  var src = getWordAudioPath(word);
+  if (!src) return;
+
+  var available = await checkWordAudioAvailability(src);
+  if (!available) return;
+
+  currentWordAudioSrc = src;
+  btn.hidden = false;
+  btn.disabled = false;
+}
+
+async function playCurrentWordAudio() {
+  if (!currentWordAudioSrc) return;
+  if (!wordAudioPlayer) {
+    wordAudioPlayer = new Audio();
+  }
+
+  try {
+    wordAudioPlayer.pause();
+    if (wordAudioPlayer.src !== new URL(currentWordAudioSrc, window.location.href).href) {
+      wordAudioPlayer.src = currentWordAudioSrc;
+    }
+    wordAudioPlayer.currentTime = 0;
+    await wordAudioPlayer.play();
+  } catch (_) {
+    hideWordAudioButton();
+    currentWordAudioSrc = '';
+  }
+}
+
 function startFC() {
   document.getElementById('sfc').style.display = 'block';
   document.getElementById('fc-mode-lbl').textContent = sessionMeta && sessionMeta.modeLabel
@@ -808,6 +890,8 @@ function loadFC() {
   const bhEl = document.getElementById('fc-bh');
   const srcEl = document.getElementById('fc-source');
   const mwEl = document.getElementById('fc-mw');
+
+  syncCurrentWordAudio(w);
 
   function applyContent() {
     if (hzEl) hzEl.textContent = w.hanzi || '—';
@@ -2392,4 +2476,5 @@ window.setGoal = setGoal;
 window.finishOnboard = finishOnboard;
 window.dialogCancel = dialogCancel;
 window.dialogConfirm = dialogConfirm;
+window.playCurrentWordAudio = playCurrentWordAudio;
 init();

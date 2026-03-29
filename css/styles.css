@@ -454,6 +454,19 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 
 /* ── FLASHCARD ── */
 .fcwrap{-webkit-perspective:1200px;perspective:1200px;margin:0 auto 20px;max-width:480px;height:260px;cursor:pointer;}
+.fc-audio-row{max-width:480px;margin:0 auto 14px;display:flex;justify-content:flex-end;}
+.fc-audio-btn{
+  padding:8px 12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--paper2);
+  color:var(--ink);
+  font-family:Inter,sans-serif;
+  font-size:.74rem;
+  font-weight:600;
+  cursor:pointer;
+}
+.fc-audio-btn:active{transform:scale(.98);}
 .fc{width:100%;height:100%;position:relative;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;transition:transform .58s cubic-bezier(.4,0,.2,1);}
 .fc.flip{transform:rotateY(180deg);}
 .face{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
