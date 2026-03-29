@@ -792,6 +792,8 @@ function showDailyTransitionScreen(nextPhase) {
   var nextEl = document.getElementById('res-next');
   if (nextEl) { nextEl.style.display = 'none'; nextEl.textContent = ''; }
 
+  renderCompletionExtras(null);
+
   resultsPrimaryAction = { type: 'daily_next_phase', phaseIndex: dailySessionFlow.currentPhaseIndex };
   resultsSecondaryAction = { type: 'back_home' };
   updateResultsButtons(
@@ -846,6 +848,12 @@ function showDailyCompletionScreen() {
   var nextEl = document.getElementById('res-next');
   if (nextEl) { nextEl.style.display = 'none'; nextEl.textContent = ''; }
 
+  renderCompletionExtras(buildCompletionExtras({
+    mode: 'daily',
+    lessonMeta: dailySessionFlow ? dailySessionFlow.lessonMeta : null,
+    lessonWords: dailySessionFlow ? dailySessionFlow.lessonWords : null
+  }));
+
   resultsPrimaryAction = summary.primaryAction;
   resultsSecondaryAction = { type: 'back_home' };
   updateResultsButtons(summary.primaryLabel, 'Wróć do dziś');
@@ -867,6 +875,149 @@ function updateResultsButtons(primaryLabel, secondaryLabel) {
     }
   }
   if (secondaryBtn) secondaryBtn.textContent = secondaryLabel || 'Wróć do dziś';
+}
+
+function renderCompletionExtras(data) {
+  var reviewEl = document.getElementById('res-review');
+  var contextEl = document.getElementById('res-context');
+
+  if (reviewEl) {
+    if (data && data.reviewWords && data.reviewWords.length) {
+      var reviewTitle = data.reviewTitle || 'Szybkie przypomnienie';
+      reviewEl.style.display = 'block';
+      reviewEl.innerHTML =
+        '<div class="res-extra-title">' + escapeHtml(reviewTitle) + '</div>' +
+        '<div class="res-review-list">' +
+          data.reviewWords.map(function(word) {
+            return '<div class="res-review-item">' +
+              '<div class="res-review-top">' +
+                '<span class="res-review-hz">' + escapeHtml(word.hanzi || '—') + '</span>' +
+                '<span class="res-review-py">' + escapeHtml(word.pinyin || '') + '</span>' +
+              '</div>' +
+              '<div class="res-review-pl">' + escapeHtml(word.pl || '—') + '</div>' +
+            '</div>';
+          }).join('') +
+        '</div>';
+    } else {
+      reviewEl.style.display = 'none';
+      reviewEl.innerHTML = '';
+    }
+  }
+
+  if (contextEl) {
+    if (data && data.contextItems && data.contextItems.length) {
+      var contextTitle = data.contextTitle || 'Prosty kontekst';
+      contextEl.style.display = 'block';
+      contextEl.innerHTML =
+        '<div class="res-extra-title">' + escapeHtml(contextTitle) + '</div>' +
+        '<div class="res-context-list">' +
+          data.contextItems.map(function(item) {
+            return '<div class="res-context-item">' +
+              '<div class="res-context-top">' +
+                '<span class="res-context-hz">' + escapeHtml(item.hanzi || '—') + '</span>' +
+                '<span class="res-context-py">' + escapeHtml(item.pinyin || '') + '</span>' +
+              '</div>' +
+              '<div class="res-context-note">' + escapeHtml(item.note || item.pl || 'Prosta fraza z tej sesji.') + '</div>' +
+            '</div>';
+          }).join('') +
+        '</div>';
+    } else {
+      contextEl.style.display = 'none';
+      contextEl.innerHTML = '';
+    }
+  }
+}
+
+function getSessionBaseWords() {
+  var limit = Math.min(sTotal || 0, Array.isArray(sWords) ? sWords.length : 0);
+  return (Array.isArray(sWords) ? sWords.slice(0, limit) : []).filter(Boolean);
+}
+
+function getUniqueWords(words, limit) {
+  var seen = Object.create(null);
+  var out = [];
+  (words || []).forEach(function(word) {
+    if (!word || !word.id || seen[word.id]) return;
+    seen[word.id] = true;
+    out.push(word);
+  });
+  return typeof limit === 'number' ? out.slice(0, limit) : out;
+}
+
+function getShortPolishLabel(text) {
+  var label = String(text || '').split(/[;,]/)[0].trim();
+  return label || 'to słowo z tej lekcji';
+}
+
+function getCompletionUsageLabel(word) {
+  var tags = Array.isArray(word && word.tags) ? word.tags : [];
+  if (tags.indexOf('powitanie') !== -1) return 'Na powitanie.';
+  if (tags.indexOf('pożegnanie') !== -1) return 'Na pożegnanie.';
+  if (tags.indexOf('pytanie') !== -1 || tags.indexOf('zaimek pytający') !== -1) return 'Gdy zadajesz proste pytanie.';
+  if (tags.indexOf('grzeczność') !== -1) return 'W uprzejmej odpowiedzi.';
+  if (tags.indexOf('czasownik') !== -1) return 'Przy prostym mówieniu o czynności.';
+  if (tags.indexOf('osoba') !== -1 || tags.indexOf('imię') !== -1) return 'Gdy mówisz o sobie albo o kimś.';
+  return 'Przyda się przy słowie: ' + getShortPolishLabel(word && word.pl);
+}
+
+function buildCompletionContextItems(words) {
+  return getUniqueWords(words, 2).map(function(word) {
+    return {
+      hanzi: word.hanzi,
+      pinyin: word.pinyin,
+      pl: word.pl,
+      note: getCompletionUsageLabel(word)
+    };
+  });
+}
+
+function buildCompletionExtras(options) {
+  var mode = options && options.mode ? options.mode : 'session';
+  var sessionWords = getUniqueWords(getSessionBaseWords());
+  var reviewWords = [];
+  var reviewTitle = '';
+  var contextTitle = 'Prosty kontekst';
+  var lessonMeta = options && options.lessonMeta ? options.lessonMeta : null;
+  var hasLessonReview = mode === 'daily' && options && Array.isArray(options.lessonWords) && options.lessonWords.length;
+
+  if (hasLessonReview) {
+    reviewWords = getUniqueWords(options.lessonWords, 5);
+  } else if (sessionWords.length && getDistinctLessonCount(sessionWords) <= 1) {
+    lessonMeta = lessonMeta || getPrimaryLessonFromWords(sessionWords);
+    reviewWords = lessonMeta
+      ? getUniqueWords(getLessonWordsByKey(lessonMeta.key), 5)
+      : getUniqueWords(sessionWords, 5);
+  } else if (mode === 'daily' && sessionWords.length) {
+    reviewWords = getUniqueWords(sessionWords, 5);
+  }
+
+  if (!lessonMeta && reviewWords.length && getDistinctLessonCount(reviewWords) <= 1) {
+    lessonMeta = getPrimaryLessonFromWords(reviewWords);
+  }
+
+  if (reviewWords.length) {
+    reviewTitle = lessonMeta && lessonMeta.lessonCode && (hasLessonReview || mode !== 'daily')
+      ? 'Szybkie przypomnienie · lekcja ' + lessonMeta.lessonCode
+      : 'Szybkie przypomnienie';
+  }
+
+  if (mode === 'daily' && !hasLessonReview) {
+    contextTitle = 'Kontekst z dzisiejszej sesji';
+  } else if (lessonMeta && lessonMeta.lessonCode) {
+    contextTitle = 'Po lekcji ' + lessonMeta.lessonCode;
+  }
+
+  var contextSource = reviewWords.length ? reviewWords : sessionWords;
+  var contextItems = buildCompletionContextItems(contextSource);
+
+  if (!reviewWords.length && !contextItems.length) return null;
+
+  return {
+    reviewTitle: reviewTitle,
+    reviewWords: reviewWords,
+    contextTitle: contextTitle,
+    contextItems: contextItems
+  };
 }
 
 function handleResultsPrimaryAction() {
@@ -1163,6 +1314,8 @@ function showResults() {
     nextEl.style.display = 'none';
     nextEl.textContent = '';
   }
+
+  renderCompletionExtras(buildCompletionExtras({ mode: isDailySession ? 'daily' : 'session' }));
 
   // Daily session completion banner
   const banner = document.getElementById('res-daily-banner');
