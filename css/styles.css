@@ -509,6 +509,54 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .res-plan-item.done{color:var(--green2);}
 .res-next{font-family:Inter,sans-serif;font-size:.8rem;font-weight:600;color:var(--ink2);margin:0 auto 18px;max-width:28rem;line-height:1.55;}
 .resbtns{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;}
+.res-review,.res-context{
+  max-width:30rem;
+  margin:14px auto 0;
+  padding:12px 14px;
+  background:var(--paper2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  text-align:left;
+}
+.res-extra-title{
+  font-family:Inter,sans-serif;
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.res-review-list,.res-context-list{display:flex;flex-direction:column;gap:8px;}
+.res-review-item,.res-context-item{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.res-review-top,.res-context-top{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.res-review-hz,.res-context-hz{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:1.18rem;
+  color:var(--red);
+  line-height:1.1;
+}
+.res-review-py,.res-context-py{
+  font-family:Inter,sans-serif;
+  font-size:.74rem;
+  color:var(--gold);
+  font-style:italic;
+}
+.res-review-pl,.res-context-note{
+  font-family:Inter,sans-serif;
+  font-size:.76rem;
+  color:var(--ink2);
+  line-height:1.4;
+}
 
 /* Completion banner */
 .done-banner{background:var(--green);border-radius:var(--radius);padding:16px;text-align:center;margin-bottom:16px;}
@@ -599,6 +647,8 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   .topbar-account{width:100%;justify-content:flex-end;}
   .home-hero-top{flex-direction:column;align-items:flex-start;}
   .home-hero-greeting{max-width:none;text-align:left;}
+  .resbtns{flex-direction:column;}
+  .resbtns .btn,.resbtns .btn-out{width:100% !important;}
 }
 
 /* ── WORD CARD META (topic / level / lesson) ── */
