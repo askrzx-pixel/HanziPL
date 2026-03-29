@@ -968,6 +968,7 @@ function getCompletionUsageLabel(word) {
   if (hanzi === '不客气') return 'Mówimy tak, gdy odpowiadamy na podziękowanie.';
   if (hanzi === '请') return 'Używamy, gdy prosimy albo uprzejmie zapraszamy.';
   if (hanzi === '不好意思') return 'Używamy, gdy chcemy kogoś grzecznie zaczepić albo lekko przeprosić.';
+  if (hanzi === '叫') return 'Używamy, gdy mówimy, jak mamy na imię.';
   if (hanzi === '你好' || hanzi === '您好' || tags.indexOf('powitanie') !== -1) return 'Używamy, gdy się z kimś witamy.';
   if (tags.indexOf('pożegnanie') !== -1) return 'Używamy, gdy się z kimś żegnamy.';
   if (tags.indexOf('pytanie') !== -1 || tags.indexOf('zaimek pytający') !== -1) return 'Używamy, gdy zadajemy proste pytanie.';
