@@ -5,9 +5,9 @@
 // ── Runtime state ─────────────────────────────────
 var curFilter  = 'all';
 var curMode    = 'fc';
-var selLessons = new Set(['all']);
-var selTopics  = new Set(['all']);
-var selLevels  = new Set(['all']);
+var studyScope = 'today';
+var studySegment = 'all';
+var studyLesson = 'all';
 var sWords = [], sIdx = 0, sOk = 0, sTotal = 0, fcFlipped = false;
 var isDailySession  = false;
 var sessionReviews  = 0;
@@ -364,13 +364,7 @@ function renderStatsHard() {
 }
 
 function startHardSession() {
-  var pool = getActiveWords()
-    .map(function(w) { return Object.assign({}, w, { _c: srsData[w.id] || SRS.defaultCard() }); })
-    .filter(function(w) { return (w._c.reviews || 0) >= 2; })
-    .map(function(w) { return Object.assign({}, w, { _acc: (w._c.correct || 0) / (w._c.reviews || 1) }); })
-    .sort(function(a, b) { return a._acc - b._acc; })
-    .slice(0, 10)
-    .map(function(w) { var r = Object.assign({}, w); delete r._c; delete r._acc; return r; });
+  var pool = getHardWordsPool();
   if (!pool.length) return;
   hideAll();
   isDailySession   = false;
@@ -533,68 +527,165 @@ function selMode(m) {
   document.getElementById('m-' + m).classList.add('on');
 }
 
-function toggleLesson(l, btn) {
-  if (l === 'all') {
-    selLessons = new Set(['all']);
-    document.querySelectorAll('#slf .chip').forEach(b => b.classList.remove('on'));
-    btn.classList.add('on');
-  } else {
-    selLessons.delete('all');
-    document.querySelector('#slf .chip').classList.remove('on');
-    if (selLessons.has(l)) { selLessons.delete(l); btn.classList.remove('on'); }
-    else                   { selLessons.add(l);    btn.classList.add('on');    }
-    if (!selLessons.size) { selLessons.add('all'); document.querySelector('#slf .chip').classList.add('on'); }
+function getHardWordsPool() {
+  return getActiveWords()
+    .map(function(w) { return Object.assign({}, w, { _c: srsData[w.id] || SRS.defaultCard() }); })
+    .filter(function(w) { return (w._c.reviews || 0) >= 2; })
+    .map(function(w) { return Object.assign({}, w, { _acc: (w._c.correct || 0) / (w._c.reviews || 1) }); })
+    .sort(function(a, b) { return a._acc - b._acc; })
+    .slice(0, 10)
+    .map(function(w) { var r = Object.assign({}, w); delete r._c; delete r._acc; return r; });
+}
+
+function getStudyScopeItems() {
+  return [
+    { value: 'today', label: 'Dzisiejszy materiał' },
+    { value: 'current_lesson', label: 'Aktualna lekcja' },
+    { value: 'hard', label: 'Trudne słówka' },
+    { value: 'segment', label: 'Wybrany segment' },
+    { value: 'lesson', label: 'Wybrana lekcja' }
+  ];
+}
+
+function getStudySegmentItems() {
+  if (typeof getV3Segments !== 'function') return [];
+  return getV3Segments().map(function(seg) {
+    return { value: String(seg.segNum), label: 'Segment ' + seg.segNum };
+  });
+}
+
+function getStudyLessonItemsForSegment(segValue) {
+  if (!segValue || segValue === 'all' || typeof getV3Segments !== 'function') return [];
+  var segments = getV3Segments();
+  for (var i = 0; i < segments.length; i++) {
+    if (String(segments[i].segNum) === String(segValue)) {
+      return segments[i].lessons.map(function(lesson) {
+        var meta = parseSourceLessonMeta(lesson.key);
+        return { value: lesson.key, label: meta.shortLabel || lesson.name };
+      });
+    }
   }
+  return [];
+}
+
+function getCurrentStudyLessonMeta() {
+  var candidate = getDailyLessonCandidate();
+  if (candidate) return parseSourceLessonMeta(candidate.key);
+  return getNextCourseLesson('');
+}
+
+function getStudyPool() {
+  if (studyScope === 'today') {
+    var flow = createDailySessionFlow();
+    var words = [];
+    (flow.phases || []).forEach(function(phase) {
+      if (Array.isArray(phase.words) && phase.words.length) words = words.concat(phase.words);
+    });
+    return getUniqueWords(words);
+  }
+  if (studyScope === 'current_lesson') {
+    var currentLesson = getCurrentStudyLessonMeta();
+    return currentLesson ? getLessonWordsByKey(currentLesson.key) : [];
+  }
+  if (studyScope === 'hard') {
+    return getHardWordsPool();
+  }
+  if (studyScope === 'segment') {
+    if (studySegment === 'all' || typeof getV3Segments !== 'function') return [];
+    return getActiveWords().filter(function(w) {
+      var meta = parseSourceLessonMeta(getRawWordLesson(w));
+      return meta && String(meta.segNum) === String(studySegment);
+    });
+  }
+  if (studyScope === 'lesson') {
+    return studyLesson !== 'all' ? getLessonWordsByKey(studyLesson) : [];
+  }
+  return [];
+}
+
+function syncStudyScopeUi() {
+  var segWrap = document.getElementById('study-segment-wrap');
+  var lessonWrap = document.getElementById('study-lesson-wrap');
+  var segmentNeeded = studyScope === 'segment' || studyScope === 'lesson';
+  var lessonNeeded = studyScope === 'lesson';
+  if (segWrap) segWrap.hidden = !segmentNeeded;
+  if (lessonWrap) lessonWrap.hidden = !lessonNeeded;
+
+  if (segmentNeeded) {
+    var segmentItems = getStudySegmentItems();
+    if (!segmentItems.some(function(item) { return item.value === studySegment; })) {
+      studySegment = segmentItems.length ? segmentItems[0].value : 'all';
+    }
+    renderChipList('study-segment', segmentItems,
+      function(v) { return studySegment === v; },
+      filterStudySegment);
+  } else {
+    studySegment = 'all';
+    var segmentEl = document.getElementById('study-segment');
+    if (segmentEl) segmentEl.innerHTML = '';
+  }
+
+  if (lessonNeeded && studySegment !== 'all') {
+    var lessonItems = getStudyLessonItemsForSegment(studySegment);
+    if (!lessonItems.some(function(item) { return item.value === studyLesson; })) {
+      studyLesson = lessonItems.length ? lessonItems[0].value : 'all';
+    }
+    renderChipList('study-lesson', lessonItems,
+      function(v) { return studyLesson === v; },
+      filterStudyLesson);
+  } else {
+    studyLesson = 'all';
+    var lessonEl = document.getElementById('study-lesson');
+    if (lessonEl) lessonEl.innerHTML = '';
+  }
+}
+
+function filterStudyScope(scope, btn) {
+  studyScope = scope;
+  document.querySelectorAll('#study-scope .chip').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  syncStudyScopeUi();
   updateSessionCount();
 }
 
-function toggleTopic(t, btn) {
-  if (t === 'all') {
-    selTopics = new Set(['all']);
-    document.querySelectorAll('#stf .chip').forEach(b => b.classList.remove('on'));
-    btn.classList.add('on');
-  } else {
-    selTopics.delete('all');
-    document.querySelector('#stf .chip').classList.remove('on');
-    if (selTopics.has(t)) { selTopics.delete(t); btn.classList.remove('on'); }
-    else                  { selTopics.add(t);    btn.classList.add('on');    }
-    if (!selTopics.size) { selTopics.add('all'); document.querySelector('#stf .chip').classList.add('on'); }
-  }
+function filterStudySegment(seg, btn) {
+  studySegment = seg;
+  document.querySelectorAll('#study-segment .chip').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  if (studyScope === 'lesson') studyLesson = 'all';
+  syncStudyScopeUi();
   updateSessionCount();
 }
 
-function toggleLevel(lv, btn) {
-  if (lv === 'all') {
-    selLevels = new Set(['all']);
-    document.querySelectorAll('#slvl .chip').forEach(b => b.classList.remove('on'));
-    btn.classList.add('on');
-  } else {
-    selLevels.delete('all');
-    document.querySelector('#slvl .chip').classList.remove('on');
-    if (selLevels.has(lv)) { selLevels.delete(lv); btn.classList.remove('on'); }
-    else                   { selLevels.add(lv);    btn.classList.add('on');    }
-    if (!selLevels.size) { selLevels.add('all'); document.querySelector('#slvl .chip').classList.add('on'); }
-  }
+function filterStudyLesson(lessonKey, btn) {
+  studyLesson = lessonKey;
+  document.querySelectorAll('#study-lesson .chip').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
   updateSessionCount();
-}
-
-function getPool() {
-  let pool = selLessons.has('all') ? getActiveWords() : getActiveWords().filter(w => selLessons.has(getNormalizedLessonKey(w)));
-  if (!selTopics.has('all')) pool = pool.filter(w => selTopics.has(w.topic));
-  if (!selLevels.has('all')) pool = pool.filter(w => selLevels.has(w.levelApprox));
-  return pool;
 }
 
 function updateSessionCount() {
   const scntEl = document.getElementById('scnt');
   if (!scntEl) return;
-  const pool = getPool();
-  scntEl.textContent = pool.length + ' słówek w puli';
+  const pool = getStudyPool();
+  var label = 'dzisiejszym materiale';
+  if (studyScope === 'current_lesson') {
+    var currentLesson = getCurrentStudyLessonMeta();
+    label = currentLesson ? ('lekcji ' + currentLesson.lessonCode) : 'aktualnej lekcji';
+  } else if (studyScope === 'hard') {
+    label = 'trudnych słówkach';
+  } else if (studyScope === 'segment' && studySegment !== 'all') {
+    label = 'segmencie ' + studySegment;
+  } else if (studyScope === 'lesson' && studyLesson !== 'all') {
+    var lessonMeta = parseSourceLessonMeta(studyLesson);
+    label = lessonMeta ? ('lekcji ' + lessonMeta.lessonCode) : 'wybranej lekcji';
+  }
+  scntEl.textContent = pool.length + ' słówek w ' + label;
 }
 
 function startCustomSession() {
-  const basePool = getPool();
-  const pool = shuffle([...basePool]);
+  const basePool = getStudyPool();
+  const pool = shuffle([].concat(basePool));
 
   if (!pool.length) {
     showToast('Brak słówek!', true);
@@ -1951,10 +2042,6 @@ function getLevelItems() {
  * Called once on init — and re-callable if data changes.
  */
 function initChips() {
-  var lessonItems = getLessonItemsFromWords();
-  var topicItems  = getTopicItems();
-  var levelItems  = getLevelItems();
-
   // Words browser — single-select filters
   renderChipList('frow-segment', getWordBrowserSegmentItems(),
     function(v) { return curSegment2 === v; },
@@ -1964,16 +2051,11 @@ function initChips() {
     filterWordStatus);
   syncWordLessonFilter();
 
-  // Study screen — multi-select toggles
-  renderChipList('slf', lessonItems,
-    function(v) { return selLessons.has(v); },
-    toggleLesson);
-  renderChipList('stf', topicItems,
-    function(v) { return selTopics.has(v); },
-    toggleTopic);
-  renderChipList('slvl', levelItems,
-    function(v) { return selLevels.has(v); },
-    toggleLevel);
+  // Study screen — guided scope
+  renderChipList('study-scope', getStudyScopeItems(),
+    function(v) { return studyScope === v; },
+    filterStudyScope);
+  syncStudyScopeUi();
 }
 
 // ── STAGES SCREEN ─────────────────────────────────
@@ -2223,7 +2305,7 @@ function init() {
 
   console.log('init ok', {
     words: WORDS.length,
-    pool: getPool().length,
+    pool: getStudyPool().length,
     mode: curMode
   });
 }
@@ -2283,14 +2365,11 @@ window.flipCard = flipCard;
 window.srsAns = srsAns;
 window.chkType = chkType;
 window.tpNext = tpNext;
-window.toggleLesson = toggleLesson;
-window.toggleTopic = toggleTopic;
-window.toggleLevel = toggleLevel;
 window.initChips = initChips;
 window.selMode = selMode;
-window.filterWords = filterWords;
-window.filterTopic = filterTopic;
-window.filterLevel = filterLevel;
+window.filterWordsSegment = filterWordsSegment;
+window.filterWordStatus = filterWordStatus;
+window.filterWordLesson = filterWordLesson;
 window.renderWords = renderWords;
 window.setGoal = setGoal;
 window.finishOnboard = finishOnboard;

@@ -322,6 +322,7 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 
 .stfilter{margin-bottom:16px;}
 .stfilter .lbl{font-family:Inter,sans-serif;font-size:.62rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;margin-bottom:7px;display:block;}
+.scnt{font-family:Inter,sans-serif;font-size:.72rem;font-weight:500;color:var(--muted);margin-top:10px;line-height:1.45;}
 .wfilter{margin-bottom:4px;}
 .wfilter .flbl{display:block;margin-bottom:4px;}
 
