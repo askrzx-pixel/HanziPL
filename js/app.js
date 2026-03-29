@@ -968,7 +968,12 @@ function getCompletionUsageLabel(word) {
   if (hanzi === '不客气') return 'Mówimy tak, gdy odpowiadamy na podziękowanie.';
   if (hanzi === '请') return 'Używamy, gdy prosimy albo uprzejmie zapraszamy.';
   if (hanzi === '不好意思') return 'Używamy, gdy chcemy kogoś grzecznie zaczepić albo lekko przeprosić.';
+  if (hanzi === '我') return 'Używamy, gdy mówimy o sobie.';
+  if (hanzi === '你') return 'Używamy, gdy zwracamy się do jednej osoby.';
   if (hanzi === '叫') return 'Używamy, gdy mówimy, jak mamy na imię.';
+  if (hanzi === '名字') return 'Używamy, gdy mówimy o imieniu albo pytamy o imię.';
+  if (hanzi === '什么') return 'Używamy, gdy pytamy „co?” albo „jakie?”.';
+  if (hanzi === '是') return 'Używamy, gdy mówimy, że coś lub ktoś jest czymś.';
   if (hanzi === '快乐') return 'Używamy, gdy mówimy o radości albo szczęściu.';
   if (hanzi === '生日快乐') return 'Mówimy tak, gdy składamy komuś życzenia urodzinowe.';
   if (hanzi === '新年') return 'Używamy, gdy mówimy o Nowym Roku.';
