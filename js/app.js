@@ -413,7 +413,7 @@ function getWordBrowserSegmentItems() {
   if (typeof getV3Segments !== 'function') return [{ value: 'all', label: 'Wszystkie' }];
   return [{ value: 'all', label: 'Wszystkie' }].concat(
     getV3Segments().map(function(seg) {
-      return { value: String(seg.segNum), label: 'Segment ' + seg.segNum };
+      return { value: String(seg.segNum), label: seg.segNum + '. ' + seg.name };
     })
   );
 }
