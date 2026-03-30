@@ -951,10 +951,6 @@ function flipCard() {
   if (fcFlipped) return;
   fcFlipped = true;
   document.getElementById('fc').classList.add('flip');
-  const w         = sWords[sIdx];
-  const intervals = SRS.previewIntervals(srsData[w.id]);
-  document.getElementById('srs-i0').textContent = intervals[0];
-  document.getElementById('srs-i3').textContent = intervals[3];
   setTimeout(() => document.getElementById('srs-btns').style.display = 'block', 340);
 }
 
