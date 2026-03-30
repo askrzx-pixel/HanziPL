@@ -958,9 +958,8 @@ function flipCard() {
   document.getElementById('fc').classList.add('flip');
   const w         = sWords[sIdx];
   const intervals = SRS.previewIntervals(srsData[w.id]);
-  ['srs-i0','srs-i1','srs-i2','srs-i3'].forEach((id, i) => {
-    document.getElementById(id).textContent = intervals[i];
-  });
+  document.getElementById('srs-i0').textContent = intervals[0];
+  document.getElementById('srs-i3').textContent = intervals[3];
   setTimeout(() => document.getElementById('srs-btns').style.display = 'block', 340);
 }
 
@@ -1104,6 +1103,97 @@ function showDailyTransitionScreen(nextPhase) {
   );
 }
 
+// ── RESULTS EXTRAS ─────────────────────────────────────────────────────────
+function _firstMeaning(pl) {
+  if (!pl) return '';
+  return pl.split(/[;,]/)[0].trim();
+}
+
+function buildContextPhrases(words) {
+  var phrases = [];
+  var pronoun = null, verb = null, noun = null;
+  for (var i = 0; i < words.length; i++) {
+    var w = words[i];
+    if (!w.tags) continue;
+    if (!pronoun && w.tags.indexOf('zaimek') !== -1 && w.tags.indexOf('osoba') !== -1) pronoun = w;
+    if (!verb   && w.tags.indexOf('czasownik') !== -1) verb = w;
+    if (!noun   && w.tags.indexOf('rzeczownik') !== -1) noun = w;
+  }
+  // Template A: pronoun + verb
+  if (pronoun && verb) {
+    phrases.push({
+      hz: pronoun.hanzi + verb.hanzi + '。',
+      py: pronoun.pinyin + ' ' + verb.pinyin + '。',
+      pl: _firstMeaning(pronoun.pl) + ' ' + _firstMeaning(verb.pl) + '。'
+    });
+  }
+  // Template B: 这是 + noun
+  if (noun) {
+    phrases.push({
+      hz: '这是' + noun.hanzi + '。',
+      py: 'Zhè shì ' + noun.pinyin + '。',
+      pl: 'To jest ' + _firstMeaning(noun.pl) + '。'
+    });
+  }
+  // Fallback: single-word exclamation from first word
+  if (phrases.length === 0 && words.length > 0) {
+    var fw = words[0];
+    phrases.push({
+      hz: fw.hanzi + '！',
+      py: fw.pinyin + '！',
+      pl: _firstMeaning(fw.pl) + '！'
+    });
+  }
+  return phrases.slice(0, 2);
+}
+
+function renderResExtras(reviewWords, contextWords) {
+  // Word review block
+  var revEl = document.getElementById('res-word-review');
+  if (revEl) {
+    var sample = reviewWords.slice(0, 5);
+    if (sample.length > 0) {
+      var rows = sample.map(function(w) {
+        return '<div class="res-review-row">' +
+          '<span class="res-review-hz">' + w.hanzi + '</span>' +
+          '<span class="res-review-py">' + w.pinyin + '</span>' +
+          '<span class="res-review-pl">' + _firstMeaning(w.pl) + '</span>' +
+          '</div>';
+      }).join('');
+      revEl.innerHTML = '<div class="res-review-head">Słówka z tej lekcji</div>' + rows;
+      revEl.style.display = 'block';
+    } else {
+      revEl.style.display = 'none';
+    }
+  }
+  // Context phrases block
+  var ctxEl = document.getElementById('res-context');
+  if (ctxEl) {
+    var phrases = buildContextPhrases(contextWords);
+    if (phrases.length > 0) {
+      var ctxRows = phrases.map(function(p) {
+        return '<div class="res-ctx-row">' +
+          '<div class="res-ctx-hz">' + p.hz + '</div>' +
+          '<div class="res-ctx-py">' + p.py + '</div>' +
+          '<div class="res-ctx-pl">' + p.pl + '</div>' +
+          '</div>';
+      }).join('');
+      ctxEl.innerHTML = '<div class="res-ctx-head">Przykłady użycia</div>' + ctxRows;
+      ctxEl.style.display = 'block';
+    } else {
+      ctxEl.style.display = 'none';
+    }
+  }
+}
+
+function _hideResExtras() {
+  var r = document.getElementById('res-word-review');
+  var c = document.getElementById('res-context');
+  if (r) { r.style.display = 'none'; r.innerHTML = ''; }
+  if (c) { c.style.display = 'none'; c.innerHTML = ''; }
+}
+// ───────────────────────────────────────────────────────────────────────────
+
 function showDailyCompletionScreen() {
   hideAll();
   document.getElementById('sres').style.display = 'block';
@@ -1157,6 +1247,13 @@ function showDailyCompletionScreen() {
   resultsPrimaryAction = summary.primaryAction;
   resultsSecondaryAction = { type: 'back_home' };
   updateResultsButtons(summary.primaryLabel, 'Wróć do dziś');
+
+  var lessonWords = [];
+  if (dailySessionFlow && dailySessionFlow.lessonMeta && dailySessionFlow.lessonMeta.key) {
+    lessonWords = getLessonWordsByKey(dailySessionFlow.lessonMeta.key);
+  }
+  if (!lessonWords.length) lessonWords = sWords.slice();
+  renderResExtras(lessonWords.slice(0, 5), lessonWords);
 
   checkAndUpdateStreak();
   renderStreakBadge();
