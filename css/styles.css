@@ -453,6 +453,16 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .session-stage-card.compact .session-stage-next{display:none;}
 
 /* ── FLASHCARD ── */
+.fc-context{
+  max-width:480px;
+  margin:0 auto 8px;
+  font-family:Inter,sans-serif;
+  font-size:.66rem;
+  font-weight:600;
+  color:var(--muted);
+  text-align:left;
+  line-height:1.35;
+}
 .fcwrap{-webkit-perspective:1200px;perspective:1200px;margin:0 auto 12px;max-width:480px;height:260px;cursor:pointer;}
 .fc-audio-row{max-width:480px;margin:0 auto 14px;display:flex;justify-content:stretch;}
 .fc-audio-btn{
@@ -477,26 +487,14 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .front{background:var(--paper2);border:2px solid var(--border2);box-shadow:var(--shadow-lg);}
 .front::before{content:'';position:absolute;inset:7px;border:1px solid var(--border);border-radius:12px;pointer-events:none;}
 .back{background:var(--card-back);border:2px solid var(--card-back-border);transform:rotateY(180deg);box-shadow:var(--shadow-lg);}
-.fc-front-meta{
-  margin-bottom:16px;
-  padding:4px 10px;
-  border-radius:999px;
-  background:rgba(201,168,76,.12);
-  border:1px solid rgba(201,168,76,.3);
-  font-family:Inter,sans-serif;
-  font-size:.66rem;
-  font-weight:700;
-  color:var(--gold);
-  line-height:1.2;
-}
 .front .fhz{font-family:'Noto Sans SC',sans-serif;font-size:5rem;font-weight:400;color:var(--red);line-height:1;}
 .front .fhint{
-  margin-top:18px;
+  margin-top:14px;
   padding:8px 12px;
   border-radius:999px;
   background:rgba(139,26,26,.07);
   font-family:Inter,sans-serif;
-  font-size:.7rem;
+  font-size:.68rem;
   font-weight:700;
   color:var(--red);
   letter-spacing:.03em;
@@ -944,9 +942,9 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 @media(prefers-color-scheme:dark){.mw-badge{background:rgba(160,120,240,.15);color:#b490f0;}}
 .fc-mw{margin-top:10px;padding:8px 12px;background:rgba(160,120,240,.1);border-radius:8px;font-size:.82rem;color:var(--card-back-meta);text-align:center;}
 .fc-source{
-  margin-top:10px;
+  margin-top:8px;
   font-family:Inter,sans-serif;
-  font-size:.7rem;
+  font-size:.66rem;
   font-weight:500;
   color:var(--card-back-meta);
   text-align:center;

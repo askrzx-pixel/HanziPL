@@ -902,7 +902,7 @@ function loadFC() {
   const bhEl = document.getElementById('fc-bh');
   const srcEl = document.getElementById('fc-source');
   const mwEl = document.getElementById('fc-mw');
-  const frontMetaEl = document.getElementById('fc-front-meta');
+  const contextEl = document.getElementById('fc-context');
 
   syncCurrentWordAudio(w);
 
@@ -912,13 +912,8 @@ function loadFC() {
     if (trEl) trEl.textContent = w.pl || '—';
     if (bhEl) bhEl.textContent = w.hanzi || '—';
     if (srcEl) {
-      var sourceLabel = getWordSourceLabel(w);
-      if (sourceLabel) {
-        srcEl.textContent = sourceLabel;
-        srcEl.style.display = '';
-      } else {
-        srcEl.style.display = 'none';
-      }
+      srcEl.style.display = 'none';
+      srcEl.textContent = '';
     }
 
     if (mwEl) {
@@ -934,13 +929,14 @@ function loadFC() {
       }
     }
 
-    if (frontMetaEl) {
-      var frontContext = getWordFrontContextLabel(w);
-      if (frontContext) {
-        frontMetaEl.textContent = frontContext;
-        frontMetaEl.style.display = '';
+    if (contextEl) {
+      var lessonContext = getWordFrontContextLabel(w);
+      if (lessonContext) {
+        contextEl.textContent = lessonContext;
+        contextEl.style.display = '';
       } else {
-        frontMetaEl.style.display = 'none';
+        contextEl.style.display = 'none';
+        contextEl.textContent = '';
       }
     }
 
