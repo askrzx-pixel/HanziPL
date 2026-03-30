@@ -150,15 +150,10 @@ function renderHomeScreen() {
 
   document.getElementById('home-sub').textContent = plan.summary;
 
-  document.getElementById('hc-due-v').textContent  = due.length;
-  document.getElementById('hc-new-v').textContent  = newWords.length;
-  document.getElementById('hc-done-v').textContent = done;
-  document.getElementById('home-plan-head').textContent    = plan.headline;
+  document.getElementById('home-plan-head').textContent = plan.headline;
   document.getElementById('home-session-counts').textContent =
-    newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów') +
-    ' · ' + due.length + ' ' + pluralizeWords(due.length, 'powtórka', 'powtórki', 'powtórek');
-  document.getElementById('home-plan-reviews').textContent = plan.reviewsLine;
-  document.getElementById('home-plan-new').textContent     = plan.newLine;
+    due.length + ' ' + pluralizeWords(due.length, 'powtórka', 'powtórki', 'powtórek') +
+    (newWords.length > 0 ? ' · ' + newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów') : '');
 
   const pct = goal > 0 ? Math.min(100, Math.round(done / goal * 100)) : 0;
   document.getElementById('daily-prog-fill').style.width = pct + '%';
