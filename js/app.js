@@ -807,15 +807,15 @@ async function checkWordAudioAvailability(src) {
 }
 
 function hideWordAudioButton() {
-  var btn = document.getElementById('fc-audio-btn');
-  if (!btn) return;
-  btn.hidden = true;
-  btn.disabled = true;
+  ['fc-audio-btn', 'tp-audio-btn'].forEach(function(id) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    btn.hidden = true;
+    btn.disabled = true;
+  });
 }
 
 async function syncCurrentWordAudio(word) {
-  var btn = document.getElementById('fc-audio-btn');
-  if (!btn) return;
   var requestId = ++currentWordAudioRequest;
 
   hideWordAudioButton();
@@ -833,8 +833,12 @@ async function syncCurrentWordAudio(word) {
   if (!available) return;
 
   currentWordAudioSrc = src;
-  btn.hidden = false;
-  btn.disabled = false;
+  ['fc-audio-btn', 'tp-audio-btn'].forEach(function(id) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    btn.hidden = false;
+    btn.disabled = false;
+  });
 }
 
 async function playCurrentWordAudio() {
@@ -887,6 +891,7 @@ function loadFC() {
 
   const srsBtns = document.getElementById('srs-btns');
   if (srsBtns) srsBtns.style.display = 'none';
+  renderSessionStageCard();
 
   const fcEl = document.getElementById('fc');
   if (!fcEl) return;
@@ -897,6 +902,7 @@ function loadFC() {
   const bhEl = document.getElementById('fc-bh');
   const srcEl = document.getElementById('fc-source');
   const mwEl = document.getElementById('fc-mw');
+  const frontMetaEl = document.getElementById('fc-front-meta');
 
   syncCurrentWordAudio(w);
 
@@ -925,6 +931,16 @@ function loadFC() {
         mwEl.style.display = '';
       } else {
         mwEl.style.display = 'none';
+      }
+    }
+
+    if (frontMetaEl) {
+      var frontContext = getWordFrontContextLabel(w);
+      if (frontContext) {
+        frontMetaEl.textContent = frontContext;
+        frontMetaEl.style.display = '';
+      } else {
+        frontMetaEl.style.display = 'none';
       }
     }
 
@@ -965,7 +981,7 @@ function renderSessionStageCard() {
   document.getElementById('session-stage-title').textContent  = sessionMeta.title || 'Sesja';
   document.getElementById('session-stage-sub').textContent    = sessionMeta.sub || '';
   document.getElementById('session-stage-next').textContent   = sessionMeta.next || '';
-  var compact = sessionMeta.kind === 'daily' && sessionMeta.phaseKey === 'lesson' && sIdx > 0;
+  var compact = sIdx > 0;
   cardEl.classList.toggle('compact', compact);
   cardEl.style.display = 'block';
 }
@@ -1186,27 +1202,8 @@ function renderCompletionExtras(data) {
   }
 
   if (contextEl) {
-    if (data && data.contextItems && data.contextItems.length) {
-      var contextTitle = data.contextTitle || 'Jak używamy tych słów';
-      contextEl.style.display = 'block';
-      contextEl.innerHTML =
-        '<div class="res-extra-title">' + escapeHtml(contextTitle) + '</div>' +
-        '<div class="res-context-list">' +
-          data.contextItems.map(function(item) {
-            return '<div class="res-context-item">' +
-              '<div class="res-context-top">' +
-                '<span class="res-context-hz">' + escapeHtml(item.hanzi || '—') + '</span>' +
-                '<span class="res-context-py">' + escapeHtml(item.pinyin || '') + '</span>' +
-              '</div>' +
-              '<div class="res-context-pl">' + escapeHtml(item.pl || '—') + '</div>' +
-              '<div class="res-context-note">' + escapeHtml(item.note || 'Używamy, gdy to słowo pasuje do sytuacji.') + '</div>' +
-            '</div>';
-          }).join('') +
-        '</div>';
-    } else {
-      contextEl.style.display = 'none';
-      contextEl.innerHTML = '';
-    }
+    contextEl.style.display = 'none';
+    contextEl.innerHTML = '';
   }
 }
 
@@ -1545,6 +1542,7 @@ function loadTP() {
   const w = sWords[sIdx];
   document.getElementById('tp-hz').textContent = w.hanzi;
   document.getElementById('tp-py').textContent = w.pinyin;
+  syncCurrentWordAudio(w);
   const inp = document.getElementById('tinp');
   inp.value = ''; inp.className = 'tinp'; inp.disabled = false;
   document.getElementById('tfb').textContent = '';
@@ -1589,16 +1587,17 @@ function showResults() {
   hideAll();
   document.getElementById('sres').style.display = 'block';
   const t   = Math.min(sTotal, sIdx);
-  const pct = t ? Math.round(sOk / t * 100) : 0;
   var rscElStd = document.getElementById('rsc');
-  if (rscElStd) { rscElStd.textContent = sOk + '/' + t; rscElStd.classList.remove('resc-step'); rscElStd.classList.remove('resc-score'); }
-  const labels = ['Spróbuj jeszcze raz 💪','Nieźle! Ćwicz dalej 📚','Świetnie! 🌟','Doskonale! 完美🏆'];
-  document.getElementById('rsl').textContent = labels[Math.min(3, Math.floor(pct / 26))];
+  if (rscElStd) {
+    rscElStd.textContent = t + ' ' + pluralizeWords(t, 'słówko', 'słówka', 'słówek');
+    rscElStd.classList.remove('resc-step');
+    rscElStd.classList.add('resc-score');
+  }
+  document.getElementById('rsl').textContent = 'Sesja ukończona';
   var detailElStd = document.getElementById('res-detail');
   if (detailElStd) {
     detailElStd.style.display = '';
-    detailElStd.textContent = 'Sesja: ' + sessionReviews + ' powtórek · Skuteczność: ' +
-      (sessionReviews > 0 ? Math.round(sessionCorrect / sessionReviews * 100) : 0) + '%';
+    detailElStd.textContent = 'Przerobiono ' + t + ' ' + pluralizeWords(t, 'słówko', 'słówka', 'słówek') + '.';
   }
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
@@ -1624,7 +1623,7 @@ function showResults() {
 
   resultsPrimaryAction = { type: 'restart_session' };
   resultsSecondaryAction = { type: 'back_home' };
-  updateResultsButtons('🔄 Jeszcze raz', isDailySession ? '🏠 Wróć do domu' : '🏠 Menu główne');
+  updateResultsButtons('Powtórz sesję →', 'Wróć do dziś');
 
   checkAndUpdateStreak();
   renderStreakBadge();
@@ -1796,7 +1795,7 @@ function createDailySessionFlow() {
       modeLabel: 'KROK 1 · POWTÓRKI',
       kicker: 'Krok 1 z ' + totalSteps,
       title: dueWords.length + ' ' + pluralizeWords(dueWords.length, 'dzisiejsza powtórka', 'dzisiejsze powtórki', 'dzisiejszych powtórek'),
-      sub: 'Powtarzasz słówka z wcześniejszych lekcji. To pierwszy etap dzisiejszego planu.',
+      sub: 'Powtórki z wcześniejszych lekcji.',
       next: lessonWords.length
         ? 'Potem: nowe słowa z lekcji ' + lessonMeta.shortLabel
         : 'Potem: krótkie podsumowanie sesji.',
@@ -1823,7 +1822,7 @@ function createDailySessionFlow() {
       modeLabel: 'KROK ' + (dueWords.length ? 2 : 1) + ' · NOWE SŁOWA',
       kicker: 'Krok ' + (dueWords.length ? 2 : 1) + ' z ' + totalSteps,
       title: 'Nowe słowa z lekcji ' + lessonMeta.shortLabel,
-      sub: 'Poznajesz nowy materiał z jednej konkretnej lekcji. Wszystkie te słowa pochodzą z: ' + lessonMeta.shortLabel + '.',
+      sub: 'Słówka z lekcji ' + lessonMeta.lessonCode + '.',
       next: lessonOverflow
         ? 'Po sesji możesz dokończyć resztę tej lekcji.'
         : nextLesson
@@ -1877,9 +1876,6 @@ function createDailySessionFlow() {
 
 function getDailyCompletionSummary() {
   var goalDone = dailyLog.done;
-  var totalReviews = dailySessionFlow ? dailySessionFlow.totalReviews : sessionReviews;
-  var totalCorrect = dailySessionFlow ? dailySessionFlow.totalCorrect : sessionCorrect;
-  var pct = totalReviews ? Math.round(totalCorrect / totalReviews * 100) : 0;
   var reinforcement = dailySessionFlow && dailySessionFlow.reinforcementAction
     ? dailySessionFlow.reinforcementAction
     : null;
@@ -1888,7 +1884,7 @@ function getDailyCompletionSummary() {
     banner: '✓ Dzisiejsza sesja ukończona',
     score: goalDone + '/' + (dailySessionFlow ? dailySessionFlow.goalTotal : goalDone),
     title: reinforcement ? 'Plan na dziś zamknięty' : 'Dzisiejszy plan gotowy',
-    detail: 'Skuteczność: ' + pct + '%',
+    detail: goalDone + ' ' + pluralizeWords(goalDone, 'słówko przerobione', 'słówka przerobione', 'słówek przerobionych'),
     course: reinforcement && reinforcement.lessonKey ? (parseSourceLessonMeta(reinforcement.lessonKey) || {}).fullLabel || '' : '',
     next: reinforcement ? reinforcement.summary : 'Możesz wrócić do domu albo zakończyć na dziś.',
     primaryAction: reinforcement || { type: 'back_home' },
@@ -1990,7 +1986,16 @@ function parseSourceLessonMeta(raw) {
 function getWordSourceLabel(w) {
   var meta = parseSourceLessonMeta(getRawWordLesson(w));
   if (!meta) return 'Źródło: kurs HanziPL';
+  if (meta.lessonCode && meta.title) return 'Lekcja ' + meta.lessonCode + ' · ' + meta.title;
   return meta.fullLabel || ('Źródło: ' + meta.shortLabel);
+}
+
+function getWordFrontContextLabel(w) {
+  var meta = parseSourceLessonMeta(getRawWordLesson(w));
+  if (!meta) return '';
+  if (meta.lessonCode) return 'Lekcja ' + meta.lessonCode;
+  if (meta.segNum !== null) return 'Segment ' + meta.segNum;
+  return meta.shortLabel || '';
 }
 
 function getPrimaryLessonFromWords(words) {
