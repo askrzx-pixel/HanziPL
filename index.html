@@ -61,7 +61,10 @@
         <div class="home-session-counts" id="home-session-counts">0 nowych słów · 0 powtórek</div>
       </div>
     </div>
-    <button class="btn-start-day" id="btn-start-day" onclick="handleTodayPrimaryAction()">Rozpocznij dzisiejszą sesję →</button>
+    <div class="home-hero-actions">
+      <button class="btn-start-day" id="btn-start-day" onclick="handleTodayPrimaryAction()">Rozpocznij dzisiejszą sesję →</button>
+      <button class="btn-start-day btn-start-day-secondary" id="btn-start-lesson" onclick="handleTodaySecondaryAction()" hidden>Kontynuuj lekcję →</button>
+    </div>
     <div class="home-focus-row">
       <div class="home-focus-card next plan">
         <div class="home-focus-label">Plan na dziś</div>
@@ -77,7 +80,7 @@
       <div class="home-count ok"><div class="hcv" id="hc-done-v">0</div><div class="hcl">Dziś zrobione</div></div>
     </div>
     <div class="daily-prog-wrap">
-      <div class="daily-prog-label"><span>Dzienny cel</span><span id="daily-prog-txt">0 / 0</span></div>
+      <div class="daily-prog-label"><span>Dzienny cel</span><span id="daily-prog-txt">0 / 0 słów</span></div>
       <div class="daily-prog-track"><div class="daily-prog-fill" id="daily-prog-fill" style="width:0%"></div></div>
     </div>
   </div>
@@ -115,7 +118,7 @@
         </div>
         <div class="st-count st-count-n">
           <span class="st-cnt-v" id="st-cnt-n">0</span>
-          <span class="st-cnt-k">Nowe</span>
+          <span class="st-cnt-k">Do nauki</span>
         </div>
       </div>
     </div>
@@ -123,6 +126,7 @@
       <span class="st-acc-val" id="st-acc">—</span>
       <span class="st-acc-lbl">skuteczność odpowiedzi</span>
     </div>
+    <div class="st-empty" id="st-acc-empty" style="display:none">Ukończ pierwszą lekcję, aby zobaczyć skuteczność.</div>
   </div>
 
   <!-- Postęp lekcji -->
@@ -138,16 +142,18 @@
 <!-- ══ WORDS ══ -->
 <div class="scr" id="scr-words">
   <div class="wfilter">
+    <span class="flbl">Segment:</span>
+    <div class="wselect-wrap">
+      <select id="words-segment-select" class="wselect" onchange="filterWordsSegmentSelect(this.value)"></select>
+    </div>
+  </div>
+  <div class="wfilter">
+    <span class="flbl">Status:</span>
+    <div class="frow words-status-row" id="frow-status"></div>
+  </div>
+  <div class="wfilter" id="words-lesson-filter" hidden>
     <span class="flbl">Lekcja:</span>
-    <div class="frow" id="frow-lesson"></div>
-  </div>
-  <div class="wfilter">
-    <span class="flbl">Temat:</span>
-    <div class="frow" id="frow-topic"></div>
-  </div>
-  <div class="wfilter">
-    <span class="flbl">Poziom:</span>
-    <div class="frow" id="frow-level"></div>
+    <div class="frow words-lesson-row" id="frow-level"></div>
   </div>
   <div class="srch"><span class="si">🔍</span><input id="srch" placeholder="Szukaj…" oninput="renderWords()"></div>
   <div class="clbl" id="clbl"></div>
@@ -164,21 +170,18 @@
       <div class="mcard" onclick="selMode('tp')" id="m-tp"><span class="mi">✍️</span><div class="mn">Pisanie</div><div class="md">Wpisz</div></div>
     </div>
     <div class="stfilter">
-      <span class="lbl">Lekcje:</span>
-      <div class="frow" id="slf">
+      <span class="lbl">Zakres ćwiczenia</span>
+      <div class="frow" id="study-scope"></div>
     </div>
+    <div class="stfilter" id="study-segment-wrap" hidden>
+      <span class="lbl">Segment</span>
+      <div class="frow" id="study-segment"></div>
     </div>
-    <div class="stfilter">
-      <span class="lbl">Temat:</span>
-      <div class="frow" id="stf">
+    <div class="stfilter" id="study-lesson-wrap" hidden>
+      <span class="lbl">Lekcja</span>
+      <div class="frow" id="study-lesson"></div>
     </div>
-    </div>
-    <div class="stfilter">
-      <span class="lbl">Poziom:</span>
-      <div class="frow" id="slvl">
-    </div>
-    </div>
-    <button class="btn" onclick="startCustomSession()">Rozpocznij sesję →</button>
+    <button class="btn" onclick="startCustomSession()">Rozpocznij ćwiczenie →</button>
   <div class="scnt" id="scnt"></div>
   </div>
 
@@ -197,13 +200,21 @@
       <div class="session-stage-sub" id="session-stage-sub"></div>
       <div class="session-stage-next" id="session-stage-next"></div>
     </div>
+    <div class="fc-context" id="fc-context" style="display:none"></div>
     <div class="fcwrap" onclick="flipCard()">
       <div class="fc" id="fc">
-        <div class="face front"><span class="fhz" id="fc-hz">—</span><span class="fhint">dotknij, aby obrócić</span></div>
+        <div class="face front">
+          <span class="fhz" id="fc-hz">—</span>
+          <span class="fhint">Dotknij karty, aby obrócić</span>
+        </div>
         <div class="face back"><div class="bhz" id="fc-bh"></div><div class="bpy" id="fc-py"></div><div class="btr" id="fc-tr"></div><div class="fc-source" id="fc-source" style="display:none"></div><div class="fc-mw" id="fc-mw" style="display:none"></div></div>
       </div>
     </div>
+    <div class="fc-audio-row">
+      <button class="fc-audio-btn" id="fc-audio-btn" onclick="playCurrentWordAudio()" hidden>🔊 Wymowa</button>
+    </div>
     <div id="srs-btns" style="display:none">
+      <div class="srs-copy">Wybierz, jak dobrze znasz to słowo. Zapiszemy wynik i pokażemy kolejne.</div>
       <div class="srs-btns">
         <button class="srs-btn again" onclick="srsAns(0)"><span class="sb-label">Jeszcze raz</span><span class="sb-interval" id="srs-i0"></span></button>
         <button class="srs-btn know"  onclick="srsAns(3)"><span class="sb-label">Znam</span><span class="sb-interval" id="srs-i3"></span></button>
@@ -245,6 +256,9 @@
       <div class="prog"><div class="progh"><span id="tp-t">0/0</span><span>WPISYWANIE</span></div><div class="progt"><div class="progf" id="tp-f" style="width:0%"></div></div></div>
     </div>
     <div class="tqwrap"><span class="qqhz" id="tp-hz">—</span><div class="qqpy" id="tp-py"></div></div>
+    <div class="fc-audio-row tp-audio-row">
+      <button class="fc-audio-btn tp-audio-btn" id="tp-audio-btn" onclick="playCurrentWordAudio()" hidden>🔊 Wymowa</button>
+    </div>
     <div class="tiwrap">
       <input class="tinp" id="tinp" placeholder="Wpisz tłumaczenie…" onkeydown="if(event.key==='Enter')chkType()">
       <button class="tchk" onclick="chkType()">OK</button>
@@ -261,14 +275,14 @@
       <div class="resl" id="rsl"></div>
       <div class="res-detail" id="res-detail"></div>
       <div class="res-course" id="res-course" style="display:none"></div>
+      <div class="resbtns">
+        <button class="btn" id="res-primary-btn" onclick="handleResultsPrimaryAction()">🔄 Jeszcze raz</button>
+        <button class="btn-out" id="res-secondary-btn" onclick="handleResultsSecondaryAction()">Wróć do dziś</button>
+      </div>
       <div class="res-plan" id="res-plan" style="display:none"></div>
       <div class="res-next" id="res-next" style="display:none"></div>
-      <div id="res-word-review" style="display:none"></div>
-      <div id="res-context" style="display:none"></div>
-      <div class="resbtns">
-        <button class="btn" style="width:auto;display:inline-block" id="res-primary-btn" onclick="handleResultsPrimaryAction()">🔄 Jeszcze raz</button>
-        <button class="btn-out" id="res-secondary-btn" onclick="handleResultsSecondaryAction()">🏠 Wróć do domu</button>
-      </div>
+      <div class="res-review" id="res-review" style="display:none"></div>
+      <div class="res-context" id="res-context" style="display:none"></div>
     </div>
   </div>
 </div>

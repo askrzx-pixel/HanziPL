@@ -5,9 +5,9 @@
 // ── Runtime state ─────────────────────────────────
 var curFilter  = 'all';
 var curMode    = 'fc';
-var selLessons = new Set(['all']);
-var selTopics  = new Set(['all']);
-var selLevels  = new Set(['all']);
+var studyScope = 'today';
+var studySegment = 'all';
+var studyLesson = 'all';
 var sWords = [], sIdx = 0, sOk = 0, sTotal = 0, fcFlipped = false;
 var isDailySession  = false;
 var sessionReviews  = 0;
@@ -16,8 +16,21 @@ var sessionMeta     = null;
 var dailySessionFlow = null;
 var dailySessionState = 'no_content_available';
 var todayPrimaryAction = { type: 'none' };
+var todaySecondaryAction = { type: 'none' };
 var resultsPrimaryAction = { type: 'restart_session' };
+var wordAudioPlayer = null;
+var wordAudioAvailability = Object.create(null);
+var currentWordAudioSrc = '';
+var currentWordAudioRequest = 0;
 var resultsSecondaryAction = { type: 'back_home' };
+
+function isActiveContentWord(word) {
+  return !word || !word.contentStatus || word.contentStatus === 'active';
+}
+
+function getActiveWords() {
+  return WORDS.filter(isActiveContentWord);
+}
 
 // ── Display label maps ─────────────────────────────
 // Display labels for topic keys found in WORDS. Formatter only — not a source of truth.
@@ -129,6 +142,7 @@ function renderHomeScreen() {
   const plan      = buildDailyPlan(flow, done, remaining);
   dailySessionState = flow.state;
   todayPrimaryAction = plan.action;
+  todaySecondaryAction = plan.secondaryAction || { type: 'none' };
 
   const h     = new Date().getHours();
   const greet = h < 6 ? 'Dobranoc! 🌙' : h < 12 ? 'Dzień dobry! ☀️' : h < 18 ? 'Dzień dobry! 🌤️' : 'Dobry wieczór! 🌙';
@@ -148,9 +162,10 @@ function renderHomeScreen() {
 
   const pct = goal > 0 ? Math.min(100, Math.round(done / goal * 100)) : 0;
   document.getElementById('daily-prog-fill').style.width = pct + '%';
-  document.getElementById('daily-prog-txt').textContent  = done + ' / ' + goal;
+  document.getElementById('daily-prog-txt').textContent  = done + ' / ' + goal + ' słów';
 
   const btn = document.getElementById('btn-start-day');
+  const secondaryBtn = document.getElementById('btn-start-lesson');
   if (todayPrimaryAction.type === 'none') {
     btn.textContent = plan.cta;
     btn.classList.add('done');
@@ -159,6 +174,15 @@ function renderHomeScreen() {
     btn.textContent = plan.cta;
     btn.classList.toggle('done', dailySessionState === 'session_complete');
     btn.disabled = false;
+  }
+
+  if (todaySecondaryAction.type === 'course_lesson' && plan.secondaryCta) {
+    secondaryBtn.textContent = plan.secondaryCta;
+    secondaryBtn.hidden = false;
+    secondaryBtn.disabled = false;
+  } else {
+    secondaryBtn.hidden = true;
+    secondaryBtn.disabled = true;
   }
 
   const mastered = WORDS.filter(w => SRS.isMastered(srsData[w.id])).length;
@@ -188,6 +212,12 @@ function handleTodayPrimaryAction() {
   }
   if (todayPrimaryAction.type === 'back_home') {
     go('home', document.getElementById('bn-home'));
+  }
+}
+
+function handleTodaySecondaryAction() {
+  if (todaySecondaryAction.type === 'course_lesson' && todaySecondaryAction.lessonKey) {
+    startLessonSessionByKey(todaySecondaryAction.lessonKey);
   }
 }
 
@@ -247,6 +277,7 @@ function renderStats() {
   });
   var acc = totalR > 0 ? Math.round(totalC / totalR * 100) : null;
   document.getElementById('st-acc').textContent = acc !== null ? acc + '%' : '—';
+  document.getElementById('st-acc-empty').style.display = acc !== null ? 'none' : 'block';
 
   // 4. Postęp lekcji
   renderStatsLessons();
@@ -257,10 +288,11 @@ function renderStats() {
 
 function renderStatsLessons() {
   var container  = document.getElementById('st-lessons');
-  var lessonKeys = getLessonItemsFromWords().slice(1).map(function(i) { return i.value; });
+  var lessonKeys = getOrderedCourseLessons().map(function(lesson) { return lesson.key; });
+  var activeWords = getActiveWords();
 
   var lessons = lessonKeys.map(function(ls) {
-    var lw = WORDS.filter(function(w) { return getNormalizedLessonKey(w) === ls; });
+    var lw = activeWords.filter(function(w) { return getNormalizedLessonKey(w) === ls; });
     if (!lw.length) return null;
     var m  = lw.filter(function(w) { return  SRS.isMastered(srsData[w.id]); }).length;
     var nw = lw.filter(function(w) { return  SRS.isNew(srsData[w.id]); }).length;
@@ -296,15 +328,20 @@ function renderStatsLessons() {
 
   container.innerHTML = toShow.map(function(item) {
     var l   = item.l;
-    var lbl = l.status === 'done' ? 'Ukończona' : l.status === 'active' ? 'W trakcie' : 'Następna';
+    var lessonMeta = parseSourceLessonMeta(l.key);
+    var lessonLabel = lessonMeta ? ('Przejdź do lekcji ' + lessonMeta.lessonCode + ' →') : ('Przejdź do ' + l.key + ' →');
+    var lbl = l.status === 'done' ? 'Ukończona' : l.status === 'active' ? 'W trakcie' : '';
     var cls = l.status === 'done' ? 'st-ls-done' : l.status === 'active' ? 'st-ls-active' : 'st-ls-next';
     return '<div class="st-lrow' + (item.hi ? ' st-lrow-hi' : '') + '">' +
       '<div class="st-lrow-top">' +
         '<span class="st-lrow-name">' + l.key + '</span>' +
-        '<span class="st-lchip ' + cls + '">' + lbl + '</span>' +
+        (lbl ? '<span class="st-lchip ' + cls + '">' + lbl + '</span>' : '') +
       '</div>' +
       '<div class="btrack"><div class="bfill" style="width:' + l.pct + '%"></div></div>' +
       '<div class="st-lrow-sub">' + l.mastered + '\u202f/\u202f' + l.total + ' słów · ' + l.pct + '%</div>' +
+      (l.status === 'new'
+        ? '<button class="st-next-btn" onclick="startLessonSessionByKey(\'' + l.key.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + '\')">' + lessonLabel + '</button>'
+        : '') +
       '</div>';
   }).join('');
 }
@@ -312,7 +349,7 @@ function renderStatsLessons() {
 function renderStatsHard() {
   var container  = document.getElementById('st-hard');
   var btn        = document.getElementById('st-hard-btn');
-  var candidates = WORDS
+  var candidates = getActiveWords()
     .map(function(w) { return Object.assign({}, w, { _c: srsData[w.id] || SRS.defaultCard() }); })
     .filter(function(w) { return (w._c.reviews || 0) >= 2; })
     .map(function(w) { return Object.assign({}, w, { _acc: (w._c.correct || 0) / (w._c.reviews || 1) }); })
@@ -320,7 +357,7 @@ function renderStatsHard() {
     .slice(0, 3);
 
   if (!candidates.length) {
-    container.innerHTML = '<div class="st-empty">Poćwicz więcej, żeby zobaczyć najtrudniejsze słówka.</div>';
+    container.innerHTML = '<div class="st-empty">Ukończ kilka powtórek, aby zobaczyć trudne słówka.</div>';
     if (btn) btn.style.display = 'none';
     return;
   }
@@ -337,13 +374,7 @@ function renderStatsHard() {
 }
 
 function startHardSession() {
-  var pool = WORDS
-    .map(function(w) { return Object.assign({}, w, { _c: srsData[w.id] || SRS.defaultCard() }); })
-    .filter(function(w) { return (w._c.reviews || 0) >= 2; })
-    .map(function(w) { return Object.assign({}, w, { _acc: (w._c.correct || 0) / (w._c.reviews || 1) }); })
-    .sort(function(a, b) { return a._acc - b._acc; })
-    .slice(0, 10)
-    .map(function(w) { var r = Object.assign({}, w); delete r._c; delete r._acc; return r; });
+  var pool = getHardWordsPool();
   if (!pool.length) return;
   hideAll();
   isDailySession   = false;
@@ -354,37 +385,122 @@ function startHardSession() {
 }
 
 // ── WORDS BROWSER ─────────────────────────────────
-var curFilter2 = 'all';
-var curTopic2  = 'all';
-var curLevel2  = 'all';
+var curSegment2 = 'all';
+var curStatus2  = 'all';
+var curLesson2  = 'all';
 
-function filterWords(l, btn) {
-  curFilter2 = l;
-  document.querySelectorAll('#frow-lesson .chip').forEach(b => b.classList.remove('on'));
+function filterWordsSegment(segKey, btn) {
+  curSegment2 = segKey;
+  curLesson2 = 'all';
+  syncWordSegmentSelect();
+  syncWordLessonFilter();
+  renderWords();
+}
+
+function filterWordsSegmentSelect(segKey) {
+  filterWordsSegment(segKey);
+}
+
+function filterWordStatus(status, btn) {
+  curStatus2 = status;
+  document.querySelectorAll('#frow-status .chip').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   renderWords();
 }
 
-function filterTopic(t, btn) {
-  curTopic2 = t;
-  document.querySelectorAll('#frow-topic .chip').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  renderWords();
-}
-
-function filterLevel(lv, btn) {
-  curLevel2 = lv;
+function filterWordLesson(lessonKey, btn) {
+  curLesson2 = lessonKey;
   document.querySelectorAll('#frow-level .chip').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   renderWords();
 }
 
+function isHardWord(word) {
+  var card = srsData[word.id] || SRS.defaultCard();
+  var reviews = card.reviews || 0;
+  var accuracy = (card.correct || 0) / Math.max(reviews, 1);
+  return reviews >= 2 && accuracy < 0.7;
+}
+
+function getWordBrowserSegmentItems() {
+  if (typeof getV3Segments !== 'function') return [{ value: 'all', label: 'Wszystkie' }];
+  return [{ value: 'all', label: 'Wszystkie' }].concat(
+    getV3Segments().map(function(seg) {
+      return { value: String(seg.segNum), label: seg.segNum + '. ' + seg.name };
+    })
+  );
+}
+
+function getWordBrowserStatusItems() {
+  return [
+    { value: 'all', label: 'Wszystkie' },
+    { value: 'new', label: 'Nowe' },
+    { value: 'learning', label: 'W nauce' },
+    { value: 'mastered', label: 'Opanowane' },
+    { value: 'hard', label: 'Trudne' }
+  ];
+}
+
+function syncWordSegmentSelect() {
+  var select = document.getElementById('words-segment-select');
+  if (!select) return;
+  var items = getWordBrowserSegmentItems();
+  select.innerHTML = items.map(function(item) {
+    return '<option value="' + item.value.replace(/"/g, '&quot;') + '">' + item.label + '</option>';
+  }).join('');
+  select.value = curSegment2;
+}
+
+function getWordBrowserLessonItems() {
+  if (curSegment2 === 'all' || typeof getV3Segments !== 'function') {
+    return [{ value: 'all', label: 'Wszystkie' }];
+  }
+  var segments = getV3Segments();
+  for (var i = 0; i < segments.length; i++) {
+    if (String(segments[i].segNum) === String(curSegment2)) {
+      return [{ value: 'all', label: 'Wszystkie' }].concat(
+        segments[i].lessons.map(function(lesson) {
+          var meta = parseSourceLessonMeta(lesson.key);
+          return { value: lesson.key, label: meta.shortLabel || lesson.name };
+        })
+      );
+    }
+  }
+  return [{ value: 'all', label: 'Wszystkie' }];
+}
+
+function syncWordLessonFilter() {
+  var wrap = document.getElementById('words-lesson-filter');
+  if (!wrap) return;
+  if (curSegment2 === 'all') {
+    wrap.hidden = true;
+    document.getElementById('frow-level').innerHTML = '';
+    return;
+  }
+
+  wrap.hidden = false;
+  renderChipList('frow-level', getWordBrowserLessonItems(),
+    function(v) { return curLesson2 === v; },
+    filterWordLesson);
+}
+
 function renderWords() {
   const q = (document.getElementById('srch').value || '').toLowerCase();
-  let f = WORDS;
-  if (curFilter2 !== 'all') f = f.filter(w => getNormalizedLessonKey(w) === curFilter2);
-  if (curTopic2  !== 'all') f = f.filter(w => w.topic === curTopic2);
-  if (curLevel2  !== 'all') f = f.filter(w => w.levelApprox === curLevel2);
+  let f = getActiveWords();
+  if (curSegment2 !== 'all') {
+    f = f.filter(function(w) {
+      var meta = parseSourceLessonMeta(getRawWordLesson(w));
+      return meta && String(meta.segNum) === String(curSegment2);
+    });
+  }
+  if (curLesson2 !== 'all') f = f.filter(w => getRawWordLesson(w) === curLesson2);
+  if (curStatus2 === 'new') f = f.filter(w => SRS.isNew(srsData[w.id]));
+  if (curStatus2 === 'learning') f = f.filter(w => {
+    var c = srsData[w.id];
+    return !SRS.isNew(c) && !SRS.isMastered(c);
+  });
+  if (curStatus2 === 'mastered') f = f.filter(w => SRS.isMastered(srsData[w.id]));
+  if (curStatus2 === 'hard') f = f.filter(isHardWord);
   if (q) f = f.filter(w =>
     w.hanzi.includes(q) ||
     w.pinyin.toLowerCase().includes(q) ||
@@ -403,12 +519,11 @@ function renderWords() {
                : SRS.isDue(c)      ? '<span class="srs-tag due">Do powtórki</span>'
                :                     '<span class="srs-tag learning">W nauce</span>';
     const mPct = Math.min(100, Math.round((c.interval || 0) / 21 * 100));
-    const topicLbl = TOPIC_LABELS[w.topic] || w.topic || '';
-    const levelLbl = LEVEL_LABELS[w.levelApprox] || w.levelApprox || '';
+    const lessonMeta = parseSourceLessonMeta(getRawWordLesson(w));
+    const showSegmentBadge = curSegment2 === 'all' && lessonMeta && lessonMeta.segNum !== null;
     const metaHtml = '<div class="wcard-meta">' +
-      '<span class="ls">' + getNormalizedLessonKey(w) + '</span>' +
-      (topicLbl ? '<span class="wtopic">' + topicLbl + '</span>' : '') +
-      (levelLbl ? '<span class="wlevel">' + levelLbl + '</span>' : '') +
+      '<span class="ls">' + (lessonMeta ? lessonMeta.lessonCode : getNormalizedLessonKey(w)) + '</span>' +
+      (showSegmentBadge ? '<span class="wtopic">Segment ' + lessonMeta.segNum + '</span>' : '') +
       '</div>';
     const tagsHtml = (w.tags && w.tags.length)
       ? '<div class="wtags">' + w.tags.map(t => '<span class="wtag">' + t + '</span>').join('') + '</div>'
@@ -436,68 +551,165 @@ function selMode(m) {
   document.getElementById('m-' + m).classList.add('on');
 }
 
-function toggleLesson(l, btn) {
-  if (l === 'all') {
-    selLessons = new Set(['all']);
-    document.querySelectorAll('#slf .chip').forEach(b => b.classList.remove('on'));
-    btn.classList.add('on');
-  } else {
-    selLessons.delete('all');
-    document.querySelector('#slf .chip').classList.remove('on');
-    if (selLessons.has(l)) { selLessons.delete(l); btn.classList.remove('on'); }
-    else                   { selLessons.add(l);    btn.classList.add('on');    }
-    if (!selLessons.size) { selLessons.add('all'); document.querySelector('#slf .chip').classList.add('on'); }
+function getHardWordsPool() {
+  return getActiveWords()
+    .map(function(w) { return Object.assign({}, w, { _c: srsData[w.id] || SRS.defaultCard() }); })
+    .filter(function(w) { return (w._c.reviews || 0) >= 2; })
+    .map(function(w) { return Object.assign({}, w, { _acc: (w._c.correct || 0) / (w._c.reviews || 1) }); })
+    .sort(function(a, b) { return a._acc - b._acc; })
+    .slice(0, 10)
+    .map(function(w) { var r = Object.assign({}, w); delete r._c; delete r._acc; return r; });
+}
+
+function getStudyScopeItems() {
+  return [
+    { value: 'today', label: 'Dzisiejszy materiał' },
+    { value: 'current_lesson', label: 'Aktualna lekcja' },
+    { value: 'hard', label: 'Trudne słówka' },
+    { value: 'segment', label: 'Wybrany segment' },
+    { value: 'lesson', label: 'Wybrana lekcja' }
+  ];
+}
+
+function getStudySegmentItems() {
+  if (typeof getV3Segments !== 'function') return [];
+  return getV3Segments().map(function(seg) {
+    return { value: String(seg.segNum), label: 'Segment ' + seg.segNum };
+  });
+}
+
+function getStudyLessonItemsForSegment(segValue) {
+  if (!segValue || segValue === 'all' || typeof getV3Segments !== 'function') return [];
+  var segments = getV3Segments();
+  for (var i = 0; i < segments.length; i++) {
+    if (String(segments[i].segNum) === String(segValue)) {
+      return segments[i].lessons.map(function(lesson) {
+        var meta = parseSourceLessonMeta(lesson.key);
+        return { value: lesson.key, label: meta.shortLabel || lesson.name };
+      });
+    }
   }
+  return [];
+}
+
+function getCurrentStudyLessonMeta() {
+  var candidate = getDailyLessonCandidate();
+  if (candidate) return parseSourceLessonMeta(candidate.key);
+  return getNextCourseLesson('');
+}
+
+function getStudyPool() {
+  if (studyScope === 'today') {
+    var flow = createDailySessionFlow();
+    var words = [];
+    (flow.phases || []).forEach(function(phase) {
+      if (Array.isArray(phase.words) && phase.words.length) words = words.concat(phase.words);
+    });
+    return getUniqueWords(words);
+  }
+  if (studyScope === 'current_lesson') {
+    var currentLesson = getCurrentStudyLessonMeta();
+    return currentLesson ? getLessonWordsByKey(currentLesson.key) : [];
+  }
+  if (studyScope === 'hard') {
+    return getHardWordsPool();
+  }
+  if (studyScope === 'segment') {
+    if (studySegment === 'all' || typeof getV3Segments !== 'function') return [];
+    return getActiveWords().filter(function(w) {
+      var meta = parseSourceLessonMeta(getRawWordLesson(w));
+      return meta && String(meta.segNum) === String(studySegment);
+    });
+  }
+  if (studyScope === 'lesson') {
+    return studyLesson !== 'all' ? getLessonWordsByKey(studyLesson) : [];
+  }
+  return [];
+}
+
+function syncStudyScopeUi() {
+  var segWrap = document.getElementById('study-segment-wrap');
+  var lessonWrap = document.getElementById('study-lesson-wrap');
+  var segmentNeeded = studyScope === 'segment' || studyScope === 'lesson';
+  var lessonNeeded = studyScope === 'lesson';
+  if (segWrap) segWrap.hidden = !segmentNeeded;
+  if (lessonWrap) lessonWrap.hidden = !lessonNeeded;
+
+  if (segmentNeeded) {
+    var segmentItems = getStudySegmentItems();
+    if (!segmentItems.some(function(item) { return item.value === studySegment; })) {
+      studySegment = segmentItems.length ? segmentItems[0].value : 'all';
+    }
+    renderChipList('study-segment', segmentItems,
+      function(v) { return studySegment === v; },
+      filterStudySegment);
+  } else {
+    studySegment = 'all';
+    var segmentEl = document.getElementById('study-segment');
+    if (segmentEl) segmentEl.innerHTML = '';
+  }
+
+  if (lessonNeeded && studySegment !== 'all') {
+    var lessonItems = getStudyLessonItemsForSegment(studySegment);
+    if (!lessonItems.some(function(item) { return item.value === studyLesson; })) {
+      studyLesson = lessonItems.length ? lessonItems[0].value : 'all';
+    }
+    renderChipList('study-lesson', lessonItems,
+      function(v) { return studyLesson === v; },
+      filterStudyLesson);
+  } else {
+    studyLesson = 'all';
+    var lessonEl = document.getElementById('study-lesson');
+    if (lessonEl) lessonEl.innerHTML = '';
+  }
+}
+
+function filterStudyScope(scope, btn) {
+  studyScope = scope;
+  document.querySelectorAll('#study-scope .chip').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  syncStudyScopeUi();
   updateSessionCount();
 }
 
-function toggleTopic(t, btn) {
-  if (t === 'all') {
-    selTopics = new Set(['all']);
-    document.querySelectorAll('#stf .chip').forEach(b => b.classList.remove('on'));
-    btn.classList.add('on');
-  } else {
-    selTopics.delete('all');
-    document.querySelector('#stf .chip').classList.remove('on');
-    if (selTopics.has(t)) { selTopics.delete(t); btn.classList.remove('on'); }
-    else                  { selTopics.add(t);    btn.classList.add('on');    }
-    if (!selTopics.size) { selTopics.add('all'); document.querySelector('#stf .chip').classList.add('on'); }
-  }
+function filterStudySegment(seg, btn) {
+  studySegment = seg;
+  document.querySelectorAll('#study-segment .chip').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  if (studyScope === 'lesson') studyLesson = 'all';
+  syncStudyScopeUi();
   updateSessionCount();
 }
 
-function toggleLevel(lv, btn) {
-  if (lv === 'all') {
-    selLevels = new Set(['all']);
-    document.querySelectorAll('#slvl .chip').forEach(b => b.classList.remove('on'));
-    btn.classList.add('on');
-  } else {
-    selLevels.delete('all');
-    document.querySelector('#slvl .chip').classList.remove('on');
-    if (selLevels.has(lv)) { selLevels.delete(lv); btn.classList.remove('on'); }
-    else                   { selLevels.add(lv);    btn.classList.add('on');    }
-    if (!selLevels.size) { selLevels.add('all'); document.querySelector('#slvl .chip').classList.add('on'); }
-  }
+function filterStudyLesson(lessonKey, btn) {
+  studyLesson = lessonKey;
+  document.querySelectorAll('#study-lesson .chip').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
   updateSessionCount();
-}
-
-function getPool() {
-  let pool = selLessons.has('all') ? WORDS : WORDS.filter(w => selLessons.has(getNormalizedLessonKey(w)));
-  if (!selTopics.has('all')) pool = pool.filter(w => selTopics.has(w.topic));
-  if (!selLevels.has('all')) pool = pool.filter(w => selLevels.has(w.levelApprox));
-  return pool;
 }
 
 function updateSessionCount() {
   const scntEl = document.getElementById('scnt');
   if (!scntEl) return;
-  const pool = getPool();
-  scntEl.textContent = pool.length + ' słówek w puli';
+  const pool = getStudyPool();
+  var label = 'dzisiejszym materiale';
+  if (studyScope === 'current_lesson') {
+    var currentLesson = getCurrentStudyLessonMeta();
+    label = currentLesson ? ('lekcji ' + currentLesson.lessonCode) : 'aktualnej lekcji';
+  } else if (studyScope === 'hard') {
+    label = 'trudnych słówkach';
+  } else if (studyScope === 'segment' && studySegment !== 'all') {
+    label = 'segmencie ' + studySegment;
+  } else if (studyScope === 'lesson' && studyLesson !== 'all') {
+    var lessonMeta = parseSourceLessonMeta(studyLesson);
+    label = lessonMeta ? ('lekcji ' + lessonMeta.lessonCode) : 'wybranej lekcji';
+  }
+  scntEl.textContent = pool.length + ' słówek w ' + label;
 }
 
 function startCustomSession() {
-  const basePool = getPool();
-  const pool = shuffle([...basePool]);
+  const basePool = getStudyPool();
+  const pool = shuffle([].concat(basePool));
 
   if (!pool.length) {
     showToast('Brak słówek!', true);
@@ -533,6 +745,8 @@ function backHome() {
   dailySessionFlow = null;
   dailySessionState = 'no_content_available';
   sessionMeta = null;
+  currentWordAudioSrc = '';
+  if (wordAudioPlayer) wordAudioPlayer.pause();
   go('home', document.getElementById('bn-home'));
 }
 
@@ -559,6 +773,93 @@ function recordAnswer(hanzi, correct, wasNew) {
 }
 
 // ── FLASHCARD ─────────────────────────────────────
+function getWordAudioPath(word) {
+  if (!word || !word.id) return '';
+  return 'audio/words/' + encodeURIComponent(word.id) + '.mp3';
+}
+
+async function checkWordAudioAvailability(src) {
+  if (!src) return false;
+  if (typeof wordAudioAvailability[src] === 'boolean') return wordAudioAvailability[src];
+
+  try {
+    var response = await fetch(src, { method: 'HEAD', cache: 'force-cache' });
+    if (response.ok) {
+      wordAudioAvailability[src] = true;
+      return true;
+    }
+    if (response.status !== 405 && response.status !== 501) {
+      wordAudioAvailability[src] = false;
+      return false;
+    }
+  } catch (_) {
+    // Fallback to GET below.
+  }
+
+  try {
+    var getResponse = await fetch(src, { method: 'GET', cache: 'force-cache' });
+    wordAudioAvailability[src] = getResponse.ok;
+    return getResponse.ok;
+  } catch (_) {
+    wordAudioAvailability[src] = false;
+    return false;
+  }
+}
+
+function hideWordAudioButton() {
+  ['fc-audio-btn', 'tp-audio-btn'].forEach(function(id) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    btn.hidden = true;
+    btn.disabled = true;
+  });
+}
+
+async function syncCurrentWordAudio(word) {
+  var requestId = ++currentWordAudioRequest;
+
+  hideWordAudioButton();
+  currentWordAudioSrc = '';
+  if (wordAudioPlayer) {
+    wordAudioPlayer.pause();
+    wordAudioPlayer.currentTime = 0;
+  }
+
+  var src = getWordAudioPath(word);
+  if (!src) return;
+
+  var available = await checkWordAudioAvailability(src);
+  if (requestId !== currentWordAudioRequest) return;
+  if (!available) return;
+
+  currentWordAudioSrc = src;
+  ['fc-audio-btn', 'tp-audio-btn'].forEach(function(id) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    btn.hidden = false;
+    btn.disabled = false;
+  });
+}
+
+async function playCurrentWordAudio() {
+  if (!currentWordAudioSrc) return;
+  if (!wordAudioPlayer) {
+    wordAudioPlayer = new Audio();
+  }
+
+  try {
+    wordAudioPlayer.pause();
+    if (wordAudioPlayer.src !== new URL(currentWordAudioSrc, window.location.href).href) {
+      wordAudioPlayer.src = currentWordAudioSrc;
+    }
+    wordAudioPlayer.currentTime = 0;
+    await wordAudioPlayer.play();
+  } catch (_) {
+    hideWordAudioButton();
+    currentWordAudioSrc = '';
+  }
+}
+
 function startFC() {
   document.getElementById('sfc').style.display = 'block';
   document.getElementById('fc-mode-lbl').textContent = sessionMeta && sessionMeta.modeLabel
@@ -590,6 +891,7 @@ function loadFC() {
 
   const srsBtns = document.getElementById('srs-btns');
   if (srsBtns) srsBtns.style.display = 'none';
+  renderSessionStageCard();
 
   const fcEl = document.getElementById('fc');
   if (!fcEl) return;
@@ -600,6 +902,9 @@ function loadFC() {
   const bhEl = document.getElementById('fc-bh');
   const srcEl = document.getElementById('fc-source');
   const mwEl = document.getElementById('fc-mw');
+  const contextEl = document.getElementById('fc-context');
+
+  syncCurrentWordAudio(w);
 
   function applyContent() {
     if (hzEl) hzEl.textContent = w.hanzi || '—';
@@ -607,13 +912,8 @@ function loadFC() {
     if (trEl) trEl.textContent = w.pl || '—';
     if (bhEl) bhEl.textContent = w.hanzi || '—';
     if (srcEl) {
-      var sourceLabel = getWordSourceLabel(w);
-      if (sourceLabel) {
-        srcEl.textContent = sourceLabel;
-        srcEl.style.display = '';
-      } else {
-        srcEl.style.display = 'none';
-      }
+      srcEl.style.display = 'none';
+      srcEl.textContent = '';
     }
 
     if (mwEl) {
@@ -626,6 +926,17 @@ function loadFC() {
         mwEl.style.display = '';
       } else {
         mwEl.style.display = 'none';
+      }
+    }
+
+    if (contextEl) {
+      var lessonContext = getWordFrontContextLabel(w);
+      if (lessonContext) {
+        contextEl.textContent = lessonContext;
+        contextEl.style.display = '';
+      } else {
+        contextEl.style.display = 'none';
+        contextEl.textContent = '';
       }
     }
 
@@ -661,11 +972,18 @@ function renderSessionStageCard() {
     return;
   }
 
+  var title = sessionMeta.title || 'Sesja';
+  var sub = sessionMeta.sub || '';
+  if (sessionMeta.phaseKey === 'lesson') {
+    title = 'Nowe słowa';
+    sub = '';
+  }
+
   document.getElementById('session-stage-kicker').textContent = sessionMeta.kicker || 'Teraz';
-  document.getElementById('session-stage-title').textContent  = sessionMeta.title || 'Sesja';
-  document.getElementById('session-stage-sub').textContent    = sessionMeta.sub || '';
+  document.getElementById('session-stage-title').textContent  = title;
+  document.getElementById('session-stage-sub').textContent    = sub;
   document.getElementById('session-stage-next').textContent   = sessionMeta.next || '';
-  var compact = sessionMeta.kind === 'daily' && sessionMeta.phaseKey === 'lesson' && sIdx > 0;
+  var compact = sIdx > 0;
   cardEl.classList.toggle('compact', compact);
   cardEl.style.display = 'block';
 }
@@ -729,12 +1047,28 @@ function showDailyTransitionScreen(nextPhase) {
   var banner = document.getElementById('res-daily-banner');
   if (banner) {
     banner.style.display = 'block';
-    banner.textContent = '✓ Etap ukończony';
+    var bannerText = prevPhase
+      ? (prevPhase.key === 'reviews' ? '✓ Powtórki ukończone' : '✓ Lekcja ukończona')
+      : '✓ Etap ukończony';
+    banner.textContent = bannerText;
   }
 
-  document.getElementById('rsc').textContent = 'Krok ' + nextPhase.stepNumber + ' z ' + nextPhase.totalSteps;
+  var rscEl = document.getElementById('rsc');
+  if (rscEl) {
+    rscEl.textContent = 'Krok ' + nextPhase.stepNumber + ' z ' + nextPhase.totalSteps;
+    rscEl.classList.remove('resc-score');
+    rscEl.classList.add('resc-step');
+  }
   document.getElementById('rsl').textContent = transitionPhase.transitionTitle || nextPhase.transitionTitle;
-  document.getElementById('res-detail').textContent = transitionPhase.transitionDetail || nextPhase.transitionDetail;
+
+  var detailEl = document.getElementById('res-detail');
+  if (detailEl) {
+    var transitionHint = (nextPhase.key === 'lesson' && dailySessionFlow.lessonMeta)
+      ? 'Teraz: nowe słowa z lekcji ' + dailySessionFlow.lessonMeta.lessonCode
+      : '';
+    detailEl.style.display = transitionHint ? '' : 'none';
+    detailEl.textContent = transitionHint;
+  }
 
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
@@ -755,12 +1089,9 @@ function showDailyTransitionScreen(nextPhase) {
   }
 
   var nextEl = document.getElementById('res-next');
-  if (nextEl) {
-    nextEl.style.display = 'block';
-    nextEl.textContent = nextPhase.key === 'lesson'
-      ? 'Teraz: ' + nextPhase.title
-      : (transitionPhase.transitionNext || nextPhase.transitionNext);
-  }
+  if (nextEl) { nextEl.style.display = 'none'; nextEl.textContent = ''; }
+
+  renderCompletionExtras(null);
 
   resultsPrimaryAction = { type: 'daily_next_phase', phaseIndex: dailySessionFlow.currentPhaseIndex };
   resultsSecondaryAction = { type: 'back_home' };
@@ -768,7 +1099,7 @@ function showDailyTransitionScreen(nextPhase) {
     nextPhase.key === 'lesson'
       ? ('Rozpocznij lekcję ' + (dailySessionFlow.lessonMeta ? dailySessionFlow.lessonMeta.lessonCode : '') + ' →')
       : (transitionPhase.primaryCta || transitionPhase.transitionCta || nextPhase.primaryCta || nextPhase.transitionCta),
-    '🏠 Wróć do domu'
+    'Wróć do dziś'
   );
 }
 
@@ -874,9 +1205,18 @@ function showDailyCompletionScreen() {
     banner.textContent = summary.banner;
   }
 
-  document.getElementById('rsc').textContent = summary.score;
+  var rscEl2 = document.getElementById('rsc');
+  if (rscEl2) {
+    rscEl2.textContent = summary.score;
+    rscEl2.classList.remove('resc-step');
+    rscEl2.classList.add('resc-score');
+  }
   document.getElementById('rsl').textContent = summary.title;
-  document.getElementById('res-detail').textContent = summary.detail;
+  var detailEl2 = document.getElementById('res-detail');
+  if (detailEl2) {
+    detailEl2.style.display = summary.detail ? '' : 'none';
+    detailEl2.textContent = summary.detail || '';
+  }
 
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
@@ -896,19 +1236,17 @@ function showDailyCompletionScreen() {
   }
 
   var nextEl = document.getElementById('res-next');
-  if (nextEl) {
-    if (summary.next) {
-      nextEl.style.display = 'block';
-      nextEl.textContent = summary.next;
-    } else {
-      nextEl.style.display = 'none';
-      nextEl.textContent = '';
-    }
-  }
+  if (nextEl) { nextEl.style.display = 'none'; nextEl.textContent = ''; }
+
+  renderCompletionExtras(buildCompletionExtras({
+    mode: 'daily',
+    lessonMeta: dailySessionFlow ? dailySessionFlow.lessonMeta : null,
+    lessonWords: dailySessionFlow ? dailySessionFlow.lessonWords : null
+  }));
 
   resultsPrimaryAction = summary.primaryAction;
   resultsSecondaryAction = { type: 'back_home' };
-  updateResultsButtons(summary.primaryLabel, '🏠 Wróć do domu');
+  updateResultsButtons(summary.primaryLabel, 'Wróć do dziś');
 
   var lessonWords = [];
   if (dailySessionFlow && dailySessionFlow.lessonMeta && dailySessionFlow.lessonMeta.key) {
@@ -927,13 +1265,156 @@ function updateResultsButtons(primaryLabel, secondaryLabel) {
   var secondaryBtn = document.getElementById('res-secondary-btn');
   if (primaryBtn) {
     if (primaryLabel) {
-      primaryBtn.style.display = 'inline-block';
+      primaryBtn.style.display = '';
       primaryBtn.textContent = primaryLabel;
     } else {
       primaryBtn.style.display = 'none';
     }
   }
-  if (secondaryBtn) secondaryBtn.textContent = secondaryLabel || '🏠 Wróć do domu';
+  if (secondaryBtn) secondaryBtn.textContent = secondaryLabel || 'Wróć do dziś';
+}
+
+function renderCompletionExtras(data) {
+  var reviewEl = document.getElementById('res-review');
+  var contextEl = document.getElementById('res-context');
+
+  if (reviewEl) {
+    if (data && data.reviewWords && data.reviewWords.length) {
+      var reviewTitle = data.reviewTitle || 'Szybkie przypomnienie';
+      reviewEl.style.display = 'block';
+      reviewEl.innerHTML =
+        '<div class="res-extra-title">' + escapeHtml(reviewTitle) + '</div>' +
+        '<div class="res-review-list">' +
+          data.reviewWords.map(function(word) {
+            return '<div class="res-review-item">' +
+              '<div class="res-review-top">' +
+                '<span class="res-review-hz">' + escapeHtml(word.hanzi || '—') + '</span>' +
+                '<span class="res-review-py">' + escapeHtml(word.pinyin || '') + '</span>' +
+              '</div>' +
+              '<div class="res-review-pl">' + escapeHtml(word.pl || '—') + '</div>' +
+            '</div>';
+          }).join('') +
+        '</div>';
+    } else {
+      reviewEl.style.display = 'none';
+      reviewEl.innerHTML = '';
+    }
+  }
+
+  if (contextEl) {
+    contextEl.style.display = 'none';
+    contextEl.innerHTML = '';
+  }
+}
+
+function getSessionBaseWords() {
+  var limit = Math.min(sTotal || 0, Array.isArray(sWords) ? sWords.length : 0);
+  return (Array.isArray(sWords) ? sWords.slice(0, limit) : []).filter(Boolean);
+}
+
+function getUniqueWords(words, limit) {
+  var seen = Object.create(null);
+  var out = [];
+  (words || []).forEach(function(word) {
+    if (!word || !word.id || seen[word.id]) return;
+    seen[word.id] = true;
+    out.push(word);
+  });
+  return typeof limit === 'number' ? out.slice(0, limit) : out;
+}
+
+function getShortPolishLabel(text) {
+  var label = String(text || '').split(/[;,]/)[0].trim();
+  return label || 'to słowo z tej lekcji';
+}
+
+function getCompletionUsageLabel(word) {
+  var hanzi = word && word.hanzi;
+  var tags = Array.isArray(word && word.tags) ? word.tags : [];
+  if (hanzi === '对不起') return 'Używamy, gdy chcemy przeprosić.';
+  if (hanzi === '没关系') return 'Używamy, gdy odpowiadamy, że nic się nie stało.';
+  if (hanzi === '谢谢') return 'Używamy, gdy chcemy komuś podziękować.';
+  if (hanzi === '不客气') return 'Mówimy tak, gdy odpowiadamy na podziękowanie.';
+  if (hanzi === '请') return 'Używamy, gdy prosimy albo uprzejmie zapraszamy.';
+  if (hanzi === '不好意思') return 'Używamy, gdy chcemy kogoś grzecznie zaczepić albo lekko przeprosić.';
+  if (hanzi === '我') return 'Używamy, gdy mówimy o sobie.';
+  if (hanzi === '你') return 'Używamy, gdy zwracamy się do jednej osoby.';
+  if (hanzi === '叫') return 'Używamy, gdy mówimy, jak mamy na imię.';
+  if (hanzi === '名字') return 'Używamy, gdy mówimy o imieniu albo pytamy o imię.';
+  if (hanzi === '什么') return 'Używamy, gdy pytamy „co?” albo „jakie?”.';
+  if (hanzi === '是') return 'Używamy, gdy mówimy, że coś lub ktoś jest czymś.';
+  if (hanzi === '快乐') return 'Używamy, gdy mówimy o radości albo szczęściu.';
+  if (hanzi === '生日快乐') return 'Mówimy tak, gdy składamy komuś życzenia urodzinowe.';
+  if (hanzi === '新年') return 'Używamy, gdy mówimy o Nowym Roku.';
+  if (hanzi === '新年快乐') return 'Mówimy tak, gdy składamy komuś życzenia noworoczne.';
+  if (hanzi === '祝') return 'Używamy, gdy składamy komuś życzenia.';
+  if (hanzi === '你好' || hanzi === '您好' || tags.indexOf('powitanie') !== -1) return 'Używamy, gdy się z kimś witamy.';
+  if (tags.indexOf('pożegnanie') !== -1) return 'Używamy, gdy się z kimś żegnamy.';
+  if (tags.indexOf('pytanie') !== -1 || tags.indexOf('zaimek pytający') !== -1) return 'Używamy, gdy zadajemy proste pytanie.';
+  if (tags.indexOf('grzeczność') !== -1) return 'Używamy w uprzejmej odpowiedzi albo prośbie.';
+  if (tags.indexOf('czasownik') !== -1) return 'Używamy, gdy mówimy o prostej czynności.';
+  if (tags.indexOf('osoba') !== -1 || tags.indexOf('imię') !== -1) return 'Używamy, gdy mówimy o sobie albo o innych osobach.';
+  return 'Używamy, gdy chcemy powiedzieć: ' + getShortPolishLabel(word && word.pl) + '.';
+}
+
+function buildCompletionContextItems(words) {
+  return getUniqueWords(words, 2).map(function(word) {
+    return {
+      hanzi: word.hanzi,
+      pinyin: word.pinyin,
+      pl: word.pl,
+      note: getCompletionUsageLabel(word)
+    };
+  });
+}
+
+function buildCompletionExtras(options) {
+  var mode = options && options.mode ? options.mode : 'session';
+  var sessionWords = getUniqueWords(getSessionBaseWords());
+  var reviewWords = [];
+  var reviewTitle = '';
+  var contextTitle = 'Jak używamy tych słów';
+  var lessonMeta = options && options.lessonMeta ? options.lessonMeta : null;
+  var hasLessonReview = mode === 'daily' && options && Array.isArray(options.lessonWords) && options.lessonWords.length;
+
+  if (hasLessonReview) {
+    reviewWords = getUniqueWords(options.lessonWords, 5);
+  } else if (sessionWords.length && getDistinctLessonCount(sessionWords) <= 1) {
+    lessonMeta = lessonMeta || getPrimaryLessonFromWords(sessionWords);
+    reviewWords = lessonMeta
+      ? getUniqueWords(getLessonWordsByKey(lessonMeta.key), 5)
+      : getUniqueWords(sessionWords, 5);
+  } else if (mode === 'daily' && sessionWords.length) {
+    reviewWords = getUniqueWords(sessionWords, 5);
+  }
+
+  if (!lessonMeta && reviewWords.length && getDistinctLessonCount(reviewWords) <= 1) {
+    lessonMeta = getPrimaryLessonFromWords(reviewWords);
+  }
+
+  if (reviewWords.length) {
+    reviewTitle = lessonMeta && lessonMeta.lessonCode && (hasLessonReview || mode !== 'daily')
+      ? 'Szybkie przypomnienie · lekcja ' + lessonMeta.lessonCode
+      : 'Szybkie przypomnienie';
+  }
+
+  if (mode === 'daily' && !hasLessonReview) {
+    contextTitle = 'Jak używamy tych słów';
+  } else if (lessonMeta && lessonMeta.lessonCode) {
+    contextTitle = 'Jak używamy tych słów';
+  }
+
+  var contextSource = reviewWords.length ? reviewWords : sessionWords;
+  var contextItems = buildCompletionContextItems(contextSource);
+
+  if (!reviewWords.length && !contextItems.length) return null;
+
+  return {
+    reviewTitle: reviewTitle,
+    reviewWords: reviewWords,
+    contextTitle: contextTitle,
+    contextItems: contextItems
+  };
 }
 
 function handleResultsPrimaryAction() {
@@ -974,6 +1455,7 @@ function buildDailyPlan(flow, done, remaining) {
   var summary = '';
   var headline = 'Dziś nie ma już nic pilnego.';
   var action = { type: 'none' };
+  var secondaryAction = { type: 'none' };
 
   if (flow.state === 'session_complete') {
     headline = 'Dzisiejsza sesja jest już skończona.';
@@ -987,6 +1469,9 @@ function buildDailyPlan(flow, done, remaining) {
       ? 'Najpierw powtórki, potem nowa lekcja.'
       : 'Powtórki z wcześniejszych lekcji.';
     action = { type: 'daily_session' };
+    if (newWords.length > 0 && newLesson) {
+      secondaryAction = { type: 'course_lesson', lessonKey: newLesson.key };
+    }
   } else if (flow.state === 'lesson_ready' && newWords.length > 0) {
     headline = newLesson ? ('Lekcja ' + newLesson.shortLabel) : 'Nowe słowa';
     summary = 'Teraz nowe słowa.';
@@ -1014,6 +1499,7 @@ function buildDailyPlan(flow, done, remaining) {
   }
 
   var cta = 'Powtórz słówka →';
+  var secondaryCta = '';
   if (flow.state === 'session_complete') {
     cta = nextLesson ? 'Zobacz następną lekcję →' : '✓ Na dziś wszystko gotowe';
   } else if (done > 0 && remaining > 0 && flow.state !== 'reviews_due') {
@@ -1022,6 +1508,9 @@ function buildDailyPlan(flow, done, remaining) {
     cta = due.length <= 12
       ? 'Powtórz ' + due.length + ' ' + pluralizeWords(due.length, 'słówko', 'słówka', 'słówek') + ' →'
       : 'Zacznij od powtórek →';
+    if (newWords.length > 0 && newLesson) {
+      secondaryCta = 'Kontynuuj lekcję ' + newLesson.lessonCode + ' →';
+    }
   } else if (flow.state === 'lesson_ready' && newWords.length > 0 && newLesson) {
     cta = 'Przejdź do lekcji ' + newLesson.lessonCode + ' →';
   } else if (flow.state === 'lesson_ready' && newWords.length > 0) {
@@ -1036,7 +1525,9 @@ function buildDailyPlan(flow, done, remaining) {
     reviewsLine: reviewsLine,
     newLine: newLine,
     cta: cta,
-    action: action
+    action: action,
+    secondaryCta: secondaryCta,
+    secondaryAction: secondaryAction
   };
 }
 
@@ -1098,8 +1589,9 @@ function loadQZ() {
 
   sp('qz', sIdx + 1, sWords.length);
 
-  const sameLsn = WORDS.filter(x => x.pl !== w.pl && getNormalizedLessonKey(x) === getNormalizedLessonKey(w));
-  const other = WORDS.filter(x => x.pl !== w.pl && getNormalizedLessonKey(x) !== getNormalizedLessonKey(w));
+  const activeWords = getActiveWords();
+  const sameLsn = activeWords.filter(x => x.pl !== w.pl && getNormalizedLessonKey(x) === getNormalizedLessonKey(w));
+  const other = activeWords.filter(x => x.pl !== w.pl && getNormalizedLessonKey(x) !== getNormalizedLessonKey(w));
   const pool = shuffle(sameLsn).concat(shuffle(other));
 
   let opts = [w.pl];
@@ -1150,6 +1642,7 @@ function loadTP() {
   const w = sWords[sIdx];
   document.getElementById('tp-hz').textContent = w.hanzi;
   document.getElementById('tp-py').textContent = w.pinyin;
+  syncCurrentWordAudio(w);
   const inp = document.getElementById('tinp');
   inp.value = ''; inp.className = 'tinp'; inp.disabled = false;
   document.getElementById('tfb').textContent = '';
@@ -1194,13 +1687,18 @@ function showResults() {
   hideAll();
   document.getElementById('sres').style.display = 'block';
   const t   = Math.min(sTotal, sIdx);
-  const pct = t ? Math.round(sOk / t * 100) : 0;
-  document.getElementById('rsc').textContent = sOk + '/' + t;
-  const labels = ['Spróbuj jeszcze raz 💪','Nieźle! Ćwicz dalej 📚','Świetnie! 🌟','Doskonale! 完美🏆'];
-  document.getElementById('rsl').textContent = labels[Math.min(3, Math.floor(pct / 26))];
-  document.getElementById('res-detail').textContent =
-    'Sesja: ' + sessionReviews + ' powtórek · Skuteczność: ' +
-    (sessionReviews > 0 ? Math.round(sessionCorrect / sessionReviews * 100) : 0) + '%';
+  var rscElStd = document.getElementById('rsc');
+  if (rscElStd) {
+    rscElStd.textContent = t + ' ' + pluralizeWords(t, 'słówko', 'słówka', 'słówek');
+    rscElStd.classList.remove('resc-step');
+    rscElStd.classList.add('resc-score');
+  }
+  document.getElementById('rsl').textContent = 'Sesja ukończona';
+  var detailElStd = document.getElementById('res-detail');
+  if (detailElStd) {
+    detailElStd.style.display = '';
+    detailElStd.textContent = 'Przerobiono ' + t + ' ' + pluralizeWords(t, 'słówko', 'słówka', 'słówek') + '.';
+  }
   var courseEl = document.getElementById('res-course');
   if (courseEl) {
     courseEl.style.display = 'none';
@@ -1217,13 +1715,15 @@ function showResults() {
     nextEl.textContent = '';
   }
 
+  renderCompletionExtras(buildCompletionExtras({ mode: isDailySession ? 'daily' : 'session' }));
+
   // Daily session completion banner
   const banner = document.getElementById('res-daily-banner');
   if (banner) banner.style.display = isDailySession ? 'block' : 'none';
 
   resultsPrimaryAction = { type: 'restart_session' };
   resultsSecondaryAction = { type: 'back_home' };
-  updateResultsButtons('🔄 Jeszcze raz', isDailySession ? '🏠 Wróć do domu' : '🏠 Menu główne');
+  updateResultsButtons('Powtórz sesję →', 'Wróć do dziś');
 
   checkAndUpdateStreak();
   renderStreakBadge();
@@ -1333,7 +1833,7 @@ function getRawWordLesson(w) {
 }
 
 function getDailyReviewWords() {
-  return WORDS.filter(function(w) {
+  return getActiveWords().filter(function(w) {
     var c = srsData[w.id];
     return !SRS.isNew(c) && SRS.isDue(c);
   });
@@ -1351,7 +1851,7 @@ function getOrderedCourseLessons() {
 }
 
 function getLessonWordsByKey(lessonKey) {
-  return WORDS.filter(function(w) { return getRawWordLesson(w) === lessonKey; });
+  return getActiveWords().filter(function(w) { return getRawWordLesson(w) === lessonKey; });
 }
 
 function getDailyLessonCandidate() {
@@ -1395,15 +1895,13 @@ function createDailySessionFlow() {
       modeLabel: 'KROK 1 · POWTÓRKI',
       kicker: 'Krok 1 z ' + totalSteps,
       title: dueWords.length + ' ' + pluralizeWords(dueWords.length, 'dzisiejsza powtórka', 'dzisiejsze powtórki', 'dzisiejszych powtórek'),
-      sub: 'Powtarzasz słówka z wcześniejszych lekcji. To pierwszy etap dzisiejszego planu.',
+      sub: 'Powtórki z wcześniejszych lekcji.',
       next: lessonWords.length
         ? 'Potem: nowe słowa z lekcji ' + lessonMeta.shortLabel
         : 'Potem: krótkie podsumowanie sesji.',
-      transitionTitle: lessonWords.length ? 'Powtórki ukończone' : 'Powtórki gotowe',
-      transitionDetail: lessonWords.length
-        ? 'Powtórki z wcześniejszych lekcji są już za Tobą. Teraz przechodzisz do nowego materiału z konkretnej lekcji w kursie.'
-        : 'Nie ma dziś nowej lekcji do uruchomienia, więc po tym etapie domkniesz sesję.',
-      courseLine: lessonWords.length ? 'Jesteś w kursie: ' + lessonMeta.shortLabel : '',
+      transitionTitle: lessonWords.length ? 'Czas na nowe słowa' : 'Powtórki gotowe',
+      transitionDetail: '',
+      courseLine: lessonWords.length ? lessonMeta.fullLabel : '',
       transitionNext: lessonWords.length
         ? 'Za chwilę: lekcja ' + lessonMeta.shortLabel
         : 'Za chwilę: ekran zakończenia sesji.',
@@ -1424,15 +1922,15 @@ function createDailySessionFlow() {
       modeLabel: 'KROK ' + (dueWords.length ? 2 : 1) + ' · NOWE SŁOWA',
       kicker: 'Krok ' + (dueWords.length ? 2 : 1) + ' z ' + totalSteps,
       title: 'Nowe słowa z lekcji ' + lessonMeta.shortLabel,
-      sub: 'Poznajesz nowy materiał z jednej konkretnej lekcji. Wszystkie te słowa pochodzą z: ' + lessonMeta.shortLabel + '.',
+      sub: 'Słówka z lekcji ' + lessonMeta.lessonCode + '.',
       next: lessonOverflow
         ? 'Po sesji możesz dokończyć resztę tej lekcji.'
         : nextLesson
           ? 'Po sesji: następna lekcja ' + nextLesson.shortLabel
           : 'Po sesji: zakończenie dziennego planu.',
-      transitionTitle: 'Nowa lekcja gotowa',
+      transitionTitle: 'Lekcja ukończona',
       transitionDetail: 'Główna część dziennego planu jest skończona. Teraz zobaczysz krótkie domknięcie i następny sensowny krok.',
-      courseLine: 'Jesteś w kursie: ' + lessonMeta.shortLabel,
+      courseLine: lessonMeta.fullLabel,
       transitionNext: lessonOverflow
         ? 'Możesz wrócić do tej samej lekcji lub iść dalej w kursie.'
         : nextLesson
@@ -1478,9 +1976,6 @@ function createDailySessionFlow() {
 
 function getDailyCompletionSummary() {
   var goalDone = dailyLog.done;
-  var totalReviews = dailySessionFlow ? dailySessionFlow.totalReviews : sessionReviews;
-  var totalCorrect = dailySessionFlow ? dailySessionFlow.totalCorrect : sessionCorrect;
-  var pct = totalReviews ? Math.round(totalCorrect / totalReviews * 100) : 0;
   var reinforcement = dailySessionFlow && dailySessionFlow.reinforcementAction
     ? dailySessionFlow.reinforcementAction
     : null;
@@ -1489,8 +1984,8 @@ function getDailyCompletionSummary() {
     banner: '✓ Dzisiejsza sesja ukończona',
     score: goalDone + '/' + (dailySessionFlow ? dailySessionFlow.goalTotal : goalDone),
     title: reinforcement ? 'Plan na dziś zamknięty' : 'Dzisiejszy plan gotowy',
-    detail: 'Do dziennego celu liczą się tylko karty z planu: powtórki i nowe słowa. Dzisiejsza skuteczność: ' + pct + '%.',
-    course: reinforcement && reinforcement.lessonKey ? 'Dalej w kursie: ' + (parseSourceLessonMeta(reinforcement.lessonKey) || {}).shortLabel : '',
+    detail: goalDone + ' ' + pluralizeWords(goalDone, 'słówko przerobione', 'słówka przerobione', 'słówek przerobionych'),
+    course: reinforcement && reinforcement.lessonKey ? (parseSourceLessonMeta(reinforcement.lessonKey) || {}).fullLabel || '' : '',
     next: reinforcement ? reinforcement.summary : 'Możesz wrócić do domu albo zakończyć na dziś.',
     primaryAction: reinforcement || { type: 'back_home' },
     primaryLabel: reinforcement ? reinforcement.label : ''
@@ -1502,16 +1997,16 @@ function buildTransitionPlanMarkup(prevPhase, nextPhase) {
   var rows = [];
 
   if (prevPhase) {
-    rows.push('<div class="res-plan-item done"><strong>Krok ' + prevPhase.stepNumber + ' z ' + total + ':</strong> ' + escapeHtml(prevPhase.title) + ' — ukończono</div>');
+    rows.push('<div class="res-plan-item done">✓ Krok ' + prevPhase.stepNumber + ': ' + escapeHtml(prevPhase.title) + '</div>');
   }
   if (nextPhase) {
-    rows.push('<div class="res-plan-item now"><strong>Krok ' + nextPhase.stepNumber + ' z ' + total + ':</strong> ' + escapeHtml(nextPhase.title) + ' — teraz</div>');
+    rows.push('<div class="res-plan-item now">→ Krok ' + nextPhase.stepNumber + ': ' + escapeHtml(nextPhase.title) + '</div>');
   }
 
   if (total >= 3) {
     var summaryStep = total;
     var summaryState = nextPhase && nextPhase.stepNumber === summaryStep ? 'teraz' : 'potem';
-    rows.push('<div class="res-plan-item"><strong>Krok ' + summaryStep + ' z ' + total + ':</strong> Podsumowanie — ' + summaryState + '</div>');
+    rows.push('<div class="res-plan-item">· Krok ' + summaryStep + ': Podsumowanie' + (summaryState === 'teraz' ? ' — teraz' : '') + '</div>');
   }
 
   return rows.join('');
@@ -1591,7 +2086,16 @@ function parseSourceLessonMeta(raw) {
 function getWordSourceLabel(w) {
   var meta = parseSourceLessonMeta(getRawWordLesson(w));
   if (!meta) return 'Źródło: kurs HanziPL';
+  if (meta.lessonCode && meta.title) return 'Lekcja ' + meta.lessonCode + ' · ' + meta.title;
   return meta.fullLabel || ('Źródło: ' + meta.shortLabel);
+}
+
+function getWordFrontContextLabel(w) {
+  var meta = parseSourceLessonMeta(getRawWordLesson(w));
+  if (!meta) return '';
+  if (meta.lessonCode) return 'Lekcja ' + meta.lessonCode;
+  if (meta.segNum !== null) return 'Segment ' + meta.segNum;
+  return meta.shortLabel || '';
 }
 
 function getPrimaryLessonFromWords(words) {
@@ -1692,7 +2196,7 @@ function getNormalizedLessonKey(w) {
 function getAvailableLessons() {
   var seen = Object.create(null);
   var items = [];
-  WORDS.forEach(function(w) {
+  getActiveWords().forEach(function(w) {
     var key = getNormalizedLessonKey(w);
     if (!key || seen[key]) return;
     seen[key] = true;
@@ -1714,7 +2218,7 @@ function getLessonItemsFromWords() {
 function getTopicItems() {
   var seen = Object.create(null);
   var topics = [];
-  WORDS.forEach(function(w) {
+  getActiveWords().forEach(function(w) {
     var t = w.topic;
     if (!t || seen[t]) return;
     seen[t] = true;
@@ -1731,7 +2235,7 @@ function getLevelItems() {
   var ORDER = ['starter', 'A1', 'A2', 'HSK1', 'HSK2', 'HSK3', 'HSK3plus', 'proper_noun'];
   var seen = Object.create(null);
   var levels = [];
-  WORDS.forEach(function(w) {
+  getActiveWords().forEach(function(w) {
     var lv = w.levelApprox;
     if (!lv || seen[lv]) return;
     seen[lv] = true;
@@ -1754,42 +2258,41 @@ function getLevelItems() {
  * Called once on init — and re-callable if data changes.
  */
 function initChips() {
-  var lessonItems = getLessonItemsFromWords();
-  var topicItems  = getTopicItems();
-  var levelItems  = getLevelItems();
-
   // Words browser — single-select filters
-  renderChipList('frow-lesson', lessonItems,
-    function(v) { return curFilter2 === v; },
-    filterWords);
-  renderChipList('frow-topic', topicItems,
-    function(v) { return curTopic2 === v; },
-    filterTopic);
-  renderChipList('frow-level', levelItems,
-    function(v) { return curLevel2 === v; },
-    filterLevel);
+  syncWordSegmentSelect();
+  renderChipList('frow-status', getWordBrowserStatusItems(),
+    function(v) { return curStatus2 === v; },
+    filterWordStatus);
+  syncWordLessonFilter();
 
-  // Study screen — multi-select toggles
-  renderChipList('slf', lessonItems,
-    function(v) { return selLessons.has(v); },
-    toggleLesson);
-  renderChipList('stf', topicItems,
-    function(v) { return selTopics.has(v); },
-    toggleTopic);
-  renderChipList('slvl', levelItems,
-    function(v) { return selLevels.has(v); },
-    toggleLevel);
+  // Study screen — guided scope
+  renderChipList('study-scope', getStudyScopeItems(),
+    function(v) { return studyScope === v; },
+    filterStudyScope);
+  syncStudyScopeUi();
 }
 
 // ── STAGES SCREEN ─────────────────────────────────
 // Rendering driven by getV3Segments() from courseStages.js.
 // Status + session helpers live in courseStages.js (getLessonStatusByKey, startLessonSessionByKey).
 
+function getCourseLessonWordStats(lessonKey, activeWords) {
+  var words = (activeWords || getActiveWords()).filter(function(w) { return getRawWordLesson(w) === lessonKey; });
+  var mastered = words.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
+  var total = words.length;
+  return {
+    total: total,
+    mastered: mastered,
+    pct: total ? Math.round(mastered / total * 100) : 0
+  };
+}
+
 function renderStages() {
   document.getElementById('stages-list').style.display = 'block';
   document.getElementById('stage-detail').style.display = 'none';
 
   var segments = getV3Segments();
+  var activeWords = getActiveWords();
 
   if (!segments.length) {
     document.getElementById('stages-list').innerHTML =
@@ -1802,6 +2305,9 @@ function renderStages() {
     var doneCount = lessons.filter(function(l) { return getLessonStatusByKey(l.key) === 'done'; }).length;
     var pct       = lessons.length ? Math.round(doneCount / lessons.length * 100) : 0;
     var allDone   = doneCount === lessons.length;
+    var lessonKeyMap = Object.create(null);
+    lessons.forEach(function(lesson) { lessonKeyMap[lesson.key] = true; });
+    var wordCount = activeWords.filter(function(w) { return lessonKeyMap[getRawWordLesson(w)] === true; }).length;
 
     var nextLesson = null;
     for (var i = 0; i < lessons.length; i++) {
@@ -1814,22 +2320,21 @@ function renderStages() {
         ? '<div class="sc-next">Następna: <strong>' + nextLesson.name + '</strong></div>'
         : '';
 
-    var preview = lessons.slice(0, 2).map(function(l) { return l.name; }).join(' · ') + (lessons.length > 2 ? ' …' : '');
-
     return '<div class="stage-card" data-action="open-segment" data-seg="' + seg.segNum + '">' +
       '<div class="stage-card-head">' +
         '<span class="stage-icon">' + seg.icon + '</span>' +
         '<div class="stage-card-title">' +
           '<div class="stage-name">' + seg.name + '</div>' +
-          '<div class="stage-desc">' + preview + '</div>' +
         '</div>' +
       '</div>' +
-      '<div class="stage-lesson-summary">' +
-        '<span class="sls-count">' + lessons.length + ' lekcji</span>' +
-        '<span class="sls-done">' + doneCount + '/' + lessons.length + ' przerobionych</span>' +
+      '<div class="stage-meta-grid">' +
+        '<div class="stage-meta-item"><span class="stage-meta-label">Liczba lekcji</span><strong>' + lessons.length + '</strong></div>' +
+        '<div class="stage-meta-item"><span class="stage-meta-label">Liczba słów</span><strong>' + wordCount + '</strong></div>' +
+        '<div class="stage-meta-item"><span class="stage-meta-label">Przerobione lekcje</span><strong>' + doneCount + '/' + lessons.length + '</strong></div>' +
       '</div>' +
       '<div class="stage-prog-wrap">' +
         '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + pct + '%"></div></div>' +
+        '<div class="stage-prog-txt">' + pct + '% segmentu ukończone</div>' +
       '</div>' +
       nextHint +
     '</div>';
@@ -1869,7 +2374,8 @@ function renderSegmentDetail(segNum) {
   else             ctaLabel = '▶ Kontynuuj: ' + ctaLesson.name;
 
   // Segment word stats
-  var segWords    = WORDS.filter(function(w) {
+  var activeWords = getActiveWords();
+  var segWords    = activeWords.filter(function(w) {
     return lessons.some(function(l) { return l.key === w.sourceLesson; });
   });
   var segNew      = segWords.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
@@ -1880,11 +2386,9 @@ function renderSegmentDetail(segNum) {
   var lessonsHtml = lessonStatuses.map(function(ls) {
     var lesson = ls.lesson;
     var status = ls.status;
-    var lw     = WORDS.filter(function(w) { return w.sourceLesson === lesson.key; });
-    var lNew   = lw.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
-    var lMast  = lw.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
-    var lLearn = lw.length - lNew - lMast;
-    var lpct   = lw.length ? Math.round(lMast / lw.length * 100) : 0;
+    var lessonMeta = parseSourceLessonMeta(lesson.key);
+    var stats  = getCourseLessonWordStats(lesson.key, activeWords);
+    var lpct   = stats.pct;
 
     var badge, btnLabel;
     if (status === 'done') {
@@ -1898,22 +2402,20 @@ function renderSegmentDetail(segNum) {
       btnLabel = 'Zacznij';
     }
 
-    var parts = [];
-    if (lNew   > 0) parts.push(lNew   + ' nowych');
-    if (lLearn > 0) parts.push(lLearn + ' w nauce');
-    if (lMast  > 0) parts.push(lMast  + ' opanowanych');
-    var metaStr = lw.length + ' słów' + (parts.length ? ' · ' + parts.join(' · ') : '');
-
     return '<div class="lesson-card' + (status === 'done' ? ' lc-done' : '') + '">' +
       '<div class="lc-header">' +
-        '<span class="lc-name">' + lesson.name + '</span>' +
+        '<div class="lc-title-wrap">' +
+          '<span class="lc-code">' + lessonMeta.lessonCode + '</span>' +
+          '<span class="lc-name">' + (lessonMeta.title || lesson.name) + '</span>' +
+        '</div>' +
         badge +
       '</div>' +
+      '<div class="lc-meta-row">' + stats.total + ' słów</div>' +
+      '<div class="lc-bar"><div class="lc-fill" style="width:' + lpct + '%"></div></div>' +
       '<div class="lc-footer">' +
-        '<span class="lc-meta">' + metaStr + '</span>' +
+        '<span class="lc-meta">' + lpct + '% opanowane</span>' +
         '<button class="btn-lesson" data-action="start-lesson" data-lesson-key="' + lesson.key.replace(/"/g, '&quot;') + '">' + btnLabel + '</button>' +
       '</div>' +
-      (status !== 'new' ? '<div class="lc-bar"><div class="lc-fill" style="width:' + lpct + '%"></div></div>' : '') +
     '</div>';
   }).join('');
 
@@ -2016,7 +2518,7 @@ function init() {
 
   console.log('init ok', {
     words: WORDS.length,
-    pool: getPool().length,
+    pool: getStudyPool().length,
     mode: curMode
   });
 }
@@ -2076,17 +2578,15 @@ window.flipCard = flipCard;
 window.srsAns = srsAns;
 window.chkType = chkType;
 window.tpNext = tpNext;
-window.toggleLesson = toggleLesson;
-window.toggleTopic = toggleTopic;
-window.toggleLevel = toggleLevel;
 window.initChips = initChips;
 window.selMode = selMode;
-window.filterWords = filterWords;
-window.filterTopic = filterTopic;
-window.filterLevel = filterLevel;
+window.filterWordsSegment = filterWordsSegment;
+window.filterWordStatus = filterWordStatus;
+window.filterWordLesson = filterWordLesson;
 window.renderWords = renderWords;
 window.setGoal = setGoal;
 window.finishOnboard = finishOnboard;
 window.dialogCancel = dialogCancel;
 window.dialogConfirm = dialogConfirm;
+window.playCurrentWordAudio = playCurrentWordAudio;
 init();

@@ -41,6 +41,14 @@ var SEGMENT_ICONS = {
   26: '🎭'
 };
 
+function isCourseWordActive(word) {
+  return !word || !word.contentStatus || word.contentStatus === 'active';
+}
+
+function getCourseActiveWords() {
+  return WORDS.filter(isCourseWordActive);
+}
+
 /**
  * Derives segments + lessons directly from WORDS.sourceLesson.
  * Returns [{ segNum, name, icon, lessons: [{key, segNum, subNum, name}] }]
@@ -48,7 +56,7 @@ var SEGMENT_ICONS = {
  */
 function getV3Segments() {
   var lessonMap = Object.create(null);
-  WORDS.forEach(function(w) {
+  getCourseActiveWords().forEach(function(w) {
     var sl = (w.sourceLesson || '').trim();
     if (!sl || lessonMap[sl]) return;
     var m = sl.match(/^(\d+)\.(\d+)\s+(.+)$/);
@@ -90,7 +98,7 @@ function getV3Segments() {
  * Returns 'new' | 'in-progress' | 'done' | 'empty' for a sourceLesson key.
  */
 function getLessonStatusByKey(lessonKey) {
-  var lw = WORDS.filter(function(w) { return w.sourceLesson === lessonKey; });
+  var lw = getCourseActiveWords().filter(function(w) { return w.sourceLesson === lessonKey; });
   if (!lw.length) return 'empty';
   var newCount = lw.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
   if (newCount === lw.length) return 'new';
@@ -102,7 +110,7 @@ function getLessonStatusByKey(lessonKey) {
  * Starts a session for all words in a given sourceLesson key.
  */
 function startLessonSessionByKey(lessonKey) {
-  var words = WORDS.filter(function(w) { return w.sourceLesson === lessonKey; });
+  var words = getCourseActiveWords().filter(function(w) { return w.sourceLesson === lessonKey; });
   if (!words.length) { showToast('Brak słówek w tej lekcji!', true); return; }
   document.querySelectorAll('.scr').forEach(function(s) { s.classList.remove('on'); });
   document.querySelectorAll('.botnav-btn').forEach(function(b) { b.classList.remove('on'); });
