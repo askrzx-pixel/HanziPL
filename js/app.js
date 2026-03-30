@@ -973,9 +973,16 @@ function renderSessionStageCard() {
     return;
   }
 
+  var title = sessionMeta.title || 'Sesja';
+  var sub = sessionMeta.sub || '';
+  if (sessionMeta.phaseKey === 'lesson') {
+    title = 'Nowe słowa';
+    sub = '';
+  }
+
   document.getElementById('session-stage-kicker').textContent = sessionMeta.kicker || 'Teraz';
-  document.getElementById('session-stage-title').textContent  = sessionMeta.title || 'Sesja';
-  document.getElementById('session-stage-sub').textContent    = sessionMeta.sub || '';
+  document.getElementById('session-stage-title').textContent  = title;
+  document.getElementById('session-stage-sub').textContent    = sub;
   document.getElementById('session-stage-next').textContent   = sessionMeta.next || '';
   var compact = sIdx > 0;
   cardEl.classList.toggle('compact', compact);
