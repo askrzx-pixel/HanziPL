@@ -202,7 +202,11 @@
     </div>
     <div class="fcwrap" onclick="flipCard()">
       <div class="fc" id="fc">
-        <div class="face front"><span class="fhz" id="fc-hz">—</span><span class="fhint">dotknij, aby obrócić</span></div>
+        <div class="face front">
+          <div class="fc-front-meta" id="fc-front-meta" style="display:none"></div>
+          <span class="fhz" id="fc-hz">—</span>
+          <span class="fhint">Dotknij karty, aby obrócić</span>
+        </div>
         <div class="face back"><div class="bhz" id="fc-bh"></div><div class="bpy" id="fc-py"></div><div class="btr" id="fc-tr"></div><div class="fc-source" id="fc-source" style="display:none"></div><div class="fc-mw" id="fc-mw" style="display:none"></div></div>
       </div>
     </div>
@@ -210,6 +214,7 @@
       <button class="fc-audio-btn" id="fc-audio-btn" onclick="playCurrentWordAudio()" hidden>🔊 Wymowa</button>
     </div>
     <div id="srs-btns" style="display:none">
+      <div class="srs-copy">Wybierz, jak dobrze znasz to słowo. Zapiszemy wynik i pokażemy kolejne.</div>
       <div class="srs-btns">
         <button class="srs-btn again" onclick="srsAns(0)"><span class="sb-label">Jeszcze raz</span><span class="sb-interval" id="srs-i0"></span></button>
         <button class="srs-btn hard"  onclick="srsAns(1)"><span class="sb-label">Trudne</span><span class="sb-interval" id="srs-i1"></span></button>
@@ -253,6 +258,9 @@
       <div class="prog"><div class="progh"><span id="tp-t">0/0</span><span>WPISYWANIE</span></div><div class="progt"><div class="progf" id="tp-f" style="width:0%"></div></div></div>
     </div>
     <div class="tqwrap"><span class="qqhz" id="tp-hz">—</span><div class="qqpy" id="tp-py"></div></div>
+    <div class="fc-audio-row tp-audio-row">
+      <button class="fc-audio-btn tp-audio-btn" id="tp-audio-btn" onclick="playCurrentWordAudio()" hidden>🔊 Wymowa</button>
+    </div>
     <div class="tiwrap">
       <input class="tinp" id="tinp" placeholder="Wpisz tłumaczenie…" onkeydown="if(event.key==='Enter')chkType()">
       <button class="tchk" onclick="chkType()">OK</button>
