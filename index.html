@@ -206,9 +206,7 @@
     <div id="srs-btns" style="display:none">
       <div class="srs-btns">
         <button class="srs-btn again" onclick="srsAns(0)"><span class="sb-label">Jeszcze raz</span><span class="sb-interval" id="srs-i0"></span></button>
-        <button class="srs-btn hard"  onclick="srsAns(1)"><span class="sb-label">Trudne</span><span class="sb-interval" id="srs-i1"></span></button>
-        <button class="srs-btn good"  onclick="srsAns(2)"><span class="sb-label">Dobrze</span><span class="sb-interval" id="srs-i2"></span></button>
-        <button class="srs-btn easy"  onclick="srsAns(3)"><span class="sb-label">Łatwe</span><span class="sb-interval" id="srs-i3"></span></button>
+        <button class="srs-btn know"  onclick="srsAns(3)"><span class="sb-label">Znam</span><span class="sb-interval" id="srs-i3"></span></button>
       </div>
     </div>
   </div>
@@ -265,6 +263,8 @@
       <div class="res-course" id="res-course" style="display:none"></div>
       <div class="res-plan" id="res-plan" style="display:none"></div>
       <div class="res-next" id="res-next" style="display:none"></div>
+      <div id="res-word-review" style="display:none"></div>
+      <div id="res-context" style="display:none"></div>
       <div class="resbtns">
         <button class="btn" style="width:auto;display:inline-block" id="res-primary-btn" onclick="handleResultsPrimaryAction()">🔄 Jeszcze raz</button>
         <button class="btn-out" id="res-secondary-btn" onclick="handleResultsSecondaryAction()">🏠 Wróć do domu</button>
