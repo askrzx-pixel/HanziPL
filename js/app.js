@@ -252,7 +252,12 @@ function startDailySession() {
 // ── STATS ─────────────────────────────────────────
 function renderStats() {
   // 1. Seria
-  document.getElementById('st-streak').textContent = (streakData && streakData.current) || 0;
+  var streakVal = (streakData && streakData.current) || 0;
+  document.getElementById('st-streak').textContent = streakVal;
+  var streakLabelEl = document.getElementById('st-streak-lbl');
+  if (streakLabelEl) {
+    streakLabelEl.textContent = pluralizeWords(streakVal, 'dzień serii', 'dni serii', 'dni serii');
+  }
 
   // 2. Word counts
   var total    = WORDS.length;
@@ -299,7 +304,7 @@ function renderStatsLessons() {
     var lrn = lw.length - m - nw;
     var pct = Math.round(m / lw.length * 100);
     var status = m === lw.length ? 'done'
-      : (lrn > 0 || (m > 0 && nw > 0)) ? 'active'
+      : (m > 0 && (lrn > 0 || nw > 0)) ? 'active'
       : 'new';
     return { key: ls, pct: pct, status: status, total: lw.length, mastered: m };
   }).filter(Boolean);
@@ -330,6 +335,7 @@ function renderStatsLessons() {
     var l   = item.l;
     var lessonMeta = parseSourceLessonMeta(l.key);
     var lessonLabel = lessonMeta ? ('Przejdź do lekcji ' + lessonMeta.lessonCode + ' →') : ('Przejdź do ' + l.key + ' →');
+    var activeLessonLabel = lessonMeta ? ('Kontynuuj lekcję ' + lessonMeta.lessonCode + ' →') : ('Kontynuuj ' + l.key + ' →');
     var lbl = l.status === 'done' ? 'Ukończona' : l.status === 'active' ? 'W trakcie' : '';
     var cls = l.status === 'done' ? 'st-ls-done' : l.status === 'active' ? 'st-ls-active' : 'st-ls-next';
     return '<div class="st-lrow' + (item.hi ? ' st-lrow-hi' : '') + '">' +
@@ -339,8 +345,8 @@ function renderStatsLessons() {
       '</div>' +
       '<div class="btrack"><div class="bfill" style="width:' + l.pct + '%"></div></div>' +
       '<div class="st-lrow-sub">' + l.mastered + '\u202f/\u202f' + l.total + ' słów · ' + l.pct + '%</div>' +
-      (l.status === 'new'
-        ? '<button class="st-next-btn" onclick="startLessonSessionByKey(\'' + l.key.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + '\')">' + lessonLabel + '</button>'
+      ((l.status === 'new' || l.status === 'active')
+        ? '<button class="st-next-btn" onclick="startLessonSessionByKey(\'' + l.key.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + '\')">' + (l.status === 'active' ? activeLessonLabel : lessonLabel) + '</button>'
         : '') +
       '</div>';
   }).join('');
@@ -1663,6 +1669,45 @@ function shuffle(a) {
   return a;
 }
 
+function getNumericWordOrderValue(word) {
+  if (!word) return Number.MAX_SAFE_INTEGER;
+  var hanzi = (word.hanzi || '').trim();
+  var directMap = {
+    '零': 0,
+    '一': 1,
+    '二': 2,
+    '三': 3,
+    '四': 4,
+    '五': 5,
+    '六': 6,
+    '七': 7,
+    '八': 8,
+    '九': 9,
+    '十': 10
+  };
+  if (Object.prototype.hasOwnProperty.call(directMap, hanzi)) return directMap[hanzi];
+
+  var parsed = chineseNumToInt(hanzi);
+  if (!isNaN(parsed) && parsed !== 99) return parsed;
+
+  var idNum = parseInt(String(word.id || '').replace(/^\D+/, ''), 10);
+  return isNaN(idNum) ? Number.MAX_SAFE_INTEGER : 1000 + idNum;
+}
+
+function orderWordsForSession(words) {
+  var list = [].concat(words || []);
+  if (!list.length) return list;
+
+  var allNumeric = list.every(function(word) {
+    return word && word.topic === 'liczby_i_ilosci';
+  });
+  if (!allNumeric) return shuffle(list);
+
+  return list.sort(function(a, b) {
+    return getNumericWordOrderValue(a) - getNumericWordOrderValue(b);
+  });
+}
+
 // ── ONBOARDING ────────────────────────────────────
 var _pendingGoal = 10;
 
@@ -1777,6 +1822,9 @@ function createDailySessionFlow() {
   var lessonPool = lessonCandidate ? getLessonWordsByKey(lessonCandidate.key).filter(function(w) {
     return SRS.isNew(srsData[w.id]);
   }) : [];
+  if (lessonPool.length && lessonPool.every(function(word) { return word && word.topic === 'liczby_i_ilosci'; })) {
+    lessonPool = orderWordsForSession(lessonPool);
+  }
   var lessonSlots = Math.max(0, goal - dueWords.length);
   if (!lessonSlots && lessonPool.length) lessonSlots = 1;
   var lessonWords = lessonSlots > 0 ? lessonPool.slice(0, lessonSlots) : [];
@@ -1817,7 +1865,7 @@ function createDailySessionFlow() {
     phases.push({
       key: 'lesson',
       state: 'lesson_ready',
-      words: shuffle([].concat(lessonWords)),
+      words: orderWordsForSession(lessonWords),
       countsToGoal: true,
       stepNumber: dueWords.length ? 2 : 1,
       totalSteps: totalSteps,
