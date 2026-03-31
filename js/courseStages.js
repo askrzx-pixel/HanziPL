@@ -119,5 +119,5 @@ function startLessonSessionByKey(lessonKey) {
   if (navBtn) navBtn.classList.add('on');
   window.scrollTo(0, 0);
   isDailySession = false;
-  beginSession(shuffle([].concat(words)), curMode);
+  beginSession(orderWordsForSession(words), curMode);
 }
