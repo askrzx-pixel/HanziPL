@@ -336,6 +336,7 @@ function renderStatsLessons() {
     var activeLessonLabel = lessonMeta ? ('Kontynuuj lekcję ' + lessonMeta.lessonCode + ' →') : ('Kontynuuj ' + l.key + ' →');
     var lbl = l.status === 'done' ? 'Ukończona' : l.status === 'active' ? 'W trakcie' : '';
     var cls = l.status === 'done' ? 'st-ls-done' : l.status === 'active' ? 'st-ls-active' : 'st-ls-next';
+    var escapedKey = l.key.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
     return '<div class="st-lrow' + (item.hi ? ' st-lrow-hi' : '') + '">' +
       '<div class="st-lrow-top">' +
         '<span class="st-lrow-name">' + l.key + '</span>' +
@@ -789,7 +790,7 @@ function updateSessionCount() {
 
 function startCustomSession() {
   const basePool = getStudyPool();
-  const pool = shuffle([].concat(basePool));
+  const pool = orderWordsForSession(basePool);
 
   if (!pool.length) {
     showToast('Brak słówek!', true);
