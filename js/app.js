@@ -776,25 +776,10 @@ function getWordAudioPath(word) {
 async function checkWordAudioAvailability(src) {
   if (!src) return false;
   if (typeof wordAudioAvailability[src] === 'boolean') return wordAudioAvailability[src];
-
   try {
     var response = await fetch(src, { method: 'HEAD', cache: 'force-cache' });
-    if (response.ok) {
-      wordAudioAvailability[src] = true;
-      return true;
-    }
-    if (response.status !== 405 && response.status !== 501) {
-      wordAudioAvailability[src] = false;
-      return false;
-    }
-  } catch (_) {
-    // Fallback to GET below.
-  }
-
-  try {
-    var getResponse = await fetch(src, { method: 'GET', cache: 'force-cache' });
-    wordAudioAvailability[src] = getResponse.ok;
-    return getResponse.ok;
+    wordAudioAvailability[src] = response.ok;
+    return response.ok;
   } catch (_) {
     wordAudioAvailability[src] = false;
     return false;
@@ -899,7 +884,7 @@ function loadFC() {
   const mwEl = document.getElementById('fc-mw');
   const contextEl = document.getElementById('fc-context');
 
-  syncCurrentWordAudio(w);
+  syncCurrentWordAudio(w).catch(function() { hideWordAudioButton(); });
 
   function applyContent() {
     if (hzEl) hzEl.textContent = w.hanzi || '—';
@@ -1633,7 +1618,7 @@ function loadTP() {
   const w = sWords[sIdx];
   document.getElementById('tp-hz').textContent = w.hanzi;
   document.getElementById('tp-py').textContent = w.pinyin;
-  syncCurrentWordAudio(w);
+  syncCurrentWordAudio(w).catch(function() { hideWordAudioButton(); });
   const inp = document.getElementById('tinp');
   inp.value = ''; inp.className = 'tinp'; inp.disabled = false;
   document.getElementById('tfb').textContent = '';
