@@ -150,15 +150,10 @@ function renderHomeScreen() {
 
   document.getElementById('home-sub').textContent = plan.summary;
 
-  document.getElementById('hc-due-v').textContent  = due.length;
-  document.getElementById('hc-new-v').textContent  = newWords.length;
-  document.getElementById('hc-done-v').textContent = done;
-  document.getElementById('home-plan-head').textContent    = plan.headline;
+  document.getElementById('home-plan-head').textContent = plan.headline;
   document.getElementById('home-session-counts').textContent =
-    newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów') +
-    ' · ' + due.length + ' ' + pluralizeWords(due.length, 'powtórka', 'powtórki', 'powtórek');
-  document.getElementById('home-plan-reviews').textContent = plan.reviewsLine;
-  document.getElementById('home-plan-new').textContent     = plan.newLine;
+    due.length + ' ' + pluralizeWords(due.length, 'powtórka', 'powtórki', 'powtórek') +
+    (newWords.length > 0 ? ' · ' + newWords.length + ' ' + pluralizeWords(newWords.length, 'nowe słowo', 'nowe słowa', 'nowych słów') : '');
 
   const pct = goal > 0 ? Math.min(100, Math.round(done / goal * 100)) : 0;
   document.getElementById('daily-prog-fill').style.width = pct + '%';
@@ -289,6 +284,9 @@ function renderStats() {
 
   // 5. Trudne słówka
   renderStatsHard();
+
+  // 6. Action CTAs
+  renderStatsActions();
 }
 
 function renderStatsLessons() {
@@ -335,8 +333,9 @@ function renderStatsLessons() {
     var lessonMeta = parseSourceLessonMeta(l.key);
     var lessonLabel = lessonMeta ? ('Przejdź do lekcji ' + lessonMeta.lessonCode + ' →') : ('Przejdź do ' + l.key + ' →');
     var activeLessonLabel = lessonMeta ? ('Kontynuuj lekcję ' + lessonMeta.lessonCode + ' →') : ('Kontynuuj ' + l.key + ' →');
-    var lbl = l.status === 'completed' ? 'Ukończona' : l.status === 'in-progress' ? 'W trakcie' : 'Nie rozpoczęta';
-    var cls = l.status === 'completed' ? 'st-ls-done' : l.status === 'in-progress' ? 'st-ls-active' : 'st-ls-next';
+    var lbl = l.status === 'done' ? 'Ukończona' : l.status === 'active' ? 'W trakcie' : '';
+    var cls = l.status === 'done' ? 'st-ls-done' : l.status === 'active' ? 'st-ls-active' : 'st-ls-next';
+    var escapedKey = l.key.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
     return '<div class="st-lrow' + (item.hi ? ' st-lrow-hi' : '') + '">' +
       '<div class="st-lrow-top">' +
         '<span class="st-lrow-name">' + l.key + '</span>' +
@@ -353,7 +352,6 @@ function renderStatsLessons() {
 
 function renderStatsHard() {
   var container  = document.getElementById('st-hard');
-  var btn        = document.getElementById('st-hard-btn');
   var candidates = getActiveWords()
     .map(function(w) { return Object.assign({}, w, { _c: srsData[w.id] || SRS.defaultCard() }); })
     .filter(function(w) { return (w._c.reviews || 0) >= 2; })
@@ -362,8 +360,7 @@ function renderStatsHard() {
     .slice(0, 3);
 
   if (!candidates.length) {
-    container.innerHTML = '<div class="st-empty">Ukończ kilka powtórek, aby zobaczyć trudne słówka.</div>';
-    if (btn) btn.style.display = 'none';
+    container.innerHTML = '<div class="st-hard-empty">✓ Brak trudnych słówek — świetna robota!</div>';
     return;
   }
 
@@ -375,12 +372,37 @@ function renderStatsHard() {
       '<div class="weak-acc ' + cls + '">' + pct + '%</div>' +
       '</div>';
   }).join('');
-  if (btn) btn.style.display = 'block';
+}
+
+function renderStatsActions() {
+  var container = document.getElementById('st-actions');
+  if (!container) return;
+
+  var candidate  = getDailyLessonCandidate();
+  var hardPool   = getHardWordsPool();
+
+  var btns = '';
+  if (hardPool.length) {
+    btns += '<button class="btn st-act-hard" onclick="startHardSession()">↺ Powtarzaj trudne słówka (' + hardPool.length + ')</button>';
+  }
+  if (candidate) {
+    var lessonMeta = parseSourceLessonMeta(candidate.key);
+    var lbl = lessonMeta ? ('Kontynuuj lekcję ' + lessonMeta.lessonCode) : 'Kontynuuj lekcję';
+    btns += '<button class="btn-out st-act-lesson" onclick="startLessonSessionByKey(\'' + candidate.key.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + '\')">' + lbl + ' →</button>';
+  }
+
+  container.innerHTML = btns ? '<div class="st-act-row">' + btns + '</div>' : '';
 }
 
 function startHardSession() {
   var pool = getHardWordsPool();
   if (!pool.length) return;
+  document.querySelectorAll('.scr').forEach(function(s) { s.classList.remove('on'); });
+  document.querySelectorAll('.botnav-btn').forEach(function(b) { b.classList.remove('on'); });
+  document.getElementById('scr-study').classList.add('on');
+  var navBtn = document.getElementById('bn-study');
+  if (navBtn) navBtn.classList.add('on');
+  window.scrollTo(0, 0);
   hideAll();
   isDailySession   = false;
   dailySessionFlow = null;
@@ -536,7 +558,7 @@ function renderWords() {
     const mwBadge = w.measureWord
       ? '<span class="mw-badge" title="Klasyfikator: ' + w.measureWord.hanzi + ' (' + w.measureWord.pinyin + ')">' + w.measureWord.hanzi + '</span>'
       : '';
-    return '<div class="wcard">' +
+    return '<div class="wcard" onclick="openWordDetail(\'' + w.id.replace(/'/g, "\\'") + '\')">' +
       '<span class="hz">' + w.hanzi + '</span>' +
       mwBadge +
       '<div class="py">' + w.pinyin + '</div>' +
@@ -547,6 +569,59 @@ function renderWords() {
       '<div class="mb"><div class="mbf" style="width:' + mPct + '%"></div></div>' +
       '</div>';
   }).join('');
+}
+
+// ── WORD DETAIL MODAL ─────────────────────────────
+function openWordDetail(wordId) {
+  var word = null;
+  for (var i = 0; i < WORDS.length; i++) {
+    if (WORDS[i].id === wordId) { word = WORDS[i]; break; }
+  }
+  if (!word) return;
+
+  var lessonMeta = parseSourceLessonMeta(getRawWordLesson(word));
+  var contextHtml = lessonMeta
+    ? '<div class="wm-context"><span class="wm-lesson">' + escapeHtml(lessonMeta.fullLabel) + '</span></div>'
+    : '';
+
+  var audioSrc = getWordAudioPath(word);
+  var audioHtml = audioSrc
+    ? '<button class="btn wm-audio-btn" id="wm-audio-btn" disabled onclick="playWordModalAudio()">🔊 Wymowa</button>'
+    : '';
+
+  document.getElementById('word-modal-content').innerHTML =
+    '<div class="wm-hz">' + escapeHtml(word.hanzi) + '</div>' +
+    '<div class="wm-py">' + escapeHtml(word.pinyin) + '</div>' +
+    '<div class="wm-pl">' + escapeHtml(word.pl) + '</div>' +
+    contextHtml +
+    audioHtml;
+
+  document.getElementById('word-modal-overlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  if (audioSrc) {
+    currentWordAudioSrc = '';
+    checkWordAudioAvailability(audioSrc).then(function(available) {
+      var btn = document.getElementById('wm-audio-btn');
+      if (!btn) return;
+      if (available) {
+        currentWordAudioSrc = audioSrc;
+        btn.disabled = false;
+      } else {
+        btn.style.display = 'none';
+      }
+    });
+  }
+}
+
+function closeWordModal() {
+  document.getElementById('word-modal-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+  currentWordAudioSrc = '';
+}
+
+function playWordModalAudio() {
+  playCurrentWordAudio();
 }
 
 // ── STUDY — MODE SELECT ───────────────────────────
@@ -714,7 +789,7 @@ function updateSessionCount() {
 
 function startCustomSession() {
   const basePool = getStudyPool();
-  const pool = shuffle([].concat(basePool));
+  const pool = orderWordsForSession(basePool);
 
   if (!pool.length) {
     showToast('Brak słówek!', true);
@@ -786,25 +861,10 @@ function getWordAudioPath(word) {
 async function checkWordAudioAvailability(src) {
   if (!src) return false;
   if (typeof wordAudioAvailability[src] === 'boolean') return wordAudioAvailability[src];
-
   try {
     var response = await fetch(src, { method: 'HEAD', cache: 'force-cache' });
-    if (response.ok) {
-      wordAudioAvailability[src] = true;
-      return true;
-    }
-    if (response.status !== 405 && response.status !== 501) {
-      wordAudioAvailability[src] = false;
-      return false;
-    }
-  } catch (_) {
-    // Fallback to GET below.
-  }
-
-  try {
-    var getResponse = await fetch(src, { method: 'GET', cache: 'force-cache' });
-    wordAudioAvailability[src] = getResponse.ok;
-    return getResponse.ok;
+    wordAudioAvailability[src] = response.ok;
+    return response.ok;
   } catch (_) {
     wordAudioAvailability[src] = false;
     return false;
@@ -909,7 +969,7 @@ function loadFC() {
   const mwEl = document.getElementById('fc-mw');
   const contextEl = document.getElementById('fc-context');
 
-  syncCurrentWordAudio(w);
+  syncCurrentWordAudio(w).catch(function() { hideWordAudioButton(); });
 
   function applyContent() {
     if (hzEl) hzEl.textContent = w.hanzi || '—';
@@ -961,11 +1021,6 @@ function flipCard() {
   if (fcFlipped) return;
   fcFlipped = true;
   document.getElementById('fc').classList.add('flip');
-  const w         = sWords[sIdx];
-  const intervals = SRS.previewIntervals(srsData[w.id]);
-  ['srs-i0','srs-i1','srs-i2','srs-i3'].forEach((id, i) => {
-    document.getElementById(id).textContent = intervals[i];
-  });
   setTimeout(() => document.getElementById('srs-btns').style.display = 'block', 340);
 }
 
@@ -1109,6 +1164,97 @@ function showDailyTransitionScreen(nextPhase) {
   );
 }
 
+// ── RESULTS EXTRAS ─────────────────────────────────────────────────────────
+function _firstMeaning(pl) {
+  if (!pl) return '';
+  return pl.split(/[;,]/)[0].trim();
+}
+
+function buildContextPhrases(words) {
+  var phrases = [];
+  var pronoun = null, verb = null, noun = null;
+  for (var i = 0; i < words.length; i++) {
+    var w = words[i];
+    if (!w.tags) continue;
+    if (!pronoun && w.tags.indexOf('zaimek') !== -1 && w.tags.indexOf('osoba') !== -1) pronoun = w;
+    if (!verb   && w.tags.indexOf('czasownik') !== -1) verb = w;
+    if (!noun   && w.tags.indexOf('rzeczownik') !== -1) noun = w;
+  }
+  // Template A: pronoun + verb
+  if (pronoun && verb) {
+    phrases.push({
+      hz: pronoun.hanzi + verb.hanzi + '。',
+      py: pronoun.pinyin + ' ' + verb.pinyin + '。',
+      pl: _firstMeaning(pronoun.pl) + ' ' + _firstMeaning(verb.pl) + '。'
+    });
+  }
+  // Template B: 这是 + noun
+  if (noun) {
+    phrases.push({
+      hz: '这是' + noun.hanzi + '。',
+      py: 'Zhè shì ' + noun.pinyin + '。',
+      pl: 'To jest ' + _firstMeaning(noun.pl) + '。'
+    });
+  }
+  // Fallback: single-word exclamation from first word
+  if (phrases.length === 0 && words.length > 0) {
+    var fw = words[0];
+    phrases.push({
+      hz: fw.hanzi + '！',
+      py: fw.pinyin + '！',
+      pl: _firstMeaning(fw.pl) + '！'
+    });
+  }
+  return phrases.slice(0, 2);
+}
+
+function renderResExtras(reviewWords, contextWords) {
+  // Word review block
+  var revEl = document.getElementById('res-word-review');
+  if (revEl) {
+    var sample = reviewWords.slice(0, 5);
+    if (sample.length > 0) {
+      var rows = sample.map(function(w) {
+        return '<div class="res-review-row">' +
+          '<span class="res-review-hz">' + w.hanzi + '</span>' +
+          '<span class="res-review-py">' + w.pinyin + '</span>' +
+          '<span class="res-review-pl">' + _firstMeaning(w.pl) + '</span>' +
+          '</div>';
+      }).join('');
+      revEl.innerHTML = '<div class="res-review-head">Słówka z tej lekcji</div>' + rows;
+      revEl.style.display = 'block';
+    } else {
+      revEl.style.display = 'none';
+    }
+  }
+  // Context phrases block
+  var ctxEl = document.getElementById('res-context');
+  if (ctxEl) {
+    var phrases = buildContextPhrases(contextWords);
+    if (phrases.length > 0) {
+      var ctxRows = phrases.map(function(p) {
+        return '<div class="res-ctx-row">' +
+          '<div class="res-ctx-hz">' + p.hz + '</div>' +
+          '<div class="res-ctx-py">' + p.py + '</div>' +
+          '<div class="res-ctx-pl">' + p.pl + '</div>' +
+          '</div>';
+      }).join('');
+      ctxEl.innerHTML = '<div class="res-ctx-head">Przykłady użycia</div>' + ctxRows;
+      ctxEl.style.display = 'block';
+    } else {
+      ctxEl.style.display = 'none';
+    }
+  }
+}
+
+function _hideResExtras() {
+  var r = document.getElementById('res-word-review');
+  var c = document.getElementById('res-context');
+  if (r) { r.style.display = 'none'; r.innerHTML = ''; }
+  if (c) { c.style.display = 'none'; c.innerHTML = ''; }
+}
+// ───────────────────────────────────────────────────────────────────────────
+
 function showDailyCompletionScreen() {
   hideAll();
   document.getElementById('sres').style.display = 'block';
@@ -1162,6 +1308,13 @@ function showDailyCompletionScreen() {
   resultsPrimaryAction = summary.primaryAction;
   resultsSecondaryAction = { type: 'back_home' };
   updateResultsButtons(summary.primaryLabel, 'Wróć do dziś');
+
+  var lessonWords = [];
+  if (dailySessionFlow && dailySessionFlow.lessonMeta && dailySessionFlow.lessonMeta.key) {
+    lessonWords = getLessonWordsByKey(dailySessionFlow.lessonMeta.key);
+  }
+  if (!lessonWords.length) lessonWords = sWords.slice();
+  renderResExtras(lessonWords.slice(0, 5), lessonWords);
 
   checkAndUpdateStreak();
   renderStreakBadge();
@@ -1550,7 +1703,7 @@ function loadTP() {
   const w = sWords[sIdx];
   document.getElementById('tp-hz').textContent = w.hanzi;
   document.getElementById('tp-py').textContent = w.pinyin;
-  syncCurrentWordAudio(w);
+  syncCurrentWordAudio(w).catch(function() { hideWordAudioButton(); });
   const inp = document.getElementById('tinp');
   inp.value = ''; inp.className = 'tinp'; inp.disabled = false;
   document.getElementById('tfb').textContent = '';
@@ -2275,16 +2428,12 @@ function renderStages() {
         '<span class="stage-icon">' + seg.icon + '</span>' +
         '<div class="stage-card-title">' +
           '<div class="stage-name">' + seg.name + '</div>' +
+          '<div class="stage-compact-meta">' + doneCount + '/' + lessons.length + ' lekcji · ' + wordCount + ' słów</div>' +
         '</div>' +
-      '</div>' +
-      '<div class="stage-meta-grid">' +
-        '<div class="stage-meta-item"><span class="stage-meta-label">Liczba lekcji</span><strong>' + lessons.length + '</strong></div>' +
-        '<div class="stage-meta-item"><span class="stage-meta-label">Liczba słów</span><strong>' + wordCount + '</strong></div>' +
-        '<div class="stage-meta-item"><span class="stage-meta-label">Przerobione lekcje</span><strong>' + doneCount + '/' + lessons.length + '</strong></div>' +
+        (pct > 0 ? '<span class="stage-pct-badge' + (allDone ? ' stage-pct-done' : '') + '">' + pct + '%</span>' : '') +
       '</div>' +
       '<div class="stage-prog-wrap">' +
         '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + pct + '%"></div></div>' +
-        '<div class="stage-prog-txt">' + pct + '% segmentu ukończone</div>' +
       '</div>' +
       nextHint +
     '</div>';
@@ -2534,9 +2683,13 @@ window.filterWordsSegment = filterWordsSegment;
 window.filterWordStatus = filterWordStatus;
 window.filterWordLesson = filterWordLesson;
 window.renderWords = renderWords;
+window.openWordDetail = openWordDetail;
+window.closeWordModal = closeWordModal;
+window.playWordModalAudio = playWordModalAudio;
 window.setGoal = setGoal;
 window.finishOnboard = finishOnboard;
 window.dialogCancel = dialogCancel;
 window.dialogConfirm = dialogConfirm;
 window.playCurrentWordAudio = playCurrentWordAudio;
+window.startHardSession = startHardSession;
 init();
