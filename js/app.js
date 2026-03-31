@@ -371,6 +371,12 @@ function renderStatsHard() {
 function startHardSession() {
   var pool = getHardWordsPool();
   if (!pool.length) return;
+  document.querySelectorAll('.scr').forEach(function(s) { s.classList.remove('on'); });
+  document.querySelectorAll('.botnav-btn').forEach(function(b) { b.classList.remove('on'); });
+  document.getElementById('scr-study').classList.add('on');
+  var navBtn = document.getElementById('bn-study');
+  if (navBtn) navBtn.classList.add('on');
+  window.scrollTo(0, 0);
   hideAll();
   isDailySession   = false;
   dailySessionFlow = null;
