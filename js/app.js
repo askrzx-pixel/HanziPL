@@ -279,6 +279,9 @@ function renderStats() {
 
   // 5. Trudne słówka
   renderStatsHard();
+
+  // 6. Action CTAs
+  renderStatsActions();
 }
 
 function renderStatsLessons() {
@@ -343,7 +346,6 @@ function renderStatsLessons() {
 
 function renderStatsHard() {
   var container  = document.getElementById('st-hard');
-  var btn        = document.getElementById('st-hard-btn');
   var candidates = getActiveWords()
     .map(function(w) { return Object.assign({}, w, { _c: srsData[w.id] || SRS.defaultCard() }); })
     .filter(function(w) { return (w._c.reviews || 0) >= 2; })
@@ -352,8 +354,7 @@ function renderStatsHard() {
     .slice(0, 3);
 
   if (!candidates.length) {
-    container.innerHTML = '<div class="st-empty">Ukończ kilka powtórek, aby zobaczyć trudne słówka.</div>';
-    if (btn) btn.style.display = 'none';
+    container.innerHTML = '<div class="st-hard-empty">✓ Brak trudnych słówek — świetna robota!</div>';
     return;
   }
 
@@ -365,7 +366,26 @@ function renderStatsHard() {
       '<div class="weak-acc ' + cls + '">' + pct + '%</div>' +
       '</div>';
   }).join('');
-  if (btn) btn.style.display = 'block';
+}
+
+function renderStatsActions() {
+  var container = document.getElementById('st-actions');
+  if (!container) return;
+
+  var candidate  = getDailyLessonCandidate();
+  var hardPool   = getHardWordsPool();
+
+  var btns = '';
+  if (hardPool.length) {
+    btns += '<button class="btn st-act-hard" onclick="startHardSession()">↺ Powtarzaj trudne słówka (' + hardPool.length + ')</button>';
+  }
+  if (candidate) {
+    var lessonMeta = parseSourceLessonMeta(candidate.key);
+    var lbl = lessonMeta ? ('Kontynuuj lekcję ' + lessonMeta.lessonCode) : 'Kontynuuj lekcję';
+    btns += '<button class="btn-out st-act-lesson" onclick="startLessonSessionByKey(\'' + candidate.key.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + '\')">' + lbl + ' →</button>';
+  }
+
+  container.innerHTML = btns ? '<div class="st-act-row">' + btns + '</div>' : '';
 }
 
 function startHardSession() {
@@ -526,7 +546,7 @@ function renderWords() {
     const mwBadge = w.measureWord
       ? '<span class="mw-badge" title="Klasyfikator: ' + w.measureWord.hanzi + ' (' + w.measureWord.pinyin + ')">' + w.measureWord.hanzi + '</span>'
       : '';
-    return '<div class="wcard">' +
+    return '<div class="wcard" onclick="openWordDetail(\'' + w.id.replace(/'/g, "\\'") + '\')">' +
       '<span class="hz">' + w.hanzi + '</span>' +
       mwBadge +
       '<div class="py">' + w.pinyin + '</div>' +
@@ -537,6 +557,59 @@ function renderWords() {
       '<div class="mb"><div class="mbf" style="width:' + mPct + '%"></div></div>' +
       '</div>';
   }).join('');
+}
+
+// ── WORD DETAIL MODAL ─────────────────────────────
+function openWordDetail(wordId) {
+  var word = null;
+  for (var i = 0; i < WORDS.length; i++) {
+    if (WORDS[i].id === wordId) { word = WORDS[i]; break; }
+  }
+  if (!word) return;
+
+  var lessonMeta = parseSourceLessonMeta(getRawWordLesson(word));
+  var contextHtml = lessonMeta
+    ? '<div class="wm-context"><span class="wm-lesson">' + escapeHtml(lessonMeta.fullLabel) + '</span></div>'
+    : '';
+
+  var audioSrc = getWordAudioPath(word);
+  var audioHtml = audioSrc
+    ? '<button class="btn wm-audio-btn" id="wm-audio-btn" disabled onclick="playWordModalAudio()">🔊 Wymowa</button>'
+    : '';
+
+  document.getElementById('word-modal-content').innerHTML =
+    '<div class="wm-hz">' + escapeHtml(word.hanzi) + '</div>' +
+    '<div class="wm-py">' + escapeHtml(word.pinyin) + '</div>' +
+    '<div class="wm-pl">' + escapeHtml(word.pl) + '</div>' +
+    contextHtml +
+    audioHtml;
+
+  document.getElementById('word-modal-overlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  if (audioSrc) {
+    currentWordAudioSrc = '';
+    checkWordAudioAvailability(audioSrc).then(function(available) {
+      var btn = document.getElementById('wm-audio-btn');
+      if (!btn) return;
+      if (available) {
+        currentWordAudioSrc = audioSrc;
+        btn.disabled = false;
+      } else {
+        btn.style.display = 'none';
+      }
+    });
+  }
+}
+
+function closeWordModal() {
+  document.getElementById('word-modal-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+  currentWordAudioSrc = '';
+}
+
+function playWordModalAudio() {
+  playCurrentWordAudio();
 }
 
 // ── STUDY — MODE SELECT ───────────────────────────
@@ -2316,16 +2389,12 @@ function renderStages() {
         '<span class="stage-icon">' + seg.icon + '</span>' +
         '<div class="stage-card-title">' +
           '<div class="stage-name">' + seg.name + '</div>' +
+          '<div class="stage-compact-meta">' + doneCount + '/' + lessons.length + ' lekcji · ' + wordCount + ' słów</div>' +
         '</div>' +
-      '</div>' +
-      '<div class="stage-meta-grid">' +
-        '<div class="stage-meta-item"><span class="stage-meta-label">Liczba lekcji</span><strong>' + lessons.length + '</strong></div>' +
-        '<div class="stage-meta-item"><span class="stage-meta-label">Liczba słów</span><strong>' + wordCount + '</strong></div>' +
-        '<div class="stage-meta-item"><span class="stage-meta-label">Przerobione lekcje</span><strong>' + doneCount + '/' + lessons.length + '</strong></div>' +
+        (pct > 0 ? '<span class="stage-pct-badge' + (allDone ? ' stage-pct-done' : '') + '">' + pct + '%</span>' : '') +
       '</div>' +
       '<div class="stage-prog-wrap">' +
         '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + pct + '%"></div></div>' +
-        '<div class="stage-prog-txt">' + pct + '% segmentu ukończone</div>' +
       '</div>' +
       nextHint +
     '</div>';
@@ -2575,6 +2644,9 @@ window.filterWordsSegment = filterWordsSegment;
 window.filterWordStatus = filterWordStatus;
 window.filterWordLesson = filterWordLesson;
 window.renderWords = renderWords;
+window.openWordDetail = openWordDetail;
+window.closeWordModal = closeWordModal;
+window.playWordModalAudio = playWordModalAudio;
 window.setGoal = setGoal;
 window.finishOnboard = finishOnboard;
 window.dialogCancel = dialogCancel;
