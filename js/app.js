@@ -2652,4 +2652,5 @@ window.finishOnboard = finishOnboard;
 window.dialogCancel = dialogCancel;
 window.dialogConfirm = dialogConfirm;
 window.playCurrentWordAudio = playCurrentWordAudio;
+window.startHardSession = startHardSession;
 init();
