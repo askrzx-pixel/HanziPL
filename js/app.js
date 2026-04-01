@@ -2423,38 +2423,63 @@ function renderStages() {
   }
 
   var html = segments.map(function(seg) {
-    var lessons   = seg.lessons;
+    var lessons = seg.lessons;
     var doneCount = lessons.filter(function(l) { return getLessonStatusByKey(l.key) === 'done'; }).length;
-    var pct       = lessons.length ? Math.round(doneCount / lessons.length * 100) : 0;
-    var allDone   = doneCount === lessons.length;
-    var lessonKeyMap = Object.create(null);
-    lessons.forEach(function(lesson) { lessonKeyMap[lesson.key] = true; });
-    var wordCount = activeWords.filter(function(w) { return lessonKeyMap[getRawWordLesson(w)] === true; }).length;
+    var pct = lessons.length ? Math.round(doneCount / lessons.length * 100) : 0;
+    var allDone = doneCount === lessons.length;
 
-    var nextLesson = null;
-    for (var i = 0; i < lessons.length; i++) {
-      if (getLessonStatusByKey(lessons[i].key) !== 'done') { nextLesson = lessons[i]; break; }
-    }
+    var lessonStatuses = lessons.map(function(lesson) {
+      return { lesson: lesson, status: getLessonStatusByKey(lesson.key) };
+    });
 
-    var nextHint = allDone
-      ? '<div class="sc-next sc-next-done">✓ Wszystkie lekcje przerobione</div>'
-      : nextLesson
-        ? '<div class="sc-next">Następna: <strong>' + nextLesson.name + '</strong></div>'
-        : '';
+    var lessonsHtml = lessonStatuses.map(function(ls) {
+      var lesson = ls.lesson;
+      var status = ls.status;
+      var lessonMeta = parseSourceLessonMeta(lesson.key);
+      var stats = getCourseLessonWordStats(lesson.key, activeWords);
+      var lpct = stats.pct;
 
-    return '<div class="stage-card" data-action="open-segment" data-seg="' + seg.segNum + '">' +
-      '<div class="stage-card-head">' +
-        '<span class="stage-icon">' + seg.icon + '</span>' +
-        '<div class="stage-card-title">' +
-          '<div class="stage-name">' + seg.name + '</div>' +
-          '<div class="stage-compact-meta">' + doneCount + '/' + lessons.length + ' lekcji · ' + wordCount + ' słów</div>' +
+      var badge, btnLabel;
+      if (status === 'done') {
+        badge    = '<span class="lesson-status ls-done">✓ Przerobiona</span>';
+        btnLabel = 'Powtórz';
+      } else if (status === 'in-progress') {
+        badge    = '<span class="lesson-status ls-progress">W trakcie</span>';
+        btnLabel = 'Kontynuuj';
+      } else {
+        badge    = '<span class="lesson-status ls-new">Nowa</span>';
+        btnLabel = 'Zacznij';
+      }
+
+      return '<div class="lesson-card' + (status === 'done' ? ' lc-done' : '') + '">' +
+        '<div class="lc-header">' +
+          '<div class="lc-title-wrap">' +
+            '<span class="lc-code">' + lessonMeta.lessonCode + '</span>' +
+            '<span class="lc-name">' + (lessonMeta.title || lesson.name) + '</span>' +
+          '</div>' +
+          badge +
         '</div>' +
-        (pct > 0 ? '<span class="stage-pct-badge' + (allDone ? ' stage-pct-done' : '') + '">' + pct + '%</span>' : '') +
+        '<div class="lc-meta-row">' + stats.total + ' słów</div>' +
+        '<div class="lc-bar"><div class="lc-fill" style="width:' + lpct + '%"></div></div>' +
+        '<div class="lc-footer">' +
+          '<span class="lc-meta">' + lpct + '% opanowane</span>' +
+          '<button class="btn-lesson" data-action="start-lesson" data-lesson-key="' + lesson.key.replace(/"/g, '&quot;') + '">' + btnLabel + '</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    var progressBadge = pct > 0
+      ? '<span class="seg-hdr-badge' + (allDone ? ' seg-hdr-badge-done' : '') + '">' + pct + '%</span>'
+      : '';
+
+    return '<div class="seg-group">' +
+      '<div class="seg-group-header">' +
+        '<span class="stage-icon">' + seg.icon + '</span>' +
+        '<span class="seg-hdr-name">' + seg.name + '</span>' +
+        '<span class="seg-hdr-meta">' + doneCount + '/' + lessons.length + '</span>' +
+        progressBadge +
       '</div>' +
-      '<div class="stage-prog-wrap">' +
-        '<div class="stage-prog-track"><div class="stage-prog-fill" style="width:' + pct + '%"></div></div>' +
-      '</div>' +
-      nextHint +
+      '<div class="seg-group-lessons">' + lessonsHtml + '</div>' +
     '</div>';
   }).join('');
 
