@@ -1022,6 +1022,13 @@ function flipCard() {
   if (fcFlipped) return;
   fcFlipped = true;
   document.getElementById('fc').classList.add('flip');
+  var isLessonPhase = sessionMeta && sessionMeta.phaseKey === 'lesson';
+  var copyEl = document.getElementById('srs-copy');
+  if (copyEl) {
+    copyEl.textContent = isLessonPhase
+      ? 'Zapamiętaj to słowo. Wrócimy do niego wkrótce.'
+      : 'Wybierz, jak dobrze znasz to słowo.';
+  }
   setTimeout(() => document.getElementById('srs-btns').style.display = 'block', 340);
 }
 
@@ -1604,6 +1611,14 @@ function srsAns(rating) {
   if (correct) sOk++;
   if (rating === 0) sWords.push(w);
   sessionIdx_inc();
+}
+
+// "Kolejne" button handler — uses Good (2) for first-encounter lesson phase
+// so new words are scheduled for the next day, not 4 days ahead.
+// For review phases uses Easy (3) as before.
+function nextWordAns() {
+  var rating = (sessionMeta && sessionMeta.phaseKey === 'lesson') ? 2 : 3;
+  srsAns(rating);
 }
 
 function sessionIdx_inc() {
@@ -2675,7 +2690,8 @@ window.backHome = backHome;
 window.confirmBack = confirmBack;
 window.go = go;
 window.flipCard = flipCard;
-window.srsAns = srsAns;
+window.srsAns     = srsAns;
+window.nextWordAns = nextWordAns;
 window.chkType = chkType;
 window.tpNext = tpNext;
 window.initChips = initChips;

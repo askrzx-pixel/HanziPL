@@ -202,10 +202,10 @@
       <button class="fc-audio-btn" id="fc-audio-btn" onclick="playCurrentWordAudio()" hidden>🔊 Wymowa</button>
     </div>
     <div id="srs-btns" style="display:none">
-      <div class="srs-copy">Wybierz, jak dobrze znasz to słowo. Zapiszemy wynik i pokażemy kolejne.</div>
+      <div class="srs-copy" id="srs-copy">Wybierz, jak dobrze znasz to słowo.</div>
       <div class="srs-btns">
         <button class="srs-btn again" onclick="srsAns(0)"><span class="sb-label">Jeszcze raz</span></button>
-        <button class="srs-btn know"  onclick="srsAns(3)"><span class="sb-label">Kolejne</span></button>
+        <button class="srs-btn know"  onclick="nextWordAns()"><span class="sb-label">Kolejne</span></button>
       </div>
     </div>
   </div>
