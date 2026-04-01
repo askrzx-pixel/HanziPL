@@ -298,24 +298,23 @@ function renderStatsLessons() {
   var lessons = lessonKeys.map(function(ls) {
     var lw = activeWords.filter(function(w) { return getNormalizedLessonKey(w) === ls; });
     if (!lw.length) return null;
-    var nw   = lw.filter(function(w) { return SRS.isNew(srsData[w.id]); }).length;
-    var seen = lw.length - nw;
+    var seen = lw.filter(function(w) { return !SRS.isNew(srsData[w.id]); }).length;
     var pct  = Math.round(seen / lw.length * 100);
-    var status = nw === lw.length ? 'not-started'
-      : nw === 0 ? 'completed'
-      : 'in-progress';
+    var status = typeof getLessonStatusByKey === 'function' ? getLessonStatusByKey(ls) : (
+      seen === 0 ? 'new' : seen === lw.length ? 'done' : 'in-progress'
+    );
     return { key: ls, pct: pct, status: status, total: lw.length, seen: seen };
   }).filter(Boolean);
 
   // find: last completed, current active, next unstarted
   var lastDoneIdx = -1, activeIdx = -1, nextNewIdx = -1;
   lessons.forEach(function(l, i) {
-    if (l.status === 'completed')   lastDoneIdx = i;
+    if (l.status === 'done')   lastDoneIdx = i;
     if (l.status === 'in-progress' && activeIdx === -1) activeIdx = i;
   });
   var searchFrom = activeIdx !== -1 ? activeIdx + 1 : 0;
   for (var i = searchFrom; i < lessons.length; i++) {
-    if (lessons[i].status === 'not-started') { nextNewIdx = i; break; }
+    if (lessons[i].status === 'new') { nextNewIdx = i; break; }
   }
 
   var toShow = [];
@@ -344,7 +343,7 @@ function renderStatsLessons() {
       '</div>' +
       '<div class="btrack"><div class="bfill" style="width:' + l.pct + '%"></div></div>' +
       '<div class="st-lrow-sub">' + l.seen + '\u202f/\u202f' + l.total + ' słów · ' + l.pct + '%</div>' +
-      (l.status !== 'completed'
+      (l.status !== 'done'
         ? '<button class="st-next-btn" onclick="startLessonSessionByKey(\'' + l.key.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + '\')">' + (l.status === 'in-progress' ? activeLessonLabel : lessonLabel) + '</button>'
         : '') +
       '</div>';
