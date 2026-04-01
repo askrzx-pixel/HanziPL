@@ -246,6 +246,7 @@ function startDailySession() {
   window.scrollTo(0, 0);
 
   isDailySession = true;
+  track('daily_session_started');
   startDailyPhase(0);
 }
 
@@ -386,6 +387,7 @@ function startHardSession() {
   dailySessionFlow = null;
   sessionMeta      = { modeLabel: 'TRUDNE SŁÓWKA', countsToGoal: false };
   sWords = pool; sIdx = 0; sOk = 0; sTotal = pool.length;
+  track('hard_words_started', { word_count: pool.length });
   startFC();
 }
 
@@ -859,6 +861,7 @@ async function playCurrentWordAudio() {
     }
     wordAudioPlayer.currentTime = 0;
     await wordAudioPlayer.play();
+    track('audio_played');
   } catch (_) {
     hideWordAudioButton();
     currentWordAudioSrc = '';
@@ -866,6 +869,7 @@ async function playCurrentWordAudio() {
 }
 
 function startFC() {
+  track('flashcards_started');
   document.getElementById('sfc').style.display = 'block';
   document.getElementById('fc-mode-lbl').textContent = sessionMeta && sessionMeta.modeLabel
     ? sessionMeta.modeLabel

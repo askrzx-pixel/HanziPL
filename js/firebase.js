@@ -10,6 +10,7 @@
 var currentUser  = null;
 var _fbReady     = false;  // czy Firebase załadował się poprawnie
 var _fbSaveTimer = null;   // timer do debouncingu zapisu
+var _analytics   = null;   // Firebase Analytics instance (null = niedostępny)
 
 // ── Konfiguracja projektu HanziPL ─────────────────
 var FIREBASE_CONFIG = {
@@ -18,8 +19,36 @@ var FIREBASE_CONFIG = {
   projectId:         "hanzipl-42ef0",
   storageBucket:     "hanzipl-42ef0.firebasestorage.app",
   messagingSenderId: "876038817557",
-  appId:             "1:876038817557:web:67d572632b25589f554b1c"
+  appId:             "1:876038817557:web:67d572632b25589f554b1c",
+  measurementId:     "G-9M3TFXMMRF"
 };
+
+// ── Analytics — bezpieczna inicjalizacja ──────────
+function initAnalytics() {
+  try {
+    if (typeof firebase === 'undefined' || typeof firebase.analytics !== 'function') return;
+    _analytics = firebase.analytics();
+    console.log('Analytics OK');
+  } catch(e) {
+    console.warn('Analytics init failed:', e.message);
+    _analytics = null;
+  }
+}
+
+// ── Globalny helper do logowania eventów ─────────
+// Graceful: jeśli Analytics niedostępny, nic się nie dzieje.
+function track(eventName, params) {
+  try {
+    if (_analytics) _analytics.logEvent(eventName, params || {});
+  } catch(e) { /* silent — analytics jest niekrytyczne */ }
+}
+
+// ── Setter właściwości użytkownika (opcjonalny) ───
+function setAnalyticsUserProps(props) {
+  try {
+    if (_analytics && props) _analytics.setUserProperties(props);
+  } catch(e) {}
+}
 
 // ── Inicjalizacja — wywoływana po załadowaniu strony ─
 function initFirebase() {
@@ -32,6 +61,7 @@ function initFirebase() {
       firebase.initializeApp(FIREBASE_CONFIG);
     }
     _fbReady = true;
+    initAnalytics();
 
     // Nasłuchuj na zmiany stanu logowania
     firebase.auth().onAuthStateChanged(function(user) {
@@ -198,9 +228,11 @@ function renderAuthUI() {
 }
 
 // ── Eksport globalny — wymagany dla inline onclick= w HTML ──
-window.signInWithGoogle = signInWithGoogle;
-window.signOutUser      = signOutUser;
-window.renderAuthUI     = renderAuthUI;
+window.signInWithGoogle      = signInWithGoogle;
+window.signOutUser           = signOutUser;
+window.renderAuthUI          = renderAuthUI;
+window.track                 = track;
+window.setAnalyticsUserProps = setAnalyticsUserProps;
 
 // ── Inicjuj Firebase po załadowaniu DOM ───────────
 // Używamy window.addEventListener zamiast inicjować od razu,
