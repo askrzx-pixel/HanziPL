@@ -750,6 +750,8 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
   .topbar-account{width:100%;justify-content:flex-end;}
   .home-hero-top{flex-direction:column;align-items:flex-start;}
   .home-hero-greeting{max-width:none;text-align:left;}
+  .st-lrow-top{justify-content:flex-start;align-items:flex-start;flex-wrap:wrap;gap:6px 8px;}
+  .st-lchip{margin-left:auto;}
 }
 
 /* ── WORD CARD META (topic / level / lesson) ── */
