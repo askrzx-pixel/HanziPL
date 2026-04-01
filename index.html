@@ -65,20 +65,6 @@
       <button class="btn-start-day" id="btn-start-day" onclick="handleTodayPrimaryAction()">Rozpocznij dzisiejszą sesję →</button>
       <button class="btn-start-day btn-start-day-secondary" id="btn-start-lesson" onclick="handleTodaySecondaryAction()" hidden>Kontynuuj lekcję →</button>
     </div>
-    <div class="home-focus-row">
-      <div class="home-focus-card next plan">
-        <div class="home-focus-label">Plan na dziś</div>
-        <div class="home-plan-list">
-          <div class="home-plan-item" id="home-plan-reviews">Sprawdzamy powtórki…</div>
-          <div class="home-plan-item" id="home-plan-new">Sprawdzamy nową lekcję…</div>
-        </div>
-      </div>
-    </div>
-    <div class="home-counts">
-      <div class="home-count" id="hc-due"><div class="hcv" id="hc-due-v">0</div><div class="hcl">Powtórki</div></div>
-      <div class="home-count new" id="hc-new"><div class="hcv" id="hc-new-v">0</div><div class="hcl">Nowe</div></div>
-      <div class="home-count ok"><div class="hcv" id="hc-done-v">0</div><div class="hcl">Dziś zrobione</div></div>
-    </div>
     <div class="daily-prog-wrap">
       <div class="daily-prog-label"><span>Dzienny cel</span><span id="daily-prog-txt">0 / 0 słów</span></div>
       <div class="daily-prog-track"><div class="daily-prog-fill" id="daily-prog-fill" style="width:0%"></div></div>
@@ -129,6 +115,9 @@
     <div class="st-empty" id="st-acc-empty" style="display:none">Ukończ pierwszą lekcję, aby zobaczyć skuteczność.</div>
   </div>
 
+  <!-- Akcje -->
+  <div class="st-actions" id="st-actions"></div>
+
   <!-- Postęp lekcji -->
   <div class="divider"><span>Postęp lekcji</span></div>
   <div class="st-lessons" id="st-lessons"></div>
@@ -136,7 +125,6 @@
   <!-- Trudne słówka -->
   <div class="divider"><span>Trudne słówka</span></div>
   <div class="weak-list" id="st-hard"></div>
-  <div class="st-cta-wrap"><button class="btn" id="st-hard-btn" onclick="startHardSession()" style="display:none">Powtórz trudne słówka</button></div>
 </div>
 
 <!-- ══ WORDS ══ -->
@@ -214,12 +202,10 @@
       <button class="fc-audio-btn" id="fc-audio-btn" onclick="playCurrentWordAudio()" hidden>🔊 Wymowa</button>
     </div>
     <div id="srs-btns" style="display:none">
-      <div class="srs-copy">Wybierz, jak dobrze znasz to słowo. Zapiszemy wynik i pokażemy kolejne.</div>
+      <div class="srs-copy" id="srs-copy">Wybierz, jak dobrze znasz to słowo.</div>
       <div class="srs-btns">
-        <button class="srs-btn again" onclick="srsAns(0)"><span class="sb-label">Jeszcze raz</span><span class="sb-interval" id="srs-i0"></span></button>
-        <button class="srs-btn hard"  onclick="srsAns(1)"><span class="sb-label">Trudne</span><span class="sb-interval" id="srs-i1"></span></button>
-        <button class="srs-btn good"  onclick="srsAns(2)"><span class="sb-label">Dobrze</span><span class="sb-interval" id="srs-i2"></span></button>
-        <button class="srs-btn easy"  onclick="srsAns(3)"><span class="sb-label">Łatwe</span><span class="sb-interval" id="srs-i3"></span></button>
+        <button class="srs-btn again" onclick="srsAns(0)"><span class="sb-label">Jeszcze raz</span></button>
+        <button class="srs-btn know"  onclick="nextWordAns()"><span class="sb-label">Kolejne</span></button>
       </div>
     </div>
   </div>
@@ -317,6 +303,14 @@
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- Word Detail Modal -->
+<div class="word-modal-overlay" id="word-modal-overlay" style="display:none" onclick="closeWordModal()">
+  <div class="word-modal" onclick="event.stopPropagation()">
+    <button class="word-modal-close" onclick="closeWordModal()">✕</button>
+    <div id="word-modal-content"></div>
+  </div>
+</div>
 
 
 <!-- Firebase CDN — compat version, musi być przed naszymi skryptami -->
