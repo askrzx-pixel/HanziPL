@@ -44,8 +44,8 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 
 /* ── TOP BAR ── */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--paper2);border-bottom:2px solid var(--border2);position:sticky;top:0;z-index:100;box-shadow:var(--shadow);gap:12px;}
-.logo{font-family:'Noto Sans SC',sans-serif;font-size:1.35rem;color:var(--red);letter-spacing:3px;}
-.logo small{display:block;font-family:Inter,sans-serif;font-size:.65rem;font-weight:400;color:var(--muted);letter-spacing:.5px;margin-top:-2px;}
+.logo{font-family:Inter,'Noto Sans SC',sans-serif;font-size:1.35rem;color:var(--red);letter-spacing:1px;font-weight:700;}
+.logo small{display:block;font-family:'Noto Sans SC',Inter,sans-serif;font-size:.65rem;font-weight:400;color:var(--muted);letter-spacing:.5px;margin-top:-2px;}
 .topbar-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .topbar-account{display:flex;align-items:center;gap:8px;}
 .streak-badge{display:flex;align-items:center;gap:4px;font-family:Inter,sans-serif;font-size:.7rem;font-weight:500;color:var(--gold);border:1px solid var(--gold2);border-radius:20px;padding:3px 10px;background:rgba(201,168,76,.1);}
