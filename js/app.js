@@ -586,31 +586,28 @@ function openWordDetail(wordId) {
     : '';
 
   var audioSrc = getWordAudioPath(word);
-  var audioHtml = audioSrc
-    ? '<button class="btn wm-audio-btn" id="wm-audio-btn" disabled onclick="playWordModalAudio()">🔊 Wymowa</button>'
-    : '';
 
   document.getElementById('word-modal-content').innerHTML =
     '<div class="wm-hz">' + escapeHtml(word.hanzi) + '</div>' +
     '<div class="wm-py">' + escapeHtml(word.pinyin) + '</div>' +
     '<div class="wm-pl">' + escapeHtml(word.pl) + '</div>' +
     contextHtml +
-    audioHtml;
+    (audioSrc ? '<button class="btn wm-audio-btn" id="wm-audio-btn" style="display:none" disabled onclick="playWordModalAudio()">🔊 Wymowa</button>' : '');
 
   document.getElementById('word-modal-overlay').style.display = 'flex';
   document.body.style.overflow = 'hidden';
 
+  currentWordAudioSrc = '';
   if (audioSrc) {
-    currentWordAudioSrc = '';
     checkWordAudioAvailability(audioSrc).then(function(available) {
       var btn = document.getElementById('wm-audio-btn');
       if (!btn) return;
       if (available) {
         currentWordAudioSrc = audioSrc;
         btn.disabled = false;
-      } else {
-        btn.style.display = 'none';
+        btn.style.display = '';
       }
+      // jeśli !available — przycisk pozostaje ukryty
     });
   }
 }
