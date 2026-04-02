@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>HanziGo</title>
-<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMTgwIj4KICA8cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgcng9IjQwIiBmaWxsPSIjOGIxYTFhIi8+CiAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE2NCIgaGVpZ2h0PSIxNjQiIHJ4PSIzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzlhODRjIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8dGV4dCB4PSI5MCIgeT0iMTI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExMCIgZm9udC1mYW1pbHk9Ik5vdG8gU2VyaWYgU0MsIHNlcmlmIiBmaWxsPSIjZjJlOGQ1Ij7mvKI8L3RleHQ+Cjwvc3ZnPg==">
-<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMTgwIj4KICA8cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgcng9IjQwIiBmaWxsPSIjOGIxYTFhIi8+CiAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE2NCIgaGVpZ2h0PSIxNjQiIHJ4PSIzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzlhODRjIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8dGV4dCB4PSI5MCIgeT0iMTI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExMCIgZm9udC1mYW1pbHk9Ik5vdG8gU2VyaWYgU0MsIHNlcmlmIiBmaWxsPSIjZjJlOGQ1Ij7mvKI8L3RleHQ+Cjwvc3ZnPg==">
+<title>HanziFlow</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="HanziGo">
-<meta name="theme-color" content="#e8d9be">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="HanziFlow">
+<meta name="theme-color" content="#8b1a1a">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -19,7 +20,7 @@
 <!-- ONBOARDING -->
 <div class="onboard" id="onboard" style="display:none">
   <div class="onboard-hz">漢</div>
-  <div class="onboard-title">Witaj w HanziGo!</div>
+  <div class="onboard-title">Witaj w HanziFlow!</div>
   <div class="onboard-sub">Ucz się chińskiego skutecznie<br>dzięki systemowi powtórek.</div>
   <div class="onboard-goal">
     <label>ILE SŁÓWEK DZIENNIE CHCESZ UCZYĆ?</label>
@@ -34,7 +35,7 @@
 </div>
 
 <div class="topbar">
-  <div class="logo">HanziGo<small>学中文</small></div>
+  <div class="logo">HanziFlow<small>学中文</small></div>
   <div class="topbar-right">
     <div class="streak-badge"><span class="fire">🔥</span><span id="streak-num">0</span> dni</div>
     <div class="topbar-account">
@@ -327,5 +328,17 @@
 <script src="js/courseStages.js"></script>
 <script src="js/firebase.js"></script>
 <script src="js/app.js"></script>
+<!-- PWA: Service Worker registration — graceful, nie blokuje aplikacji -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').then(function(reg) {
+      console.log('[SW] zarejestrowany:', reg.scope);
+    }).catch(function(err) {
+      console.warn('[SW] rejestracja nieudana:', err.message);
+    });
+  });
+}
+</script>
 </body>
 </html>
