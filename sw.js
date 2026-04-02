@@ -2,13 +2,14 @@
 // Strategia: cache-first dla app shell, network-first dla reszty.
 // Brak: cachowania audio, push notifications, złożonej logiki offline.
 
-const CACHE_NAME = 'hanziflow-shell-v1';
+const CACHE_NAME = 'hanziflow-shell-v2';
 
 const APP_SHELL = [
   '/',
   '/index.html',
   '/css/styles.css',
   '/js/words.js',
+  '/js/lesson-examples.js',
   '/js/srs.js',
   '/js/storage.js',
   '/js/courseStages.js',
