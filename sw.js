@@ -1,8 +1,8 @@
-// ── HanziFlow Service Worker ──────────────────────────
+// ── HanziPL Service Worker ────────────────────────────
 // Strategia: cache-first dla app shell, network-first dla reszty.
 // Brak: cachowania audio, push notifications, złożonej logiki offline.
 
-const CACHE_NAME = 'hanziflow-shell-v2';
+const CACHE_NAME = 'hanzipl-shell-v1';
 
 const APP_SHELL = [
   '/',

@@ -2246,7 +2246,7 @@ function parseSourceLessonMeta(raw) {
 
 function getWordSourceLabel(w) {
   var meta = parseSourceLessonMeta(getRawWordLesson(w));
-  if (!meta) return 'Źródło: kurs HanziFlow';
+  if (!meta) return 'Źródło: kurs HanziPL';
   if (meta.lessonCode && meta.title) return 'Lekcja ' + meta.lessonCode + ' · ' + meta.title;
   return meta.fullLabel || ('Źródło: ' + meta.shortLabel);
 }
@@ -2265,7 +2265,7 @@ function getPrimaryLessonFromWords(words) {
   var firstSeen = [];
   var order = Object.create(null);
   words.forEach(function(w) {
-    var raw = getRawWordLesson(w) || 'kurs HanziFlow';
+    var raw = getRawWordLesson(w) || 'kurs HanziPL';
     if (!counts[raw]) {
       order[raw] = firstSeen.length;
       firstSeen.push(raw);
@@ -2283,7 +2283,7 @@ function getDistinctLessonCount(words) {
   if (!Array.isArray(words) || !words.length) return 0;
   var seen = Object.create(null);
   words.forEach(function(w) {
-    var raw = getRawWordLesson(w) || 'kurs HanziFlow';
+    var raw = getRawWordLesson(w) || 'kurs HanziPL';
     seen[raw] = true;
   });
   return Object.keys(seen).length;
