@@ -1260,8 +1260,28 @@ function renderResExtras(reviewWords, contextWords) {
 function _hideResExtras() {
   var r = document.getElementById('res-word-review');
   var c = document.getElementById('res-context');
+  var ex = document.getElementById('res-examples');
   if (r) { r.style.display = 'none'; r.innerHTML = ''; }
   if (c) { c.style.display = 'none'; c.innerHTML = ''; }
+  if (ex) { ex.style.display = 'none'; ex.innerHTML = ''; }
+}
+
+function renderLessonExamples(lessonKey) {
+  var el = document.getElementById('res-examples');
+  if (!el) return;
+  var examples = (typeof LESSON_EXAMPLES !== 'undefined' && lessonKey)
+    ? LESSON_EXAMPLES[lessonKey]
+    : null;
+  if (!examples || !examples.length) { el.style.display = 'none'; el.innerHTML = ''; return; }
+  var rows = examples.map(function(ex) {
+    return '<div class="res-ctx-row">' +
+      '<div class="res-ctx-hz">' + escapeHtml(ex.hanzi) + '</div>' +
+      '<div class="res-ctx-py">' + escapeHtml(ex.pinyin) + '</div>' +
+      '<div class="res-ctx-pl">' + escapeHtml(ex.pl) + '</div>' +
+    '</div>';
+  }).join('');
+  el.innerHTML = '<div class="res-ctx-head">Przykłady użycia</div>' + rows;
+  el.style.display = 'block';
 }
 // ───────────────────────────────────────────────────────────────────────────
 
@@ -1309,11 +1329,27 @@ function showDailyCompletionScreen() {
   var nextEl = document.getElementById('res-next');
   if (nextEl) { nextEl.style.display = 'none'; nextEl.textContent = ''; }
 
+  var lessonMeta2 = dailySessionFlow ? dailySessionFlow.lessonMeta : null;
+  var lessonWords2 = dailySessionFlow ? dailySessionFlow.lessonWords : null;
+
   renderCompletionExtras(buildCompletionExtras({
     mode: 'daily',
-    lessonMeta: dailySessionFlow ? dailySessionFlow.lessonMeta : null,
-    lessonWords: dailySessionFlow ? dailySessionFlow.lessonWords : null
+    lessonMeta: lessonMeta2,
+    lessonWords: lessonWords2
   }));
+
+  // Override detail: "Poznałeś dziś X nowych słów"
+  if (lessonWords2 && lessonWords2.length) {
+    var newWordCount = lessonWords2.filter(function(w) {
+      return w && SRS.isNew(srsData[w.id]);
+    }).length;
+    var detailOverride = document.getElementById('res-detail');
+    if (detailOverride && newWordCount > 0) {
+      detailOverride.style.display = '';
+      detailOverride.textContent = 'Poznałeś dziś ' + newWordCount + ' ' +
+        pluralizeWords(newWordCount, 'nowe słowo', 'nowe słowa', 'nowych słów');
+    }
+  }
 
   resultsPrimaryAction = summary.primaryAction;
   resultsSecondaryAction = { type: 'back_home' };
@@ -1324,7 +1360,10 @@ function showDailyCompletionScreen() {
     lessonWords = getLessonWordsByKey(dailySessionFlow.lessonMeta.key);
   }
   if (!lessonWords.length) lessonWords = sWords.slice();
-  renderResExtras(lessonWords.slice(0, 5), lessonWords);
+  renderResExtras(lessonWords.slice(0, 5), []);
+
+  var examplesKey = lessonMeta2 && lessonMeta2.key ? lessonMeta2.key : null;
+  renderLessonExamples(examplesKey);
 
   checkAndUpdateStreak();
   renderStreakBadge();
@@ -1464,9 +1503,13 @@ function buildCompletionExtras(options) {
   }
 
   if (reviewWords.length) {
-    reviewTitle = lessonMeta && lessonMeta.lessonCode && (hasLessonReview || mode !== 'daily')
-      ? 'Szybkie przypomnienie · lekcja ' + lessonMeta.lessonCode
-      : 'Szybkie przypomnienie';
+    if (hasLessonReview) {
+      reviewTitle = 'Nowe słowa z tej lekcji';
+    } else if (lessonMeta && lessonMeta.lessonCode && mode !== 'daily') {
+      reviewTitle = 'Szybkie przypomnienie · lekcja ' + lessonMeta.lessonCode;
+    } else {
+      reviewTitle = 'Szybkie przypomnienie';
+    }
   }
 
   if (mode === 'daily' && !hasLessonReview) {

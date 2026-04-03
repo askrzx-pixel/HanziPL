@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="82" fill="#8b1a1a"/>
+  <rect x="51" y="51" width="410" height="410" rx="30" fill="none" stroke="#c9a84c" stroke-width="13"/>
+  <text x="256" y="346" text-anchor="middle" dominant-baseline="auto"
+        font-size="205" font-weight="700"
+        font-family="'Noto Serif SC','Noto Sans SC','PingFang SC','Microsoft YaHei',serif"
+        fill="#c9a84c">汉字</text>
+</svg>
