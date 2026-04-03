@@ -176,8 +176,28 @@ function fbLoadAll(callback) {
             if (rawLocal)       localTs = new Date(rawLocal).getTime();
           } catch(e) {}
 
-          if (cloudTs > localTs) {
-            // Chmura jest nowsza — załaduj i nadpisz lokalne
+          // Policz karty z faktycznym postępem (reviews > 0) w obu źródłach.
+          // Chroni przed nadpisaniem konta pełnego postępu pustym stanem lokalnym
+          // (np. gdy użytkownik otworzył apkę na nowym urządzeniu przed zalogowaniem).
+          var cloudLearned = 0;
+          var localLearned = 0;
+          try {
+            if (data.srsData) {
+              Object.keys(data.srsData).forEach(function(id) {
+                if (data.srsData[id] && (data.srsData[id].reviews || 0) > 0) cloudLearned++;
+              });
+            }
+            Object.keys(srsData).forEach(function(id) {
+              if (srsData[id] && (srsData[id].reviews || 0) > 0) localLearned++;
+            });
+          } catch(e) {}
+
+          // Preferuj chmurę jeśli: jest nowsza LUB ma więcej nauczonych kart niż lokalne.
+          // Drugi warunek uniemożliwia nadpisanie konta ubogim stanem lokalnym.
+          var preferCloud = (cloudTs > localTs) || (cloudLearned > localLearned);
+
+          if (preferCloud) {
+            // Chmura jest nowsza lub bogatsza — załaduj i nadpisz lokalne
             if (data.srsData)    srsData    = data.srsData;
             if (data.appConfig)  appConfig  = data.appConfig;
             if (data.dailyLog)   dailyLog   = data.dailyLog;
@@ -189,8 +209,8 @@ function fbLoadAll(callback) {
             try { localStorage.setItem('cn_updatedAt', data.updatedAt); } catch(e) {}
             if (callback) callback(true);
           } else {
-            // Lokalne są nowsze lub równe — nie nadpisuj, wyślij lokalne do chmury
-            console.log('fbLoadAll: dane lokalne są nowsze — pomijam nadpisanie, sync → cloud');
+            // Lokalne są nowsze i bogatsze — nie nadpisuj, wyślij lokalne do chmury
+            console.log('fbLoadAll: dane lokalne są nowsze/bogatsze — pomijam nadpisanie, sync → cloud');
             fbSaveAll();
             if (callback) callback(false);
           }

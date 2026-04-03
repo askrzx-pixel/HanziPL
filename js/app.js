@@ -848,9 +848,11 @@ function recordAnswer(hanzi, correct, wasNew) {
       dailySessionFlow.countedIds[hanzi] = true;
       dailyLog.done++;
       if (wasNew) dailyLog.newDone++;
-      saveAll();
     }
   }
+  // Zawsze zapisuj po każdej odpowiedzi — SRS + dailyLog przetrwają refresh,
+  // zamknięcie apki i wyjście z sesji w połowie. Dotyczy wszystkich typów sesji.
+  saveAll();
 }
 
 // ── FLASHCARD ─────────────────────────────────────
