@@ -1,45 +1,18 @@
 {
   "name": "HanziPL",
   "short_name": "HanziPL",
-  "description": "Ucz się chińskich słówek metodą powtórek odstępnych (SRS).",
-  "lang": "pl",
+  "description": "Nauka chińskiego z systemem powtórek",
   "start_url": "/",
-  "scope": "/",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#8b1a1a",
+  "background_color": "#e8d9be",
   "theme_color": "#8b1a1a",
-  "categories": ["education"],
+  "lang": "pl",
   "icons": [
     {
-      "src": "/icons/icon.svg",
-      "type": "image/svg+xml",
+      "src": "/icon.svg",
       "sizes": "any",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-maskable.svg",
       "type": "image/svg+xml",
-      "sizes": "any",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/icons/icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-maskable-512.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ]
 }
