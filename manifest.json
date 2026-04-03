@@ -1,0 +1,18 @@
+{
+  "name": "HanziPL",
+  "short_name": "HanziPL",
+  "description": "Nauka chińskiego z systemem powtórek",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e8d9be",
+  "theme_color": "#8b1a1a",
+  "lang": "pl",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
