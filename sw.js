@@ -2,7 +2,7 @@
 // Strategia: cache-first dla app shell, network-first dla reszty.
 // Brak: cachowania audio, push notifications, złożonej logiki offline.
 
-const CACHE_NAME = 'hanzipl-shell-v1';
+const CACHE_NAME = 'hanzipl-shell-v2';
 
 const APP_SHELL = [
   '/',
@@ -16,9 +16,10 @@ const APP_SHELL = [
   '/js/firebase.js',
   '/js/app.js',
   '/manifest.json',
+  '/icons/icon.svg',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
-  '/icons/icon.svg',
+  '/icons/icon-maskable-512.png',
 ];
 
 // ── Install: pre-cache app shell ─────────────────────
