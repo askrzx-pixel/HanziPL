@@ -599,6 +599,7 @@ function openWordDetail(wordId) {
   document.body.style.overflow = 'hidden';
 
   currentWordAudioSrc = '';
+  if (wordAudioPlayer) { wordAudioPlayer.pause(); } // stop audio from previously open modal word
   var modalToken = ++currentWordModalToken; // bump before async — stale .then() checks this
   if (audioSrc) {
     checkWordAudioAvailability(audioSrc).then(function(available) {
@@ -620,6 +621,7 @@ function closeWordModal() {
   document.body.style.overflow = '';
   currentWordAudioSrc = '';
   currentWordModalToken++; // invalidate any in-flight availability check
+  if (wordAudioPlayer) { wordAudioPlayer.pause(); } // stop audio still playing from this modal
 }
 
 function playWordModalAudio() {
@@ -828,6 +830,9 @@ function backHome() {
   dailySessionState = 'no_content_available';
   sessionMeta = null;
   currentWordAudioSrc = '';
+  currentWordAudioRequest++;  // invalidate any in-flight syncCurrentWordAudio check
+  currentWordModalToken++;    // invalidate any in-flight modal availability check
+  hideWordAudioButton();
   if (wordAudioPlayer) wordAudioPlayer.pause();
   go('home', document.getElementById('bn-home'));
 }
@@ -870,10 +875,11 @@ async function checkWordAudioAvailability(src) {
     // A real audio file must advertise an audio/* Content-Type.
     var ct = response.headers.get('content-type') || '';
     var ok = response.ok && ct.startsWith('audio/');
-    wordAudioAvailability[src] = ok;
+    wordAudioAvailability[src] = ok; // cache only confirmed HTTP results (true or false)
     return ok;
   } catch (_) {
-    wordAudioAvailability[src] = false;
+    // Do NOT write to wordAudioAvailability on a network error — a transient failure
+    // (timeout, offline blip) must not permanently suppress audio for the rest of the session.
     return false;
   }
 }
