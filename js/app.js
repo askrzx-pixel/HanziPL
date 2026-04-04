@@ -329,14 +329,13 @@ function renderStatsLessons() {
     return;
   }
 
-  container.innerHTML = toShow.map(function(item) {
+  var lessonHtml = toShow.map(function(item) {
     var l   = item.l;
     var lessonMeta = parseSourceLessonMeta(l.key);
     var lessonLabel = lessonMeta ? ('Przejdź do lekcji ' + lessonMeta.lessonCode + ' →') : ('Przejdź do ' + l.key + ' →');
     var activeLessonLabel = lessonMeta ? ('Kontynuuj lekcję ' + lessonMeta.lessonCode + ' →') : ('Kontynuuj ' + l.key + ' →');
     var lbl = l.status === 'done' ? 'Ukończona' : l.status === 'in-progress' ? 'W trakcie' : '';
     var cls = l.status === 'done' ? 'st-ls-done' : l.status === 'in-progress' ? 'st-ls-active' : 'st-ls-next';
-    var escapedKey = l.key.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
     return '<div class="st-lrow' + (item.hi ? ' st-lrow-hi' : '') + '">' +
       '<div class="st-lrow-top">' +
         '<span class="st-lrow-name">' + l.key + '</span>' +
@@ -349,6 +348,19 @@ function renderStatsLessons() {
         : '') +
       '</div>';
   }).join('');
+
+  // Show mastery hint when user has finished at least one lesson but 0 mastered words —
+  // prevents confusion between "ukończona lekcja" and "opanowane słówko".
+  var hasDone = toShow.some(function(item) { return item.l.status === 'done'; });
+  var masteredCount = WORDS.filter(function(w) { return SRS.isMastered(srsData[w.id]); }).length;
+  var masteryHint = (hasDone && masteredCount === 0)
+    ? '<p class="st-empty" style="margin-top:10px;font-style:italic;">' +
+        '💡 <b>Ukończona lekcja ≠ opanowane słówko.</b> Słówka stają się ' +
+        '„opanowane" po kilku powtórkach SRS rozłożonych w czasie. Wróć jutro po powtórki!' +
+      '</p>'
+    : '';
+
+  container.innerHTML = lessonHtml + masteryHint;
 }
 
 function renderStatsHard() {
@@ -1800,8 +1812,11 @@ function chkType() {
   const fb       = document.getElementById('tfb');
   inp.disabled   = true;
 
-  const variants = w.pl.toLowerCase().split(/[;,]/).map(s => s.trim());
-  const correct  = variants.some(v => v === val || levenshtein(v, val) <= 2 || (val.length > 3 && v.includes(val)));
+  const variants = w.pl.toLowerCase().split(/[;,]/).map(s => s.trim()).filter(Boolean);
+  // Exact match OR Levenshtein ≤ 2 (handles typos/diacritics).
+  // NOTE: v.includes(val) was intentionally removed — it caused false positives where
+  // any 4+ char substring of the answer (e.g. "nies" in "niebieski") was accepted as correct.
+  const correct  = variants.some(v => v === val || levenshtein(v, val) <= 2);
 
   const wasNew = SRS.isNew(srsData[w.id]);
   if (correct) {
@@ -2159,15 +2174,21 @@ function createDailySessionFlow() {
 
 function getDailyCompletionSummary() {
   var goalDone = dailyLog.done;
+  // goalTotal = words planned for this session (reviews + lesson words at start time).
+  // We intentionally cap the displayed count at goalTotal: if the user already had work
+  // from an earlier session today, goalDone can exceed goalTotal, producing confusing
+  // fractions like "15/1". Show what was done *in this session* as a clean word count.
+  var goalTotal = dailySessionFlow ? dailySessionFlow.goalTotal : goalDone;
+  var sessionDone = Math.min(goalDone, goalTotal);
   var reinforcement = dailySessionFlow && dailySessionFlow.reinforcementAction
     ? dailySessionFlow.reinforcementAction
     : null;
 
   return {
     banner: '✓ Dzisiejsza sesja ukończona',
-    score: goalDone + '/' + (dailySessionFlow ? dailySessionFlow.goalTotal : goalDone),
+    score: sessionDone + '\u202f' + pluralizeWords(sessionDone, 'słówko', 'słówka', 'słówek'),
     title: reinforcement ? 'Plan na dziś zamknięty' : 'Dzisiejszy plan gotowy',
-    detail: goalDone + ' ' + pluralizeWords(goalDone, 'słówko przerobione', 'słówka przerobione', 'słówek przerobionych'),
+    detail: sessionDone + ' ' + pluralizeWords(sessionDone, 'słówko przerobione', 'słówka przerobione', 'słówek przerobionych'),
     course: reinforcement && reinforcement.lessonKey ? (parseSourceLessonMeta(reinforcement.lessonKey) || {}).fullLabel || '' : '',
     next: reinforcement ? reinforcement.summary : 'Możesz wrócić do domu albo zakończyć na dziś.',
     primaryAction: reinforcement || { type: 'back_home' },
