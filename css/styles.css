@@ -681,7 +681,9 @@ body::before{content:'';display:block;height:4px;background:repeating-linear-gra
 .onboard{position:fixed;inset:0;background:var(--paper);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;text-align:center;}
 .onboard-hz{font-family:'Noto Sans SC',sans-serif;font-size:5rem;color:var(--red);margin-bottom:12px;}
 .onboard-title{font-family:Inter,sans-serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:8px;}
-.onboard-sub{font-family:Inter,sans-serif;font-size:.95rem;color:var(--muted);margin-bottom:32px;line-height:1.6;}
+.onboard-sub{font-family:Inter,sans-serif;font-size:.95rem;color:var(--muted);margin-bottom:20px;line-height:1.6;}
+.onboard-flow{display:flex;flex-direction:column;gap:6px;margin-bottom:28px;background:var(--paper2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;max-width:300px;text-align:left;}
+.onboard-flow-step{font-family:Inter,sans-serif;font-size:.82rem;color:var(--ink);line-height:1.5;}
 .onboard-goal{margin-bottom:28px;}
 .onboard-goal label{font-family:Inter,sans-serif;font-size:.7rem;font-weight:500;color:var(--muted);display:block;margin-bottom:8px;letter-spacing:.3px;}
 .onboard-goal-opts{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
