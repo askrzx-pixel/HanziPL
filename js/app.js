@@ -22,6 +22,7 @@ var wordAudioPlayer = null;
 var wordAudioAvailability = Object.create(null);
 var currentWordAudioSrc = '';
 var currentWordAudioRequest = 0;
+var currentWordModalToken = 0; // guards async check in openWordModal against stale results
 var resultsSecondaryAction = { type: 'back_home' };
 
 function isActiveContentWord(word) {
@@ -598,8 +599,10 @@ function openWordDetail(wordId) {
   document.body.style.overflow = 'hidden';
 
   currentWordAudioSrc = '';
+  var modalToken = ++currentWordModalToken; // bump before async — stale .then() checks this
   if (audioSrc) {
     checkWordAudioAvailability(audioSrc).then(function(available) {
+      if (modalToken !== currentWordModalToken) return; // modal closed or different word opened
       var btn = document.getElementById('wm-audio-btn');
       if (!btn) return;
       if (available) {
@@ -616,6 +619,7 @@ function closeWordModal() {
   document.getElementById('word-modal-overlay').style.display = 'none';
   document.body.style.overflow = '';
   currentWordAudioSrc = '';
+  currentWordModalToken++; // invalidate any in-flight availability check
 }
 
 function playWordModalAudio() {
@@ -863,8 +867,13 @@ async function checkWordAudioAvailability(src) {
   if (typeof wordAudioAvailability[src] === 'boolean') return wordAudioAvailability[src];
   try {
     var response = await fetch(src, { method: 'HEAD', cache: 'force-cache' });
-    wordAudioAvailability[src] = response.ok;
-    return response.ok;
+    // response.ok alone is not enough — Firebase rewrite rules return 200 + HTML
+    // for any unmatched path (including missing .mp3 files).
+    // A real audio file must advertise an audio/* Content-Type.
+    var ct = response.headers.get('content-type') || '';
+    var ok = response.ok && ct.startsWith('audio/');
+    wordAudioAvailability[src] = ok;
+    return ok;
   } catch (_) {
     wordAudioAvailability[src] = false;
     return false;
@@ -878,6 +887,12 @@ function hideWordAudioButton() {
     btn.hidden = true;
     btn.disabled = true;
   });
+  // Modal button uses style.display (not hidden attribute) — hide it explicitly
+  var wmBtn = document.getElementById('wm-audio-btn');
+  if (wmBtn) {
+    wmBtn.style.display = 'none';
+    wmBtn.disabled = true;
+  }
 }
 
 async function syncCurrentWordAudio(word) {
