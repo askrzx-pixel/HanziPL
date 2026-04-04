@@ -600,6 +600,7 @@ function openWordDetail(wordId) {
 
   currentWordAudioSrc = '';
   if (wordAudioPlayer) { wordAudioPlayer.pause(); } // stop audio from previously open modal word
+  currentWordAudioRequest++; // invalidate any in-flight syncCurrentWordAudio — it must not overwrite modal's currentWordAudioSrc
   var modalToken = ++currentWordModalToken; // bump before async — stale .then() checks this
   if (audioSrc) {
     checkWordAudioAvailability(audioSrc).then(function(available) {
